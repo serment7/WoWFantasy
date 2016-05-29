@@ -32,7 +32,7 @@ public:
 	cObject();
 	virtual ~cObject();
 
-	void SetScaling(int sx, int sy, int sz)
+	void SetScaling(const float& sx, const float& sy, const float& sz)
 	{
 		D3DXMatrixScaling(&m_matS, sx, sy, sz);
 	}
