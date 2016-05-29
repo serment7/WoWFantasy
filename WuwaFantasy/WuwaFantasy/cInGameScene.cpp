@@ -22,7 +22,7 @@ void cInGameScene::Update()
 	for (auto iter = m_mapObject.begin(); iter != m_mapObject.end(); ++iter)
 	{
 		std::vector<cObject*>& vecObject = iter->second;
-		for (int i = 0; i < vecObject.size(); ++i)
+		for (size_t i = 0; i < vecObject.size(); ++i)
 		{
 			vecObject[i]->Update();
 		}
@@ -44,7 +44,7 @@ void cInGameScene::Render()
 			return;
 		g_pD3DDevice->SetFVF(iter->first);
 		std::vector<cObject*>& vecObject = iter->second;
-		for (int i = 0; i < vecObject.size(); ++i)
+		for (size_t i = 0; i < vecObject.size(); ++i)
 		{
 			vecObject[i]->Render();
 		}
@@ -62,7 +62,7 @@ void cInGameScene::ExitScene()
 	for (auto iter = m_mapObject.begin(); iter != m_mapObject.end(); ++iter)
 	{
 		std::vector<cObject*>& vecObject = iter->second;
-		for (int i = 0; i < vecObject.size(); ++i)
+		for (size_t i = 0; i < vecObject.size(); ++i)
 		{
 			SAFE_RELEASE(vecObject[i]);
 		}
