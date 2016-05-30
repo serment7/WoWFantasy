@@ -40,12 +40,7 @@ void cSpriteManager::EndSprite()
 	m_pSprite->End();
 }
 
-LPDIRECT3DTEXTURE9 cSpriteManager::GetTexture(char * _path, OUT D3DXIMAGE_INFO& _image_info)
-{
-	return GetTexture(std::string(_path), _image_info);
-}
-
-LPDIRECT3DTEXTURE9 cSpriteManager::GetTexture(std::string _path, OUT D3DXIMAGE_INFO& _image_info)
+LPDIRECT3DTEXTURE9 cSpriteManager::GetTexture(const char * _path, OUT D3DXIMAGE_INFO& _image_info)
 {
 	if (m_mapTexture.find(_path) == m_mapTexture.end())
 	{
@@ -53,7 +48,7 @@ LPDIRECT3DTEXTURE9 cSpriteManager::GetTexture(std::string _path, OUT D3DXIMAGE_I
 
 		HRESULT hr = D3DXCreateTextureFromFileEx(
 			g_pD3DDevice,
-			_path.c_str(),
+			_path,
 			D3DX_DEFAULT_NONPOW2,
 			D3DX_DEFAULT_NONPOW2,
 			D3DX_DEFAULT,
@@ -76,6 +71,11 @@ LPDIRECT3DTEXTURE9 cSpriteManager::GetTexture(std::string _path, OUT D3DXIMAGE_I
 		}
 	}
 	return m_mapTexture[_path];
+}
+
+LPDIRECT3DTEXTURE9 cSpriteManager::GetTexture(const std::string& _path, OUT D3DXIMAGE_INFO& _image_info)
+{
+	return GetTexture(_path.c_str(),_image_info);
 }
 
 void cSpriteManager::Draw(const LPDIRECT3DTEXTURE9 & _texture, const RECT & _rc, const D3DXVECTOR3 & _center, const D3DXVECTOR3 & _pos, const D3DCOLOR & _color)

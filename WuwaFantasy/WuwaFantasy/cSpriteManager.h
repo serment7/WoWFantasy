@@ -24,8 +24,8 @@ public:
 	void BeginSprite(const DWORD& _flag);
 	void EndSprite();
 
-	LPDIRECT3DTEXTURE9 GetTexture(char* _path, OUT D3DXIMAGE_INFO& _image_info);
-	LPDIRECT3DTEXTURE9 GetTexture(std::string _path, OUT D3DXIMAGE_INFO& _image_info);
+	LPDIRECT3DTEXTURE9 GetTexture(const char* _path, OUT D3DXIMAGE_INFO& _image_info);
+	LPDIRECT3DTEXTURE9 GetTexture(const std::string& _path, OUT D3DXIMAGE_INFO& _image_info);
 
 	void Draw(const LPDIRECT3DTEXTURE9 & _texture, const RECT & _rc, const D3DXVECTOR3 & _center, const D3DXVECTOR3 & _pos, const D3DCOLOR & _color);
 	void SetTransform(const D3DXMATRIXA16&);
