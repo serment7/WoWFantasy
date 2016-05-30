@@ -91,7 +91,7 @@
       <Filter>소스 파일\State</Filter>
     </ClInclude>
     <ClInclude Include="cMessageDispatcher.h">
-      <Filter>소스 파일\GamaManager</Filter>
+      <Filter>소스 파일\Util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -147,7 +147,7 @@
       <Filter>소스 파일\State</Filter>
     </ClCompile>
     <ClCompile Include="cMessageDispatcher.cpp">
-      <Filter>소스 파일\GamaManager</Filter>
+      <Filter>소스 파일\Util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -114,6 +114,7 @@ struct BoundingBox
 #include <map>
 #include <set>
 #include <string>
+#include <queue>
 
 #include "cDeviceManager.h"
 #include "cTimeManager.h"
