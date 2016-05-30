@@ -42,14 +42,14 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -76,6 +76,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(DXSDK_DIR)Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(IncludePath);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -85,6 +87,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(DXSDK_DIR)Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(IncludePath);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\../Execute</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -156,11 +161,14 @@
     <ClInclude Include="cDeviceManager.h" />
     <ClInclude Include="cGameManager.h" />
     <ClInclude Include="cInGameScene.h" />
+    <ClInclude Include="cMessageDispatcher.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectManager.h" />
+    <ClInclude Include="cParsing.h" />
     <ClInclude Include="cRandom.h" />
     <ClInclude Include="cRay.h" />
     <ClInclude Include="cSpriteManager.h" />
+    <ClInclude Include="cStateMachine.h" />
     <ClInclude Include="cTextureManager.h" />
     <ClInclude Include="cTimeManager.h" />
     <ClInclude Include="Resource.h" />
@@ -175,11 +183,14 @@
     <ClCompile Include="cDeviceManager.cpp" />
     <ClCompile Include="cGameManager.cpp" />
     <ClCompile Include="cInGameScene.cpp" />
+    <ClCompile Include="cMessageDispatcher.cpp" />
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectManager.cpp" />
+    <ClCompile Include="cParsing.cpp" />
     <ClCompile Include="cRandom.cpp" />
     <ClCompile Include="cRay.cpp" />
     <ClCompile Include="cSpriteManager.cpp" />
+    <ClCompile Include="cStateMachine.cpp" />
     <ClCompile Include="cTextureManager.cpp" />
     <ClCompile Include="cTimeManager.cpp" />
     <ClCompile Include="stdafx.cpp">

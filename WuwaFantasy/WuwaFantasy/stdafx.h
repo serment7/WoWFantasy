@@ -16,7 +16,7 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
-
+#include <cstring>
 
 // TODO: 프로그램에 필요한 추가 헤더는 여기에서 참조합니다.
 #include<d3d9.h>
@@ -114,6 +114,7 @@ struct BoundingBox
 #include <map>
 #include <set>
 #include <string>
+#include <queue>
 
 #include "cDeviceManager.h"
 #include "cTimeManager.h"
