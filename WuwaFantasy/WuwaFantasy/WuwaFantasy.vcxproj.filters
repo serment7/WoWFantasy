@@ -25,6 +25,9 @@
     <Filter Include="소스 파일\Util">
       <UniqueIdentifier>{5245d38f-44a3-4aab-a16e-fa67eca61a0e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\State">
+      <UniqueIdentifier>{ba1d2617-a38e-4e76-96f5-fd09d2e814c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -81,6 +84,15 @@
     <ClInclude Include="WinMain.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="cParsing.h">
+      <Filter>소스 파일\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="cStateMachine.h">
+      <Filter>소스 파일\State</Filter>
+    </ClInclude>
+    <ClInclude Include="cMessageDispatcher.h">
+      <Filter>소스 파일\GamaManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -127,6 +139,15 @@
     </ClCompile>
     <ClCompile Include="WinMain.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="cParsing.cpp">
+      <Filter>소스 파일\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="cStateMachine.cpp">
+      <Filter>소스 파일\State</Filter>
+    </ClCompile>
+    <ClCompile Include="cMessageDispatcher.cpp">
+      <Filter>소스 파일\GamaManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
