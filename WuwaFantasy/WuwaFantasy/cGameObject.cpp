@@ -1,13 +1,6 @@
-// cGameObject.cpp: implementation of the cGameObject class.
-//
-//////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
 #include "cGameObject.h"
-
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
 
 cGameObject::cGameObject()
 {
@@ -15,6 +8,11 @@ cGameObject::cGameObject()
 }
 
 cGameObject::~cGameObject()
+{
+	cObject::Release();
+}
+
+void cGameObject::Setup()
 {
 
 }
@@ -31,5 +29,7 @@ void cGameObject::Render()
 
 void cGameObject::Release()
 {
+	//소멸자에서 릴리즈를 한 번 더 해 주므로 nRefCount를 +1
+	cObject::IncRefCount();
 	cObject::Release();
 }
