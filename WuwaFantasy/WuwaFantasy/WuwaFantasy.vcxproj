@@ -160,6 +160,9 @@
     <ClInclude Include="cDeviceManager.h" />
     <ClInclude Include="cGameManager.h" />
     <ClInclude Include="cInGameScene.h" />
+    <ClInclude Include="cIScript.h" />
+    <ClInclude Include="cIState.h" />
+    <ClInclude Include="cMessageDispatcher.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectManager.h" />
     <ClInclude Include="cParsing.h" />
@@ -180,6 +183,9 @@
     <ClCompile Include="cDeviceManager.cpp" />
     <ClCompile Include="cGameManager.cpp" />
     <ClCompile Include="cInGameScene.cpp" />
+    <ClCompile Include="cIScript.cpp" />
+    <ClCompile Include="cIState.cpp" />
+    <ClCompile Include="cMessageDispatcher.cpp" />
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectManager.cpp" />
     <ClCompile Include="cParsing.cpp" />

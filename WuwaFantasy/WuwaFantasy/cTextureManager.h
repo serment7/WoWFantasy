@@ -1,4 +1,7 @@
 #pragma once
+
+#define g_pTextureManager cTextureManager::GetInstance();
+
 class cTextureManager
 {
 private:
