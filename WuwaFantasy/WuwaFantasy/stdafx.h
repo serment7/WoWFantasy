@@ -120,9 +120,5 @@ struct BoundingBox
 #include "cTimeManager.h"
 #include "cGameManager.h"
 #include "cObjectManager.h"
-#include "cAllocateHierarchy.h"
 #include "cTextureManager.h"
 #include "cSpriteManager.h"
-
-#define STD_FILE_BUFFER 1024
-#define BETWEENSIZE 1
