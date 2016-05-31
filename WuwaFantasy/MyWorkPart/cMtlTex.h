@@ -1,20 +1,19 @@
-// cMtlTex.h: interface for the cMtlTex class.
-//
-//////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_CMTLTEX_H__9D7ACAF7_5AF4_4E42_A465_B040853A5598__INCLUDED_)
-#define AFX_CMTLTEX_H__9D7ACAF7_5AF4_4E42_A465_B040853A5598__INCLUDED_
-
-#if _MSC_VER > 1000
 #pragma once
-#endif // _MSC_VER > 1000
 
 class cMtlTex  
 {
+private:
+	LPDIRECT3DTEXTURE9	m_pTexture;
+	D3DMATERIAL9		m_stMtl;
+
 public:
 	cMtlTex();
-	virtual ~cMtlTex();
+	~cMtlTex();
 
+	const LPDIRECT3DTEXTURE9 GetTexture() { return m_pTexture; }
+	const D3DMATERIAL9 GetMtl() { return m_stMtl; }
+
+	void SetTexture(const LPDIRECT3DTEXTURE9& pTex) { m_pTexture = pTex; }
+	void SetMtl(const D3DMATERIAL9& mat) { m_stMtl = mat; } 
 };
-
-#endif // !defined(AFX_CMTLTEX_H__9D7ACAF7_5AF4_4E42_A465_B040853A5598__INCLUDED_)
