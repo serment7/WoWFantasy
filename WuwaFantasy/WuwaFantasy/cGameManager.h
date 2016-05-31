@@ -4,6 +4,8 @@
 #define g_pGameManager	cGameManager::GetInstance()
 #define g_pCamera		cGameManager::GetInstance()->GetCamera();
 
+class cIScript;
+
 class cGameManager
 {
 private:
@@ -14,6 +16,12 @@ private:
 	float				m_fCalFPSTime;
 
 	cCamera				m_camera;
+	cCamera				m_dramaCamera;
+
+	bool				m_bRunScript;
+	cIScript*			m_pScript;
+
+	int					m_nPlayerID;
 
 public:
 	cGameManager();
@@ -27,8 +35,15 @@ public:
 
 	void Update();
 	void UpdateClientSize();
-	void UpdateCursorPoint();
+	void UpdateCursorPointInGlobal();
+	void UpdateCursorPointByWindow(const HWND& _targetWindow);
 
 	const int& GetFPS();
+
 	cCamera* GetCamera();
+	cCamera* GetDramaCamera();
+	void SetScrpit(cIScript* _script);
+
+	const int& GetPlayerID();
+	void SetPlayerID(int _nPlayerID);
 };
