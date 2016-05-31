@@ -25,12 +25,6 @@
     <Filter Include="소스 파일\Util">
       <UniqueIdentifier>{5245d38f-44a3-4aab-a16e-fa67eca61a0e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\State">
-      <UniqueIdentifier>{5f805190-f924-4c97-b160-e6df00b2248a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Script">
-      <UniqueIdentifier>{ca12eb2e-e253-48b2-87d8-0c885915e922}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -90,15 +84,6 @@
     <ClInclude Include="cParsing.h">
       <Filter>소스 파일\Util</Filter>
     </ClInclude>
-    <ClInclude Include="cMessageDispatcher.h">
-      <Filter>소스 파일\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="cIState.h">
-      <Filter>소스 파일\State</Filter>
-    </ClInclude>
-    <ClInclude Include="cIScript.h">
-      <Filter>소스 파일\Script</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -148,15 +133,6 @@
     </ClCompile>
     <ClCompile Include="cParsing.cpp">
       <Filter>소스 파일\Util</Filter>
-    </ClCompile>
-    <ClCompile Include="cMessageDispatcher.cpp">
-      <Filter>소스 파일\Util</Filter>
-    </ClCompile>
-    <ClCompile Include="cIState.cpp">
-      <Filter>소스 파일\State</Filter>
-    </ClCompile>
-    <ClCompile Include="cIScript.cpp">
-      <Filter>소스 파일\Script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
