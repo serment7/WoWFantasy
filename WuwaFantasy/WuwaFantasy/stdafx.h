@@ -120,3 +120,5 @@ struct BoundingBox
 #include "cTimeManager.h"
 #include "cGameManager.h"
 #include "cObjectManager.h"
+#include "cTextureManager.h"
+#include "cSpriteManager.h"
