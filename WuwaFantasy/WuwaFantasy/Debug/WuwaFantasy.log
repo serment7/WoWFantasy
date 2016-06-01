@@ -1,0 +1,27 @@
+﻿  stdafx.cpp
+  WinMain.cpp
+  cTimeManager.cpp
+  cTextureManager.cpp
+  cStatus.cpp
+  cSpriteManager.cpp
+  cRay.cpp
+  cRandom.cpp
+  cParsing.cpp
+  cObjectManager.cpp
+  cObject.cpp
+  cMtlTex.cpp
+  cMessageDispatcher.cpp
+  cIState.cpp
+  cIScript.cpp
+  cInGameScene.cpp
+  cGameManager.cpp
+  cDeviceManager.cpp
+  cIScene.cpp
+  cGameObject.cpp
+  cCamera.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  cAllocateHierarchy.cpp
+  cSkinnedMash.cpp
+c1xx : fatal error C1083: 소스 파일을 열 수 없습니다. '..\..\..\Jinseok\WuwaFantasy\MyWorkPart\cSkinnedMash.cpp': No such file or directory
+  코드를 생성하고 있습니다...

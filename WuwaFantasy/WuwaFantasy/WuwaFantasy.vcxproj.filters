@@ -93,9 +93,6 @@
     <ClInclude Include="cIScript.h">
       <Filter>소스 파일\Script</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Jinseok\WuwaFantasy\MyWorkPart\cSkinnedMash.h">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
     <ClInclude Include="cAllocateHierarchy.h">
       <Filter>소스 파일\Object</Filter>
     </ClInclude>
@@ -109,6 +106,9 @@
       <Filter>소스 파일\Object</Filter>
     </ClInclude>
     <ClInclude Include="cStatus.h">
+      <Filter>소스 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="cSkinnedMesh.h">
       <Filter>소스 파일\Object</Filter>
     </ClInclude>
   </ItemGroup>
@@ -164,9 +164,6 @@
     <ClCompile Include="cIScript.cpp">
       <Filter>소스 파일\Script</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Jinseok\WuwaFantasy\MyWorkPart\cSkinnedMash.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="cStatus.cpp">
       <Filter>소스 파일\Object</Filter>
     </ClCompile>
@@ -180,6 +177,9 @@
       <Filter>소스 파일\Object</Filter>
     </ClCompile>
     <ClCompile Include="cObject.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cSkinnedMesh.cpp">
       <Filter>소스 파일\Object</Filter>
     </ClCompile>
   </ItemGroup>
