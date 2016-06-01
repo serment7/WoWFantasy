@@ -31,6 +31,9 @@
     <Filter Include="소스 파일\Script">
       <UniqueIdentifier>{ca12eb2e-e253-48b2-87d8-0c885915e922}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Action">
+      <UniqueIdentifier>{109946b8-6e22-44fd-b6b3-a05641ec40ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -50,9 +53,6 @@
     </ClInclude>
     <ClInclude Include="cTimeManager.h">
       <Filter>소스 파일\GamaManager</Filter>
-    </ClInclude>
-    <ClInclude Include="cCamera.h">
-      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="cInGameScene.h">
       <Filter>소스 파일\Scene</Filter>
@@ -74,9 +74,6 @@
     </ClInclude>
     <ClInclude Include="cRay.h">
       <Filter>소스 파일\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="cRandom.h">
-      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="WinMain.h">
       <Filter>헤더 파일</Filter>
@@ -111,6 +108,15 @@
     <ClInclude Include="cSkinnedMesh.h">
       <Filter>소스 파일\Object</Filter>
     </ClInclude>
+    <ClInclude Include="cRandom.h">
+      <Filter>소스 파일\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="cCamera.h">
+      <Filter>소스 파일\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="cIAction.h">
+      <Filter>소스 파일\Action</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -121,9 +127,6 @@
     </ClCompile>
     <ClCompile Include="cTimeManager.cpp">
       <Filter>소스 파일\GamaManager</Filter>
-    </ClCompile>
-    <ClCompile Include="cCamera.cpp">
-      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="cIScene.cpp">
       <Filter>소스 파일\Scene</Filter>
@@ -145,9 +148,6 @@
     </ClCompile>
     <ClCompile Include="cRay.cpp">
       <Filter>소스 파일\Util</Filter>
-    </ClCompile>
-    <ClCompile Include="cRandom.cpp">
-      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="WinMain.cpp">
       <Filter>소스 파일</Filter>
@@ -181,6 +181,15 @@
     </ClCompile>
     <ClCompile Include="cSkinnedMesh.cpp">
       <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cCamera.cpp">
+      <Filter>소스 파일\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="cRandom.cpp">
+      <Filter>소스 파일\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="cIAction.cpp">
+      <Filter>소스 파일\Action</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -157,6 +157,7 @@
     <ClInclude Include="cAllocateHierarchy.h" />
     <ClInclude Include="cCamera.h" />
     <ClInclude Include="cGameObject.h" />
+    <ClInclude Include="cIAction.h" />
     <ClInclude Include="cIScene.h" />
     <ClInclude Include="cDeviceManager.h" />
     <ClInclude Include="cGameManager.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="cAllocateHierarchy.cpp" />
     <ClCompile Include="cCamera.cpp" />
     <ClCompile Include="cGameObject.cpp" />
+    <ClCompile Include="cIAction.cpp" />
     <ClCompile Include="cIScene.cpp" />
     <ClCompile Include="cDeviceManager.cpp" />
     <ClCompile Include="cGameManager.cpp" />
