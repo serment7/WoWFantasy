@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "WinMain.h"
-#include "cInGameScene.h"
+#include "cMainGame.h"
 
 #define MAX_LOADSTRING 100
 
@@ -12,7 +12,7 @@ HINSTANCE hInst;                                // 현재 인스턴스입니다.
 TCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 TCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 HWND g_hWnd;
-cIScene* m_scene;
+cMainGame* g_pGame;
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -43,8 +43,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_WUWAFANTASY));
 
-	m_scene = new cInGameScene;
-	m_scene->EnterScene();
+	g_pGame = new cMainGame;
+	g_pGame->Setup();
 
     MSG msg;
 
@@ -60,15 +60,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
 		else
 		{
-			m_scene->Update();
-			m_scene->Render();
+			g_pGame->Update();
+			g_pGame->Render();
 		}
     }
-	if (m_scene)
+	if (g_pGame)
 	{
-		m_scene->ExitScene();
-		delete m_scene;
-		m_scene = nullptr;
+		delete g_pGame;
+		g_pGame = nullptr;
 	}
 	g_pDeviceManager->Destroy();
 

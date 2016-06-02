@@ -51,11 +51,11 @@ void cActionMove::Start()
 
 	if (f < sf)
 	{
-		pOwner->SetRotationMatrix(radian, 'y');
+		pOwner->TurnRotationY(radian);
 	}
 	else
 	{
-		pOwner->SetRotationMatrix(-radian, 'y');
+		pOwner->TurnRotationY(-radian);
 	}
 
 	GetOwner()->SetVDir(vTargetDir);

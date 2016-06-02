@@ -33,6 +33,21 @@ void cObject::Release()
 	}
 }
 
+void cObject::SetRotationY(const float & _angle)
+{
+	m_angleY = _angle;
+}
+
+void cObject::TurnRotationY(const float & _angle)
+{
+	m_angleY += _angle;
+}
+
+const float & cObject::GetRotationY() const
+{
+	return m_angleY;
+}
+
 void cObject::Update()
 {
 	//밖에서 vPos와 vDir을 받아서 셋팅되어 있는 상태에서 계산됨

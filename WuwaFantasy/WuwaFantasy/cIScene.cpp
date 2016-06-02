@@ -10,7 +10,3 @@ cIScene::cIScene()
 cIScene::~cIScene()
 {
 }
-
-void cIScene::ChangeScene(cIScene *)
-{
-}

@@ -144,6 +144,15 @@
     <ClInclude Include="cObjectTypeScript.h">
       <Filter>소스 파일\Script</Filter>
     </ClInclude>
+    <ClInclude Include="cLoadingGameScene.h">
+      <Filter>소스 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="cMainGame.h">
+      <Filter>소스 파일\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="cSceneManager.h">
+      <Filter>소스 파일\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -232,6 +241,15 @@
     </ClCompile>
     <ClCompile Include="cObjectTypeScript.cpp">
       <Filter>소스 파일\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="cLoadingGameScene.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="cMainGame.cpp">
+      <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="cSceneManager.cpp">
+      <Filter>소스 파일\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

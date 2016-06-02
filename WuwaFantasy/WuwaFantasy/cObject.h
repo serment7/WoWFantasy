@@ -16,6 +16,7 @@ private:
 	D3DXMATRIXA16	m_matS;
 	D3DXMATRIXA16	m_matT;
 	D3DXMATRIXA16	m_matR;
+	float			m_angleY = 0.0f;
 
 	D3DXMATRIXA16	m_matWorld;
 
@@ -58,23 +59,23 @@ public:
 		D3DXMatrixScaling(&m_matS, x, y, z);
 	}
 
-	//있으면 편할 거 같아서 그냥 오버로딩
-	void SetRotationMatirx( const D3DXMATRIX& matR ) { m_matR = matR; }
-	void SetRotationMatrix( const float& angle, char axis = 'y')
-	{
-		if(axis == 'x')
-		{
-			D3DXMatrixRotationX(&m_matR, angle);
-		}
-		else if(axis == 'z')
-		{
-			D3DXMatrixRotationZ(&m_matR, angle);			
-		}
-		else
-		{
-			D3DXMatrixRotationY(&m_matR, angle);
-		}
-	}
+	////있으면 편할 거 같아서 그냥 오버로딩
+	//void SetRotationMatirx( const D3DXMATRIX& matR ) { m_matR = matR; }
+	//void SetRotationMatrix( const float& angle, char axis = 'y')
+	//{
+	//	if(axis == 'x')
+	//	{
+	//		D3DXMatrixRotationX(&m_matR, angle);
+	//	}
+	//	else if(axis == 'z')
+	//	{
+	//		D3DXMatrixRotationZ(&m_matR, angle);			
+	//	}
+	//	else
+	//	{
+	//		D3DXMatrixRotationY(&m_matR, angle);
+	//	}
+	//}
 
 	void SetVPos( const D3DXVECTOR3& vPos ) { m_vPos = vPos; }
 	void SetVPos( const float& x, const float& y, const float& z) 
@@ -88,4 +89,7 @@ public:
 	void SetVDir( const D3DXVECTOR3& vDir ) { m_vDir = vDir; }
 	void IncRefCount() { ++nRefCount; }
 
+	void			SetRotationY(const float& _angle);
+	void			TurnRotationY(const float& _angle);
+	const float&	GetRotationY() const;
 };
