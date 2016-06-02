@@ -1,9 +1,5 @@
 #pragma once
 
-class cGameObject;
-
-#define ENTITY_TYPE cGameObject
-
 enum Msg_Type{
 	Msg_MessageHandle
 	, Msg_Attack
@@ -61,8 +57,6 @@ inline bool operator<(const ST_PACKET& _packet1, const ST_PACKET& _pakcet2)
 class cMessageDispatcher
 {
 private:
-	typedef std::map<int, ENTITY_TYPE*>		EntityMap;
-	typedef std::map<int, ENTITY_TYPE*>		EntityMap;
 	typedef std::set<ST_PACKET>				MsgSet;
 
 private:
@@ -73,11 +67,7 @@ public:
 	cMessageDispatcher();
 	~cMessageDispatcher();
 
-	void RegisterEntity(ENTITY_TYPE* _pTarget);
-	void UnregisterEntityByID(int _id);
-	void UnregisterEntityByTag(int _id);
-	void ClearEntity();
-	ENTITY_TYPE* GetEntityFromID(int _id) const;
+	
 	void Discharge();
-	void DispatchMessage();
+	void Dispatch();
 };

@@ -44,6 +44,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_WUWAFANTASY));
 
 	m_scene = new cInGameScene;
+	m_scene->EnterScene();
 
     MSG msg;
 
@@ -65,6 +66,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 	if (m_scene)
 	{
+		m_scene->ExitScene();
 		delete m_scene;
 		m_scene = nullptr;
 	}

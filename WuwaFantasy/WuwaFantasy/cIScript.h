@@ -1,14 +1,19 @@
 #pragma once
+
+class cParsing;
+const TCHAR SCRIPT_PATH[] = "Script/";
+
 class cIScript
 {
 private:
-	bool		m_bRun;
+	bool		m_bRun = false;
+
 public:
 	cIScript();
 	~cIScript();
 
 	bool IsRun();
-	virtual void RunScript();
-	virtual void StopScript();
+	void RunScript();
+	void StopScript();
+	virtual void Update() = 0;
 };
-

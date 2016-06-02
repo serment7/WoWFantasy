@@ -1,9 +1,7 @@
 #include "stdafx.h"
 #include "cIScript.h"
 
-
 cIScript::cIScript()
-	: m_bRun(false)
 {
 }
 

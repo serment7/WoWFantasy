@@ -5,6 +5,10 @@
 #define g_pCamera		cGameManager::GetInstance()->GetCamera();
 
 class cIScript;
+class cGameObject;
+typedef cGameObject	ENTITY_TYPE;
+class cJob;
+class cSkill;
 
 class cGameManager
 {
@@ -19,9 +23,13 @@ private:
 	cCamera				m_dramaCamera;
 
 	bool				m_bRunScript;
-	cIScript*			m_pScript;
+	cIScript*			m_pDramaScript;
 
 	int					m_nPlayerID;
+
+	std::map<std::string, size_t>		m_mapObjectType;
+	std::map<std::string, cSkill*>		m_mapSkill;
+	std::map<std::string, cJob*>		m_mapJob;
 
 public:
 	cGameManager();
@@ -40,10 +48,14 @@ public:
 
 	const int& GetFPS();
 
-	cCamera* GetCamera();
-	cCamera* GetDramaCamera();
-	void SetScrpit(cIScript* _script);
+	cCamera*		GetCamera();
+	cCamera*		GetDramaCamera();
+	void			SetScrpit(cIScript* _script);
 
-	const int& GetPlayerID();
-	void SetPlayerID(int _nPlayerID);
+	const int&		GetPlayerID();
+	void			SetPlayerID(int _nPlayerID);
+
+	void RegisterObjectType(const std::string& _typename, const size_t& _tagID);
+	void RegisterSkill(cSkill* _skill);
+	void RegisterJob(cJob* job);
 };

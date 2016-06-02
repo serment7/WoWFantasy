@@ -31,6 +31,21 @@
     <Filter Include="소스 파일\Script">
       <UniqueIdentifier>{ca12eb2e-e253-48b2-87d8-0c885915e922}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Action">
+      <UniqueIdentifier>{109946b8-6e22-44fd-b6b3-a05641ec40ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GameData">
+      <UniqueIdentifier>{05fb9820-d2c3-4ee5-9f1e-11820362bebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GameData\Skill">
+      <UniqueIdentifier>{f0059777-52e4-4336-ae80-dc60f3d21bd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GameData\Job">
+      <UniqueIdentifier>{46043ec2-df6f-428d-bdab-2c024809cfb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GameData\Item">
+      <UniqueIdentifier>{14aabcb8-89d5-4794-aaff-8b5d4dc7d60b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -50,9 +65,6 @@
     </ClInclude>
     <ClInclude Include="cTimeManager.h">
       <Filter>소스 파일\GamaManager</Filter>
-    </ClInclude>
-    <ClInclude Include="cCamera.h">
-      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="cInGameScene.h">
       <Filter>소스 파일\Scene</Filter>
@@ -75,9 +87,6 @@
     <ClInclude Include="cRay.h">
       <Filter>소스 파일\Util</Filter>
     </ClInclude>
-    <ClInclude Include="cRandom.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="WinMain.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -92,9 +101,6 @@
     </ClInclude>
     <ClInclude Include="cIScript.h">
       <Filter>소스 파일\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Jinseok\WuwaFantasy\MyWorkPart\cSkinnedMash.h">
-      <Filter>소스 파일</Filter>
     </ClInclude>
     <ClInclude Include="cAllocateHierarchy.h">
       <Filter>소스 파일\Object</Filter>
@@ -111,6 +117,33 @@
     <ClInclude Include="cStatus.h">
       <Filter>소스 파일\Object</Filter>
     </ClInclude>
+    <ClInclude Include="cSkinnedMesh.h">
+      <Filter>소스 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="cRandom.h">
+      <Filter>소스 파일\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="cCamera.h">
+      <Filter>소스 파일\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="cIAction.h">
+      <Filter>소스 파일\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="cActionMove.h">
+      <Filter>소스 파일\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="cJob.h">
+      <Filter>소스 파일\GameData\Job</Filter>
+    </ClInclude>
+    <ClInclude Include="cSkill.h">
+      <Filter>소스 파일\GameData\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="cItem.h">
+      <Filter>소스 파일\GameData\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="cObjectTypeScript.h">
+      <Filter>소스 파일\Script</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -121,9 +154,6 @@
     </ClCompile>
     <ClCompile Include="cTimeManager.cpp">
       <Filter>소스 파일\GamaManager</Filter>
-    </ClCompile>
-    <ClCompile Include="cCamera.cpp">
-      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="cIScene.cpp">
       <Filter>소스 파일\Scene</Filter>
@@ -146,9 +176,6 @@
     <ClCompile Include="cRay.cpp">
       <Filter>소스 파일\Util</Filter>
     </ClCompile>
-    <ClCompile Include="cRandom.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="WinMain.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -164,9 +191,6 @@
     <ClCompile Include="cIScript.cpp">
       <Filter>소스 파일\Script</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Jinseok\WuwaFantasy\MyWorkPart\cSkinnedMash.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="cStatus.cpp">
       <Filter>소스 파일\Object</Filter>
     </ClCompile>
@@ -181,6 +205,33 @@
     </ClCompile>
     <ClCompile Include="cObject.cpp">
       <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cSkinnedMesh.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cCamera.cpp">
+      <Filter>소스 파일\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="cRandom.cpp">
+      <Filter>소스 파일\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="cIAction.cpp">
+      <Filter>소스 파일\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="cActionMove.cpp">
+      <Filter>소스 파일\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="cJob.cpp">
+      <Filter>소스 파일\GameData\Job</Filter>
+    </ClCompile>
+    <ClCompile Include="cSkill.cpp">
+      <Filter>소스 파일\GameData\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="cItem.cpp">
+      <Filter>소스 파일\GameData\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="cObjectTypeScript.cpp">
+      <Filter>소스 파일\Script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

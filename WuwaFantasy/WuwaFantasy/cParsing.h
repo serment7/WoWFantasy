@@ -4,6 +4,7 @@ class cParsing
 private:
 	FILE*	m_fp;
 	char	m_szToken[1024];
+	std::string ret;
 	int		m_length;
 
 public:
@@ -13,7 +14,7 @@ public:
 	virtual ~cParsing();
 
 	bool		Load(char* _path);
-	void		GetToken(OUT char* _out);
+	const std::string&		GetToken();
 	bool		IsWhite(const char& c);
 	bool		IsFeof();
 	bool		SkipTo(const char* _path);

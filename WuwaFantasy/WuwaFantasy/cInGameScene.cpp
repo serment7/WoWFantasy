@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "cInGameScene.h"
 #include "cObject.h"
+#include"cObjectTypeScript.h"
 
 cInGameScene::cInGameScene()
 	: m_bPaused(FALSE)
@@ -55,10 +56,18 @@ void cInGameScene::Render()
 
 void cInGameScene::EnterScene()
 {
+	cIScript* m_pScript = new cObjectTypeScript;
+	m_pScript->RunScript();
+	while (m_pScript->IsRun())
+	{
+		m_pScript->Update();
+	}
+	SAFE_DELETE(m_pScript);
 }
 
 void cInGameScene::ExitScene()
 {
+
 	for (auto iter = m_mapObject.begin(); iter != m_mapObject.end(); ++iter)
 	{
 		std::vector<cObject*>& vecObject = iter->second;

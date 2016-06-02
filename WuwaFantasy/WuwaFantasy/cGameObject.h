@@ -17,4 +17,5 @@ public:
 	virtual void Render();
 	virtual void Release();
 
+	cStatus& GetStatus();
 };

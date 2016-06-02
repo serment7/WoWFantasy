@@ -18,7 +18,7 @@ public:
 		static cDeviceManager instance;
 		return &instance;
 	}
-	LPDIRECT3DDEVICE9 GetDevice();
-	void Destroy();
+	LPDIRECT3DDEVICE9	GetDevice();
+	void				Destroy();
 };
 
