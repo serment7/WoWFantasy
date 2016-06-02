@@ -25,10 +25,11 @@ void cActionMove::Start()
 	 
 	float fActionTime = GetActionTime();
 	cGameObject* pOwner = GetOwner();
+	cStatus& status = pOwner->GetStatus();
 
 	if (fActionTime <= 0.0f)
 	{
-		fActionTime = D3DXVec3LengthSq(&(m_vTo-m_vFrom));
+		fActionTime = D3DXVec3LengthSq(&(m_vTo-m_vFrom))/status.GetSpeed();
 	}
 
 	SetPassedTime(0.0f);
