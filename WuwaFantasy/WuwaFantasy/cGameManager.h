@@ -48,12 +48,12 @@ public:
 
 	const int& GetFPS();
 
-	cCamera* GetCamera();
-	cCamera* GetDramaCamera();
-	void SetScrpit(cIScript* _script);
+	cCamera*		GetCamera();
+	cCamera*		GetDramaCamera();
+	void			SetScrpit(cIScript* _script);
 
-	const int& GetPlayerID();
-	void SetPlayerID(int _nPlayerID);
+	const int&		GetPlayerID();
+	void			SetPlayerID(int _nPlayerID);
 
 	void RegisterObjectType(const std::string& _typename, const size_t& _tagID);
 	void RegisterSkill(cSkill* _skill);

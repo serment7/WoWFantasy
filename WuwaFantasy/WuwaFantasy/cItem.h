@@ -11,8 +11,8 @@ public:
 	cItem();
 	~cItem();
 
-	void SetItemName(const std::string& _itemname);
-	const std::string& GetItemName() const;
-	virtual void Use(cGameObject*) = 0;
+	void				SetItemName(const std::string& _itemname);
+	const std::string&	GetItemName() const;
+	virtual void		Use(cGameObject*) = 0;
 };
 

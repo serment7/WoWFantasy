@@ -42,12 +42,27 @@ const float & cIAction::GetActionTime() const
 	return m_fActionTime;
 }
 
+void cIAction::SetAction(bool _bAction)
+{
+	m_bAction = _bAction;
+}
+
 const float & cIAction::GetPassedTime() const
 {
 	return m_fPassedTime;
 }
 
-void cIAction::SetDelegate(cActionDelegate * _pDelegate)
+void cIAction::SetDelegate(cDelegate * _pDelegate)
 {
 	m_pDelegate = _pDelegate;
+}
+
+cDelegate* cIAction::GetDelegate()
+{
+	return m_pDelegate;
+}
+
+bool cIAction::IsAction()
+{
+	return m_bAction;
 }

@@ -1,4 +1,4 @@
-﻿  cParsing.cpp
-  cIScript.cpp
+﻿  cIAction.cpp
+  cActionMove.cpp
+c:\users\administrator\source\repos\wuwafantasy\wuwafantasy\wuwafantasy\cactionmove.cpp(78): error C2059: 구문 오류: '}'
   코드를 생성하고 있습니다...
-  WuwaFantasy.vcxproj -> C:\Users\Administrator\Source\Repos\WuwaFantasy\WuwaFantasy\Debug\WuwaFantasy.exe

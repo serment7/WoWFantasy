@@ -20,9 +20,10 @@ public:
 		return &instance;
 	}
 
-	void AddObject(cObject* _object);
-	void RemoveObject(cObject* _object);
-	cObject* FindObjectByID(const size_t _id);
-	std::vector<cObject*>& FindObjectByTag(const size_t _tag);
-	void Destroy();
+	void			AddObject(cObject* _object);
+	void			RemoveObject(cObject* _object);
+	void			Destroy();
+
+	cObject*				FindObjectByID(const size_t _id);
+	std::vector<cObject*>&	FindObjectByTag(const size_t _tag);
 };

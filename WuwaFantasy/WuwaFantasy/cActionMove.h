@@ -11,9 +11,9 @@ private:
 public:
 	cActionMove();
 	virtual ~cActionMove();
-	void SetFrom(const D3DXVECTOR3&);
-	void SetTo(const D3DXVECTOR3&);
-	virtual void Start();
-	virtual void Update();
+	void			SetFrom(const D3DXVECTOR3&);
+	void			SetTo(const D3DXVECTOR3&);
+	virtual void	Start();
+	virtual void	Update();
 };
 

@@ -10,9 +10,10 @@ public:
 	cJob(const std::string& _jobname);
 	virtual ~cJob();
 
-	void SetName(const std::string& _jobname);
-	const std::string& GetName() const;
-	void AddSkill(const std::string& _skillname);
+	void				SetName(const std::string& _jobname);
+	const std::string&	GetName() const;
+
+	void				AddSkill(const std::string& _skillname);
 	const std::vector<std::string>& GetSkill();
 };
 
