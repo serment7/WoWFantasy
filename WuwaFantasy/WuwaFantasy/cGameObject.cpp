@@ -33,3 +33,8 @@ void cGameObject::Release()
 	cObject::IncRefCount();
 	cObject::Release();
 }
+
+cStatus & cGameObject::GetStatus()
+{
+	return m_ChrStatus;
+}

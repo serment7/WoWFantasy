@@ -22,7 +22,32 @@ void cIAction::SetOwner(cGameObject * _pOwner)
 	m_pOwner = _pOwner;
 }
 
+cGameObject * cIAction::GetOwner()
+{
+	return nullptr;
+}
+
+void cIAction::SetPassedTime(const float & _fPassedTime)
+{
+	m_fPassedTime = _fPassedTime;
+}
+
 void cIAction::SetActionTime(const float & _fActionTime)
 {
 	m_fActionTime = _fActionTime;
+}
+
+const float & cIAction::GetActionTime() const
+{
+	return m_fActionTime;
+}
+
+const float & cIAction::GetPassedTime() const
+{
+	return m_fPassedTime;
+}
+
+void cIAction::SetDelegate(cActionDelegate * _pDelegate)
+{
+	m_pDelegate = _pDelegate;
 }

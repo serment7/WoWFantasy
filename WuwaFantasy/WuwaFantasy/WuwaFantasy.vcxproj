@@ -154,6 +154,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cActionMove.h" />
     <ClInclude Include="cAllocateHierarchy.h" />
     <ClInclude Include="cCamera.h" />
     <ClInclude Include="cGameObject.h" />
@@ -164,6 +165,8 @@
     <ClInclude Include="cInGameScene.h" />
     <ClInclude Include="cIScript.h" />
     <ClInclude Include="cIState.h" />
+    <ClInclude Include="cItem.h" />
+    <ClInclude Include="cJob.h" />
     <ClInclude Include="cMessageDispatcher.h" />
     <ClInclude Include="cMtlTex.h" />
     <ClInclude Include="cObject.h" />
@@ -171,6 +174,7 @@
     <ClInclude Include="cParsing.h" />
     <ClInclude Include="cRandom.h" />
     <ClInclude Include="cRay.h" />
+    <ClInclude Include="cSkill.h" />
     <ClInclude Include="cSkinnedMesh.h" />
     <ClInclude Include="cSpriteManager.h" />
     <ClInclude Include="cStatus.h" />
@@ -182,6 +186,7 @@
     <ClInclude Include="WinMain.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cActionMove.cpp" />
     <ClCompile Include="cAllocateHierarchy.cpp" />
     <ClCompile Include="cCamera.cpp" />
     <ClCompile Include="cGameObject.cpp" />
@@ -192,6 +197,8 @@
     <ClCompile Include="cInGameScene.cpp" />
     <ClCompile Include="cIScript.cpp" />
     <ClCompile Include="cIState.cpp" />
+    <ClCompile Include="cItem.cpp" />
+    <ClCompile Include="cJob.cpp" />
     <ClCompile Include="cMessageDispatcher.cpp" />
     <ClCompile Include="cMtlTex.cpp" />
     <ClCompile Include="cObject.cpp" />
@@ -199,6 +206,7 @@
     <ClCompile Include="cParsing.cpp" />
     <ClCompile Include="cRandom.cpp" />
     <ClCompile Include="cRay.cpp" />
+    <ClCompile Include="cSkill.cpp" />
     <ClCompile Include="cSkinnedMesh.cpp" />
     <ClCompile Include="cSpriteManager.cpp" />
     <ClCompile Include="cStatus.cpp" />

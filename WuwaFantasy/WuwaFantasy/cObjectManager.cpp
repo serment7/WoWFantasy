@@ -11,14 +11,11 @@ cObjectManager::~cObjectManager()
 {
 }
 
-void cObjectManager::RegisterObject(cObject * _object)
+void cObjectManager::AddObject(cObject * _object)
 {
-	size_t d = 3;
-	m_mapObjectByID.insert(std::pair<size_t,cObject*>(d,_object));
-	m_mapObjectByTag.insert(std::pair<size_t, cObject*>(d, _object));
 }
 
-void cObjectManager::UnregisterObject(cObject * _object)
+void cObjectManager::RemoveObject(cObject * _object)
 {
 }
 
@@ -27,7 +24,7 @@ cObject * cObjectManager::FindObjectByID(const size_t _id)
 	return m_mapObjectByID.find(_id)->second;
 }
 
-cObject * cObjectManager::FindObjectByTag(const size_t _tag)
+std::vector<cObject*>& cObjectManager::FindObjectByTag(const size_t _tag)
 {
 	return m_mapObjectByTag.find(_tag)->second;
 }

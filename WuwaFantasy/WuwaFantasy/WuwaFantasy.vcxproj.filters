@@ -34,6 +34,18 @@
     <Filter Include="소스 파일\Action">
       <UniqueIdentifier>{109946b8-6e22-44fd-b6b3-a05641ec40ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\GameData">
+      <UniqueIdentifier>{05fb9820-d2c3-4ee5-9f1e-11820362bebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GameData\Skill">
+      <UniqueIdentifier>{f0059777-52e4-4336-ae80-dc60f3d21bd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GameData\Job">
+      <UniqueIdentifier>{46043ec2-df6f-428d-bdab-2c024809cfb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GameData\Item">
+      <UniqueIdentifier>{14aabcb8-89d5-4794-aaff-8b5d4dc7d60b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -117,6 +129,18 @@
     <ClInclude Include="cIAction.h">
       <Filter>소스 파일\Action</Filter>
     </ClInclude>
+    <ClInclude Include="cActionMove.h">
+      <Filter>소스 파일\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="cJob.h">
+      <Filter>소스 파일\GameData\Job</Filter>
+    </ClInclude>
+    <ClInclude Include="cSkill.h">
+      <Filter>소스 파일\GameData\Skill</Filter>
+    </ClInclude>
+    <ClInclude Include="cItem.h">
+      <Filter>소스 파일\GameData\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -190,6 +214,18 @@
     </ClCompile>
     <ClCompile Include="cIAction.cpp">
       <Filter>소스 파일\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="cActionMove.cpp">
+      <Filter>소스 파일\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="cJob.cpp">
+      <Filter>소스 파일\GameData\Job</Filter>
+    </ClCompile>
+    <ClCompile Include="cSkill.cpp">
+      <Filter>소스 파일\GameData\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="cItem.cpp">
+      <Filter>소스 파일\GameData\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

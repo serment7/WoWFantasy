@@ -18,13 +18,22 @@ private:
 	float			m_fPassedTime = 0.0f;
 	float			m_fActionTime = 0.0f;
 
+protected:
+	void SetPassedTime(const float& _fPassedTime);
+	void SetActionTime(const float& _fActionTime);
+	const float& GetPassedTime() const;
+	const float& GetActionTime() const;
+
 public:
 	cIAction();
-	~cIAction();
+	virtual ~cIAction();
 	
 	void SetOwner(cGameObject* _pOwner);
-	void SetActionTime(const float& _fActionTime);
-	void Start();
-	void Update();
+	cGameObject* GetOwner();
+
+	void SetDelegate(cActionDelegate* _pDelegate);
+
+	virtual void Start() = 0;
+	virtual void Update() = 0;
 };
 

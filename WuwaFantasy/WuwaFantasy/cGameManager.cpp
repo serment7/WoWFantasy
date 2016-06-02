@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "cGameManager.h"
 #include "cIScript.h"
+#include "cGameObject.h"
+#include"cJob.h"
+#include"cSkill.h"
 
 cGameManager::cGameManager()
 	: m_nFPS(0)
@@ -46,6 +49,21 @@ const int & cGameManager::GetPlayerID()
 void cGameManager::SetPlayerID(int _nPlayerID)
 {
 	m_nPlayerID = _nPlayerID;
+}
+
+void cGameManager::RegisterObjectType(const std::string & _typename, const size_t & _tagID)
+{
+	m_mapObjectType.insert(std::pair<std::string,size_t>(_typename,_tagID));
+}
+
+void cGameManager::RegisterSkill(cSkill* _skill)
+{
+	m_mapSkill.insert(std::pair<std::string, cSkill*>(_skill->GetSkillName() , _skill));
+}
+
+void cGameManager::RegisterJob(cJob* _job)
+{
+	m_mapJob.insert(std::pair<std::string, cJob*>(std::string(_job->GetName()), _job));
 }
 
 void cGameManager::Update()

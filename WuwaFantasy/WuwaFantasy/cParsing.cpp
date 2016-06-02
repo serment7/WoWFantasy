@@ -12,15 +12,14 @@ cParsing::cParsing()
 cParsing::cParsing(const char * _path)
 	: m_length(0)
 {
-	fopen_s(&m_fp, _path, "r");
-	ZeroMemory(&m_szToken, sizeof(m_szToken));
+	cParsing(std::string(_path));
 }
 
 cParsing::cParsing(const std::string & _path)
 {
-	cParsing(_path.c_str());
+	fopen_s(&m_fp, (_path).c_str(), "r");
+	ZeroMemory(&m_szToken, sizeof(m_szToken));
 }
-
 
 cParsing::~cParsing()
 {

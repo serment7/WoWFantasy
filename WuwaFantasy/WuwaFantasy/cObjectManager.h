@@ -7,8 +7,8 @@ class cObject;
 class cObjectManager
 {
 private:
-	std::map<size_t , cObject*> m_mapObjectByTag;
-	std::map<size_t , cObject*> m_mapObjectByID;
+	std::map<size_t, cObject*> m_mapObjectByID;
+	std::map<size_t , std::vector<cObject*>> m_mapObjectByTag;
 
 public:
 	cObjectManager();
@@ -20,9 +20,9 @@ public:
 		return &instance;
 	}
 
-	void RegisterObject(cObject* _object);
-	void UnregisterObject(cObject* _object);
+	void AddObject(cObject* _object);
+	void RemoveObject(cObject* _object);
 	cObject* FindObjectByID(const size_t _id);
-	cObject* FindObjectByTag(const size_t _tag);
+	std::vector<cObject*>& FindObjectByTag(const size_t _tag);
 	void Destroy();
 };
