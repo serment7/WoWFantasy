@@ -1,0 +1,36 @@
+#job
+register job
+{
+	name	warrior
+	skill
+	{
+		#name
+	}
+}
+
+register job
+{
+	name	magician
+	skill
+	{
+		#name
+	}
+}
+
+register job
+{
+	name	healer
+	skill
+	{
+		#name
+	}
+}
+
+register job
+{
+	name	rogue
+	skill
+	{
+		#name
+	}
+}

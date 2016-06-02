@@ -17,12 +17,14 @@ cParsing::cParsing(const char * _path)
 
 cParsing::cParsing(const std::string & _path)
 {
-	fopen_s(&m_fp, (_path).c_str(), "r");
+	fopen_s(&m_fp, (_path).c_str(), "rt");
+	//fopen_s(&m_fp, "Script/ObjectType.txt", "rt");
 	ZeroMemory(&m_szToken, sizeof(m_szToken));
 }
 
 cParsing::~cParsing()
 {
+	fclose(m_fp);
 }
 
 bool cParsing::Load(char * _path)
@@ -35,10 +37,10 @@ bool cParsing::Load(char * _path)
 	return true;
 }
 
-void cParsing::GetToken(OUT char * _out)
+const std::string& cParsing::GetToken()
 {
 	int nReadCount = 0;
-
+	
 	while (true)
 	{
 		char c = fgetc(m_fp);
@@ -53,17 +55,11 @@ void cParsing::GetToken(OUT char * _out)
 		}
 		m_szToken[nReadCount++] = c;
 	}
-
-	if (_out && nReadCount == 0)
-	{
-		strcpy_s(_out, strlen("\0"),"\0");
-	}
 	
 	m_szToken[nReadCount] = '\0';
 	m_length = strlen(m_szToken);
-
-	if(_out)
-		strcpy_s(_out, m_length, m_szToken);
+	ret = m_szToken;
+	return ret;
 }
 
 bool cParsing::IsWhite(const char& c)
@@ -82,7 +78,7 @@ bool cParsing::SkipTo(const char * _path)
 	{
 		if (IsFeof())
 			break;
-		GetToken(NULL);
+		GetToken();
 		if (!strcmp(m_szToken, _path))
 			return true;
 	}
@@ -96,12 +92,12 @@ bool cParsing::SkipTo(const std::string & _path)
 
 const int cParsing::GetInteger()
 {
-	GetToken(NULL);
+	GetToken();
 	return (int)atoi(m_szToken);
 }
 
 const float cParsing::GetFloat()
 {
-	GetToken(NULL);
+	GetToken();
 	return (float)atof(m_szToken);
 }

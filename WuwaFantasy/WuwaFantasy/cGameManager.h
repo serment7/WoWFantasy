@@ -23,7 +23,7 @@ private:
 	cCamera				m_dramaCamera;
 
 	bool				m_bRunScript;
-	cIScript*			m_pScript;
+	cIScript*			m_pDramaScript;
 
 	int					m_nPlayerID;
 

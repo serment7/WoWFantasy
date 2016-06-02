@@ -9,7 +9,7 @@ cGameManager::cGameManager()
 	: m_nFPS(0)
 	, m_nFPSCount(0)
 	, m_fCalFPSTime(0.0f)
-	, m_pScript(nullptr)
+	, m_pDramaScript(nullptr)
 {
 	GetClientRect(g_hWnd, &m_rcClientSize);
 }
@@ -38,7 +38,8 @@ void cGameManager::SetScrpit(cIScript * _script)
 #ifdef _DEBUG
 	assert(_script && "error : SetScript() received null pointer");
 #endif
-	m_pScript = _script;
+	SAFE_DELETE(m_pDramaScript);
+	m_pDramaScript = _script;
 }
 
 const int & cGameManager::GetPlayerID()
@@ -71,7 +72,7 @@ void cGameManager::Update()
 	m_fCalFPSTime += g_pTimeManager->GetDeltaTime();
 	++m_nFPSCount;
 
-	if (m_pScript && m_pScript->IsRun())
+	if (m_pDramaScript && m_pDramaScript->IsRun())
 		m_dramaCamera.Update();
 	else
 		m_camera.Update();

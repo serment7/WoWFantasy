@@ -2,6 +2,7 @@
 #include "cIScene.h"
 
 class cObject;
+class cIScript;
 
 class cInGameScene :
 	public cIScene
@@ -11,7 +12,6 @@ private:
 	float			m_fPlayTime;
 
 	std::map < DWORD, std::vector<cObject*> > m_mapObject;
-
 public:
 	cInGameScene();
 	virtual ~cInGameScene();

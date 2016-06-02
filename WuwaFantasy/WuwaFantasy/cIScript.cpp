@@ -1,19 +1,8 @@
 #include "stdafx.h"
 #include "cIScript.h"
-#include "cParsing.h"
 
 cIScript::cIScript()
 {
-}
-
-cIScript::cIScript(const std::string _scriptname)
-{
-	m_parser = new cParsing(_scriptname);
-}
-
-cIScript::cIScript(const char * _scriptname)
-{
-	m_parser = new cParsing(_scriptname);
 }
 
 cIScript::~cIScript()

@@ -30,6 +30,7 @@ void cActionMove::Start()
 	{
 		fActionTime = D3DXVec3LengthSq(&(m_vTo-m_vFrom));
 	}
+
 	SetPassedTime(0.0f);
 	m_vCurPos = m_vFrom;
 

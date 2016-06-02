@@ -171,6 +171,7 @@
     <ClInclude Include="cMtlTex.h" />
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectManager.h" />
+    <ClInclude Include="cObjectTypeScript.h" />
     <ClInclude Include="cParsing.h" />
     <ClInclude Include="cRandom.h" />
     <ClInclude Include="cRay.h" />
@@ -203,6 +204,7 @@
     <ClCompile Include="cMtlTex.cpp" />
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectManager.cpp" />
+    <ClCompile Include="cObjectTypeScript.cpp" />
     <ClCompile Include="cParsing.cpp" />
     <ClCompile Include="cRandom.cpp" />
     <ClCompile Include="cRay.cpp" />
