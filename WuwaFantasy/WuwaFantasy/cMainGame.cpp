@@ -22,6 +22,7 @@ cMainGame::~cMainGame(void)
 
 void cMainGame::Setup()
 {
+	float f = D3DXToRadian(180);
 	SceneManager = new cSceneManager;
 
 	mainScene = new cInGameScene;

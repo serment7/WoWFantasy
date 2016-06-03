@@ -1,3 +1,7 @@
-﻿  cSceneManager.cpp
-c:\users\administrator\source\repos\wuwafantasy\wuwafantasy\wuwafantasy\cscenemanager.cpp(35): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+﻿  cMainGame.cpp
+c:\users\administrator\source\repos\wuwafantasy\wuwafantasy\wuwafantasy\cmaingame.cpp(15): warning C4150: 불완전한 형식 'cGrid'에 대한 포인터를 삭제했습니다. 소멸자가 호출되지 않습니다.
+  c:\users\administrator\source\repos\wuwafantasy\wuwafantasy\wuwafantasy\cmaingame.h(6): note: 'cGrid' 선언을 참조하십시오.
+  코드를 생성하고 있습니다...
+  건너뛰고 있습니다... (관련된 변경 내용 없음)
+  WinMain.cpp
   WuwaFantasy.vcxproj -> C:\Users\Administrator\Source\Repos\WuwaFantasy\WuwaFantasy\Debug\WuwaFantasy.exe
