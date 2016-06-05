@@ -4,26 +4,26 @@
 struct ST_STATUS
 {
 	//포인트 정보
-	int nCurrentHP;
-	int nMaxHP;
-	int nCurrentMP;
-	int nMaxMP;
-	int nCurrentSP;
-	int nMaxSP;
-	float fSpeed;
+	int nCurrentHP = 0;
+	int nMaxHP = 0;
+	int nCurrentMP = 0;
+	int nMaxMP = 0;
+	int nCurrentSP = 0;
+	int nMaxSP = 0;
+	float fSpeed = 0.0f;
 
 	//스테이터스 정보
-	int nStr;					//힘
-	int nDex;					//민첩성		
-	int nDef;					//방어력
-	int nInt;					//마력
-	float fCrt;					//크리티컬
+	int nStr = 0;					//힘
+	int nDex = 0;					//민첩성		
+	int nDef = 0;					//방어력
+	int nInt = 0;					//마력
+	float fCrt = 0.0f;					//크리티컬
 
-	int nLevel;
-	float fExp;
+	int nLevel = 0;
+	float fExp = 0.0f;
 };
 
-class cStatus 
+class cStatus
 {
 private:
 	ST_STATUS m_stStatus;
@@ -67,4 +67,34 @@ public:
 	void	SetCrt(const float& fCrt) { m_stStatus.fCrt = fCrt; }					//크리티컬
 	void	SetLevel(const int& nLevel) { m_stStatus.nLevel = nLevel; }
 	void	SetExp(const float& fExp) { m_stStatus.fExp = fExp; }
+
+	void	IncCurrentHP(const int& nCurrentHP) { m_stStatus.nCurrentHP += nCurrentHP; }
+	void	IncMaxHP(const int& nMaxHP) { m_stStatus.nMaxHP += nMaxHP; }
+	void	IncCurrentMP(const int& nCurrentMP) { m_stStatus.nCurrentMP += nCurrentMP; }
+	void	IncMaxMP(const int& nMaxMP) { m_stStatus.nMaxMP += nMaxMP; }
+	void	IncCurrentSP(const int& nCurrentSP) { m_stStatus.nCurrentSP += nCurrentSP; }
+	void	IncMaxSP(const int& nMaxSP) { m_stStatus.nMaxSP += nMaxSP; }
+	void	IncSpeed(const float& fSpeed) { m_stStatus.fSpeed += fSpeed; }
+	void	IncStr(const int& nStr) { m_stStatus.nStr += nStr; }					//힘
+	void	IncDex(const int& nDex) { m_stStatus.nDex += nDex; }					//민첩성		
+	void	IncDef(const int& nDef) { m_stStatus.nDef += nDef; }					//방어력
+	void	IncInt(const int& nInt) { m_stStatus.nInt += nInt; }					//마력
+	void	IncCrt(const float& fCrt) { m_stStatus.fCrt += fCrt; }					//크리티컬
+	void	IncLevel(const int& nLevel) { m_stStatus.nLevel += nLevel; }
+	void	IncExp(const float& fExp) { m_stStatus.fExp += fExp; }
+
+	void	DecCurrentHP(const int& nCurrentHP) { m_stStatus.nCurrentHP -= nCurrentHP; }
+	void	DecMaxHP(const int& nMaxHP) { m_stStatus.nMaxHP -= nMaxHP; }
+	void	DecCurrentMP(const int& nCurrentMP) { m_stStatus.nCurrentMP -= nCurrentMP; }
+	void	DecMaxMP(const int& nMaxMP) { m_stStatus.nMaxMP -= nMaxMP; }
+	void	DecCurrentSP(const int& nCurrentSP) { m_stStatus.nCurrentSP -= nCurrentSP; }
+	void	DecMaxSP(const int& nMaxSP) { m_stStatus.nMaxSP -= nMaxSP; }
+	void	DecSpeed(const float& fSpeed) { m_stStatus.fSpeed -= fSpeed; }
+	void	DecStr(const int& nStr) { m_stStatus.nStr -= nStr; }					//힘
+	void	DecDex(const int& nDex) { m_stStatus.nDex -= nDex; }					//민첩성		
+	void	DecDef(const int& nDef) { m_stStatus.nDef -= nDef; }					//방어력
+	void	DecInt(const int& nInt) { m_stStatus.nInt -= nInt; }					//마력
+	void	DecCrt(const float& fCrt) { m_stStatus.fCrt -= fCrt; }					//크리티컬
+	void	DecLevel(const int& nLevel) { m_stStatus.nLevel -= nLevel; }
+	void	DecExp(const float& fExp) { m_stStatus.fExp -= fExp; }
 };

@@ -14,6 +14,8 @@ private:
 	float					m_fMinFov;
 	float					m_fMaxFov;
 
+	float					m_fDistance = 10.0f;
+
 public:
 	cCamera();
 	~cCamera();

@@ -1,7 +1,47 @@
-﻿  cMainGame.cpp
-c:\users\administrator\source\repos\wuwafantasy\wuwafantasy\wuwafantasy\cmaingame.cpp(15): warning C4150: 불완전한 형식 'cGrid'에 대한 포인터를 삭제했습니다. 소멸자가 호출되지 않습니다.
-  c:\users\administrator\source\repos\wuwafantasy\wuwafantasy\wuwafantasy\cmaingame.h(6): note: 'cGrid' 선언을 참조하십시오.
+﻿  stdafx.cpp
+  cTimeManager.cpp
+  cTextureManager.cpp
+  cSupply.cpp
+  cStatus.cpp
+  cStateMachine.cpp
+  cSpriteManager.cpp
+  cSkinnedMesh.cpp
+c:\users\administrator\source\repos\wuwafantasy\wuwafantasy\wuwafantasy\cskinnedmesh.cpp(28): warning C4101: 'fp' :참조되지 않은 지역 변수입니다.
+  cSkill.cpp
+  cSceneManager.cpp
+  cRay.cpp
+  cRandom.cpp
+  cPoison.cpp
+  cParsing.cpp
+  cObjectTypeScript.cpp
+  cObjectManager.cpp
+  cObject.cpp
+  cMtlTex.cpp
+  cMovingObject.cpp
+  cMonster.cpp
+  cMessageDispatcher.cpp
   코드를 생성하고 있습니다...
-  건너뛰고 있습니다... (관련된 변경 내용 없음)
+  컴파일하고 있습니다...
+  cMainGame.cpp
+c:\users\administrator\source\repos\wuwafantasy\wuwafantasy\wuwafantasy\cmaingame.cpp(16): warning C4150: 불완전한 형식 'cGrid'에 대한 포인터를 삭제했습니다. 소멸자가 호출되지 않습니다.
+  c:\users\administrator\source\repos\wuwafantasy\wuwafantasy\wuwafantasy\cmaingame.h(6): note: 'cGrid' 선언을 참조하십시오.
+  cLoadingGameScene.cpp
+  cJob.cpp
+  cItem.cpp
+  cInGameScene.cpp
+c:\users\administrator\source\repos\wuwafantasy\wuwafantasy\wuwafantasy\cingamescene.cpp(10): warning C4316: 'cMonster': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
+  cIState.cpp
+  cIScript.cpp
+  cIScene.cpp
+  cIAction.cpp
+  cHeal.cpp
+  cGameObject.cpp
+  cGameManager.cpp
+  cDeviceManager.cpp
+  cCondition.cpp
+  cCamera.cpp
+  cAllocateHierarchy.cpp
+  cActionMove.cpp
   WinMain.cpp
+  코드를 생성하고 있습니다...
   WuwaFantasy.vcxproj -> C:\Users\Administrator\Source\Repos\WuwaFantasy\WuwaFantasy\Debug\WuwaFantasy.exe

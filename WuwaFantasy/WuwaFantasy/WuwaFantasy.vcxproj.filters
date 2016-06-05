@@ -46,6 +46,9 @@
     <Filter Include="소스 파일\GameData\Item">
       <UniqueIdentifier>{14aabcb8-89d5-4794-aaff-8b5d4dc7d60b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\GameData\Condition">
+      <UniqueIdentifier>{5a8a790c-1e8a-4eb8-a779-4221c0be45be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -153,6 +156,27 @@
     <ClInclude Include="cSceneManager.h">
       <Filter>소스 파일\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="cHeal.h">
+      <Filter>소스 파일\GameData\Condition</Filter>
+    </ClInclude>
+    <ClInclude Include="cCondition.h">
+      <Filter>소스 파일\GameData\Condition</Filter>
+    </ClInclude>
+    <ClInclude Include="cPoison.h">
+      <Filter>소스 파일\GameData\Condition</Filter>
+    </ClInclude>
+    <ClInclude Include="cMovingObject.h">
+      <Filter>소스 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="cMonster.h">
+      <Filter>소스 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="cSupply.h">
+      <Filter>소스 파일\GameData\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="cStateMachine.h">
+      <Filter>소스 파일\State</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -250,6 +274,27 @@
     </ClCompile>
     <ClCompile Include="cSceneManager.cpp">
       <Filter>소스 파일\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="cCondition.cpp">
+      <Filter>소스 파일\GameData\Condition</Filter>
+    </ClCompile>
+    <ClCompile Include="cHeal.cpp">
+      <Filter>소스 파일\GameData\Condition</Filter>
+    </ClCompile>
+    <ClCompile Include="cPoison.cpp">
+      <Filter>소스 파일\GameData\Condition</Filter>
+    </ClCompile>
+    <ClCompile Include="cMovingObject.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cMonster.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cSupply.cpp">
+      <Filter>소스 파일\GameData\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="cStateMachine.cpp">
+      <Filter>소스 파일\State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

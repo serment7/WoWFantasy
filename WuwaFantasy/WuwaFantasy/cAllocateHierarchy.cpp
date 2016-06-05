@@ -3,7 +3,6 @@
 #include "cAllocateHierarchy.h"
 #include "cMtlTex.h"
 
-
 cAllocateHierarchy::cAllocateHierarchy()
 {
 
@@ -20,9 +19,9 @@ STDMETHODIMP cAllocateHierarchy::CreateFrame( THIS_ LPCSTR Name, LPD3DXFRAME *pp
 	D3DXMatrixIdentity(&pBone->CombinedTransformationMatrix);
 	if (Name)
 	{
-		pBone->Name = new CHAR[strlen(Name) + 1];
-		// TODO : 이름을 잘 저장해주세요. 물론 해제도.
-		strcpy_s(pBone->Name, strlen(Name) ,Name);
+		int Len = strlen(Name) + 1;
+		pBone->Name = new CHAR[Len];
+		strcpy_s(pBone->Name , Len,Name);
 	}
 	else
 	{

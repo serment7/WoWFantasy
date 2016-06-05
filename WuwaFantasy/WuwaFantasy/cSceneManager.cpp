@@ -17,28 +17,16 @@ cSceneManager::~cSceneManager()
 
 void cSceneManager::Release()
 {
-
-	/*for(viSceneList = vSceneList.begin(); viSceneList != vSceneList.end(); ++viSceneList)
-	{
-		if(viSceneList->second != NULL)
-		{
-			if (viSceneList->second == pGameScene) viSceneList->second->ExitScene();
-
-			SAFE_DELETE(viSceneList->second);
-			vSceneList.erase(viSceneList);
-		}
-		else
-		{
-			++viSceneList;
-		}
-	}*/
-	for (int viSceneList = 0; viSceneList<vSceneList.size(); ++viSceneList)
+	for (size_t viSceneList = 0; viSceneList<vSceneList.size(); ++viSceneList)
 	{
 		if (vSceneList[viSceneList].second != NULL)
 		{
-			if (vSceneList[viSceneList].second == pGameScene) vSceneList[viSceneList].second->ExitScene();
-
+			if (vSceneList[viSceneList].second == pGameScene) 
+			{
+				vSceneList[viSceneList].second->ExitScene();
+			}
 			SAFE_DELETE(vSceneList[viSceneList].second);
+			
 		}
 	}
 

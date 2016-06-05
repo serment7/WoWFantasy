@@ -4,7 +4,7 @@
 #include <assert.h>
 
 cObject::cObject()
-:	nRefCount(1)
+:	nRefCount(0)
 ,	m_vPos(0, 0, 0)
 ,	m_vDir(0, 0, 1)
 {
@@ -22,6 +22,7 @@ cObject::~cObject()
 void cObject::AddRef()
 {
 	++nRefCount;
+	int n = 0;
 }
 
 void cObject::Release()
@@ -29,6 +30,7 @@ void cObject::Release()
 	--nRefCount;
 	if(nRefCount <= 0)
 	{
+		//g_pObjectManager->RemoveObject(this);
 		delete this;
 	}
 }

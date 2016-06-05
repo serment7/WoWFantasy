@@ -18,6 +18,7 @@ cCamera::~cCamera()
 
 void cCamera::Update()
 {
+	m_vEye = D3DXVECTOR3(0, 0, -m_fDistance);
 	D3DXMatrixLookAtLH(&m_matView, &m_vEye, &m_vLookAt, &m_vUp);
 	g_pD3DDevice->SetTransform(D3DTS_VIEW, &m_matView);
 

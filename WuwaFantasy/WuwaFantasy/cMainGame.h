@@ -13,8 +13,8 @@ private:
 	cCamera*								camera;
 
 	cSceneManager*	SceneManager;
-	cInGameScene* mainScene;
-	cInGameScene* mainScene2;
+	cInGameScene*	mainScene;
+	cInGameScene*	mainScene2;
 
 public:
 	cMainGame();

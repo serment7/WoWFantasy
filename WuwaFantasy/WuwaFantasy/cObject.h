@@ -23,7 +23,7 @@ private:
 	D3DXVECTOR3		m_vPos;
 	D3DXVECTOR3		m_vDir;
 
-	int nRefCount;
+	int nRefCount=0;
 
 public:
 	cObject();

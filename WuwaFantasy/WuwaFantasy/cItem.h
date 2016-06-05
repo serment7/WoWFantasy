@@ -5,7 +5,8 @@ class cGameObject;
 class cItem
 {
 private:
-	std::string			m_itemname;
+	std::string					m_itemname;
+	std::vector<std::string>	m_effect;
 
 public:
 	cItem();
@@ -13,6 +14,7 @@ public:
 
 	void				SetItemName(const std::string& _itemname);
 	const std::string&	GetItemName() const;
-	virtual void		Use(cGameObject*) = 0;
+	void				AddEffect(const std::string& _effectName);
+	virtual void		Use(cGameObject* _pTarget) = 0;
 };
 

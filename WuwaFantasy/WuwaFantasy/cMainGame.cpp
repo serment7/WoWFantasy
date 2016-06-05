@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "cMainGame.h"
 #include "cCamera.h"
+#include"cObjectTypeScript.h"
 
 
 cMainGame::cMainGame()
@@ -14,10 +15,17 @@ cMainGame::~cMainGame(void)
 	SAFE_DELETE(camera);
 	SAFE_DELETE(grid);
 
-	g_pDeviceManager->Destroy();
-	if(SceneManager)
+	g_pTextureManager->Destroy();
+	g_pSpriteManager->Destroy();
+	g_pObjectManager->Destroy();
+	if (SceneManager)
+	{
 		SceneManager->Release();
+		delete SceneManager;
+	}
+		
 	SceneManager = NULL;
+	g_pDeviceManager->Destroy();
 }
 
 void cMainGame::Setup()
@@ -29,10 +37,10 @@ void cMainGame::Setup()
 	SceneManager->AddScene("1¹ø¾À", mainScene);
 	SceneManager->ChangeScene("1¹ø¾À");
 
-	mainScene2 = new cInGameScene;
+	/*mainScene2 = new cInGameScene;
 	SceneManager->AddScene("2¹ø¾À", mainScene2);
 	SceneManager->ChangeScene("2¹ø¾À");
-	
+*/
 	/*
 	grid = new cGrid;
 	grid->Setup();
@@ -40,6 +48,11 @@ void cMainGame::Setup()
 	camera = new cCamera;
 	camera->Setup();
 	*/
+	cIScript* script = new cObjectTypeScript;
+	script->RunScript();
+	script->Update();
+	script->StopScript();
+	SAFE_DELETE(script);
 
 }
 

@@ -1,0 +1,49 @@
+﻿C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  stdafx.cpp
+  cActionMove.cpp
+  cAllocateHierarchy.cpp
+  cCamera.cpp
+  cCondition.cpp
+  cGameObject.cpp
+  cHeal.cpp
+  cIAction.cpp
+  cIScene.cpp
+  cDeviceManager.cpp
+  cGameManager.cpp
+  cInGameScene.cpp
+cInGameScene.cpp(10): warning C4316: 'cMonster': 힙에 할당된 개체가 16에 맞추어져 있지 않을 수도 있습니다
+  cIScript.cpp
+  cIState.cpp
+  cItem.cpp
+  cJob.cpp
+  cLoadingGameScene.cpp
+  cMainGame.cpp
+cMainGame.cpp(16): warning C4150: 불완전한 형식 'cGrid'에 대한 포인터를 삭제했습니다. 소멸자가 호출되지 않습니다.
+  c:\users\administrator\source\repos\wuwafantasy\wuwafantasy\wuwafantasy\cMainGame.h(6): note: 'cGrid' 선언을 참조하십시오.
+  cMessageDispatcher.cpp
+  cMonster.cpp
+  cMovingObject.cpp
+  컴파일하고 있습니다...
+  cMtlTex.cpp
+  cObject.cpp
+  cObjectManager.cpp
+  cObjectTypeScript.cpp
+  cParsing.cpp
+  cPoison.cpp
+  cRandom.cpp
+  cRay.cpp
+  cSceneManager.cpp
+  cSkill.cpp
+  cSkinnedMesh.cpp
+cSkinnedMesh.cpp(28): warning C4101: 'fp' :참조되지 않은 지역 변수입니다.
+  cSpriteManager.cpp
+  cStateMachine.cpp
+  cStatus.cpp
+  cSupply.cpp
+  cTextureManager.cpp
+  cTimeManager.cpp
+  WinMain.cpp
+  코드를 생성하고 있습니다.
+  All 1177 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  코드를 생성했습니다.
+  WuwaFantasy.vcxproj -> C:\Users\Administrator\Source\Repos\WuwaFantasy\WuwaFantasy\Release\../Execute\WuwaFantasy.exe
