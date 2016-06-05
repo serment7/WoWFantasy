@@ -116,7 +116,7 @@ void cWeaponSkinnedMesh::UpdateSkinnedMesh(LPD3DXFRAME pFrame)
 {
 	D3DXMATRIX matS;
 	D3DXMatrixScaling(&matS, 0.5f, 0.5f, 0.5f);
-	// pCurrentBoneMatrices ｸｦ ｰ霆・ﾏｽﾃｿﾀ
+	// pCurrentBoneMatrices ｸｦ ｰ霆・ﾏｽﾃｿ?
 	// pCurrentBoneMatrices = pBoneOffsetMatrices * ppBoneMatrixPtrs 
 	if(pFrame && pFrame->pMeshContainer)
 	{
@@ -146,7 +146,7 @@ void cWeaponSkinnedMesh::UpdateSkinnedMesh(LPD3DXFRAME pFrame)
 		}
 	}
 
-	//ﾀ邀ﾍﾀ釥ｸｷﾎ ｸ・ﾇﾁｷｹﾀﾓｿ｡ ｴ・ﾘｼｭ ｽﾇﾇ・
+	//ﾀ邀ﾍﾀ釥ｸｷﾎ ｸ・ﾇﾁｷｹﾀﾓｿ｡ ｴ・ﾘｼ?ｽﾇ?E
 	if (pFrame->pFrameFirstChild)
 	{
 		UpdateSkinnedMesh(pFrame->pFrameFirstChild);
@@ -159,7 +159,7 @@ void cWeaponSkinnedMesh::UpdateSkinnedMesh(LPD3DXFRAME pFrame)
 }
 void cWeaponSkinnedMesh::SetupBoneMatrixPtrs(LPD3DXFRAME pFrame)
 {
-	// ｰ｢ ﾇﾁｷｹﾀﾓﾀﾇ ｸﾞｽﾃ ﾄﾁﾅﾗﾀﾌｳﾊｿ｡ ﾀﾖｴﾂ pSkinInfoｸｦ ﾀﾌｿ・ﾏｿｩ ｿｵﾇ篁ﾞｴﾂ ｸ・
+	// ｰ｢ ﾇﾁｷｹﾀﾓﾀﾇ ｸﾞｽﾃ ﾄﾁﾅﾗﾀﾌｳﾊｿ｡ ﾀﾖｴﾂ pSkinInfoｸｦ ﾀﾌｿ・ﾏｿ?ｿｵﾇ篁ﾞｴﾂ ｸ・
 	// ﾇﾁｷｹﾀﾓﾀﾇ ｸﾅﾆｮｸｯｽｺｸｦ ppBoneMatrixPtrsｿ｡ ｿｬｰ睇ﾑｴﾙ.
 	// pSkinInfo->GetNumBones() ﾀｸｷﾎ ｿｵﾇ篁ﾞｴﾂ ｺｻﾀﾇ ｰｳｼｦ ﾃ｣ﾀｽ.
 	// pSkinInfo->GetBoneName(i) ｷﾎ iｹ・ﾇﾁｷｹﾀﾓﾀﾇ ﾀﾌｸｧﾀｻ ﾃ｣ﾀｽ
@@ -181,7 +181,7 @@ void cWeaponSkinnedMesh::SetupBoneMatrixPtrs(LPD3DXFRAME pFrame)
 		}
 	}
 
-	//ﾀ邀ﾍﾀ釥ｸｷﾎ ｸ・ﾇﾁｷｹﾀﾓｿ｡ ｴ・ﾘｼｭ ｽﾇﾇ・
+	//ﾀ邀ﾍﾀ釥ｸｷﾎ ｸ・ﾇﾁｷｹﾀﾓｿ｡ ｴ・ﾘｼ?ｽﾇ?E
 	if (pFrame->pFrameFirstChild)
 	{
 		SetupBoneMatrixPtrs(pFrame->pFrameFirstChild);

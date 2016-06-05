@@ -17,7 +17,8 @@ cPlayer::~cPlayer()
 void cPlayer::Setup()
 {
 	m_chrSkinnedMesh = new cSkinnedMesh;
-	m_chrSkinnedMesh->Load("hFemale", "hFemale.X");
+	
+	m_chrSkinnedMesh->Load(MODEL_PATH, "hFemale/hFemale.X");
 }
 
 void cPlayer::Update()
