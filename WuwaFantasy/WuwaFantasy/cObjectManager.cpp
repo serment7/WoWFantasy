@@ -13,7 +13,8 @@ cObjectManager::~cObjectManager()
 
 void cObjectManager::AddObject(cObject * _object)
 {
-	m_mapObjectByID.insert(std::pair<size_t,cObject*>(_object->GetID(),_object));
+	m_mapObjectByID.insert(std::pair<size_t,cObject*>(m_unInstanceID,_object));
+	_object->SetID(m_unInstanceID++);
 	m_mapObjectByTag[_object->GetTag()].push_back(_object);
 }
 

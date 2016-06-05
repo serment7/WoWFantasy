@@ -198,6 +198,12 @@
     <ClInclude Include="cSupply.h">
       <Filter>소스 파일\GameData\Item</Filter>
     </ClInclude>
+    <ClInclude Include="cPlayerControlState.h">
+      <Filter>소스 파일\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet.h">
+      <Filter>소스 파일\Util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -331,6 +337,12 @@
     </ClCompile>
     <ClCompile Include="cSupply.cpp">
       <Filter>소스 파일\GameData\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerControlState.cpp">
+      <Filter>소스 파일\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Packet.cpp">
+      <Filter>소스 파일\Util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -13,6 +13,6 @@ public:
 	void Setup();
 	void Update();
 	void Render();
-	void Release();
+	virtual void Release();
 };
 

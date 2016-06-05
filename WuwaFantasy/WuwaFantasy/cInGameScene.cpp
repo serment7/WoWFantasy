@@ -32,6 +32,7 @@ void cInGameScene::Update()
 			vecObject[i]->Update();
 		}
 	}
+
 }
 
 void cInGameScene::Render()
@@ -66,14 +67,18 @@ void cInGameScene::EnterScene()
 {
 	m_pGrid = new cGrid;
 	m_pGrid->Setup();
+	m_pGrid->SetTag(200);
 
-	m_pCamera = new cCamera;
+	//m_pCamera = new cCamera;
+	m_pCamera = g_pGameManager->GetCamera();
 	m_pCamera->SetAspect(1.0f);
 	m_pCamera->SetMinFov(0.0f);
 	m_pCamera->SetMaxFov(1.0f);
 
 	m_pPlayer = new cPlayer;
 	m_pPlayer->Setup();
+	m_pPlayer->SetTag(33);
+	g_pGameManager->SetPlayerID(m_pPlayer->GetID());
 
 	ZeroMemory(&m_light, sizeof(m_light));
 	m_light.Type = D3DLIGHT_DIRECTIONAL;
@@ -97,7 +102,7 @@ void cInGameScene::ExitScene()
 	}
 	SAFE_RELEASE(m_pPlayer);
 	SAFE_RELEASE(m_pGrid);
-	SAFE_DELETE(m_pCamera);
+	//SAFE_DELETE(m_pCamera);
 }	
 
 void cInGameScene::ChangeScene(cIScene * _pNextScene)

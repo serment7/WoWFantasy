@@ -154,6 +154,11 @@ void cSkinnedMesh::SetupBoneMatrixPtrs( LPD3DXFRAME pFrame )
 
 }
 
+LPD3DXANIMATIONCONTROLLER cSkinnedMesh::GetAnimationController()
+{
+	return m_pAnimController;
+}
+
 void cSkinnedMesh::UpdateSkinnedMesh( LPD3DXFRAME pFrame )
 {
 	// pCurrentBoneMatrices ∏¶ ∞ËªÅEœΩ√ø?

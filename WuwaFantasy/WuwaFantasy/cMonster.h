@@ -7,7 +7,8 @@ class cMonster :
 	public cMovingObject
 {
 private:
-
+	std::string			m_resource;
+	std::string			m_name;
 
 public:
 	cMonster();

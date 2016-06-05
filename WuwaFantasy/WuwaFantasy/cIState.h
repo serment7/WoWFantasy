@@ -9,10 +9,10 @@ public:
 	cIState() {};
 	virtual ~cIState() {};
 
-	virtual void EnterState(ENTITY_TYPE*) = 0;
-	virtual void ChangeState(ENTITY_TYPE*) = 0;
-	virtual void ExitState(ENTITY_TYPE*) = 0;
-	virtual void Execute(ENTITY_TYPE*) = 0;
-	virtual bool OnMessage(ENTITY_TYPE*, const ST_PACKET&) = 0;
+	virtual void EnterState(ENTITY_TYPE* _entity) = 0;
+	virtual void ChangeState(ENTITY_TYPE* _entity) = 0;
+	virtual void ExitState(ENTITY_TYPE* _entity) = 0;
+	virtual void Execute(ENTITY_TYPE* _entity) = 0;
+	virtual bool OnMessage(ENTITY_TYPE* _entity, const ST_PACKET& _packet) = 0;
 };
 

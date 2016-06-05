@@ -10,6 +10,8 @@ private:
 	std::map<size_t, cObject*> m_mapObjectByID;
 	std::map<size_t, std::vector<cObject*>> m_mapObjectByTag;
 
+	size_t				m_unInstanceID = 1;
+
 public:
 	cObjectManager();
 	~cObjectManager();

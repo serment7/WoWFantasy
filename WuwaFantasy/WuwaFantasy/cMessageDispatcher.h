@@ -1,38 +1,6 @@
 #pragma once
 
-enum Msg_Type{
-	Msg_MessageHandle
-	, Msg_Attack
-};
 
-struct ST_PACKET
-{
-	int		sender;
-	int		receiver;
-	int		msg_type;
-	float	delayTime;
-	void*	info;
-	
-
-	ST_PACKET() :sender(0),
-		receiver(0),
-		msg_type(0),
-		delayTime(0.0f),
-		info(nullptr)
-	{}
-
-	ST_PACKET(int _sender,
-		int _receiver,
-		int _msg_type,
-		float _delayTime,
-		void* _info)
-		: sender(_sender)
-		, receiver(_receiver)
-		, msg_type(_msg_type)
-		, delayTime(_delayTime)
-		, info((void*)_info)
-	{}
-};
 const double SmallestDelay = 0.25;
 inline bool operator==(const ST_PACKET& _packet1, const ST_PACKET& _packet2)
 {

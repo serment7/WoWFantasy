@@ -28,7 +28,7 @@ private:
 	void UpdateSkinnedMesh(LPD3DXFRAME pFrame);
 	void SetupBoneMatrixPtrs(LPD3DXFRAME pFrame);
 
-
+	LPD3DXANIMATIONCONTROLLER GetAnimationController();
 
 };
 

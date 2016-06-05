@@ -13,15 +13,13 @@ public:
 	cStatus						m_pStatus;
 	BOOL						m_isObject;
 
-	cSkinnedMesh*				m_chrSkinnedMesh;
-	cWeaponSkinnedMesh*			m_objSkinnedMesh;
-
-protected:
-	cSkinnedMesh* GetSkinnedMesh() { return m_chrSkinnedMesh; };
+	cSkinnedMesh*				m_chrSkinnedMesh = nullptr;
+	cWeaponSkinnedMesh*			m_objSkinnedMesh = nullptr;
 
 public:
 	cGameObject();
 	virtual ~cGameObject();
 
 	cStatus& GetStatus();
+	cSkinnedMesh* GetSkinnedMesh() { return m_chrSkinnedMesh; };
 };

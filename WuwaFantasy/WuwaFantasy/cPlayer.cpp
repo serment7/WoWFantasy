@@ -18,7 +18,8 @@ void cPlayer::Setup()
 {
 	m_chrSkinnedMesh = new cSkinnedMesh;
 	
-	m_chrSkinnedMesh->Load(MODEL_PATH, "hFemale/hFemale.X");
+	//m_chrSkinnedMesh->Load(MODEL_PATH, "hFemale/hFemale.X");
+	m_chrSkinnedMesh->Load("./hFemale/" , "hFemale.X");
 }
 
 void cPlayer::Update()
@@ -34,4 +35,5 @@ void cPlayer::Render()
 void cPlayer::Release()
 {
 	SAFE_RELEASE(m_chrSkinnedMesh);
+	cObject::Release();
 }

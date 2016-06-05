@@ -130,3 +130,5 @@ struct BoundingBox
 #include "cObjectManager.h"
 #include "cTextureManager.h"
 #include "cSpriteManager.h"
+#include "Packet.h"
+#include "cMessageDispatcher.h"

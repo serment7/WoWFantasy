@@ -8,16 +8,12 @@ cObject::cObject()
 ,	m_vPos(0, 0, 0)
 ,	m_vDir(0, 0, 1)
 {
-	//오틒E㎷?매니픸E추가
+	g_pObjectManager->AddObject(this);
 }
 
 cObject::~cObject()
-
 {
-	//오틒E㎷?매니픸E삭제
-#ifdef _DEBUG
-	assert(nRefCount <= 0 && "해제 된 오틒E㎷??한퉩E큱E해제합니다");
-#endif
+	assert(nRefCount>=0&&"객체 소멸이 여러번 일어나고있습니다");
 }
 
 void cObject::SetID(const size_t & _id)
@@ -50,6 +46,7 @@ void cObject::Release()
 	--nRefCount;
 	if(nRefCount <= 0)
 	{
+		g_pObjectManager->RemoveObject(this);
 		delete this;
 	}
 }
