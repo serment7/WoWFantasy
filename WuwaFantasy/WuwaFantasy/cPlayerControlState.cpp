@@ -12,28 +12,35 @@ cPlayerControlState::~cPlayerControlState()
 {
 }
 
-void cPlayerControlState::EnterState(cPlayer * _entity)
+void cPlayerControlState::EnterState(cPlayer * _player)
 {
 
 }
 
-void cPlayerControlState::ChangeState(cPlayer * _entity)
+void cPlayerControlState::ChangeState(cPlayer * _player)
 {
 }
 
-void cPlayerControlState::ExitState(cPlayer * _entity)
+void cPlayerControlState::ExitState(cPlayer * _player)
 {
 }
 
-void cPlayerControlState::Execute(cPlayer * _entity)
+void cPlayerControlState::Execute(cPlayer * _player)
 {
 }
 
-bool cPlayerControlState::OnMessage(cPlayer * _entity, const ST_PACKET & _packet)
+bool cPlayerControlState::OnMessage(cPlayer * _player, const ST_PACKET & _packet)
 {
-	if (_packet.msg_type == Msg_Attack)
+	if (_packet.receiver == _player->GetID())
+		return false;
+
+	switch (_packet.msg_type)
 	{
+	case Msg_Attack:
+		return true;
+	case Msg_Move:
 		return true;
 	}
+
 	return false;
 }

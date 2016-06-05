@@ -1,10 +1,18 @@
 #pragma once
 enum Msg_Type {
-	Msg_MessageHandle = 0x101
+	Msg_Move = 0x101
 	, Msg_Attack
 	, Msg_GetCondition
 	, Msg_UseItem
 
+};
+
+struct Packet_Move
+{
+	D3DXVECTOR3	vDes = D3DXVECTOR3(0, 0, 0);
+	Packet_Move(D3DXVECTOR3 _des)
+		:vDes(_des)
+	{}
 };
 
 struct Packet_MessageHandle
@@ -21,13 +29,19 @@ struct Packet_MessageHandle
 
 struct Packet_Attack
 {
-	size_t Damage = -1;
+	size_t damage = -1;
+	Packet_Attack(const size_t& _damage)
+		:damage(_damage)
+	{}
 };
 
 class cCondition;
-struct Packet_TakeCondition
+struct Packet_GetCondition
 {
 	cCondition* pCondition = nullptr;
+	Packet_GetCondition(cCondition*	_pCondition)
+		:pCondition(_pCondition)
+	{}
 };
 
 struct ST_PACKET
@@ -37,7 +51,6 @@ struct ST_PACKET
 	int		msg_type;
 	float	delayTime;
 	void*	info;
-
 
 	ST_PACKET() :sender(0),
 		receiver(0),

@@ -1,5 +1,6 @@
 #pragma once
 
+#define g_pMessageDispatcher cMessageDispatcher::GetInstance()
 
 const double SmallestDelay = 0.25;
 inline bool operator==(const ST_PACKET& _packet1, const ST_PACKET& _packet2)
@@ -35,7 +36,13 @@ public:
 	cMessageDispatcher();
 	~cMessageDispatcher();
 
-	
+	cMessageDispatcher* GetInstance()
+	{
+		static cMessageDispatcher instance;
+		return &instance;
+	}
+
 	void Discharge();
-	void Dispatch();
+	void Dispatch(const size_t& _sender, const size_t& _receiver,const float& _delay, 
+		size_t _msg_type, void* _info);
 };
