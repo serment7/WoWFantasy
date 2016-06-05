@@ -71,9 +71,12 @@ void cInGameScene::EnterScene()
 
 	//m_pCamera = new cCamera;
 	m_pCamera = g_pGameManager->GetCamera();
-	m_pCamera->SetAspect(1.0f);
-	m_pCamera->SetMinFov(0.0f);
-	m_pCamera->SetMaxFov(1.0f);
+
+	RECT rc;
+	GetClientRect(g_hWnd, &rc);
+	m_pCamera->SetAspect(rc.right / (float)rc.bottom);
+	m_pCamera->SetMinFov(1.0f);
+	m_pCamera->SetMaxFov(1000.0f);
 
 	m_pPlayer = new cPlayer;
 	m_pPlayer->Setup();
