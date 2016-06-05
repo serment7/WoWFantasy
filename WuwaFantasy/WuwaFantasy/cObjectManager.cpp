@@ -13,7 +13,7 @@ cObjectManager::~cObjectManager()
 
 void cObjectManager::AddObject(cObject * _object)
 {
-	m_mapObjectByID.insert(std::pair<size_t,cObject*>(_object->GetID,_object));
+	m_mapObjectByID.insert(std::pair<size_t,cObject*>(_object->GetID(),_object));
 	m_mapObjectByTag[_object->GetTag()].push_back(_object);
 }
 
@@ -38,6 +38,6 @@ std::vector<cObject*>& cObjectManager::FindObjectByTag(const size_t & _tag)
 void cObjectManager::Destroy()
 {
 #ifdef _DEBUG
-	assert(m_setObject.empty() && "ｼﾒｸ・ﾇﾁ・ｾﾊﾀｺ ｰｴﾃｼｰ｡ ﾀﾖｽﾀｴﾏｴﾙ");
+	assert(m_mapObjectByID.empty() && "ｼﾒｸ・ﾇﾁ・ｾﾊﾀｺ ｰｴﾃｼｰ｡ ﾀﾖｽﾀｴﾏｴﾙ");
 #endif
 }
