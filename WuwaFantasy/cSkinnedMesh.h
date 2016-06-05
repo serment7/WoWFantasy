@@ -17,6 +17,7 @@ public:
 	void Load(char* szFolder, char* szFile);
 	void Update();
 	void Render(LPD3DXFRAME pFrame);
+	void Release();
 	void SetAnimationIndex(int nIndex);
 	void SetAnimationIndexBlend(int nIndex);
 	bool CompuseBoneName(char* str1, char* str2);

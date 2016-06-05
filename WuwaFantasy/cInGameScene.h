@@ -1,6 +1,7 @@
 #pragma once
 #include "cIScene.h"
 #include "cGrid.h"
+#include "cPlayer.h"
 #include "cCamera.h"
 
 class cObject;
@@ -13,6 +14,7 @@ private:
 	float			m_fPlayTime;
 	cGrid*			m_pGrid;
 	cCamera*		m_pCamera;
+	cPlayer*		m_pPlayer;
 
 	std::map < DWORD, std::vector<cObject*> > m_mapObject;
 

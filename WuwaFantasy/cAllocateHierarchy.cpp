@@ -18,7 +18,7 @@ STDMETHODIMP cAllocateHierarchy::CreateFrame( THIS_ LPCSTR Name, LPD3DXFRAME *pp
 	if (Name)
 	{
 		pBone->Name = new CHAR[strlen(Name) + 1];
-		// TODO : ﾀﾌｸｧﾀｻ ﾀﾟ ﾀ惕衂ﾘﾁﾖｼｼｿ・ ｹｰｷﾐ ﾇﾘﾁｦｵｵ.
+
 		strcpy_s(pBone->Name, strlen(pBone->Name), Name);
 
 	}
@@ -44,7 +44,7 @@ STDMETHODIMP cAllocateHierarchy::CreateMeshContainer( THIS_ LPCSTR Name,
 	ST_BONE_MESH* pBoneMesh = new ST_BONE_MESH;
 	ZeroMemory(pBoneMesh, sizeof(ST_BONE_MESH));
 
-	// step 1. pSkinInfo ﾀ惕・
+
 	pSkinInfo->AddRef();
 	pBoneMesh->pSkinInfo = pSkinInfo;
 
@@ -60,15 +60,12 @@ STDMETHODIMP cAllocateHierarchy::CreateMeshContainer( THIS_ LPCSTR Name,
 	}
 	pBoneMesh->pOrigMesh = pMeshData->pMesh;
 	pBoneMesh->pOrigMesh->AddRef();
-	// step 2. ｸﾞｽｬ ｺｹｻ・
+
 	pBoneMesh->pOrigMesh->CloneMeshFVF(pBoneMesh->pOrigMesh->GetOptions(),
 		pBoneMesh->pOrigMesh->GetFVF(),
 		g_pD3DDevice,
 		&pBoneMesh->pWorkMesh);
 
-	// step 3. pSkinInfo->GetNumBones()ｸｦ ﾅ・ﾘ
-	// ｿｵﾇ箙ﾂﾀｻ ｹﾌﾄ｡ｴﾂ ｸ・ｺｻｿ｡ ｴ・ﾑ ｸﾅﾆｮｸｯｽｺ ｵ鯊ｻ ｼｼﾆﾃ
-	// ppBoneMatrixPtrs, pBoneOffsetMatrices, pCurrentBoneMatricesｸｦ ｵｿﾀ鉎ﾒｴ・
 	if(pSkinInfo)
 	{
 		DWORD dwNumBones = pSkinInfo->GetNumBones();
@@ -76,7 +73,7 @@ STDMETHODIMP cAllocateHierarchy::CreateMeshContainer( THIS_ LPCSTR Name,
 		pBoneMesh->pBoneOffsetMatrices = new D3DXMATRIX[dwNumBones];
 		pBoneMesh->pCurrentBoneMatrices = new D3DXMATRIX[dwNumBones];
 
-		// step 4. ｵｿﾀ・ﾇﾒｴ邨ﾈ pBoneOffsetMatrices ｸﾅﾆｮｸｯｽｺｿ｡ ｰｪ ﾀ惕・
+
 		// pSkinInfo->GetBoneOffsetMatrix(i)
 		for (DWORD i = 0; i < dwNumBones; ++i)
 		{
@@ -97,8 +94,11 @@ STDMETHODIMP cAllocateHierarchy::CreateMeshContainer( THIS_ LPCSTR Name,
 
 STDMETHODIMP cAllocateHierarchy::DestroyFrame( THIS_ LPD3DXFRAME pFrameToFree )
 {
-	// TODO : ﾇﾘﾁｦ ﾀﾟ ﾇﾕｽﾃｴﾙ.
-	SAFE_DELETE_ARRAY(pFrameToFree->Name);
+	//It is NOT loaded
+	if (pFrameToFree && pFrameToFree->Name) {
+		//SAFE_DELETE_ARRAY(pFrameToFree->Name);
+	}
+
 	SAFE_DELETE(pFrameToFree);
 	
 	return S_OK;
@@ -106,7 +106,6 @@ STDMETHODIMP cAllocateHierarchy::DestroyFrame( THIS_ LPD3DXFRAME pFrameToFree )
 
 STDMETHODIMP cAllocateHierarchy::DestroyMeshContainer( THIS_ LPD3DXMESHCONTAINER pMeshContainerToFree )
 {
-	// TODO : ﾇﾘﾁｦ ﾀﾟ ﾇﾕｽﾃｴﾙ.
 	ST_BONE_MESH* pBoneMesh = (ST_BONE_MESH*)pMeshContainerToFree;
 	SAFE_RELEASE(pBoneMesh->pSkinInfo);
 	SAFE_RELEASE(pBoneMesh->pOrigMesh);

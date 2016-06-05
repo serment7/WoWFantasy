@@ -105,6 +105,9 @@
     <ClInclude Include="cStatus.h">
       <Filter>소스 파일\Object</Filter>
     </ClInclude>
+    <ClInclude Include="cPlayer.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -172,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="cStatus.cpp">
       <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayer.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

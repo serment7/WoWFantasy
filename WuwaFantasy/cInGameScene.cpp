@@ -19,6 +19,8 @@ cInGameScene::~cInGameScene()
 void cInGameScene::Update()
 {
 	m_pCamera->Update();
+	if (m_pPlayer) m_pPlayer->Update();
+
 	if (m_bPaused)
 		return;
 	g_pTimeManager->Update();
@@ -52,7 +54,9 @@ void cInGameScene::Render()
 			vecObject[i]->Render();
 		}
 	}
+	if (m_pPlayer) m_pPlayer->Render();
 	if (m_pGrid) m_pGrid->Render();
+
 	g_pD3DDevice->EndScene();
 	g_pD3DDevice->Present(NULL, NULL, NULL, NULL);
 }
@@ -66,6 +70,10 @@ void cInGameScene::EnterScene()
 	m_pCamera->SetAspect(1.0f);
 	m_pCamera->SetMinFov(0.0f);
 	m_pCamera->SetMaxFov(1.0f);
+
+	m_pPlayer = new cPlayer;
+	m_pPlayer->Setup();
+
 }
 
 void cInGameScene::ExitScene()
@@ -78,6 +86,7 @@ void cInGameScene::ExitScene()
 			SAFE_RELEASE(vecObject[i]);
 		}
 	}
+	SAFE_RELEASE(m_pPlayer);
 	SAFE_RELEASE(m_pGrid);
 	SAFE_DELETE(m_pCamera);
 }	

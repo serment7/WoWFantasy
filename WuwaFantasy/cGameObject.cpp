@@ -10,5 +10,5 @@ cGameObject::cGameObject()
 
 cGameObject::~cGameObject()
 {
-
+	SAFE_DELETE(m_chrSkinnedMesh);
 }

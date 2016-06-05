@@ -111,6 +111,11 @@ void cSkinnedMesh::Render( LPD3DXFRAME pFrame )
 	}
 }
 
+void cSkinnedMesh::Release()
+{
+	this->~cSkinnedMesh();
+}
+
 void cSkinnedMesh::SetupBoneMatrixPtrs( LPD3DXFRAME pFrame )
 {
 	// 각 프레임의 메시 컨테이너에 있는 pSkinInfo를 이퓖E臼� 영향받는 모탛E

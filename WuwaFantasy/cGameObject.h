@@ -12,8 +12,8 @@ public:
 	cStatus*					m_pStatus;
 	BOOL						m_isObject;
 
-	cSkinnedMesh*				m_chrSkinndeMesh;
-	cWeaponSkinnedMesh*			m_objSkinndeMesh;
+	cSkinnedMesh*				m_chrSkinnedMesh;
+	cWeaponSkinnedMesh*			m_objSkinnedMesh;
 
 public:
 	cGameObject();
