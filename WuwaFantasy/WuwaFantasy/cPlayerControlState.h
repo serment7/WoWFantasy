@@ -1,18 +1,24 @@
 #pragma once
 #include "cIState.h"
+#include"cIAction.h"
 
-class cPlayer;
+class cGameObject;
+class cActionMove;
+
 class cPlayerControlState :
-	public cIState<cPlayer>
+	public cIState,public cDelegate
 {
+private:
+	cActionMove*		m_actionMove;
 public:
 	cPlayerControlState();
 	virtual ~cPlayerControlState();
 
-	virtual void EnterState(cPlayer* _player);
-	virtual void ChangeState(cPlayer* _player);
-	virtual void ExitState(cPlayer* _player);
-	virtual void Execute(cPlayer* _player);
-	virtual bool OnMessage(cPlayer* _player, const ST_PACKET& _packet);
+	virtual void EnterState(cGameObject* _player);
+	virtual void ChangeState(cGameObject* _player);
+	virtual void ExitState(cGameObject* _player);
+	virtual void Execute(cGameObject* _player);
+	virtual bool OnMessage(cGameObject* _player, const ST_PACKET& _packet);
+	virtual void OnActionDelegate(cIAction* _pSender);
 };
 

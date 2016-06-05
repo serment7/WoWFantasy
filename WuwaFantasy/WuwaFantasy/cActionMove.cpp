@@ -84,3 +84,8 @@ void cActionMove::Update()
 	}
 	
 }
+
+void cActionMove::Stop()
+{
+	SetAction(false);
+}

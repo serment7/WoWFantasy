@@ -9,12 +9,14 @@ public:
 	float						m_fAnimBlendTime;
 	float						m_fPassedAnimBlendTime;
 	ST_BONE*					m_pRightHand;
+
+	std::string					m_folderName;
 			
 public:
 	cSkinnedMesh(void);
 	~cSkinnedMesh(void);
 
-	void Load(const char* szFolder, const char* szFile);
+	void Load( const char* szFile);
 	void Update();
 	void Render(LPD3DXFRAME pFrame);
 	void Release();
@@ -23,12 +25,14 @@ public:
 	bool CompuseBoneName(char* str1, char* str2);
 	ST_BONE* GetBoneNamedMesh(ST_BONE* pBone, char* szBoneName);
 
+
+	const std::string&			GetFolderName();
+	void						SetFolderName(const std::string& _name);
+
 private:
 	void Update(LPD3DXFRAME pFrame, LPD3DXFRAME pParent);
 	void UpdateSkinnedMesh(LPD3DXFRAME pFrame);
 	void SetupBoneMatrixPtrs(LPD3DXFRAME pFrame);
 
 	LPD3DXANIMATIONCONTROLLER GetAnimationController();
-
 };
-

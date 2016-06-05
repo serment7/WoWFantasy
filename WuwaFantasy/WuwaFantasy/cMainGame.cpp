@@ -102,4 +102,5 @@ void cMainGame::Render()
 void CALLBACK cMainGame::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	//if(camera) camera->WndProc(hWnd, message, wParam, lParam);
+	SceneManager->GetGameScene()->MessageHandling(hWnd, message, wParam, lParam);
 }

@@ -119,6 +119,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+	case WM_LBUTTONDOWN:
+	case WM_RBUTTONDOWN:
+	case WM_LBUTTONUP:
+	case WM_MOUSEMOVE:
+	case WM_MOUSEWHEEL:
+		m_scene->MessageHandling(hWnd, message, wParam, lParam);
+		break;
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);

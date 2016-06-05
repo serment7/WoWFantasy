@@ -6,12 +6,15 @@
 cGameObject::cGameObject()
 {
 	g_pObjectManager->AddObject(this);
+	D3DXCreateSphere(g_pD3DDevice, 2, 10, 10, &m_sphere, NULL);
 }
 
 cGameObject::~cGameObject()
 {
+	SAFE_RELEASE(m_sphere);
 	SAFE_DELETE(m_chrSkinnedMesh);
 	SAFE_DELETE(m_objSkinnedMesh);
+	SAFE_DELETE(m_pStateMachine);
 	g_pObjectManager->RemoveObject(this);
 }
 
@@ -68,10 +71,25 @@ cStatus & cGameObject::GetStatus()
 	return m_pStatus;
 }
 
+void cGameObject::SetStateMachine(cStateMachine* _pStateMachine)
+{
+	m_pStateMachine = _pStateMachine;
+}
+
+cStateMachine* cGameObject::GetStateMachine()
+{
+	return m_pStateMachine;
+}
+
+LPD3DXMESH cGameObject::GetBound()
+{
+	return m_sphere;
+}
+
 void cGameObject::OnMessage(const ST_PACKET & _packet)
 {
 	if (m_pStateMachine)
 	{
-
+		m_pStateMachine->MessageHandle(_packet);
 	}
 }

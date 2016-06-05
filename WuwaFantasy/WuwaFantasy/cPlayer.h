@@ -5,7 +5,8 @@ class cPlayer :
 	public cGameObject
 {
 private:
-
+	std::string folder;
+	std::string filename;
 public:
 	cPlayer();
 	virtual ~cPlayer();

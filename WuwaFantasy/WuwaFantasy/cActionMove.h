@@ -14,5 +14,6 @@ public:
 	void			SetTo(const D3DXVECTOR3&);
 	virtual void	Start();
 	virtual void	Update();
+	virtual void	Stop();
 };
 

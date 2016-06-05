@@ -1,6 +1,8 @@
 #pragma once
 #include "cRay.h"
 
+#define g_pPickManager cPickManager::GetInstance()
+
 class cPickManager
 {
 private:
@@ -12,6 +14,13 @@ private:
 public:
 	cPickManager();
 	~cPickManager();
+
+	static cPickManager*	GetInstance()
+	{
+		static cPickManager instance;
+		return &instance;
+	}
+
 	//Once
 	bool IsPickedTry(ST_PNT_VERTEX vec1, ST_PNT_VERTEX vec2, ST_PNT_VERTEX vec3, const int& x, const int& y);
 	bool IsPickedSphere(BoundingSphere sphere, const int& x, const int& y);
@@ -34,8 +43,5 @@ public:
 	int GetCurrentMousePointY() { return m_nCurrentMousePointY; }
 	cRay GetRay() { return m_nRay; }
 	D3DXVECTOR3 GetRayPos() { return m_vPos; }
-
-
-
 };
 

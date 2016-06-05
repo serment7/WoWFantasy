@@ -1,30 +1,31 @@
 #pragma once
 #include"cIState.h"
 
-template <typename ENTITY_TYPE>
+class cGameObject;
+
 class cStateMachine
 {
 private:
-	ENTITY_TYPE*			m_pOwner = nullptr;
-	cIState<ENTITY_TYPE>*	m_pPreviousState = nullptr;
-	cIState<ENTITY_TYPE>*	m_pCurrentState = nullptr;
-	cIState<ENTITY_TYPE>*	m_pGlobalState = nullptr;
+	cGameObject*			m_pOwner = nullptr;
+	cIState*	m_pPreviousState = nullptr;
+	cIState*	m_pCurrentState = nullptr;
+	cIState*	m_pGlobalState = nullptr;
 
 public:
 	cStateMachine() {};
-	cStateMachine(ENTITY_TYPE* _pOwner)
+	cStateMachine(cGameObject* _pOwner)
 		:m_pOwner(_pOwner) {}
 	~cStateMachine() {};
 
-	void SetCurrentState(cIState<ENTITY_TYPE>* _currentState)
+	void SetCurrentState(cIState* _currentState)
 	{
 		m_pCurrentState = _currentState;
 	}
-	void SetPreviousState(cIState<ENTITY_TYPE>* _privioustState)
+	void SetPreviousState(cIState* _privioustState)
 	{
 		m_pPreviousState = _privioustState;
 	}
-	void SetGlobalState(cIState<ENTITY_TYPE>* _globalState)
+	void SetGlobalState(cIState* _globalState)
 	{
 		m_pGlobalState = _globalState;
 	}
@@ -53,16 +54,16 @@ public:
 		return false;
 	}
 
-	void  ChangeState(cIState<ENTITY_TYPE>* _pNewState)
+	void  ChangeState(cIState* _pNewState)
 	{
 #ifdef _DEBUG
 		assert(_pNewState && "ChangeState() received null ptr");
 #endif
 		m_pPreviousState = m_pCurrentState;
-		m_pCurrentState->Exit(m_pOwner);
+		m_pCurrentState->ExitState(m_pOwner);
 
 		m_pCurrentState = _pNewState;
-		m_pCurrentState->Enter(m_pOwner);
+		m_pCurrentState->EnterState(m_pOwner);
 	}
 
 	void RevertState()
@@ -78,9 +79,9 @@ public:
 	//	return false;
 	//}
 
-	//State<entity_type>*  CurrentState()  const { return m_pCurrentState; }
-	//State<entity_type>*  GlobalState()   const { return m_pGlobalState; }
-	//State<entity_type>*  PreviousState() const { return m_pPreviousState; }
+	cIState*  CurrentState()  const { return m_pCurrentState; }
+	cIState*  GlobalState()   const { return m_pGlobalState; }
+	cIState*  PreviousState() const { return m_pPreviousState; }
 
 	////only ever used during debugging to grab the name of the current state
 	//std::string         GetNameOfCurrentState()const

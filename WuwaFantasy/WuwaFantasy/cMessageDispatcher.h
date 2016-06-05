@@ -35,7 +35,7 @@ public:
 	cMessageDispatcher();
 	~cMessageDispatcher();
 
-	cMessageDispatcher* GetInstance()
+	static cMessageDispatcher* GetInstance()
 	{
 		static cMessageDispatcher instance;
 		return &instance;

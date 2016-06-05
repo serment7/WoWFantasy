@@ -124,3 +124,8 @@ bool cSceneManager::ChangeScene(char* sceneName, char* loadingSceneName)
 	*/
 	return true;
 }
+
+cIScene * cSceneManager::GetGameScene()
+{
+	return pGameScene;
+}

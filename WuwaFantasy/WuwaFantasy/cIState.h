@@ -1,18 +1,18 @@
 #pragma once
 
 struct ST_PACKET;
+class cGameObject;
 
-template <typename ENTITY_TYPE>
 class cIState
 {
 public:
 	cIState() {};
 	virtual ~cIState() {};
 
-	virtual void EnterState(ENTITY_TYPE* _entity) = 0;
-	virtual void ChangeState(ENTITY_TYPE* _entity) = 0;
-	virtual void ExitState(ENTITY_TYPE* _entity) = 0;
-	virtual void Execute(ENTITY_TYPE* _entity) = 0;
-	virtual bool OnMessage(ENTITY_TYPE* _entity, const ST_PACKET& _packet) = 0;
+	virtual void EnterState(cGameObject* _entity) = 0;
+	virtual void ChangeState(cGameObject* _entity) = 0;
+	virtual void ExitState(cGameObject* _entity) = 0;
+	virtual void Execute(cGameObject* _entity) = 0;
+	virtual bool OnMessage(cGameObject* _entity, const ST_PACKET& _packet) = 0;
 };
 

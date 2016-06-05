@@ -35,5 +35,5 @@ public:
 
 	//로딩 쓰레드를 위한 쓰레드 함수
 	//friend DWORD CALLBACK loadingThread(LPVOID prc);
-
+	cIScene* GetGameScene();
 };

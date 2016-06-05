@@ -5,7 +5,7 @@
 #include "cSkinnedMesh.h"
 #include "cWeaponSkinnedMesh.h"
 
-const TCHAR MODEL_PATH[] = "./Resource/Model";
+const std::string MODEL_PATH = "./Resource/Model/";
 
 class cCondition;
 
@@ -17,9 +17,10 @@ public:
 
 	cSkinnedMesh*				m_chrSkinnedMesh = nullptr;
 	cWeaponSkinnedMesh*			m_objSkinnedMesh = nullptr;
+	LPD3DXMESH					m_sphere = nullptr;
 
 
-	cStateMachine<cObject>*			m_pStateMachine;
+	cStateMachine*			m_pStateMachine;
 	std::list<cCondition*>			m_listCondition;
 
 
@@ -40,6 +41,10 @@ public:
 
 	cStatus&			GetStatus();
 	cSkinnedMesh*		GetSkinnedMesh() { return m_chrSkinnedMesh; };
+	void				SetStateMachine(cStateMachine* _pStateMachine);
+	cStateMachine*		GetStateMachine();
+	LPD3DXMESH			GetBound();
+
 	void				AddCondition(cCondition* _pCondition);
 	void				OnMessage(const ST_PACKET& _packet);
 };

@@ -17,14 +17,13 @@ cSkinnedMesh::~cSkinnedMesh(void)
 	D3DXFrameDestroy(m_pRoot, &alloc);
 }
 
-void cSkinnedMesh::Load( const char* szFolder, const char* szFile )
+void cSkinnedMesh::Load( const char* szFile )
 {
-	std::string sFolder(szFolder);
 	std::string sFile(szFile);
-	std::string sFullPath = szFolder + std::string("/") + sFile;
+	std::string sFullPath = m_folderName + std::string("/") + sFile;
 	LPD3DXFRAME pFrame = NULL;
 	cAllocateHierarchy alloc;
-	alloc.SetFolder(sFolder);
+	alloc.SetFolder(m_folderName);
 
 	D3DXLoadMeshHierarchyFromX(
 		sFullPath.c_str(),
@@ -157,6 +156,16 @@ void cSkinnedMesh::SetupBoneMatrixPtrs( LPD3DXFRAME pFrame )
 LPD3DXANIMATIONCONTROLLER cSkinnedMesh::GetAnimationController()
 {
 	return m_pAnimController;
+}
+
+const std::string & cSkinnedMesh::GetFolderName()
+{
+	return m_folderName;
+}
+
+void cSkinnedMesh::SetFolderName(const std::string & _name)
+{
+	m_folderName = _name;
 }
 
 void cSkinnedMesh::UpdateSkinnedMesh( LPD3DXFRAME pFrame )

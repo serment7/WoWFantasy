@@ -3,13 +3,16 @@
 
 
 cCamera::cCamera()
-	: m_vEye(-5.0f, 0.0f, 0.0f)
+	: m_vEye(0.0f, 0.0f, 0.0f)
 	, m_vUp(0.0f, 1.0f, 0.0f)
 	, m_vLookAt(0.0f, 0.0f, 0.0f)
 	, m_fFovy(D3DX_PI / 4.0f)
 {
 	D3DXMatrixIdentity(&m_matView);
 	D3DXMatrixIdentity(&m_matProj);
+	D3DXMatrixIdentity(&m_matRotX);
+	D3DXMatrixIdentity(&m_matRotY);
+	D3DXMatrixIdentity(&m_matWorld);
 }
 
 cCamera::~cCamera()
@@ -18,6 +21,12 @@ cCamera::~cCamera()
 
 void cCamera::Update()
 {
+	m_vEye = D3DXVECTOR3(0, 0, -m_fDistance);
+	D3DXMatrixRotationX(&m_matRotX, D3DXToRadian(m_fAngleX));
+	D3DXMatrixRotationY(&m_matRotY, D3DXToRadian(m_fAngleY));
+	m_matWorld = m_matRotX*m_matRotY;
+	D3DXVec3TransformCoord(&m_vEye, &m_vEye, &m_matWorld);
+
 	D3DXMatrixLookAtLH(&m_matView, &m_vEye, &m_vLookAt, &m_vUp);
 	g_pD3DDevice->SetTransform(D3DTS_VIEW, &m_matView);
 
@@ -45,6 +54,36 @@ void cCamera::SetLookAt(const float & _x, const float & _y, const float & _z)
 	SetLookAt(D3DXVECTOR3(_x, _y, _z));
 }
 
+void cCamera::SetAngleX(const float & _angleX)
+{
+	m_fAngleX = _angleX;
+}
+
+void cCamera::SetAngleY(const float & _angleY)
+{
+	m_fAngleY = _angleY;
+}
+
+void cCamera::MoveAngleX(const float & _angleX)
+{
+	m_fAngleX += _angleX;
+}
+
+void cCamera::MoveAngleY(const float & _angleY)
+{
+	m_fAngleX += _angleY;
+}
+
+const float & cCamera::GetAngleX()
+{
+	return m_fAngleX;
+}
+
+const float & cCamera::GetAngleY()
+{
+	return m_fAngleY;
+}
+
 void cCamera::SetFovy(const float & _fovy)
 {
 	m_fFovy = _fovy;
@@ -63,4 +102,54 @@ void cCamera::SetMinFov(const float & _minFov)
 void cCamera::SetMaxFov(const float & _maxFov)
 {
 	m_fMaxFov = _maxFov;
+}
+
+bool cCamera::MessageHandle(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
+{
+	switch (iMessage)
+	{
+	case WM_LBUTTONDOWN:
+		m_isLButtonDown = true;
+		m_ptPrevMouse.x = LOWORD(lParam);
+		m_ptPrevMouse.y = HIWORD(lParam);
+		return true;
+	case WM_LBUTTONUP:
+		m_isLButtonDown = false;
+		return true;
+	case WM_MOUSEMOVE:
+	{
+		if (m_isLButtonDown)
+		{
+			POINT ptCurrMouse;
+			ptCurrMouse.x = LOWORD(lParam);
+			ptCurrMouse.y = HIWORD(lParam);
+			m_fAngleX += (ptCurrMouse.y - m_ptPrevMouse.y);
+			m_fAngleY += (ptCurrMouse.x - m_ptPrevMouse.x);
+			m_ptPrevMouse = ptCurrMouse;
+			if (m_fAngleX > 89)
+			{
+				m_fAngleX = 89;
+			}
+			else if (m_fAngleX < -89)
+			{
+				m_fAngleX = -89;
+			}
+			if (m_fAngleY > 360) 
+			{
+				m_fAngleY -= 360;
+			}	
+			else if (m_fAngleY < 0)
+			{
+				m_fAngleY += 360;
+			}
+		}
+	}
+	return true;
+	case WM_MOUSEWHEEL:
+		m_fDistance -= GET_WHEEL_DELTA_WPARAM(wParam) / 100.0f;
+		if (m_fDistance < m_fMinDistance)
+			m_fDistance = m_fMinDistance;
+		return true;
+	}
+	return false;
 }

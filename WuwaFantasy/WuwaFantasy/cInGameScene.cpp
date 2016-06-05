@@ -18,12 +18,15 @@ cInGameScene::~cInGameScene()
 
 void cInGameScene::Update()
 {
+	g_pTimeManager->Update();
+	g_pMessageDispatcher->Update();
+
 	m_pCamera->Update();
 	if (m_pPlayer) m_pPlayer->Update();
 
 	if (m_bPaused)
 		return;
-	g_pTimeManager->Update();
+	
 	for (auto iter = m_mapObject.begin(); iter != m_mapObject.end(); ++iter)
 	{
 		std::vector<cObject*>& vecObject = iter->second;
@@ -75,8 +78,6 @@ void cInGameScene::EnterScene()
 	RECT rc;
 	GetClientRect(g_hWnd, &rc);
 	m_pCamera->SetAspect(rc.right / (float)rc.bottom);
-	m_pCamera->SetMinFov(1.0f);
-	m_pCamera->SetMaxFov(1000.0f);
 
 	m_pPlayer = new cPlayer;
 	m_pPlayer->Setup();
@@ -110,4 +111,22 @@ void cInGameScene::ExitScene()
 
 void cInGameScene::ChangeScene(cIScene * _pNextScene)
 {
+}
+
+void cInGameScene::MessageHandling(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
+{
+	//static D3DXVECTOR3
+	switch (iMessage)
+	{
+	case WM_LBUTTONDOWN:
+	case WM_LBUTTONUP:
+	case WM_MOUSEMOVE:
+	case WM_MOUSEWHEEL:
+		g_pGameManager->GetCamera()->MessageHandle(hWnd, iMessage, wParam, lParam);
+		break;
+	case WM_RBUTTONDOWN:
+		Packet_Move* packet=new Packet_Move(g_pPickManager->GetRayPos());
+		g_pMessageDispatcher->Dispatch(0,g_pGameManager->GetPlayerID(),0.0f,Msg_Move, &packet);
+		break;
+	}
 }

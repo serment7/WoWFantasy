@@ -132,3 +132,4 @@ struct BoundingBox
 #include "cSpriteManager.h"
 #include "Packet.h"
 #include "cMessageDispatcher.h"
+#include "cPickManager.h"
