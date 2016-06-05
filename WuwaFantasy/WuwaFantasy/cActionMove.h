@@ -4,7 +4,6 @@ class cActionMove :
 	public cIAction
 {
 private:
-	D3DXVECTOR3		m_vCurPos;
 	D3DXVECTOR3		m_vFrom;
 	D3DXVECTOR3		m_vTo;
 

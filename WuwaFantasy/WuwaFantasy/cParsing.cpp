@@ -40,7 +40,7 @@ bool cParsing::Load(char * _path)
 const std::string& cParsing::GetToken()
 {
 	int nReadCount = 0;
-	
+
 	while (true)
 	{
 		char c = fgetc(m_fp);
@@ -55,7 +55,7 @@ const std::string& cParsing::GetToken()
 		}
 		m_szToken[nReadCount++] = c;
 	}
-	
+
 	m_szToken[nReadCount] = '\0';
 	m_length = strlen(m_szToken);
 	ret = m_szToken;

@@ -1,14 +1,13 @@
 #pragma once
 
-class cObject;
+class iObject;
 
 #define g_pObjectManager cObjectManager::GetInstance()
 
 class cObjectManager
 {
 private:
-	std::map<size_t, cObject*> m_mapObjectByID;
-	std::map<size_t , std::vector<cObject*>> m_mapObjectByTag;
+	std::set<iObject*> m_setObject;
 
 public:
 	cObjectManager();
@@ -20,10 +19,7 @@ public:
 		return &instance;
 	}
 
-	void			AddObject(cObject* _object);
-	void			RemoveObject(cObject* _object);
-	void			Destroy();
-
-	cObject*				FindObjectByID(const size_t _id);
-	std::vector<cObject*>&	FindObjectByTag(const size_t _tag);
+	void AddObject(iObject* _object);
+	void RemoveObject(iObject* _object);
+	void Destroy();
 };

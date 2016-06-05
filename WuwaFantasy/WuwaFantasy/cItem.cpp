@@ -20,3 +20,8 @@ const std::string & cItem::GetItemName() const
 {
 	return m_itemname;
 }
+
+void cItem::AddEffect(const std::string & _effectName)
+{
+	m_effect.push_back(_effectName);
+}

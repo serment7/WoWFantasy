@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "cTimeManager.h"
 
-//#pragma comment(lib,"Winmm.lib")
-
 cTimeManager::cTimeManager()
 	: fDeltaTime(0.0f)
 {

@@ -54,12 +54,12 @@ void cGameManager::SetPlayerID(int _nPlayerID)
 
 void cGameManager::RegisterObjectType(const std::string & _typename, const size_t & _tagID)
 {
-	m_mapObjectType.insert(std::pair<std::string,size_t>(_typename,_tagID));
+	m_mapObjectType.insert(std::pair<std::string, size_t>(_typename, _tagID));
 }
 
 void cGameManager::RegisterSkill(cSkill* _skill)
 {
-	m_mapSkill.insert(std::pair<std::string, cSkill*>(_skill->GetSkillName() , _skill));
+	m_mapSkill.insert(std::pair<std::string, cSkill*>(_skill->GetSkillName(), _skill));
 }
 
 void cGameManager::RegisterJob(cJob* _job)

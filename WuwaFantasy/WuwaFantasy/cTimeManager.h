@@ -18,6 +18,6 @@ public:
 		static cTimeManager instance;
 		return &instance;
 	}
-	void			Update();
-	const float&	GetDeltaTime();
+	void Update();
+	const float& GetDeltaTime();
 };

@@ -61,7 +61,7 @@ void cDeviceManager::Destroy()
 	if (m_pD3DDevice)
 	{
 		ULONG ul = m_pD3DDevice->Release();
-		assert(ul == 0 && "디바이스로 만들어 낸 객체 중 소멸되지 않은 객체가 있습니다");
+		assert(ul == 0 && "디바이스로 만들푳E낸 객체 중 소툈E프갋않은 객체가 있습니다");
 		m_pD3DDevice = nullptr;
 	}
 

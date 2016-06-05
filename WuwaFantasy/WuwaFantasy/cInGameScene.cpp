@@ -1,11 +1,12 @@
 #include "stdafx.h"
 #include "cInGameScene.h"
 #include "cObject.h"
-#include"cObjectTypeScript.h"
 
 cInGameScene::cInGameScene()
 	: m_bPaused(FALSE)
 	, m_fPlayTime(0.0f)
+	, m_pGrid(nullptr)
+	, m_pCamera(nullptr)
 {
 }
 
@@ -17,6 +18,9 @@ cInGameScene::~cInGameScene()
 
 void cInGameScene::Update()
 {
+	m_pCamera->Update();
+	if (m_pPlayer) m_pPlayer->Update();
+
 	if (m_bPaused)
 		return;
 	g_pTimeManager->Update();
@@ -39,6 +43,7 @@ void cInGameScene::Render()
 		//D3DCOLOR_XRGB(0, 0, 255),
 		1.0f, 0);
 	g_pD3DDevice->BeginScene();
+	g_pD3DDevice->LightEnable(0, true);
 	for (auto iter = m_mapObject.begin(); iter != m_mapObject.end(); ++iter)
 	{
 		if (iter->first == 0)
@@ -50,24 +55,38 @@ void cInGameScene::Render()
 			vecObject[i]->Render();
 		}
 	}
+	if (m_pGrid) m_pGrid->Render();
+	if (m_pPlayer) m_pPlayer->Render();
+
 	g_pD3DDevice->EndScene();
 	g_pD3DDevice->Present(NULL, NULL, NULL, NULL);
 }
 
 void cInGameScene::EnterScene()
 {
-	cIScript* m_pScript = new cObjectTypeScript;
-	m_pScript->RunScript();
-	while (m_pScript->IsRun())
-	{
-		m_pScript->Update();
-	}
-	SAFE_DELETE(m_pScript);
+	m_pGrid = new cGrid;
+	m_pGrid->Setup();
+
+	m_pCamera = new cCamera;
+	m_pCamera->SetAspect(1.0f);
+	m_pCamera->SetMinFov(0.0f);
+	m_pCamera->SetMaxFov(1.0f);
+
+	m_pPlayer = new cPlayer;
+	m_pPlayer->Setup();
+
+	ZeroMemory(&m_light, sizeof(m_light));
+	m_light.Type = D3DLIGHT_DIRECTIONAL;
+	m_light.Direction = D3DXVECTOR3(1, 0, 0);
+	D3DCOLORVALUE color;
+	color.a = color.b = color.g = color.r = 1.0f;
+	m_light.Ambient = m_light.Diffuse = m_light.Specular = color;
+	g_pD3DDevice->SetLight(0, &m_light);
+	
 }
 
 void cInGameScene::ExitScene()
 {
-
 	for (auto iter = m_mapObject.begin(); iter != m_mapObject.end(); ++iter)
 	{
 		std::vector<cObject*>& vecObject = iter->second;
@@ -76,7 +95,10 @@ void cInGameScene::ExitScene()
 			SAFE_RELEASE(vecObject[i]);
 		}
 	}
-}
+	SAFE_RELEASE(m_pPlayer);
+	SAFE_RELEASE(m_pGrid);
+	SAFE_DELETE(m_pCamera);
+}	
 
 void cInGameScene::ChangeScene(cIScene * _pNextScene)
 {

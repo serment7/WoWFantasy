@@ -1,24 +1,24 @@
-// stdafx.h : 자주 사용하지만 자주 변경되지는 않는
-// 표준 시스템 포함 파일 또는 프로젝트 관련 포함 파일이
-// 들어 있는 포함 파일입니다.
+// stdafx.h : 자주 사퓖E舊嗤?자주 변경되지는 않는
+// 표준 시스템 포함 파일 또는 프로젝트 컖E?포함 파일이
+// 들푳E있는 포함 파일입니다.
 //
 
 #pragma once
 
 #include "targetver.h"
 
-#define WIN32_LEAN_AND_MEAN             // 거의 사용되지 않는 내용은 Windows 헤더에서 제외합니다.
-// Windows 헤더 파일:
+#define WIN32_LEAN_AND_MEAN             // 거의 사퓖E프갋않는 내퓖E?Windows ?E叢【?제외합니다.
+// Windows ?E갋파일:
 #include <windows.h>
 
-// C 런타임 헤더 파일입니다.
+// C 런타임 ?E갋파일입니다.
 #include <stdlib.h>
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
 #include <cstring>
 
-// TODO: 프로그램에 필요한 추가 헤더는 여기에서 참조합니다.
+// TODO: 프로그램에 필요한 추가 ?E醮?여기에서 혖E또爛求?
 #include<d3d9.h>
 #include<d3dx9.h>
 
@@ -35,6 +35,14 @@ extern HWND g_hWnd;
 #define IN
 
 #define EPSILON 0.0001f
+
+//This Struct is Used by cGrid Class, Until Develop Days
+struct ST_PC_VERTEX
+{
+	D3DXVECTOR3 p;
+	DWORD		c;
+	enum { FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE, };
+};
 
 struct ST_PNT_VERTEX
 {
@@ -120,9 +128,5 @@ struct BoundingBox
 #include "cTimeManager.h"
 #include "cGameManager.h"
 #include "cObjectManager.h"
-#include "cAllocateHierarchy.h"
 #include "cTextureManager.h"
 #include "cSpriteManager.h"
-
-#define STD_FILE_BUFFER 1024
-#define BETWEENSIZE 1

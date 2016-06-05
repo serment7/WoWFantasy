@@ -4,18 +4,19 @@
 #include <assert.h>
 
 cObject::cObject()
-:	nRefCount(1)
+:	nRefCount(0)
 ,	m_vPos(0, 0, 0)
 ,	m_vDir(0, 0, 1)
 {
-	//오브젝트 매니저 추가
+	//오틒E㎷?매니픸E추가
 }
 
 cObject::~cObject()
+
 {
-	//오브젝트 매니저 삭제
+	//오틒E㎷?매니픸E삭제
 #ifdef _DEBUG
-	assert(nRefCount <= 0 && "해제 된 오브젝트를 한번 더 해제합니다");
+	assert(nRefCount <= 0 && "해제 된 오틒E㎷??한퉩E큱E해제합니다");
 #endif
 }
 
@@ -35,11 +36,26 @@ void cObject::Release()
 
 void cObject::Update()
 {
-	//밖에서 vPos와 vDir을 받아서 셋팅되어 있는 상태에서 계산됨
+	//밖에서 vPos와 vDir을 받아서 셋팅되푳E있는 상태에서 계퍊E?
 	D3DXMATRIXA16 matWorld;
 
 	D3DXMatrixTranslation(&m_matT, m_vPos.x, m_vPos.y, m_vPos.z);
 	matWorld = m_matS * m_matR * m_matT;
 
 	m_matWorld = matWorld;
+}
+
+void cObject::SetRotationY(const float & _angle)
+{
+	m_angleY = _angle;
+}
+
+void cObject::TurnRotationY(const float & _angle)
+{
+	m_angleY += _angle;
+}
+
+const float & cObject::GetRotationY() const
+{
+	return m_angleY;
 }
