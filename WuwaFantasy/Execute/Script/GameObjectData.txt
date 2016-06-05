@@ -1,0 +1,59 @@
+#게임오브젝트정보
+start
+item
+{
+	start index 1
+
+	register item
+	{
+		name	"HP Potion(소)"
+		type	supply #소모품
+		time	0	#즉시 효과발동
+		effect heal
+		curhp	+50
+		resource	ddd.X
+	}
+
+	register item
+	{
+		name	"MP Potion(소)"
+		type	supply
+		time	0
+		effect heal
+		curmp	+50
+		resource	ddd.X
+	}
+
+	register item
+	{
+		name	"HP Potion(대)"
+		type	supply
+		time	5	#5초동안 회복
+		effect heal
+		curmp	+50
+		resource	ddd.X
+	}
+	register item
+	{
+		name	"MP Potion(대)"
+		type	supply
+		time	5
+		effect heal
+		curmp	+50
+		resource	ddd.X
+	}
+}
+
+weapon
+{
+	register item
+	{
+		name	"dagger"
+		type	equipment
+		curmp	+50
+		resource	ddd.X
+	}
+}
+
+
+end

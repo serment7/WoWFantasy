@@ -1,0 +1,30 @@
+#Skill
+start
+register skill
+{
+	name	"magic missile"
+	#skilltype temporary 	#일시적 데미지
+	ani 	0		#사용 애니메이션 인덱스
+	damage	100		#데미지 계산 수식
+	resource magicmissile.X
+}
+
+register skill
+{
+	name	"poison"
+	#skilltype continuous 	#지속적 데미지
+	time	1.0		#데미지 주는 간격
+	ani 	0		#사용 애니메이션 인덱스
+	damage	100		#데미지 계산 수식
+	resource magicmissile.X
+}
+
+register skill
+{
+	name	"insanity"
+	#skilltype temporary 	#정신이상
+	time 	100		#효과 시간 수식
+	ani 	0		#사용 애니메이션 인덱스
+	resource magicmissile.X
+}
+end

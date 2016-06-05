@@ -1,0 +1,46 @@
+#카메라 연출
+start index 1
+
+add drama
+{
+	type		linear		#선형 보간법
+	time		3		#선형보간 시간
+	movefrom	0 0 0		#시작지점
+	movefrom	target		#인게임 타겟위치
+	moveto		10 10 10	#도착지점
+	moveto		target		#인게임 타겟위치
+}
+
+add drama
+{
+	type		rotate
+	time		3		#회전 시간
+
+	#from
+	fromrotation	0 0 0		#시작 로테이션
+	fromdir				#시작방향 인게임에서 설정
+	fromtarget			#시작타겟 인게임에서 설정
+
+	#moveto or totarget 중 하나
+	moveto		0 90 45 	#도착 로테이션
+	todir				#도착방향 인게임에서 설정
+	totarget			#도착타겟 인게임에서 설정
+}
+
+
+add drama
+{
+	type		velocity
+	time		3		#움직임 시간
+	movefrom	1 1 1		#매 프레임 속도
+}
+
+add drama
+{
+	type		distance	#타겟과의 거리
+	time		3		#움직임 시간
+	movefrom	3		#시작 거리
+	moveto		10		#도착 거리
+}
+
+end

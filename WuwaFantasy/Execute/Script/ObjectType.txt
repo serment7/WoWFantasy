@@ -1,0 +1,9 @@
+#object type
+start index 1
+type 	player
+type 	combatnpc
+type    interactionnpc
+type 	monster
+type	collider
+type	item
+end
