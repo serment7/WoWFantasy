@@ -8,11 +8,10 @@ private:
 
 public:
 	cPlayer();
-	~cPlayer();
+	virtual ~cPlayer();
 
 	void Setup();
-	void Update();
-	void Render();
-	virtual void Release();
+	virtual void Update();
+	virtual void Render();
 };
 

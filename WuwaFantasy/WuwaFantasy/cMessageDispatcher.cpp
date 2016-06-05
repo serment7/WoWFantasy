@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "cMessageDispatcher.h"
-#include"cObject.h"
+#include"cGameObject.h"
 
 cMessageDispatcher::cMessageDispatcher()
 {
@@ -19,7 +19,7 @@ void cMessageDispatcher::Update()
 	ST_PACKET packet = *m_message.begin();
 	if (packet.delayTime < g_pTimeManager->GetCurTime())
 	{
-		cObject* pReceiver = g_pObjectManager->FindObjectByID(packet.receiver);
+		cGameObject* pReceiver = g_pObjectManager->FindObjectByID(packet.receiver);
 		pReceiver->OnMessage(packet);
 	}
 }
@@ -36,7 +36,7 @@ void cMessageDispatcher::Dispatch(const size_t & _sender, const size_t & _receiv
 	
 	if (_delay <= 0.0f)
 	{
-		cObject* pReceiver=g_pObjectManager->FindObjectByID(_receiver);
+		cGameObject* pReceiver=g_pObjectManager->FindObjectByID(_receiver);
 		pReceiver->OnMessage(packet);
 	}
 	else

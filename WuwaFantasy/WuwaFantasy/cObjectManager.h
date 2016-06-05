@@ -1,14 +1,14 @@
 #pragma once
 
-class cObject;
+class cGameObject;
 
 #define g_pObjectManager cObjectManager::GetInstance()
 
 class cObjectManager
 {
 private:
-	std::map<size_t, cObject*> m_mapObjectByID;
-	std::map<size_t, std::vector<cObject*>> m_mapObjectByTag;
+	std::map<size_t, cGameObject*> m_mapObjectByID;
+	std::map<size_t, std::vector<cGameObject*>> m_mapObjectByTag;
 
 	size_t				m_unInstanceID = 1;
 
@@ -22,9 +22,9 @@ public:
 		return &instance;
 	}
 
-	void AddObject(cObject* _object);
-	void RemoveObject(cObject* _object);
-	cObject*					FindObjectByID(const size_t& _id);
-	std::vector<cObject*>&		FindObjectByTag(const size_t& _tag);
+	void AddObject(cGameObject* _object);
+	void RemoveObject(cGameObject* _object);
+	cGameObject*					FindObjectByID(const size_t& _id);
+	std::vector<cGameObject*>&		FindObjectByTag(const size_t& _tag);
 	void Destroy();
 };

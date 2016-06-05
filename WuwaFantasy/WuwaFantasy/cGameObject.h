@@ -7,6 +7,8 @@
 
 const TCHAR MODEL_PATH[] = "./Resource/Model";
 
+class cCondition;
+
 class cGameObject : public cObject
 {
 public:
@@ -16,10 +18,28 @@ public:
 	cSkinnedMesh*				m_chrSkinnedMesh = nullptr;
 	cWeaponSkinnedMesh*			m_objSkinnedMesh = nullptr;
 
+
+	cStateMachine<cObject>*			m_pStateMachine;
+	std::list<cCondition*>			m_listCondition;
+
+
+	size_t			m_unID = -1;
+	size_t			m_unTag = -1;
+
 public:
 	cGameObject();
 	virtual ~cGameObject();
 
-	cStatus& GetStatus();
-	cSkinnedMesh* GetSkinnedMesh() { return m_chrSkinnedMesh; };
+	virtual void		Update();
+	virtual void		Render();
+
+	void SetID(const size_t& _id);
+	void SetTag(const size_t& _tag);
+	const size_t& GetID();
+	const size_t& GetTag();
+
+	cStatus&			GetStatus();
+	cSkinnedMesh*		GetSkinnedMesh() { return m_chrSkinnedMesh; };
+	void				AddCondition(cCondition* _pCondition);
+	void				OnMessage(const ST_PACKET& _packet);
 };

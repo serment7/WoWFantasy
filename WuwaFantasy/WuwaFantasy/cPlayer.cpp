@@ -24,16 +24,10 @@ void cPlayer::Setup()
 
 void cPlayer::Update()
 {
-	m_chrSkinnedMesh->Update();
+	cGameObject::Update();
 }
 
 void cPlayer::Render()
 {
-	m_chrSkinnedMesh->Render(NULL);
-}
-
-void cPlayer::Release()
-{
-	SAFE_RELEASE(m_chrSkinnedMesh);
-	cObject::Release();
+	cGameObject::Render();
 }

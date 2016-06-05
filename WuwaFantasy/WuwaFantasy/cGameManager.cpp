@@ -16,6 +16,7 @@ cGameManager::cGameManager()
 
 cGameManager::~cGameManager()
 {
+	
 }
 
 const int & cGameManager::GetFPS()

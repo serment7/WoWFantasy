@@ -16,7 +16,7 @@ private:
 
 public:
 	cGrid();
-	~cGrid();
+	virtual ~cGrid();
 
 	void Setup( int nLine = 30, float fInterval = 1.0f);
 	void Render();

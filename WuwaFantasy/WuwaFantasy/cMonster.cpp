@@ -26,8 +26,3 @@ void cMonster::Render()
 {
 	cGameObject::Render();
 }
-
-void cMonster::Release()
-{
-	cGameObject::Release();
-}
