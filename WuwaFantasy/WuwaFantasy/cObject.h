@@ -5,7 +5,7 @@
 class iObject
 {
 public:
-	int nRefCount;
+	int				nRefCount;
 
 public:
 	virtual D3DXMATRIXA16 GetWorldMatrix() PURE;
@@ -29,9 +29,17 @@ private:
 	float			m_angleY = 0.0f;
 	int nRefCount;
 
+	size_t			m_unID = -1;
+	size_t			m_unTag = -1;
+
 public:
 	cObject();
 	virtual ~cObject();
+
+	void SetID(const size_t& _id);
+	void SetTag(const size_t& _tag);
+	const size_t& GetID();
+	const size_t& GetTag();
 
 	void SetScaling(const float& sx, const float& sy, const float& sz)
 	{

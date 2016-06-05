@@ -20,6 +20,26 @@ cObject::~cObject()
 #endif
 }
 
+void cObject::SetID(const size_t & _id)
+{
+	m_unID = _id;
+}
+
+void cObject::SetTag(const size_t & _tag)
+{
+	m_unTag = _tag;
+}
+
+const size_t & cObject::GetID()
+{
+	return m_unID;
+}
+
+const size_t & cObject::GetTag()
+{
+	return m_unTag;
+}
+
 void cObject::AddRef()
 {
 	++nRefCount;
