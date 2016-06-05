@@ -3,7 +3,7 @@
 
 
 cCamera::cCamera()
-	: m_vEye(0.0f, 5.0f, 5.0f)
+	: m_vEye(-5.0f, 0.0f, 0.0f)
 	, m_vUp(0.0f, 1.0f, 0.0f)
 	, m_vLookAt(0.0f, 0.0f, 0.0f)
 	, m_fFovy(D3DX_PI / 4.0f)
