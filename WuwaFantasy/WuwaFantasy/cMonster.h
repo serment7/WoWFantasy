@@ -1,8 +1,6 @@
 #pragma once
 #include "cMovingObject.h"
 
-class cStateMachine;
-
 class cMonster :
 	public cMovingObject
 {

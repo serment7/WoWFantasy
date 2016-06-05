@@ -1,7 +1,7 @@
 
 #pragma once
 
-class cStateMachine;
+#include"cStateMachine.h"
 class cCondition;
 
 //interface
@@ -35,7 +35,7 @@ private:
 	size_t			m_unID = -1;
 	size_t			m_unTag = -1;
 
-	cStateMachine*			m_pStateMachine;
+	cStateMachine<cObject>*			m_pStateMachine;
 	std::list<cCondition*>	m_listCondition;
 
 public:

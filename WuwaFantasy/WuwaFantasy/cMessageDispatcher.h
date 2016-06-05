@@ -30,7 +30,6 @@ private:
 
 private:
 	MsgSet		m_message;
-	MsgSet		m_delayMessage;
 
 public:
 	cMessageDispatcher();
@@ -42,7 +41,8 @@ public:
 		return &instance;
 	}
 
-	void Discharge();
+	void Update();
 	void Dispatch(const size_t& _sender, const size_t& _receiver,const float& _delay, 
-		size_t _msg_type, void* _info);
+		Msg_Type _msg_type, void* _info);
+	void Clear();
 };

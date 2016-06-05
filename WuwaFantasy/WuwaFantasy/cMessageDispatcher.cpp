@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "cMessageDispatcher.h"
-
+#include"cObject.h"
 
 cMessageDispatcher::cMessageDispatcher()
 {
@@ -11,17 +11,21 @@ cMessageDispatcher::~cMessageDispatcher()
 {
 }
 
-void cMessageDispatcher::Discharge()
-{
-	if (!pReceiver->HandleMessage(telegram))
+void cMessageDispatcher::Update()
+{	
+	if (m_message.empty())
+		return;
+
+	ST_PACKET packet = *m_message.begin();
+	if (packet.delayTime < g_pTimeManager->GetCurTime())
 	{
-		//telegram could not be handled
-		cout << "Message not handled";
+		cObject* pReceiver = g_pObjectManager->FindObjectByID(packet.receiver);
+		pReceiver->OnMessage(packet);
 	}
 }
 
 void cMessageDispatcher::Dispatch(const size_t & _sender, const size_t & _receiver, 
-	const float& _delay, size_t msg_type, void * _info)
+	const float& _delay, Msg_Type msg_type, void * _info)
 {
 	static ST_PACKET packet;
 	packet.sender = _sender;
@@ -33,5 +37,16 @@ void cMessageDispatcher::Dispatch(const size_t & _sender, const size_t & _receiv
 	if (_delay <= 0.0f)
 	{
 		cObject* pReceiver=g_pObjectManager->FindObjectByID(_receiver);
+		pReceiver->OnMessage(packet);
 	}
+	else
+	{
+		packet.delayTime = g_pTimeManager->GetCurTime() + _delay;
+		m_message.insert(packet);
+	}
+}
+
+void cMessageDispatcher::Clear()
+{
+	m_message.clear();
 }

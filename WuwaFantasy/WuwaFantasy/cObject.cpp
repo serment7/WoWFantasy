@@ -1,7 +1,8 @@
 
 #include "stdafx.h"
 #include "cObject.h"
-#include <assert.h>
+#include "cStateMachine.h"
+#include"cCondition.h"
 
 cObject::cObject()
 :	nRefCount(0)
@@ -36,6 +37,11 @@ const size_t & cObject::GetTag()
 	return m_unTag;
 }
 
+void cObject::AddCondition(cCondition * _pCondition)
+{
+	m_listCondition.push_back(_pCondition);
+}
+
 void cObject::AddRef()
 {
 	++nRefCount;
@@ -60,6 +66,12 @@ void cObject::Update()
 	matWorld = m_matS * m_matR * m_matT;
 
 	m_matWorld = matWorld;
+
+	for (auto conditionIter = m_listCondition.begin(); conditionIter != m_listCondition.end();
+		++conditionIter)
+	{
+		(*conditionIter)->Update();
+	}
 }
 
 void cObject::SetRotationY(const float & _angle)
@@ -75,4 +87,12 @@ void cObject::TurnRotationY(const float & _angle)
 const float & cObject::GetRotationY() const
 {
 	return m_angleY;
+}
+
+void cObject::OnMessage(const ST_PACKET & _packet)
+{
+	if (m_pStateMachine)
+	{
+
+	}
 }

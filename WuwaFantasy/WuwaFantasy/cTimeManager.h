@@ -8,7 +8,8 @@ private:
 	LARGE_INTEGER timeStart;
 	LARGE_INTEGER timeEnd;
 	LARGE_INTEGER timerFreq;
-	float   fDeltaTime;
+	float			fDeltaTime;
+	DWORD			dwCurrentTime;
 public:
 	cTimeManager();
 	virtual ~cTimeManager();
@@ -20,4 +21,5 @@ public:
 	}
 	void Update();
 	const float& GetDeltaTime();
+	const DWORD& GetCurTime();
 };
