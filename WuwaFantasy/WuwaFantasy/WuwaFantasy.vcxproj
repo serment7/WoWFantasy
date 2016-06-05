@@ -180,7 +180,6 @@
     <ClInclude Include="cObjectManager.h" />
     <ClInclude Include="cObjectTypeScript.h" />
     <ClInclude Include="cParsing.h" />
-    <ClInclude Include="cPicking.h" />
     <ClInclude Include="cPickManager.h" />
     <ClInclude Include="cPlayer.h" />
     <ClInclude Include="cPlayerControlState.h" />
@@ -230,7 +229,6 @@
     <ClCompile Include="cObjectManager.cpp" />
     <ClCompile Include="cObjectTypeScript.cpp" />
     <ClCompile Include="cParsing.cpp" />
-    <ClCompile Include="cPicking.cpp" />
     <ClCompile Include="cPickManager.cpp" />
     <ClCompile Include="cPlayer.cpp" />
     <ClCompile Include="cPlayerControlState.cpp" />

@@ -126,9 +126,6 @@
     <ClInclude Include="cPlayer.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
-    <ClInclude Include="cPicking.h">
-      <Filter>소스 파일\Picking</Filter>
-    </ClInclude>
     <ClInclude Include="cGrid.h">
       <Filter>소스 파일\Picking</Filter>
     </ClInclude>
@@ -267,9 +264,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="cGrid.cpp">
-      <Filter>소스 파일\Picking</Filter>
-    </ClCompile>
-    <ClCompile Include="cPicking.cpp">
       <Filter>소스 파일\Picking</Filter>
     </ClCompile>
     <ClCompile Include="cPickManager.cpp">
