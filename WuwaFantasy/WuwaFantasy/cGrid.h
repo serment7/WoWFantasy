@@ -8,6 +8,7 @@ class cGrid :
 {
 private:
 	std::vector<ST_PC_VERTEX>				m_vecVertex;
+	std::vector<ST_PNT_VERTEX>				m_TriVertex;
 	//std::vector<cPyramid*>				m_vecPyramid;
 	//std::vector<cPyramid*>::iterator		m_iPyramid;
 
@@ -18,7 +19,7 @@ public:
 	cGrid();
 	virtual ~cGrid();
 
-	void Setup( int nLine = 30, float fInterval = 1.0f);
+	void Setup( float nLine = 30, float fInterval = 1.0f);
 	void Render();
-
+	std::vector<ST_PNT_VERTEX>&		GetTriVertex();
 };

@@ -17,19 +17,18 @@ bool cPickManager::IsPickedTry(ST_PNT_VERTEX vec1,
 								const int & x, 
 								const int & y)
 {
-	cRay nRay;
-	m_nRay = nRay.RayAtWorldSpace(x, y);
+	m_nRay = cRay::RayAtWorldSpace(x, y);
 	float u, v, f;
 		
 	if (D3DXIntersectTri(
 		&vec1.p,
 		&vec2.p,
 		&vec3.p,
-		&nRay.GetOrigin(),
-		&nRay.GetDirection(),
+		&m_nRay.GetOrigin(),
+		&m_nRay.GetDirection(),
 		&u, &v, &f))
 	{
-		m_vPos = nRay.GetOrigin() + nRay.GetDirection() * f;
+		m_vPos = m_nRay.GetOrigin() + m_nRay.GetDirection() * f;
 		return true;
 	}
 	return false;
@@ -37,8 +36,8 @@ bool cPickManager::IsPickedTry(ST_PNT_VERTEX vec1,
 
 bool cPickManager::IsPickedSphere(BoundingSphere sphere, const int & x, const int & y)
 {
-	cRay nRay;
-	if (nRay.IsPicked(sphere))
+	m_nRay = cRay::RayAtWorldSpace(x, y);
+	if (m_nRay.IsPicked(sphere))
 	{
 		return true;
 	}
@@ -47,8 +46,7 @@ bool cPickManager::IsPickedSphere(BoundingSphere sphere, const int & x, const in
 
 bool cPickManager::IsPickedTry(std::vector<ST_PNT_VERTEX> vec, const int & x, const int & y)
 {
-	cRay nRay;
-	m_nRay = nRay.RayAtWorldSpace(x, y);
+	m_nRay = cRay::RayAtWorldSpace(x, y);
 	float u, v, f;
 
 	for (size_t i = 0; i < vec.size(); i+=3)
@@ -57,11 +55,11 @@ bool cPickManager::IsPickedTry(std::vector<ST_PNT_VERTEX> vec, const int & x, co
 			&vec[i].p,
 			&vec[i + 1].p,
 			&vec[i + 2].p,
-			&nRay.GetOrigin(),
-			&nRay.GetDirection(),
+			&m_nRay.GetOrigin(),
+			&m_nRay.GetDirection(),
 			&u, &v, &f))
 		{
-			m_vPos = nRay.GetOrigin() + nRay.GetDirection() * f;
+			m_vPos = m_nRay.GetOrigin() + m_nRay.GetDirection() * f;
 			return true;
 		}
 	}
@@ -71,10 +69,10 @@ bool cPickManager::IsPickedTry(std::vector<ST_PNT_VERTEX> vec, const int & x, co
 
 bool cPickManager::IsPickedSphere(std::vector<BoundingSphere> vec, const int & x, const int & y)
 {
-	cRay nRay;
+	m_nRay = cRay::RayAtWorldSpace(x, y);
 	for (size_t i = 0; i < vec.size(); ++i)
 	{
-		if (nRay.IsPicked(vec[i]))
+		if (m_nRay.IsPicked(vec[i]))
 		{
 			return true;
 		}

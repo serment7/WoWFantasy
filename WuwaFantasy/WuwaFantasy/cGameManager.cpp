@@ -24,6 +24,11 @@ const int & cGameManager::GetFPS()
 	return m_nFPS;
 }
 
+const POINT & cGameManager::GetCursorPoint()
+{
+	return m_ptCursor;
+}
+
 cCamera * cGameManager::GetCamera()
 {
 	return &m_camera;
@@ -87,11 +92,11 @@ void cGameManager::UpdateClientSize()
 void cGameManager::UpdateCursorPointInGlobal()
 {
 	GetCursorPos(&m_ptCursor);
-	ClientToScreen(g_hWnd, &m_ptCursor);
+	ScreenToClient(g_hWnd, &m_ptCursor);
 }
 
 void cGameManager::UpdateCursorPointByWindow(const HWND & _targetWindow)
 {
 	GetCursorPos(&m_ptCursor);
-	ClientToScreen(_targetWindow, &m_ptCursor);
+	ScreenToClient(_targetWindow, &m_ptCursor);
 }

@@ -11,6 +11,7 @@ public:
 	ST_BONE*					m_pRightHand;
 
 	std::string					m_folderName;
+	D3DXMATRIXA16				m_matWorld;
 			
 public:
 	cSkinnedMesh(void);
@@ -24,7 +25,7 @@ public:
 	void SetAnimationIndexBlend(int nIndex);
 	bool CompuseBoneName(char* str1, char* str2);
 	ST_BONE* GetBoneNamedMesh(ST_BONE* pBone, char* szBoneName);
-
+	void SetWorldMatrix(const D3DXMATRIXA16& _matWorld);
 
 	const std::string&			GetFolderName();
 	void						SetFolderName(const std::string& _name);

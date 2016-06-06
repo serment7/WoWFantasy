@@ -5,7 +5,7 @@
 
 enum EN_WEAPON_TYPE
 {
-	LEFT_HAND_WEAPON = 1000,		//왼손무콅E
+	LEFT_HAND_WEAPON = 0x1000,		//왼손무콅E
 	RIGHT_HAND_WEAPON,				//오른손무콅E
 	LEFT_HAND_SHILED,				//방패
 	HEAD_BOWL,						//투구
@@ -32,6 +32,7 @@ public:
 	void Render(LPD3DXFRAME pFrame);
 	void SetAnimationIndex(int nIndex);
 	void SetAnimationIndexBlend(int nIndex);
+	void SetWorldMatrix(const D3DXMATRIXA16& _matWorld);
 
 private:
 	void Update(LPD3DXFRAME pFrame, ST_BONE* pParent);

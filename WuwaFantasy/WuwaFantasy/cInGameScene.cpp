@@ -116,6 +116,7 @@ void cInGameScene::ChangeScene(cIScene * _pNextScene)
 void cInGameScene::MessageHandling(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
 	//static D3DXVECTOR3
+	static POINT curPos;
 	switch (iMessage)
 	{
 	case WM_LBUTTONDOWN:
@@ -125,8 +126,14 @@ void cInGameScene::MessageHandling(HWND hWnd, UINT iMessage, WPARAM wParam, LPAR
 		g_pGameManager->GetCamera()->MessageHandle(hWnd, iMessage, wParam, lParam);
 		break;
 	case WM_RBUTTONDOWN:
-		Packet_Move* packet=new Packet_Move(g_pPickManager->GetRayPos());
-		g_pMessageDispatcher->Dispatch(0,g_pGameManager->GetPlayerID(),0.0f,Msg_Move, &packet);
+		g_pGameManager->UpdateCursorPointInGlobal();
+		curPos = g_pGameManager->GetCursorPoint();
+		if (g_pPickManager->IsPickedTry(m_pGrid->GetTriVertex(), curPos.x, curPos.y))
+		{
+			Packet_Move* packet = new Packet_Move(g_pPickManager->GetRayPos());
+			packet->vDes.y = 0.0f;
+			g_pMessageDispatcher->Dispatch(0, g_pGameManager->GetPlayerID(), 0.0f, Msg_Move, packet);
+		}
 		break;
 	}
 }

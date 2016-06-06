@@ -8,8 +8,8 @@ cSkinnedMesh::cSkinnedMesh(void)
 	, m_fAnimBlendTime(0.3f)
 	, m_fPassedAnimBlendTime(0.0f)
 {
+	D3DXMatrixIdentity(&m_matWorld);
 }
-
 
 cSkinnedMesh::~cSkinnedMesh(void)
 {
@@ -89,7 +89,7 @@ void cSkinnedMesh::Render( LPD3DXFRAME pFrame )
 	else
 		pBone = (ST_BONE*)m_pRoot;
 
-	g_pD3DDevice->SetTransform(D3DTS_WORLD, &pBone->CombinedTransformationMatrix);
+	g_pD3DDevice->SetTransform(D3DTS_WORLD, &(pBone->CombinedTransformationMatrix*m_matWorld));
 	ST_BONE_MESH* pBoneMesh = (ST_BONE_MESH*)pBone->pMeshContainer;
 	if(pBoneMesh)
 	{
@@ -294,4 +294,9 @@ ST_BONE* cSkinnedMesh::GetBoneNamedMesh(ST_BONE* pBone, char* szBoneName)
 	}
 	return NULL;
 
+}
+
+void cSkinnedMesh::SetWorldMatrix(const D3DXMATRIXA16 & _matWorld)
+{
+	m_matWorld = _matWorld;
 }

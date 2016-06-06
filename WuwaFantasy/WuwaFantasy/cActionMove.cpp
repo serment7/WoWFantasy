@@ -22,19 +22,25 @@ void cActionMove::SetTo(const D3DXVECTOR3 & _vTo)
 
 void cActionMove::Start()
 {
-	float fActionTime = GetActionTime();
+	SetAction(true);
+	float fActionTime = 0.0f;
 	cGameObject* pOwner = GetOwner();
 	cStatus& status = pOwner->GetStatus();
 
-	if (fActionTime <= 0.0f)
-	{
-		fActionTime = (D3DXVec3LengthSq(&(m_vTo-m_vFrom))+0.001f)/status.GetSpeed();
-	}
+	fActionTime = (D3DXVec3Length(&(m_vTo - m_vFrom)) + 0.001f) / (status.GetSpeed());
+	SetActionTime(fActionTime);
 
 	SetPassedTime(0.0f);
 
 	D3DXVECTOR3 vTargetDir = m_vTo - m_vFrom;
 	D3DXVec3Normalize(&vTargetDir, &vTargetDir);
+	vTargetDir.z = -vTargetDir.z;
+
+	D3DXMATRIXA16 roty;
+	D3DXMatrixRotationY(&roty, 1.0f*D3DX_PI);
+	D3DXMATRIXA16 rot;
+	D3DXMatrixLookAtLH(&rot, &D3DXVECTOR3(0, 0, 0), &vTargetDir, &D3DXVECTOR3(0, 1, 0));
+	pOwner->SetRotationMatirx(rot);
 
 	D3DXVECTOR3 vCurDir = pOwner->GetVDir();
 
@@ -47,13 +53,13 @@ void cActionMove::Start()
 
 	float radian = (1.0f - f)*0.5f*D3DX_PI;
 
-	if (f < sf)
+	if (0.0f < sf)
 	{
-		pOwner->TurnRotationY(radian);
+		//pOwner->TurnRotationY(D3DXToDegree( -radian));
 	}
 	else
 	{
-		pOwner->TurnRotationY(-radian);
+		//pOwner->TurnRotationY(D3DXToDegree (radian));
 	}
 
 	GetOwner()->SetVDir(vTargetDir);
@@ -70,8 +76,9 @@ void cActionMove::Update()
 	if (fPassedTime < fActionTime)
 	{
 		fPassedTime += g_pTimeManager->GetDeltaTime();
+		SetPassedTime(fPassedTime);
 
-		float t = GetPassedTime() / GetActionTime();
+		float t = fPassedTime / fActionTime;
 		D3DXVECTOR3 velocity = (1.0f - t) * m_vFrom + t * m_vTo;
 		GetOwner()->SetVPos(velocity);
 	}

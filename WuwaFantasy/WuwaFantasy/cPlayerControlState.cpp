@@ -45,10 +45,11 @@ bool cPlayerControlState::OnMessage(cGameObject * _player, const ST_PACKET & _pa
 		return true;
 	case Msg_Move:
 		Packet_Move* packet = (Packet_Move*)_packet.info;
-		
+		m_actionMove->SetOwner(_player);
 		m_actionMove->SetFrom(_player->GetVPos());
 		m_actionMove->SetTo(packet->vDes);
 		m_actionMove->Start();
+		_player->GetSkinnedMesh()->SetAnimationIndex(2);
 		SAFE_DELETE(packet);
 		return true;
 	}
@@ -59,4 +60,5 @@ bool cPlayerControlState::OnMessage(cGameObject * _player, const ST_PACKET & _pa
 void cPlayerControlState::OnActionDelegate(cIAction * _pSender)
 {
 	m_actionMove->Stop();
+	_pSender->GetOwner()->GetSkinnedMesh()->SetAnimationIndex(4);
 }

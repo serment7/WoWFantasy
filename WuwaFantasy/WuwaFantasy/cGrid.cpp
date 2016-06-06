@@ -13,7 +13,7 @@ cGrid::~cGrid(void)
 	g_pD3DDevice->Release();
 }
 
-void cGrid::Setup( int nLine /*= 30*/, float fInterval /*= 1.0f*/ )
+void cGrid::Setup( float nLine /*= 30*/, float fInterval /*= 1.0f*/ )
 {
 	float fNumLine = (float)(nLine / 2);
 
@@ -109,7 +109,20 @@ void cGrid::Setup( int nLine /*= 30*/, float fInterval /*= 1.0f*/ )
 	pPyramid->Setup(&matWorld, D3DCOLOR_XRGB(0, 0, 255));
 	m_vecPyramid.push_back(pPyramid);
 	*/
-
+	ST_PNT_VERTEX triVertex;
+	ZeroMemory(&triVertex, sizeof(triVertex));
+	triVertex.p = D3DXVECTOR3(-fMax,0, -fMax);
+	m_TriVertex.push_back(triVertex);
+	triVertex.p = D3DXVECTOR3(-fMax, 0, fMax);
+	m_TriVertex.push_back(triVertex);
+	triVertex.p = D3DXVECTOR3(fMax, 0, -fMax);
+	m_TriVertex.push_back(triVertex);
+	triVertex.p = D3DXVECTOR3(fMax, 0, -fMax);
+	m_TriVertex.push_back(triVertex);
+	triVertex.p = D3DXVECTOR3(-fMax, 0, fMax);
+	m_TriVertex.push_back(triVertex);
+	triVertex.p = D3DXVECTOR3(fMax, 0, fMax);
+	m_TriVertex.push_back(triVertex);
 }
 
 void cGrid::Render()
@@ -139,4 +152,9 @@ void cGrid::Render()
 		(*m_iPyramid)->Render();
 	}
 	*/
+}
+
+std::vector<ST_PNT_VERTEX>& cGrid::GetTriVertex()
+{
+	return m_TriVertex;
 }

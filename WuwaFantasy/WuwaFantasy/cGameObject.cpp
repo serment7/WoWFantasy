@@ -7,6 +7,10 @@ cGameObject::cGameObject()
 {
 	g_pObjectManager->AddObject(this);
 	D3DXCreateSphere(g_pD3DDevice, 2, 10, 10, &m_sphere, NULL);
+	ST_STATUS status;
+	ZeroMemory(&status, sizeof(status));
+	status.fSpeed = 1.0f;
+	m_pStatus.Setup(status);
 }
 
 cGameObject::~cGameObject()
@@ -20,23 +24,39 @@ cGameObject::~cGameObject()
 
 void cGameObject::Update()
 {
+	cObject::Update();
+
 	for (auto conditionIter = m_listCondition.begin(); conditionIter != m_listCondition.end();
 		++conditionIter)
 	{
 		(*conditionIter)->Update();
 	}
-	if (m_chrSkinnedMesh)
-		m_chrSkinnedMesh->Update();
-	if (m_objSkinnedMesh)
-		m_objSkinnedMesh->Update();
+	if (m_pStateMachine)
+		m_pStateMachine->Update();
 
-	cObject::Update();
+	D3DXMATRIXA16 worldMat = GetWorldMatrix();
+
+	if (m_chrSkinnedMesh) 
+	{
+		m_chrSkinnedMesh->SetWorldMatrix(worldMat);
+		m_chrSkinnedMesh->Update();
+	}
+		
+	if (m_objSkinnedMesh) 
+	{
+		m_objSkinnedMesh->SetWorldMatrix(worldMat);
+		m_objSkinnedMesh->Update();
+	}
+		
+
+	
 }
 
 void cGameObject::Render()
 {
 	if (m_chrSkinnedMesh)
 		m_chrSkinnedMesh->Render(NULL);
+		
 	if (m_objSkinnedMesh)
 		m_objSkinnedMesh->Render(NULL);
 }

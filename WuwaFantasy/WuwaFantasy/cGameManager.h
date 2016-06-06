@@ -46,7 +46,8 @@ public:
 	void UpdateCursorPointInGlobal();
 	void UpdateCursorPointByWindow(const HWND& _targetWindow);
 
-	const int& GetFPS();
+	const int&		GetFPS();
+	const POINT&	GetCursorPoint();
 
 	cCamera*		GetCamera();
 	cCamera*		GetDramaCamera();

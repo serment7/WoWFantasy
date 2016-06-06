@@ -34,8 +34,9 @@ private:
 
 	D3DXVECTOR3		m_vPos;
 	D3DXVECTOR3		m_vDir;
+	D3DXVECTOR3		m_vScale;
 
-	float			m_angleY = 0.0f;
+	float			m_fAngleY = 0.0f;
 
 
 public:
@@ -75,7 +76,7 @@ public:
 	const int& GetCountRef() { return nRefCount; }
 
 	void SetScalingMatrix( const D3DXMATRIXA16& matS ) { m_matS = matS; }
-	void SetRotationMatirx( const D3DXMATRIXA16& matR ) { m_matT = matR; }
+	void SetRotationMatirx( const D3DXMATRIXA16& matR ) { m_matR = matR; }
 	void SetVPos( D3DXVECTOR3 vPos ) { m_vPos = vPos; }
 	void SetVDir( D3DXVECTOR3 vDir ) { m_vDir = vDir; }
 

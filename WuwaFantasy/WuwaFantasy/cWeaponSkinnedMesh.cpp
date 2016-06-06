@@ -6,7 +6,6 @@
 
 cWeaponSkinnedMesh::cWeaponSkinnedMesh()
 {
-
 }
 
 cWeaponSkinnedMesh::~cWeaponSkinnedMesh()
@@ -223,4 +222,9 @@ void cWeaponSkinnedMesh::SetAnimationIndexBlend( int nIndex )
 	SAFE_RELEASE(pNextAnimSet);
 
 	m_fPassedAnimBlendTime = 0.0f;
+}
+
+void cWeaponSkinnedMesh::SetWorldMatrix(const D3DXMATRIXA16 & _matWorld)
+{
+	m_pSkinnedMesh->SetWorldMatrix(_matWorld);
 }

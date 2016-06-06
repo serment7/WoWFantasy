@@ -9,22 +9,19 @@ cIAction::cIAction()
 
 cIAction::~cIAction()
 {
-	SAFE_RELEASE(m_pOwner);
 }
 
 void cIAction::SetOwner(cGameObject * _pOwner)
 {
-	SAFE_RELEASE(m_pOwner);
 #ifdef _DEBUG
 	assert(_pOwner && "SetOwner() received null ptr");
 #endif
-	m_pOwner->AddRef();
 	m_pOwner = _pOwner;
 }
 
 cGameObject * cIAction::GetOwner()
 {
-	return nullptr;
+	return m_pOwner;
 }
 
 void cIAction::SetPassedTime(const float & _fPassedTime)
