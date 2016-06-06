@@ -1,8 +1,7 @@
 #include "stdafx.h"
 #include "cPlayer.h"
-#include"cPlayerControlState.h"
 #include"cGameObject.h"
-//#include"cStatus.h"
+#include"cPlayerFSM.h"
 
 cPlayer::cPlayer()
 {
@@ -27,17 +26,12 @@ void cPlayer::Setup()
 	SetVDir(D3DXVECTOR3(0,0,-1));
 	GetStatus().SetSpeed(5.0f);
 	
-	SetStateMachine(new cStateMachine(this));
-	GetStateMachine()->SetGlobalState(new cPlayerControlState);
+	SetStateMachine(new cPlayerFSM(this));
 }
 
 void cPlayer::Update()
 {
 	cGameObject::Update();
-	float roty=GetRotationY();
-	static TCHAR c[100];
-	sprintf_s(c, "%f.2", roty);
-	SetWindowText(g_hWnd, c);
 }
 
 void cPlayer::Render()

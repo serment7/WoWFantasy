@@ -5,7 +5,6 @@ class cMovingObject :
 {
 private:
 
-
 public:
 	cMovingObject();
 	virtual ~cMovingObject();

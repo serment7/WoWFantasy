@@ -14,7 +14,7 @@ cPoison::~cPoison()
 {
 }
 
-void cPoison::Update()
+void cPoison::Update(bool& _lifeTime)
 {
 	m_fPassedTime += g_pTimeManager->GetDeltaTime();
 	if (m_fPassedTime > m_fHitTime)
@@ -22,10 +22,11 @@ void cPoison::Update()
 		cStatus& status = GetOwner()->GetStatus();
 		status.DecCurrentHP(m_nPerDamage);
 		m_fHitTime += m_fPerHitTime;
+		_lifeTime = true;
 	}
 
 	if (m_fPassedTime > m_fConditionTime)
 	{
-		delete this;
+		_lifeTime = false;
 	}
 }

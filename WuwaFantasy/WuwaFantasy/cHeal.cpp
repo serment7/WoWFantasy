@@ -11,6 +11,6 @@ cHeal::~cHeal()
 {
 }
 
-void cHeal::Update()
+void cHeal::Update(bool& _lifeTime)
 {
 }

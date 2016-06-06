@@ -18,6 +18,7 @@ private:
 	float			m_fPassedTime = 0.0f;
 	float			m_fActionTime = 0.0f;
 	bool			m_bAction;
+	bool			m_bLifeTime=false;
 
 protected:
 	void			SetPassedTime(const float& _fPassedTime);
@@ -25,7 +26,7 @@ protected:
 	const float&	GetPassedTime() const;
 	const float&	GetActionTime() const;
 
-	void			SetAction(bool _bAction);
+	
 
 public:
 	cIAction();
@@ -40,6 +41,11 @@ public:
 	virtual void	Start() = 0;
 	virtual void	Update() = 0;
 	virtual void	Stop() = 0;
+
+	void			SetAction(bool _bAction);
 	bool			IsAction();
+
+	void			SetLifeTime(const bool& _bLifeTime);
+	bool			IsLifeTime();
 };
 

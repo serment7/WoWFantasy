@@ -1,6 +1,8 @@
 #pragma once
 #include "cGameObject.h"
 
+class cPlayerFSM;
+
 class cPlayer : 
 	public cGameObject
 {

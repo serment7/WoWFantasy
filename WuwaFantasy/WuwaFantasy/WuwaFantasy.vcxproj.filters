@@ -168,9 +168,6 @@
     <ClInclude Include="cMonster.h">
       <Filter>소스 파일\Object</Filter>
     </ClInclude>
-    <ClInclude Include="cMovingObject.h">
-      <Filter>소스 파일\Object</Filter>
-    </ClInclude>
     <ClInclude Include="cRandom.h">
       <Filter>소스 파일\Util</Filter>
     </ClInclude>
@@ -195,11 +192,20 @@
     <ClInclude Include="cSupply.h">
       <Filter>소스 파일\GameData\Item</Filter>
     </ClInclude>
-    <ClInclude Include="cPlayerControlState.h">
-      <Filter>소스 파일\State</Filter>
-    </ClInclude>
     <ClInclude Include="Packet.h">
       <Filter>소스 파일\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="cMovingObject.h">
+      <Filter>소스 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerFSM.h">
+      <Filter>소스 파일\State</Filter>
+    </ClInclude>
+    <ClInclude Include="cMoveState.h">
+      <Filter>소스 파일\State</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerGlobalState.h">
+      <Filter>소스 파일\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -305,9 +311,6 @@
     <ClCompile Include="cMonster.cpp">
       <Filter>소스 파일\Object</Filter>
     </ClCompile>
-    <ClCompile Include="cMovingObject.cpp">
-      <Filter>소스 파일\Object</Filter>
-    </ClCompile>
     <ClCompile Include="cRandom.cpp">
       <Filter>소스 파일\Util</Filter>
     </ClCompile>
@@ -332,11 +335,20 @@
     <ClCompile Include="cSupply.cpp">
       <Filter>소스 파일\GameData\Item</Filter>
     </ClCompile>
-    <ClCompile Include="cPlayerControlState.cpp">
-      <Filter>소스 파일\State</Filter>
-    </ClCompile>
     <ClCompile Include="Packet.cpp">
       <Filter>소스 파일\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="cMovingObject.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerFSM.cpp">
+      <Filter>소스 파일\State</Filter>
+    </ClCompile>
+    <ClCompile Include="cMoveState.cpp">
+      <Filter>소스 파일\State</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerGlobalState.cpp">
+      <Filter>소스 파일\State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

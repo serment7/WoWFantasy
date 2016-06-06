@@ -85,9 +85,9 @@ void cActionMove::Update()
 	else
 	{
 		GetOwner()->SetVPos(m_vTo);
+		SetAction(false);
 		if (GetDelegate())
 			GetDelegate()->OnActionDelegate(this);
-		SetAction(false);
 	}
 	
 }

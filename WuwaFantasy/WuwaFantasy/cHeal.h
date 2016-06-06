@@ -15,6 +15,6 @@ public:
 	cHeal();
 	~cHeal();
 
-	virtual void Update();
+	virtual void Update(bool& _liefTime);
 };
 

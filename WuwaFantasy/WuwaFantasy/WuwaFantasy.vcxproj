@@ -182,7 +182,9 @@
     <ClInclude Include="cParsing.h" />
     <ClInclude Include="cPickManager.h" />
     <ClInclude Include="cPlayer.h" />
-    <ClInclude Include="cPlayerControlState.h" />
+    <ClInclude Include="cMoveState.h" />
+    <ClInclude Include="cPlayerFSM.h" />
+    <ClInclude Include="cPlayerGlobalState.h" />
     <ClInclude Include="cPoison.h" />
     <ClInclude Include="cRandom.h" />
     <ClInclude Include="cRay.h" />
@@ -231,7 +233,9 @@
     <ClCompile Include="cParsing.cpp" />
     <ClCompile Include="cPickManager.cpp" />
     <ClCompile Include="cPlayer.cpp" />
-    <ClCompile Include="cPlayerControlState.cpp" />
+    <ClCompile Include="cMoveState.cpp" />
+    <ClCompile Include="cPlayerFSM.cpp" />
+    <ClCompile Include="cPlayerGlobalState.cpp" />
     <ClCompile Include="cPoison.cpp" />
     <ClCompile Include="cRandom.cpp" />
     <ClCompile Include="cRay.cpp" />

@@ -63,3 +63,13 @@ bool cIAction::IsAction()
 {
 	return m_bAction;
 }
+
+void cIAction::SetLifeTime(const bool & _bLifeTime)
+{
+	m_bLifeTime = _bLifeTime;
+}
+
+bool cIAction::IsLifeTime()
+{
+	return m_bLifeTime;
+}

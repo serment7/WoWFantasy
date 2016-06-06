@@ -1,0 +1,27 @@
+0: DeathStrike				//양손검 스킬 데스 스트라이크
+1: StomeStrike				//언암드 스킬 스톰 스트라이크
+2: Stand_03				//대기 모션(다리 축이 뒤틀림)
+3: Walkbackwards			//뒤로 걷기
+4: Whirlwind				//양손검 스킬 윈드밀...?
+5: BattleRoar				//함성
+6: Knockdown				//넉다운
+7: Special2H				//양손검 강공 3
+8: Attack2H_01				//양손검 중공 2
+9: Attack2H				//양손검 약공 1
+10: CombatCritical			//맞는 모션
+11: CombatWound				//맞는 모션
+12: Stop				//정지(1프레임차이 모션 없음)
+13: EmoteTalk				//대화
+14: AttackUnarmed_01			//원펀...? 주먹공격 중 2
+15: Stand_02				//대기 모션(이건 멀쩡)
+16: Stand_01				//대기 모션(이것도 다리축 뒤틀림)
+17: SpecialUnarmed			//원펀!!! 주먹공격 강 3
+18: AttackUnarmed			//원펀 주먹공격 하 1
+19: EmoteStunNoSheathe			//스턴 상태(이상함)
+20: Stun				//스턴 상태(이하 생략)
+21: Death				//죽는 모션
+22: ReadyUnarmed			//언암드 대기 모션
+23: Ready2H				//양손검 대기 모션
+24: Run					//달리기
+25: Walk				//걷기
+26: Stand				//대기 모션

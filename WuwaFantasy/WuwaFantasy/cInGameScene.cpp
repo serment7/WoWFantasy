@@ -86,12 +86,12 @@ void cInGameScene::EnterScene()
 
 	ZeroMemory(&m_light, sizeof(m_light));
 	m_light.Type = D3DLIGHT_DIRECTIONAL;
-	m_light.Direction = D3DXVECTOR3(1, 0, 0);
+	m_light.Range = 100;
+	m_light.Direction=D3DXVECTOR3(0, 0, 1);
 	D3DCOLORVALUE color;
-	color.a = color.b = color.g = color.r = 1.0f;
+	color.a = color.b = color.g = color.r = 1.0;
 	m_light.Ambient = m_light.Diffuse = m_light.Specular = color;
 	g_pD3DDevice->SetLight(0, &m_light);
-	
 }
 
 void cInGameScene::ExitScene()

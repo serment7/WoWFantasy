@@ -15,6 +15,6 @@ public:
 
 	void			SetOwner(cGameObject* _pOwner);
 	cGameObject*	GetOwner() const;
-	virtual void	Update() = 0;
+	virtual void	Update(bool& _lifeTime) = 0;
 };
 

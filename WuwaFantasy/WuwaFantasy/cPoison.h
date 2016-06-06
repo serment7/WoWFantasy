@@ -17,6 +17,6 @@ public:
 		const float& _fConditionTime);
 	virtual ~cPoison();
 
-	virtual void Update();
+	virtual void Update(bool& _liefTime);
 };
 

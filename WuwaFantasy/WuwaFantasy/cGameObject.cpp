@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "cGameObject.h"
 #include "cCondition.h"
+#include "cIAction.h"
 
 cGameObject::cGameObject()
 {
@@ -25,14 +26,31 @@ cGameObject::~cGameObject()
 void cGameObject::Update()
 {
 	cObject::Update();
+	static bool bDeleteCondition=false;
 
-	for (auto conditionIter = m_listCondition.begin(); conditionIter != m_listCondition.end();
-		++conditionIter)
+	auto conditionIter = m_listCondition.begin();
+	while (conditionIter != m_listCondition.end())
 	{
-		(*conditionIter)->Update();
+		(*conditionIter)->Update(bDeleteCondition);
+		if (!bDeleteCondition)
+			m_listCondition.erase(conditionIter);
+		else
+			++conditionIter;
 	}
+
 	if (m_pStateMachine)
 		m_pStateMachine->Update();
+
+	if (m_pAction)
+	{
+		m_pAction->Update();
+
+		if (!m_pAction->IsLifeTime())
+		{
+			SAFE_DELETE(m_pAction);
+		}
+	}
+		
 
 	D3DXMATRIXA16 worldMat = GetWorldMatrix();
 
@@ -112,4 +130,14 @@ void cGameObject::OnMessage(const ST_PACKET & _packet)
 	{
 		m_pStateMachine->MessageHandle(_packet);
 	}
+}
+
+void cGameObject::SetAction(cIAction * _action)
+{
+	m_pAction = _action;
+}
+
+cIAction * cGameObject::GetAction()
+{
+	return m_pAction;
 }

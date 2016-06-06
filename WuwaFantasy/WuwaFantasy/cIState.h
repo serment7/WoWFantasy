@@ -7,7 +7,7 @@ class cIState
 {
 public:
 	cIState() {};
-	virtual ~cIState() {};
+	~cIState() {};
 
 	virtual void EnterState(cGameObject* _entity) = 0;
 	virtual void ChangeState(cGameObject* _entity) = 0;

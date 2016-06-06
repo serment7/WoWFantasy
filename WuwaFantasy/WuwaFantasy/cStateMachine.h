@@ -5,32 +5,28 @@ class cGameObject;
 
 class cStateMachine
 {
-private:
+protected:
 	cGameObject*			m_pOwner = nullptr;
-	cIState*	m_pPreviousState = nullptr;
-	cIState*	m_pCurrentState = nullptr;
-	cIState*	m_pGlobalState = nullptr;
+	cIState*				m_pPreviousState = nullptr;
+	cIState*				m_pCurrentState = nullptr;
+	cIState*				m_pGlobalState = nullptr;
 
 public:
-	cStateMachine() {};
 	cStateMachine(cGameObject* _pOwner)
 		:m_pOwner(_pOwner) {}
-	~cStateMachine();
+	virtual ~cStateMachine();
 
 	void SetCurrentState(cIState* _currentState)
 	{
 		m_pCurrentState = _currentState;
-		m_pCurrentState->EnterState(m_pOwner);
 	}
 	void SetPreviousState(cIState* _privioustState)
 	{
 		m_pPreviousState = _privioustState;
-		m_pPreviousState->EnterState(m_pOwner);
 	}
 	void SetGlobalState(cIState* _globalState)
 	{
 		m_pGlobalState = _globalState;
-		m_pGlobalState->EnterState(m_pOwner);
 	}
 
 	void Update()
