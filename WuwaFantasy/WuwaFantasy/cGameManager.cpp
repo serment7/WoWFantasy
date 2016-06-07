@@ -81,7 +81,11 @@ void cGameManager::Update()
 	if (m_pDramaScript && m_pDramaScript->IsRun())
 		m_dramaCamera.Update();
 	else
+	{
+		m_camera.SetEye(g_pObjectManager->FindObjectByID(g_pGameManager->GetPlayerID())->GetVPos());
 		m_camera.Update();
+	}
+		
 }
 
 void cGameManager::UpdateClientSize()

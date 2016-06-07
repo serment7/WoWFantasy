@@ -10,6 +10,7 @@ cCamera::cCamera()
 {
 	D3DXMatrixIdentity(&m_matView);
 	D3DXMatrixIdentity(&m_matProj);
+	D3DXMatrixIdentity(&m_matTrans);
 	D3DXMatrixIdentity(&m_matRotX);
 	D3DXMatrixIdentity(&m_matRotY);
 	D3DXMatrixIdentity(&m_matWorld);
@@ -24,7 +25,8 @@ void cCamera::Update()
 	m_vEye = D3DXVECTOR3(0, 0, -m_fDistance);
 	D3DXMatrixRotationX(&m_matRotX, D3DXToRadian(m_fAngleX));
 	D3DXMatrixRotationY(&m_matRotY, D3DXToRadian(m_fAngleY));
-	m_matWorld = m_matRotX*m_matRotY;
+	D3DXMatrixTranslation(&m_matTrans, m_vPos.x,m_vPos.y, m_vPos.z);
+	m_matWorld = m_matRotX*m_matRotY*m_matTrans;
 	D3DXVec3TransformCoord(&m_vEye, &m_vEye, &m_matWorld);
 
 	D3DXMatrixLookAtLH(&m_matView, &m_vEye, &m_vLookAt, &m_vUp);
@@ -36,7 +38,7 @@ void cCamera::Update()
 
 void cCamera::SetEye(const D3DXVECTOR3 & _vPos)
 {
-	m_vEye = _vPos;
+	m_vPos = _vPos;
 }
 
 void cCamera::SetEye(const float & _x, const float & _y, const float & _z)

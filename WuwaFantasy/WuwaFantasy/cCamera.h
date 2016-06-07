@@ -5,11 +5,13 @@ private:
 	D3DXVECTOR3				m_vEye;
 	D3DXVECTOR3				m_vLookAt;
 	D3DXVECTOR3				m_vUp;
+	D3DXVECTOR3				m_vPos;
 
 	D3DXMATRIXA16			m_matView;
 	D3DXMATRIXA16			m_matProj;
 	D3DXMATRIXA16			m_matWorld;
 
+	D3DXMATRIXA16			m_matTrans;
 	D3DXMATRIXA16			m_matRotX, m_matRotY;
 	float					m_fAngleX = 0.0f;
 	float					m_fAngleY = 0.0f;
