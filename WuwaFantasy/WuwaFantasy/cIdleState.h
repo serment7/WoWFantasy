@@ -26,4 +26,3 @@ public:
 	virtual bool OnMessage(cGameObject* _player, const ST_PACKET& _packet);
 	virtual void OnActionDelegate(cAction* _pSender);
 };
-

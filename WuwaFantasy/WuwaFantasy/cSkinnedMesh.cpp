@@ -20,20 +20,21 @@ cSkinnedMesh::~cSkinnedMesh(void)
 void cSkinnedMesh::Load( const char* szFile )
 {
 	std::string sFile(szFile);
-	std::string sFullPath = m_folderName + std::string("/") + sFile;
+	std::string sFullPath = m_folderName +"/"+ sFile;
 	LPD3DXFRAME pFrame = NULL;
-	cAllocateHierarchy alloc;
-	alloc.SetFolder(m_folderName);
+	cAllocateHierarchy* alloc=new cAllocateHierarchy;
 
-	D3DXLoadMeshHierarchyFromX(
+	alloc->SetFolder(m_folderName);
+	LPDIRECT3DDEVICE9 d = g_pD3DDevice;
+	D3DXLoadMeshHierarchyFromXA(
 		sFullPath.c_str(),
 		D3DXMESH_MANAGED,
 		g_pD3DDevice,
-		&alloc,
+		alloc,
 		NULL,
 		&m_pRoot,
 		&m_pAnimController);
-
+	SAFE_DELETE(alloc);
 	SetupBoneMatrixPtrs(m_pRoot);
 }	
 

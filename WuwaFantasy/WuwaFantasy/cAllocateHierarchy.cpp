@@ -17,10 +17,14 @@ STDMETHODIMP cAllocateHierarchy::CreateFrame( THIS_ LPCSTR Name, LPD3DXFRAME *pp
 	D3DXMatrixIdentity(&pBone->CombinedTransformationMatrix);
 	if (Name)
 	{
-		pBone->Name = new CHAR[strlen(Name) + 1];
+		int n = strlen(Name);
+		pBone->Name = new CHAR[n + 1];
 
-		strcpy_s(pBone->Name, strlen(pBone->Name), Name);
-
+		for (int i = 0; i < n;++i)
+		{
+			pBone->Name[i] = Name[i];
+		}
+		pBone->Name[n] = '\0';
 	}
 	else
 	{
@@ -87,6 +91,22 @@ STDMETHODIMP cAllocateHierarchy::CreateMeshContainer( THIS_ LPCSTR Name,
 		pBoneMesh->pCurrentBoneMatrices = NULL;
 
 	}
+
+	pBoneMesh->MeshData = *pMeshData;
+	if (Name)
+	{
+		pBoneMesh->Name = new CHAR[strlen(Name) + 1];
+		strcpy_s(pBoneMesh->Name, strlen(pBoneMesh->Name), Name);
+	}
+	else
+	{
+		pBoneMesh->Name = NULL;
+	}
+	pBoneMesh->NumMaterials = NumMaterials;
+	(pBoneMesh->pAdjacency) =nullptr;
+	(pBoneMesh->pEffects) = nullptr;
+	pBoneMesh->pNextMeshContainer = nullptr;
+	
 
 	*ppNewMeshContainer = pBoneMesh;
 	return S_OK;

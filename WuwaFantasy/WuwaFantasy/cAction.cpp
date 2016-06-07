@@ -23,8 +23,7 @@ void cAction::ReadyMoveTo(const D3DXVECTOR3 & _vFrom, const D3DXVECTOR3 & _vTo)
 	m_vTo = _vTo;
 	m_fActionTime = (D3DXVec3Length(&(m_vTo - m_vFrom)) + 0.001f) / (status.GetSpeed());
 
-	D3DXVECTOR3 vTargetDir = m_vTo - m_vFrom;
-	m_pOwner->SetVDir(vTargetDir);
+	HeadTo();
 }
 
 void cAction::MoveTo()
@@ -46,6 +45,18 @@ void cAction::MoveTo()
 		if (m_pDelegate)
 			m_pDelegate->OnActionDelegate(this);
 	}
+}
+
+void cAction::ReadyHeadTo(const D3DXVECTOR3 & _vFrom, const D3DXVECTOR3 & _vTo)
+{
+	m_vFrom = _vFrom;
+	m_vTo = _vTo;
+}
+
+void cAction::HeadTo()
+{
+	D3DXVECTOR3 vTargetDir = m_vTo - m_vFrom;
+	m_pOwner->SetVDir(vTargetDir);
 }
 
 void cAction::Start()

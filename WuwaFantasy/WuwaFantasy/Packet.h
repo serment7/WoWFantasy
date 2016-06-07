@@ -1,7 +1,10 @@
 #pragma once
 enum Msg_Type {
 	Msg_Move = 0x101
-	, Msg_Idle
+	, Msg_IdleAni
+	, Msg_AttackAni
+	, Msg_MoveAni
+	, Msg_CastingAni
 	, Msg_Attack
 	, Msg_GetCondition
 	, Msg_UseItem

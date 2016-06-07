@@ -22,7 +22,7 @@ private:
 	D3DXVECTOR3				m_vFrom = D3DXVECTOR3(0, 0, 0);
 	D3DXVECTOR3				m_vTo = D3DXVECTOR3(0, 0, 0);
 	cGameObject*			pTarget = nullptr;
-	
+
 public:
 	cAction(cGameObject* _pOwner);
 	~cAction();
@@ -34,7 +34,7 @@ public:
 
 	void					ReadyMoveTo(const D3DXVECTOR3& _vFrom, const D3DXVECTOR3& _vTo);
 	void					MoveTo();
-	void					ReadyHeadTo();
+	void					ReadyHeadTo(const D3DXVECTOR3& _vFrom, const D3DXVECTOR3& _vTo);
 	void					HeadTo();
 };
 

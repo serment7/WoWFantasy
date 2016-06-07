@@ -12,6 +12,7 @@ cPlayerGlobalState::~cPlayerGlobalState()
 
 void cPlayerGlobalState::EnterState(cGameObject * _entity)
 {
+	_entity->GetSkinnedMesh()->SetAnimationIndex(4);
 }
 
 void cPlayerGlobalState::ChangeState(cGameObject * _entity)
@@ -38,5 +39,10 @@ void cPlayerGlobalState::Execute(cGameObject * _entity)
 
 bool cPlayerGlobalState::OnMessage(cGameObject * _entity, const ST_PACKET & _packet)
 {
+	
 	return false;
+}
+
+void cPlayerGlobalState::OnActionDelegate(cAction* _pSender)
+{
 }

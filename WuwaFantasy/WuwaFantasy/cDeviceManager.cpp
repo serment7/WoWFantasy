@@ -2,12 +2,13 @@
 #include "cDeviceManager.h"
 
 cDeviceManager::cDeviceManager()
-	: m_pD3D(NULL)
-	, m_pD3DDevice(NULL)
+	: m_pD3D(nullptr)
+	, m_pD3DDevice(nullptr)
 {
+	int nVertexProcessing = 0;
 	m_pD3D = Direct3DCreate9(D3D_SDK_VERSION);
 	D3DCAPS9 caps;
-	int nVertexProcessing = 0;
+	
 	m_pD3D->GetDeviceCaps(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, &caps);
 	if (caps.DevCaps&D3DDEVCAPS_HWTRANSFORMANDLIGHT)
 	{
@@ -33,13 +34,13 @@ cDeviceManager::cDeviceManager()
 		switch (hr)
 		{
 		case D3DERR_INVALIDCALL:
-			i = 0;
+			i = 1;
 			break;
 		case D3DERR_OUTOFVIDEOMEMORY:
-			i = 0;
+			i = 2;
 			break;
 		case D3DERR_NOTAVAILABLE:
-			i = 0;
+			i = 3;
 			break;
 		}
 	}

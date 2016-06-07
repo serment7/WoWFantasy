@@ -6,5 +6,4 @@ class cPlayerFSM :
 public:
 	cPlayerFSM(cGameObject* _pOwner);
 	virtual ~cPlayerFSM();
-	virtual bool MessageHandle(const ST_PACKET& msg);
 };

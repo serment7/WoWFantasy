@@ -13,6 +13,7 @@ cIdleState::~cIdleState()
 
 void cIdleState::EnterState(cGameObject * _player)
 {
+	g_pMessageDispatcher->Dispatch(0, _player->GetID(), 0.0f, Msg_IdleAni, NULL);
 }
 
 void cIdleState::ChangeState(cGameObject * _player)
@@ -34,6 +35,7 @@ bool cIdleState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
 
 	switch (_packet.msg_type)
 	{
+
 	}
 
 	return false;

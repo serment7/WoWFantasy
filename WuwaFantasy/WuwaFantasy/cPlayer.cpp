@@ -7,8 +7,8 @@ cPlayer::cPlayer()
 	:cGameObject()
 {
 	this->AddRef();
-	folder = MODEL_PATH + "GnomeFemaleHealer";
-	filename = "GnomeFemaleHealer.X";
+	folder = MODEL_PATH + "log";
+	filename = "log.X";
 	/*folder = MODEL_PATH + "hFemale";
 	filename = "hfemale.X";*/
 }

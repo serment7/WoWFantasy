@@ -37,49 +37,14 @@ public:
 			m_pCurrentState->Execute(m_pOwner);
 	}
 
-	virtual bool MessageHandle(const ST_PACKET& msg) = 0;
+	virtual bool MessageHandle(const ST_PACKET& msg);
 
-	void  ChangeState(cIState* _pNewState)
-	{
-#ifdef _DEBUG
-		assert(_pNewState && "ChangeState() received null ptr");
-#endif
-		m_pPreviousState = m_pCurrentState;
-		m_pCurrentState->ExitState(m_pOwner);
+	void  ChangeState(cIState* _pNewState);
 
-		m_pCurrentState = _pNewState;
-		m_pCurrentState->EnterState(m_pOwner);
-	}
-
-	void RevertState()
-	{
-		ChangeState(m_pPreviousState);
-	}
-
-	//returns true if the current state's type is equal to the type of the
-	//class passed as a parameter. 
-	//bool  isInState(const State<entity_type>& st)const
-	//{
-	//	if (typeid(*m_pCurrentState) == typeid(st)) return true;
-	//	return false;
-	//}
+	void RevertState();
 
 	cIState*  CurrentState()  const { return m_pCurrentState; }
 	cIState*  GlobalState()   const { return m_pGlobalState; }
 	cIState*  PreviousState() const { return m_pPreviousState; }
-
-	////only ever used during debugging to grab the name of the current state
-	//std::string         GetNameOfCurrentState()const
-	//{
-	//	std::string s(typeid(*m_pCurrentState).name());
-
-	//	//remove the 'class ' part from the front of the string
-	//	if (s.size() > 5)
-	//	{
-	//		s.erase(0, 6);
-	//	}
-
-	//	return s;
-	//}
 };
 

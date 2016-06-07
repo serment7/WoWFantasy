@@ -34,8 +34,6 @@ void cMoveState::Execute(cGameObject * _player)
 
 bool cMoveState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
 {
-	if (_packet.receiver != _player->GetID())
-		return false;
 
 	switch (_packet.msg_type)
 	{
@@ -54,5 +52,5 @@ bool cMoveState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
 void cMoveState::OnActionDelegate(cAction * _pSender)
 {
 	_pSender->Stop();
-	g_pMessageDispatcher->Dispatch(0, _pSender->GetOwner()->GetID(), 0.0f, Msg_Idle, NULL);
+	g_pMessageDispatcher->Dispatch(0, _pSender->GetOwner()->GetID(), 0.0f, Msg_IdleAni, NULL);
 }
