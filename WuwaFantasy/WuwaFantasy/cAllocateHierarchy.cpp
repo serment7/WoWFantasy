@@ -31,7 +31,7 @@ STDMETHODIMP cAllocateHierarchy::CreateFrame( THIS_ LPCSTR Name, LPD3DXFRAME *pp
 		pBone->Name = NULL;
 	}
 	
-	
+
 	*ppNewFrame = pBone;
 	return S_OK;
 }
