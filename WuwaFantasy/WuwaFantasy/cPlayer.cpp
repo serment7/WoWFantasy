@@ -4,10 +4,13 @@
 #include"cPlayerFSM.h"
 
 cPlayer::cPlayer()
+	:cGameObject()
 {
 	this->AddRef();
-	folder = MODEL_PATH + "/hFemale";
-	filename = "hFemale.X";
+	folder = MODEL_PATH + "GnomeFemaleHealer";
+	filename = "GnomeFemaleHealer.X";
+	/*folder = MODEL_PATH + "hFemale";
+	filename = "hfemale.X";*/
 }
 
 
@@ -22,8 +25,8 @@ void cPlayer::Setup()
 	m_chrSkinnedMesh = new cSkinnedMesh;
 	m_chrSkinnedMesh->SetFolderName(folder);
 	m_chrSkinnedMesh->Load(filename.c_str());
-	m_chrSkinnedMesh->SetAnimationIndex(4);
-	SetVDir(D3DXVECTOR3(0,0,-1));
+	SetVBaseDir(D3DXVECTOR3(0,0,-1));
+	SetVDir(D3DXVECTOR3(0, 0, -1));
 	GetStatus().SetSpeed(5.0f);
 	
 	SetStateMachine(new cPlayerFSM(this));

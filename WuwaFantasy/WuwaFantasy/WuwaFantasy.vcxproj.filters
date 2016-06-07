@@ -55,6 +55,9 @@
     <Filter Include="소스 파일\GameData\Skill">
       <UniqueIdentifier>{2755318d-59db-4805-a5bd-9cadbf2ae776}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\State\PlayerState">
+      <UniqueIdentifier>{ef5503c8-5b20-4adc-8e75-965dd2ced148}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -132,9 +135,6 @@
     <ClInclude Include="cPickManager.h">
       <Filter>소스 파일\Picking</Filter>
     </ClInclude>
-    <ClInclude Include="cActionMove.h">
-      <Filter>소스 파일\Action</Filter>
-    </ClInclude>
     <ClInclude Include="cCamera.h">
       <Filter>소스 파일\Util</Filter>
     </ClInclude>
@@ -143,9 +143,6 @@
     </ClInclude>
     <ClInclude Include="cHeal.h">
       <Filter>소스 파일\GameData\Condition</Filter>
-    </ClInclude>
-    <ClInclude Include="cIAction.h">
-      <Filter>소스 파일\Action</Filter>
     </ClInclude>
     <ClInclude Include="cIScript.h">
       <Filter>소스 파일\Script</Filter>
@@ -198,13 +195,19 @@
     <ClInclude Include="cMovingObject.h">
       <Filter>소스 파일\Object</Filter>
     </ClInclude>
+    <ClInclude Include="cAction.h">
+      <Filter>소스 파일\Action</Filter>
+    </ClInclude>
     <ClInclude Include="cPlayerFSM.h">
-      <Filter>소스 파일\State</Filter>
+      <Filter>소스 파일\State\PlayerState</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerGlobalState.h">
+      <Filter>소스 파일\State\PlayerState</Filter>
     </ClInclude>
     <ClInclude Include="cMoveState.h">
       <Filter>소스 파일\State</Filter>
     </ClInclude>
-    <ClInclude Include="cPlayerGlobalState.h">
+    <ClInclude Include="cIdleState.h">
       <Filter>소스 파일\State</Filter>
     </ClInclude>
   </ItemGroup>
@@ -275,9 +278,6 @@
     <ClCompile Include="cPickManager.cpp">
       <Filter>소스 파일\Picking</Filter>
     </ClCompile>
-    <ClCompile Include="cActionMove.cpp">
-      <Filter>소스 파일\Action</Filter>
-    </ClCompile>
     <ClCompile Include="cCamera.cpp">
       <Filter>소스 파일\Util</Filter>
     </ClCompile>
@@ -286,9 +286,6 @@
     </ClCompile>
     <ClCompile Include="cHeal.cpp">
       <Filter>소스 파일\GameData\Condition</Filter>
-    </ClCompile>
-    <ClCompile Include="cIAction.cpp">
-      <Filter>소스 파일\Action</Filter>
     </ClCompile>
     <ClCompile Include="cIScript.cpp">
       <Filter>소스 파일\Script</Filter>
@@ -341,13 +338,19 @@
     <ClCompile Include="cMovingObject.cpp">
       <Filter>소스 파일\Object</Filter>
     </ClCompile>
+    <ClCompile Include="cAction.cpp">
+      <Filter>소스 파일\Action</Filter>
+    </ClCompile>
     <ClCompile Include="cPlayerFSM.cpp">
+      <Filter>소스 파일\State\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerGlobalState.cpp">
+      <Filter>소스 파일\State\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="cIdleState.cpp">
       <Filter>소스 파일\State</Filter>
     </ClCompile>
     <ClCompile Include="cMoveState.cpp">
-      <Filter>소스 파일\State</Filter>
-    </ClCompile>
-    <ClCompile Include="cPlayerGlobalState.cpp">
       <Filter>소스 파일\State</Filter>
     </ClCompile>
   </ItemGroup>

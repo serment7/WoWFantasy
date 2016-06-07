@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "cMoveState.h"
-#include "cActionMove.h"
+#include "cAction.h"
 #include "cPlayer.h"
+#include "cIdleState.h"
 
 cMoveState::cMoveState()
 {
@@ -14,6 +15,8 @@ cMoveState::~cMoveState()
 
 void cMoveState::EnterState(cGameObject * _player)
 {
+	pAction = _player->GetAction();
+	pAction->SetDelegate(this);
 }
 
 void cMoveState::ChangeState(cGameObject * _player)
@@ -26,7 +29,7 @@ void cMoveState::ExitState(cGameObject * _player)
 
 void cMoveState::Execute(cGameObject * _player)
 {
-	
+	_player->GetAction()->MoveTo();
 }
 
 bool cMoveState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
@@ -36,27 +39,11 @@ bool cMoveState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
 
 	switch (_packet.msg_type)
 	{
-	case Msg_Attack:
-		packet_attack= (Packet_Attack*)_packet.info;
-		SAFE_DELETE(packet_attack);
-		return true;
 	case Msg_Move:
 		packet_move = (Packet_Move*)_packet.info;
-		cActionMove* action= dynamic_cast<cActionMove*>(_player->GetAction());
-		if (!action)
-		{
-			cIAction* pPrevAction = _player->GetAction();
-			SAFE_DELETE(action);
-			action = new cActionMove;
-		}
-		action->SetLifeTime(true);
-		action->SetOwner(_player);
-		action->SetFrom(_player->GetVPos());
-		action->SetTo(packet_move->vDes);
-		action->SetDelegate(this);
+		cAction* action = _player->GetAction();
+		action->ReadyMoveTo(_player->GetVPos(), packet_move->vDes);
 		action->Start();
-		_player->SetAction(action);
-		_player->GetSkinnedMesh()->SetAnimationIndex(2);
 		SAFE_DELETE(packet_move);
 		return true;
 	}
@@ -64,9 +51,8 @@ bool cMoveState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
 	return false;
 }
 
-void cMoveState::OnActionDelegate(cIAction * _pSender)
+void cMoveState::OnActionDelegate(cAction * _pSender)
 {
 	_pSender->Stop();
-	_pSender->GetOwner()->GetSkinnedMesh()->SetAnimationIndex(4);
-	_pSender->SetLifeTime(false);
+	g_pMessageDispatcher->Dispatch(0, _pSender->GetOwner()->GetID(), 0.0f, Msg_Idle, NULL);
 }

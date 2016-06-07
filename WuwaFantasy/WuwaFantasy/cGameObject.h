@@ -8,7 +8,7 @@
 const std::string MODEL_PATH = "./Resource/Model/";
 
 class cCondition;
-class cIAction;
+class cAction;
 
 class cGameObject : public cObject
 {
@@ -23,11 +23,11 @@ public:
 
 	cStateMachine*				m_pStateMachine=nullptr;
 	std::list<cCondition*>		m_listCondition;
-	cIAction*					m_pAction=nullptr;
-
 
 	size_t						m_unID = -1;
 	size_t						m_unTag = -1;
+
+	cAction*					m_pAction;
 
 public:
 	cGameObject();
@@ -50,6 +50,5 @@ public:
 	void				AddCondition(cCondition* _pCondition);
 	void				OnMessage(const ST_PACKET& _packet);
 
-	void				SetAction(cIAction* _action);
-	cIAction*			GetAction();
+	cAction*			GetAction();
 };

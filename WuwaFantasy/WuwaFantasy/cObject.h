@@ -33,6 +33,7 @@ private:
 	D3DXMATRIXA16	m_matWorld;
 
 	D3DXVECTOR3		m_vPos;
+	D3DXVECTOR3		m_vBaseDir;
 	D3DXVECTOR3		m_vDir;
 	D3DXVECTOR3		m_vScale;
 
@@ -73,14 +74,12 @@ public:
 	D3DXMATRIXA16 GetScalingMatrix() { return m_matS; }
 	D3DXVECTOR3	GetVPos() { return m_vPos; }
 	D3DXVECTOR3 GetVDir() { return m_vDir; }
+	D3DXVECTOR3 SetVBaseDir() { return m_vBaseDir; }
 	const int& GetCountRef() { return nRefCount; }
 
 	void SetScalingMatrix( const D3DXMATRIXA16& matS ) { m_matS = matS; }
-	void SetRotationMatirx( const D3DXMATRIXA16& matR ) { m_matR = matR; }
 	void SetVPos( D3DXVECTOR3 vPos ) { m_vPos = vPos; }
 	void SetVDir( D3DXVECTOR3 vDir ) { m_vDir = vDir; }
-
-	void			SetRotationY(const float& _angle);
-	void			TurnRotationY(const float& _angle);
+	void SetVBaseDir(D3DXVECTOR3 vDir) { m_vBaseDir = vDir; }
 	const float&	GetRotationY() const;
 };

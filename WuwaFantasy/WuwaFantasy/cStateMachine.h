@@ -12,8 +12,7 @@ protected:
 	cIState*				m_pGlobalState = nullptr;
 
 public:
-	cStateMachine(cGameObject* _pOwner)
-		:m_pOwner(_pOwner) {}
+	cStateMachine() {};
 	virtual ~cStateMachine();
 
 	void SetCurrentState(cIState* _currentState)
@@ -38,20 +37,7 @@ public:
 			m_pCurrentState->Execute(m_pOwner);
 	}
 
-	bool MessageHandle(const ST_PACKET& msg) const
-	{
-		if (m_pCurrentState && m_pCurrentState->OnMessage(m_pOwner, msg))
-		{
-			return true;
-		}
-
-		if (m_pGlobalState && m_pGlobalState->OnMessage(m_pOwner, msg))
-		{
-			return true;
-		}
-
-		return false;
-	}
+	virtual bool MessageHandle(const ST_PACKET& msg) = 0;
 
 	void  ChangeState(cIState* _pNewState)
 	{

@@ -77,13 +77,15 @@ void cGameManager::Update()
 {
 	m_fCalFPSTime += g_pTimeManager->GetDeltaTime();
 	++m_nFPSCount;
+	m_nFPS = m_nFPSCount / m_fCalFPSTime;
 
 	if (m_pDramaScript && m_pDramaScript->IsRun())
 		m_dramaCamera.Update();
 	else
 	{
-		m_camera.SetEye(g_pObjectManager->FindObjectByID(g_pGameManager->GetPlayerID())->GetVPos());
-		m_camera.Update();
+		D3DXVECTOR3 playerPos = g_pObjectManager->FindObjectByID(g_pGameManager->GetPlayerID())->GetVPos();
+		m_camera.SetEye(playerPos);
+		m_camera.SetLookAt(playerPos);
 	}
 		
 }

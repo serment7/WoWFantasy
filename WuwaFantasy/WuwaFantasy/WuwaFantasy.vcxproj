@@ -81,7 +81,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\Execute</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IncludePath>$(DXSDK_DIR)Include;$(IncludePath)</IncludePath>
     <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -154,14 +154,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cActionMove.h" />
+    <ClInclude Include="cAction.h" />
     <ClInclude Include="cAllocateHierarchy.h" />
     <ClInclude Include="cCamera.h" />
     <ClInclude Include="cCondition.h" />
     <ClInclude Include="cGameObject.h" />
     <ClInclude Include="cGrid.h" />
     <ClInclude Include="cHeal.h" />
-    <ClInclude Include="cIAction.h" />
+    <ClInclude Include="cIdleState.h" />
     <ClInclude Include="cIScene.h" />
     <ClInclude Include="cDeviceManager.h" />
     <ClInclude Include="cGameManager.h" />
@@ -205,14 +205,14 @@
     <ClInclude Include="WinMain.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cActionMove.cpp" />
+    <ClCompile Include="cAction.cpp" />
     <ClCompile Include="cAllocateHierarchy.cpp" />
     <ClCompile Include="cCamera.cpp" />
     <ClCompile Include="cCondition.cpp" />
     <ClCompile Include="cGameObject.cpp" />
     <ClCompile Include="cGrid.cpp" />
     <ClCompile Include="cHeal.cpp" />
-    <ClCompile Include="cIAction.cpp" />
+    <ClCompile Include="cIdleState.cpp" />
     <ClCompile Include="cIScene.cpp" />
     <ClCompile Include="cDeviceManager.cpp" />
     <ClCompile Include="cGameManager.cpp" />

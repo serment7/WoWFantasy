@@ -16,5 +16,5 @@ public:
 
 	void SetTexture(const LPDIRECT3DTEXTURE9& pTex) { m_pTexture = pTex; }
 	void SetMtl(const D3DMATERIAL9& mat) { m_stMtl = mat; } 
-	void Release() { SAFE_RELEASE(m_pTexture) };
+	void Release() { m_pTexture=nullptr; };
 };

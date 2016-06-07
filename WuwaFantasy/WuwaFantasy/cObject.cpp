@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "cObject.h"
 #include "cStateMachine.h"
@@ -19,16 +18,34 @@ cObject::~cObject()
 
 void cObject::Update()
 {
-	//밖에서 vPos와 vDir을 받아서 셋팅되푳E있는 상태에서 계퍊E?
-	static D3DXMATRIXA16 matWorld;
 	D3DXMatrixScaling(&m_matS, m_vScale.x, m_vScale.y, m_vScale.z);
 
-	//D3DXMatrixRotationY(&m_matR,D3DXToRadian( m_fAngleY));
+	D3DXVec3Normalize(&m_vBaseDir, &m_vBaseDir);
+	D3DXVec3Normalize(&m_vDir, &m_vDir);
+
+	D3DXVECTOR3 vCurSideDir;
+
+	D3DXVec3Cross(&vCurSideDir, &m_vBaseDir, &D3DXVECTOR3(0, 1, 0));
+
+	float f = D3DXVec3Dot(&m_vBaseDir, &m_vDir);
+	float sf = D3DXVec3Dot(&vCurSideDir, &m_vDir);
+
+	float radian = (1.0f - f)*0.5f*D3DX_PI;
+
+	if (0.0f < sf)
+	{
+		m_fAngleY = -radian;
+	}
+	else
+	{
+		m_fAngleY = radian;
+	}
+
+	D3DXMatrixRotationY(&m_matR, m_fAngleY);
 
 	D3DXMatrixTranslation(&m_matT, m_vPos.x, m_vPos.y, m_vPos.z);
-	matWorld = m_matS * m_matR * m_matT;
+	m_matWorld = m_matS * m_matR * m_matT;
 
-	m_matWorld = matWorld;
 	if (m_fAngleY > 360)
 	{
 		m_fAngleY -= 360;
@@ -37,16 +54,6 @@ void cObject::Update()
 	{
 		m_fAngleY += 360;
 	}
-}
-
-void cObject::SetRotationY(const float & _angle)
-{
-	m_fAngleY = _angle;
-}
-
-void cObject::TurnRotationY(const float & _angle)
-{
-	m_fAngleY += _angle;
 }
 
 const float & cObject::GetRotationY() const
