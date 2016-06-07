@@ -44,7 +44,7 @@ public:
 	int		GetMaxMP() { return m_stStatus.nMaxMP; }
 	int		GetCurrentSP() { return m_stStatus.nCurrentSP; }
 	int		GetMaxSP() { return m_stStatus.nMaxSP; }
-	float	GetSpeed() { return m_stStatus.fSpeed; }
+	float	GetSpeed() const { return m_stStatus.fSpeed; }
 	int		GetStr() { return m_stStatus.nStr; }					//Èû
 	int		GetDex() { return m_stStatus.nDex; }					//¹ÎÃ¸¼º		
 	int		GetDef() { return m_stStatus.nDef; }					//¹æ¾î·Â

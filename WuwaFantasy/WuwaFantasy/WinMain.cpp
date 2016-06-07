@@ -124,6 +124,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_LBUTTONUP:
 	case WM_MOUSEMOVE:
 	case WM_MOUSEWHEEL:
+	case WM_RBUTTONUP:
 		m_scene->MessageHandling(hWnd, message, wParam, lParam);
 		break;
     case WM_COMMAND:

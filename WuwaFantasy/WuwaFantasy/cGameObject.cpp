@@ -2,9 +2,10 @@
 #include "stdafx.h"
 #include "cGameObject.h"
 #include "cCondition.h"
-#include "cIAction.h"
+#include "cAction.h"
 
 cGameObject::cGameObject()
+	:m_pAction(new cAction(this))
 {
 	g_pObjectManager->AddObject(this);
 	D3DXCreateSphere(g_pD3DDevice, 2, 10, 10, &m_sphere, NULL);
@@ -40,17 +41,6 @@ void cGameObject::Update()
 
 	if (m_pStateMachine)
 		m_pStateMachine->Update();
-
-	if (m_pAction)
-	{
-		m_pAction->Update();
-
-		if (!m_pAction->IsLifeTime())
-		{
-			SAFE_DELETE(m_pAction);
-		}
-	}
-		
 
 	D3DXMATRIXA16 worldMat = GetWorldMatrix();
 
@@ -132,12 +122,7 @@ void cGameObject::OnMessage(const ST_PACKET & _packet)
 	}
 }
 
-void cGameObject::SetAction(cIAction * _action)
-{
-	m_pAction = _action;
-}
-
-cIAction * cGameObject::GetAction()
+cAction * cGameObject::GetAction()
 {
 	return m_pAction;
 }
