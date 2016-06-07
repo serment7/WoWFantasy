@@ -1,0 +1,37 @@
+0: EmoteTalk			//대화 모션
+1: ChannelCastOmni		//마법 캐스팅 모션 - 광역
+2: ChannelCastDirected		//마법 캐스팅 모션 - 타깃
+3: BattleRoar			//함성 모션
+4: SpellCastOmni		//마법 캐스팅 모션 - 광역
+5: ReadySpellOmni		//마법 캐스팅 대기 모션 - 광역
+6: KnockDown			//넉다운
+7: Kick				//킥
+8: EmoteRoar			//함성 모션
+9: SleepUp			//잠에서 깸
+10: SleepDown			//잠 듬
+11: Sleep			//잠(이상함)
+12: Stop			//정지(프레임 없음)
+13: AttackOff			//후려치기 모션
+14: SpecialUnarmed		//맨손 스페셜 공격3
+15: ShieldBash			//후려치기 모션
+16: ReadyAbility		//기모으기...?
+17: SpellCastDirected		//마법 캐스팅 모션 - 타깃
+18: ReadySpellDirected		//마법 캐스팅 대기 모션 - 타깃
+19: Stand_02			//대기 모션(이상함)
+20: Stand_01			//대기 모션
+21: ShieldBlock			//방어 모션
+22: Death_01			//죽는 모션
+23: ParryUnarmed		//막기 모션
+24: AttackUnarmed_01		//맨손 중 공격 모션2
+25: AttackUnarmed		//맨손 약 공격 모션1
+26: ReadyUnarmed		//맨손 공격 대기 모션
+27: Walkbackwards		//뒤로 걷기 모션
+28: EmoteStunNoSheathe		//스턴 모션
+29: Stun			//스턴 모션
+30: CombatCritical		//캐릭터 히트 판정
+31: StandWound			//캐릭터 히트 판정
+32: Death			//쥬금
+33: CombatWound			//캐릭터 히트 판정
+34: Run				//달리기
+35: Walk			//걷기
+36: Stand			//대기 모션
