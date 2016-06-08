@@ -240,14 +240,8 @@
     <ClInclude Include="cApproachState.h">
       <Filter>소스 파일\State\BaseState</Filter>
     </ClInclude>
-    <ClInclude Include="cSoundManager.h">
-      <Filter>소스 파일\GamaManager</Filter>
-    </ClInclude>
     <ClInclude Include="cProgressBar.h">
       <Filter>소스 파일\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="cKeyManager.h">
-      <Filter>소스 파일\GamaManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -410,14 +404,8 @@
     <ClCompile Include="cApproachState.cpp">
       <Filter>소스 파일\State\BaseState</Filter>
     </ClCompile>
-    <ClCompile Include="cSoundManager.cpp">
-      <Filter>소스 파일\GamaManager</Filter>
-    </ClCompile>
     <ClCompile Include="cProgressBar.cpp">
       <Filter>소스 파일\Util</Filter>
-    </ClCompile>
-    <ClCompile Include="cKeyManager.cpp">
-      <Filter>소스 파일\GamaManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

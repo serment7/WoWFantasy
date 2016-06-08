@@ -9,13 +9,11 @@ cMonster::cMonster()
 
 cMonster::~cMonster()
 {
-	GetSkinnedMesh()->Release();
+	
 }
 
 void cMonster::Setup()
 {
-	GetChrSkinnedMesh()->SetFolderName(MODEL_PATH.c_str());
-	GetChrSkinnedMesh()->Load("TheKingOfLich/lich.X");
 
 }
 

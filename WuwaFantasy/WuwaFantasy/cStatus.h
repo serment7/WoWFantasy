@@ -13,7 +13,7 @@ struct ST_STATUS
 	float fSpeed = 0.0f;
 
 	//ｽｺﾅﾗﾀﾌﾅﾍｽｺ ﾁ､ｺｸ
-	int nStr = 0;					//ﾈ・
+	int nStr = 0;					//?E
 	int nDex = 0;					//ｹﾎﾃｸｼｺ		
 	int nDef = 0;					//ｹ貔﨧ﾂ
 	int nInt = 0;					//ｸｶｷﾂ
@@ -45,7 +45,7 @@ public:
 	int		GetCurrentSP() { return m_stStatus.nCurrentSP; }
 	int		GetMaxSP() { return m_stStatus.nMaxSP; }
 	float	GetSpeed() const { return m_stStatus.fSpeed; }
-	int		GetStr() { return m_stStatus.nStr; }					//ﾈ・
+	int		GetStr() { return m_stStatus.nStr; }					//?E
 	int		GetDex() { return m_stStatus.nDex; }					//ｹﾎﾃｸｼｺ		
 	int		GetDef() { return m_stStatus.nDef; }					//ｹ貔﨧ﾂ
 	int		GetInt() { return m_stStatus.nInt; }					//ｸｶｷﾂ
@@ -60,7 +60,7 @@ public:
 	void	SetCurrentSP(const int& nCurrentSP) { m_stStatus.nCurrentSP = nCurrentSP; }
 	void	SetMaxSP(const int& nMaxSP) { m_stStatus.nMaxSP = nMaxSP; }
 	void	SetSpeed(const float& fSpeed) { m_stStatus.fSpeed = fSpeed; }
-	void	SetStr(const int& nStr) { m_stStatus.nStr = nStr; }					//ﾈ・
+	void	SetStr(const int& nStr) { m_stStatus.nStr = nStr; }					//?E
 	void	SetDex(const int& nDex) { m_stStatus.nDex = nDex; }					//ｹﾎﾃｸｼｺ		
 	void	SetDef(const int& nDef) { m_stStatus.nDef = nDef; }					//ｹ貔﨧ﾂ
 	void	SetInt(const int& nInt) { m_stStatus.nInt = nInt; }					//ｸｶｷﾂ
@@ -75,7 +75,7 @@ public:
 	void	IncCurrentSP(const int& nCurrentSP) { m_stStatus.nCurrentSP += nCurrentSP; }
 	void	IncMaxSP(const int& nMaxSP) { m_stStatus.nMaxSP += nMaxSP; }
 	void	IncSpeed(const float& fSpeed) { m_stStatus.fSpeed += fSpeed; }
-	void	IncStr(const int& nStr) { m_stStatus.nStr += nStr; }					//ﾈ・
+	void	IncStr(const int& nStr) { m_stStatus.nStr += nStr; }					//?E
 	void	IncDex(const int& nDex) { m_stStatus.nDex += nDex; }					//ｹﾎﾃｸｼｺ		
 	void	IncDef(const int& nDef) { m_stStatus.nDef += nDef; }					//ｹ貔﨧ﾂ
 	void	IncInt(const int& nInt) { m_stStatus.nInt += nInt; }					//ｸｶｷﾂ
@@ -90,7 +90,7 @@ public:
 	void	DecCurrentSP(const int& nCurrentSP) { m_stStatus.nCurrentSP -= nCurrentSP; }
 	void	DecMaxSP(const int& nMaxSP) { m_stStatus.nMaxSP -= nMaxSP; }
 	void	DecSpeed(const float& fSpeed) { m_stStatus.fSpeed -= fSpeed; }
-	void	DecStr(const int& nStr) { m_stStatus.nStr -= nStr; }					//ﾈ・
+	void	DecStr(const int& nStr) { m_stStatus.nStr -= nStr; }					//?E
 	void	DecDex(const int& nDex) { m_stStatus.nDex -= nDex; }					//ｹﾎﾃｸｼｺ		
 	void	DecDef(const int& nDef) { m_stStatus.nDef -= nDef; }					//ｹ貔﨧ﾂ
 	void	DecInt(const int& nInt) { m_stStatus.nInt -= nInt; }					//ｸｶｷﾂ
