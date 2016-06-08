@@ -3,129 +3,127 @@
 #include "cSceneManager.h"
 
 cSceneManager::cSceneManager()
-:	pGameScene(NULL)
-,	pLoadingScene(NULL)
-,	pReadyScene(NULL)
 {
 
 }
 
 cSceneManager::~cSceneManager()
 {
-
+	Release();
 }
+
+cIScene* cSceneManager::m_pGameScene = NULL;
+cIScene* cSceneManager::m_pLoadingScene = NULL;
+cIScene* cSceneManager::m_pReadyScene = NULL;
+
+mSceneList cSceneManager::m_mapSceneList;
+miSceneList	cSceneManager::m_mapiterSceneList;
 
 void cSceneManager::Release()
 {
-	for (size_t viSceneList = 0; viSceneList<vSceneList.size(); ++viSceneList)
+	miSceneList miSceneRelease = m_mapSceneList.begin();
+	for (; miSceneRelease != m_mapSceneList.end();)
 	{
-		if (vSceneList[viSceneList].second != NULL)
+		if (miSceneRelease->second != nullptr)
 		{
-			if (vSceneList[viSceneList].second == pGameScene) 
-			{
-				vSceneList[viSceneList].second->ExitScene();
-			}
-			SAFE_DELETE(vSceneList[viSceneList].second);
-			
+			if(miSceneRelease->second == m_pGameScene) 
+				miSceneRelease->second->ExitScene();
+			SAFE_DELETE(miSceneRelease->second);
+			miSceneRelease = m_mapSceneList.erase(miSceneRelease);
+		}
+		else
+		{
+			++miSceneRelease;
 		}
 	}
 
-	vSceneList.clear();
+	m_mapSceneList.clear();
+
+	m_pGameScene->ExitScene();
+	if (m_pGameScene)
+	{
+		delete m_pGameScene;
+		m_pGameScene = nullptr;
+	}
+
+	m_pLoadingScene->ExitScene();
+	if (m_pLoadingScene)
+	{
+		delete m_pLoadingScene;
+		m_pLoadingScene = nullptr;
+	}
+
+	m_pReadyScene->EnterScene();
+	if (m_pReadyScene)
+	{
+		delete m_pReadyScene;
+		m_pReadyScene = nullptr;
+	}
 }
 
 void cSceneManager::Update()
 {
-	if(pGameScene) pGameScene->Update();
+	if(m_pGameScene) m_pGameScene->Update();
 }
 
 void cSceneManager::Render()
 {
-	if(pGameScene) pGameScene->Render();
+	if(m_pGameScene) m_pGameScene->Render();
 }
 
-//일반 씬 추가
-cIScene* cSceneManager::AddScene(char* sceneName, cIScene* scene)
+cIScene* cSceneManager::AddScene(std::string szSceneName, cIScene* nScene)
 {
-	std::string pSceneName(sceneName);
+	if (nScene == nullptr) return nullptr;
 
-	if(scene != NULL)
-	{
-		vSceneList.push_back(std::make_pair(pSceneName, scene));
-	}
+	m_mapSceneList.insert(std::make_pair(szSceneName, nScene));
 
-	return scene;
+	return nScene;
 }
 
-//로딩 씬 추가
-cIScene* cSceneManager::AddLoadingScene(char* loadingSceneName, cIScene* scene)
+bool cSceneManager::ChangeScene(std::string szSceneName)
 {
-	/*
-	std::string pSceneName(loadingSceneName);
+	miSceneList findScene = m_mapSceneList.find(szSceneName);
+	if (findScene == m_mapSceneList.end()) return false;
+	if (findScene->second == m_pGameScene) return true;
 
-	if(scene != NULL)
-	{
-		mSceneList.insert(std::make_pair(pSceneName, scene));
-	}
+	if (m_pGameScene) m_pGameScene->ExitScene();
+	m_pGameScene = findScene->second;
+	m_pGameScene->EnterScene();
 
-	return scene;
-	*/
-	return NULL;
-}
-
-//씬 바꾸기(EnterScene)
-bool cSceneManager::ChangeScene(char* sceneName)
-{
-	std::string pSceneName(sceneName);
-
-	for(viSceneList = vSceneList.begin(); viSceneList != vSceneList.end(); ++viSceneList)
-	{
-		if(viSceneList->first == sceneName)
-		{
-			//씬이 아니라면 바꿔주고 끝낸다.
-			if(viSceneList->second != pGameScene)
-			{
-				if(pGameScene) pGameScene->ExitScene();
-				pGameScene = viSceneList->second;
-			}
-			return true;
-		}
-	}
-
-	//위 루프를 빠져나왔으면 못찾았다란 소리니까
-
-	return false;
-
-}
-
-bool cSceneManager::ChangeScene(char* sceneName, char* loadingSceneName)
-{
-	/*
-	std::string pSceneName(sceneName);
-	std::string pLoadingSceneName(loadingSceneName);
-
-	std::map<std::string, cInGameScene*>::iterator mifindScene;
-	mifindScene = mSceneList.find(pSceneName);
-
-	//씬을 못찾았을 경우
-	if(mifindScene == mSceneList.end()) return false;
-
-	//이미 그 씬이라면
-	if (mifindScene->second == pGameScene) return true;
-
-	//mapSceneIter findLoadingScene = mSceneList.find(pLoadingSceneName);
-
-	//둘 다 아니라면 바꿔준다
-	if (pGameScene) 
-	{
-		pGameScene->ExitScene();
-	}
-
-	pGameScene = mifindScene->second;
-	*/
 	return true;
 }
 
-cIScene * cSceneManager::GetGameScene()
+bool cSceneManager::ChangeScene(char* szSceneName, char* szLoadingSceneName)
 {
-	return pGameScene;
+	miSceneList findMainGameScene = m_mapSceneList.find(szSceneName);
+	if (findMainGameScene == m_mapSceneList.end()) return false;
+
+	if (m_pGameScene) m_pGameScene->ExitScene();
+	m_pGameScene = findMainGameScene->second;
+
+	miSceneList findLoadingGameScene = m_mapSceneList.find(szLoadingSceneName);
+	if (findLoadingGameScene == m_mapSceneList.end()) return false;
+
+	if (m_pLoadingScene) m_pLoadingScene->ExitScene();
+	m_pLoadingScene = findLoadingGameScene->second;
+
+	m_pReadyScene = m_pGameScene;
+	m_pGameScene = m_pLoadingScene;
+
+	return true;
+}
+
+cIScene* cSceneManager::GetGameScene()
+{
+	return m_pGameScene;
+}
+
+cIScene* cSceneManager::GetLoadingScene()
+{
+	return m_pLoadingScene;
+}
+
+cIScene * cSceneManager::GetReadyScene()
+{
+	return m_pReadyScene;
 }

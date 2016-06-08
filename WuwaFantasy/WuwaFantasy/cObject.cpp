@@ -13,7 +13,7 @@ cObject::cObject()
 
 cObject::~cObject()
 {
-	assert(nRefCount>=0&&"°´Ã¼ ¼Ò¸êÀÌ ¿©·¯¹ø ÀÏ¾î³ª°íÀÖ½À´Ï´Ù");
+	assert(nRefCount>=0&&"°´Ã¼ ¼Ò¸EÌ ¿©·¯¹EÀÏ¾ûÏª°úÜÖ½À´Ï´Ù");
 }
 
 void cObject::Update()

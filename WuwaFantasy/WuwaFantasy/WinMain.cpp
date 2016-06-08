@@ -2,14 +2,14 @@
 
 #include "stdafx.h"
 #include "WinMain.h"
-#include "cInGameScene.h"
+#include "cMainGame.h"
 
 #define MAX_LOADSTRING 100
 HINSTANCE hInst;
 TCHAR szTitle[MAX_LOADSTRING];
 TCHAR szWindowClass[MAX_LOADSTRING];
 HWND g_hWnd;
-cIScene* m_scene;
+cMainGame* m_scene;
 
 
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -36,8 +36,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_WUWAFANTASY));
 
-	m_scene = new cInGameScene;
-	m_scene->EnterScene();
+	m_scene = new cMainGame;
+	m_scene->Setup();
 
     MSG msg;
 
@@ -56,12 +56,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			m_scene->Render();
 		}
     }
-	if (m_scene)
-	{
-		delete m_scene;
-		m_scene = nullptr;
-	}
-	g_pDeviceManager->Destroy();
+
+	if (m_scene) m_scene->Release();
+	SAFE_DELETE(m_scene);
 
     return (int) msg.wParam;
 }
@@ -124,7 +121,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_MOUSEMOVE:
 	case WM_MOUSEWHEEL:
 	case WM_RBUTTONUP:
-		m_scene->MessageHandling(hWnd, message, wParam, lParam);
+		m_scene->WndProc(hWnd, message, wParam, lParam);
 		break;
     case WM_COMMAND:
         {

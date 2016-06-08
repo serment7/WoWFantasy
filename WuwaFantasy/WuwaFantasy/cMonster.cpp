@@ -9,6 +9,7 @@ cMonster::cMonster()
 
 cMonster::~cMonster()
 {
+	GetSkinnedMesh()->Release();
 }
 
 void cMonster::Setup()
