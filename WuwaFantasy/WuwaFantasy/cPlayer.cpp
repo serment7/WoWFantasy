@@ -7,10 +7,8 @@ cPlayer::cPlayer()
 	:cGameObject()
 {
 	this->AddRef();
-	folder = MODEL_PATH + "log";
-	filename = "log.X";
-	/*folder = MODEL_PATH + "hFemale";
-	filename = "hfemale.X";*/
+	folder = MODEL_PATH + "DworfBattleMage";
+	filename = "DworfBattleMage.X"; 
 }
 
 
