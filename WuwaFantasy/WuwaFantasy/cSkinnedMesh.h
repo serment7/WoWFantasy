@@ -29,11 +29,12 @@ public:
 
 	const std::string&			GetFolderName();
 	void						SetFolderName(const std::string& _name);
+	LPD3DXANIMATIONCONTROLLER	GetAnimationController();
 
 private:
 	void Update(LPD3DXFRAME pFrame, LPD3DXFRAME pParent);
 	void UpdateSkinnedMesh(LPD3DXFRAME pFrame);
 	void SetupBoneMatrixPtrs(LPD3DXFRAME pFrame);
 
-	LPD3DXANIMATIONCONTROLLER GetAnimationController();
+
 };

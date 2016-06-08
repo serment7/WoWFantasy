@@ -58,6 +58,18 @@
     <Filter Include="소스 파일\State\PlayerState">
       <UniqueIdentifier>{ef5503c8-5b20-4adc-8e75-965dd2ced148}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\State\MonsterState">
+      <UniqueIdentifier>{b95cc98a-57af-46d9-a29d-575879b8ebf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\State\MonsterState\Hydra">
+      <UniqueIdentifier>{3049516d-76eb-466c-af9f-84cb520e8bfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\Monster">
+      <UniqueIdentifier>{88b32479-965a-403f-bffb-7ff489d02254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\State\BaseState">
+      <UniqueIdentifier>{4c6abe67-35b0-4288-9d97-8a6237d0d3dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -125,9 +137,6 @@
     </ClInclude>
     <ClInclude Include="cStatus.h">
       <Filter>소스 파일\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="cPlayer.h">
-      <Filter>소스 파일</Filter>
     </ClInclude>
     <ClInclude Include="cGrid.h">
       <Filter>소스 파일\Picking</Filter>
@@ -198,17 +207,38 @@
     <ClInclude Include="cAction.h">
       <Filter>소스 파일\Action</Filter>
     </ClInclude>
-    <ClInclude Include="cPlayerFSM.h">
+    <ClInclude Include="cDworfMageState.h">
       <Filter>소스 파일\State\PlayerState</Filter>
     </ClInclude>
-    <ClInclude Include="cPlayerGlobalState.h">
+    <ClInclude Include="cHydraState.h">
+      <Filter>소스 파일\State\MonsterState\Hydra</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayer.h">
+      <Filter>소스 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="cDworfMageFSM.h">
       <Filter>소스 파일\State\PlayerState</Filter>
     </ClInclude>
-    <ClInclude Include="cMoveState.h">
-      <Filter>소스 파일\State</Filter>
+    <ClInclude Include="cHydra.h">
+      <Filter>소스 파일\Object\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="cHydraFSM.h">
+      <Filter>소스 파일\State\MonsterState\Hydra</Filter>
     </ClInclude>
     <ClInclude Include="cIdleState.h">
-      <Filter>소스 파일\State</Filter>
+      <Filter>소스 파일\State\BaseState</Filter>
+    </ClInclude>
+    <ClInclude Include="cMoveState.h">
+      <Filter>소스 파일\State\BaseState</Filter>
+    </ClInclude>
+    <ClInclude Include="cPatrolState.h">
+      <Filter>소스 파일\State\BaseState</Filter>
+    </ClInclude>
+    <ClInclude Include="cAttackState.h">
+      <Filter>소스 파일\State\BaseState</Filter>
+    </ClInclude>
+    <ClInclude Include="cApproachState.h">
+      <Filter>소스 파일\State\BaseState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -268,9 +298,6 @@
     </ClCompile>
     <ClCompile Include="cStatus.cpp">
       <Filter>소스 파일\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="cPlayer.cpp">
-      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="cGrid.cpp">
       <Filter>소스 파일\Picking</Filter>
@@ -341,17 +368,38 @@
     <ClCompile Include="cAction.cpp">
       <Filter>소스 파일\Action</Filter>
     </ClCompile>
-    <ClCompile Include="cPlayerFSM.cpp">
+    <ClCompile Include="cDworfMageState.cpp">
       <Filter>소스 파일\State\PlayerState</Filter>
     </ClCompile>
-    <ClCompile Include="cPlayerGlobalState.cpp">
+    <ClCompile Include="cHydraState.cpp">
+      <Filter>소스 파일\State\MonsterState\Hydra</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayer.cpp">
+      <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="cDworfMageFSM.cpp">
       <Filter>소스 파일\State\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="cHydra.cpp">
+      <Filter>소스 파일\Object\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="cHydraFSM.cpp">
+      <Filter>소스 파일\State\MonsterState\Hydra</Filter>
     </ClCompile>
     <ClCompile Include="cIdleState.cpp">
-      <Filter>소스 파일\State</Filter>
+      <Filter>소스 파일\State\BaseState</Filter>
     </ClCompile>
     <ClCompile Include="cMoveState.cpp">
-      <Filter>소스 파일\State</Filter>
+      <Filter>소스 파일\State\BaseState</Filter>
+    </ClCompile>
+    <ClCompile Include="cPatrolState.cpp">
+      <Filter>소스 파일\State\BaseState</Filter>
+    </ClCompile>
+    <ClCompile Include="cAttackState.cpp">
+      <Filter>소스 파일\State\BaseState</Filter>
+    </ClCompile>
+    <ClCompile Include="cApproachState.cpp">
+      <Filter>소스 파일\State\BaseState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

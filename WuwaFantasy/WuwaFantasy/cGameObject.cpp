@@ -8,16 +8,18 @@ cGameObject::cGameObject()
 	:m_pAction(new cAction(this))
 {
 	g_pObjectManager->AddObject(this);
-	D3DXCreateSphere(g_pD3DDevice, 2, 10, 10, &m_sphere, NULL);
 	ST_STATUS status;
 	ZeroMemory(&status, sizeof(status));
 	status.fSpeed = 1.0f;
+	status.nMaxHP = 20;
+	status.nCurrentHP = 20;
 	m_pStatus.Setup(status);
+	ZeroMemory(&m_sphere, sizeof(m_sphere));
+	ZeroMemory(&m_box, sizeof(m_box));
 }
 
 cGameObject::~cGameObject()
 {
-	SAFE_RELEASE(m_sphere);
 	SAFE_DELETE(m_chrSkinnedMesh);
 	SAFE_DELETE(m_objSkinnedMesh);
 	SAFE_DELETE(m_pStateMachine);
@@ -39,10 +41,10 @@ void cGameObject::Update()
 			++conditionIter;
 	}
 
+	D3DXMATRIXA16 worldMat = GetWorldMatrix();
+
 	if (m_pStateMachine)
 		m_pStateMachine->Update();
-
-	D3DXMATRIXA16 worldMat = GetWorldMatrix();
 
 	if (m_chrSkinnedMesh) 
 	{
@@ -55,9 +57,6 @@ void cGameObject::Update()
 		m_objSkinnedMesh->SetWorldMatrix(worldMat);
 		m_objSkinnedMesh->Update();
 	}
-		
-
-	
 }
 
 void cGameObject::Render()
@@ -109,9 +108,14 @@ cStateMachine* cGameObject::GetStateMachine()
 	return m_pStateMachine;
 }
 
-LPD3DXMESH cGameObject::GetBound()
+const BoundingSphere& cGameObject::GetBoundSphere()
 {
 	return m_sphere;
+}
+
+const BoundingBox & cGameObject::GetBoundBox()
+{
+	return m_box;
 }
 
 void cGameObject::OnMessage(const ST_PACKET & _packet)
@@ -125,4 +129,16 @@ void cGameObject::OnMessage(const ST_PACKET & _packet)
 cAction * cGameObject::GetAction()
 {
 	return m_pAction;
+}
+
+void cGameObject::SetBoundSphere(const BoundingSphere & _sphere)
+{
+	m_sphere.fRadius=_sphere.fRadius;
+	m_sphere.vCenter = _sphere.vCenter;
+}
+
+void cGameObject::SetBoundBox(const BoundingBox & _box)
+{
+	m_box.vMax = _box.vMax;
+	m_box.vMin = _box.vMin;
 }

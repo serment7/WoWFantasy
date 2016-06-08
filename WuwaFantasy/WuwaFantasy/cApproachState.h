@@ -2,27 +2,23 @@
 #include "cIState.h"
 #include"cAction.h"
 
-class cAction;
 class cMoveState;
-class cAttackState;
-class cApproachState;
+class cGameObject;
 
-class cMoveState :
+class cApproachState :
 	public cIState, public cActionDelegate
 {
 private:
-	Packet_Move*			packet_move;
-	cAction*				pAction = nullptr;
-	cMoveState*				m_pMoveState = nullptr;
-	cAttackState*			m_pAttackState = nullptr;
-	cApproachState*			m_pApproachState = nullptr;
+	Packet_Target*			packet_target=nullptr;
+	cAction*				m_pAction = nullptr;
+	cGameObject*			m_pTarget = nullptr;
 public:
-	cMoveState();
-	virtual ~cMoveState();
+	cApproachState();
+	~cApproachState();
 
-	static cMoveState* GetInstance()
+	static cApproachState* GetInstance()
 	{
-		static cMoveState instance;
+		static cApproachState instance;
 		return &instance;
 	}
 
@@ -32,3 +28,4 @@ public:
 	virtual bool OnMessage(cGameObject* _player, const ST_PACKET& _packet);
 	virtual void OnActionDelegate(cAction* _pSender);
 };
+

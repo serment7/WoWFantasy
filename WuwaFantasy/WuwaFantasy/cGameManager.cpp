@@ -77,7 +77,17 @@ void cGameManager::Update()
 {
 	m_fCalFPSTime += g_pTimeManager->GetDeltaTime();
 	++m_nFPSCount;
-	m_nFPS = m_nFPSCount / m_fCalFPSTime;
+	
+	if (m_fCalFPSTime > 1.0f)
+	{
+		m_nFPS = (float)m_nFPSCount / m_fCalFPSTime;
+		m_nFPSCount = 0;
+		m_fCalFPSTime = 0.0f;
+	}
+	
+	//UpdateClientSize();
+	GetClientRect(g_hWnd, &m_rcClientSize);
+	m_camera.SetAspect(m_rcClientSize.right / (float)m_rcClientSize.bottom);
 
 	if (m_pDramaScript && m_pDramaScript->IsRun())
 		m_dramaCamera.Update();

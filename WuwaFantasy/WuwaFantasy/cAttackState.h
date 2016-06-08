@@ -1,24 +1,21 @@
 #pragma once
 #include "cIState.h"
 
+class cAction;
 class cMoveState;
-class cAttackState;
-class cApproachState;
 
-class cIdleState :
+class cAttackState :
 	public cIState
 {
 private:
-	cMoveState*				m_pMoveState = nullptr;
-	cAttackState*			m_pAttackState = nullptr;
-	cApproachState*			m_pApproachState = nullptr;
+	cMoveState*			m_pMoveState=nullptr;
 public:
-	cIdleState();
-	~cIdleState();
+	cAttackState();
+	~cAttackState();
 
-	static cIdleState* GetInstance()
+	static cAttackState* GetInstance()
 	{
-		static cIdleState instance;
+		static cAttackState instance;
 		return &instance;
 	}
 
@@ -26,4 +23,6 @@ public:
 	virtual void ExitState(cGameObject* _player);
 	virtual void Execute(cGameObject* _player);
 	virtual bool OnMessage(cGameObject* _player, const ST_PACKET& _packet);
+	virtual void OnActionDelegate(cAction* _pSender);
 };
+

@@ -3,6 +3,8 @@
 #include "cAction.h"
 #include "cPlayer.h"
 #include "cIdleState.h"
+#include "cAttackState.h"
+#include "cApproachState.h"
 
 cMoveState::cMoveState()
 {
@@ -15,12 +17,8 @@ cMoveState::~cMoveState()
 
 void cMoveState::EnterState(cGameObject * _player)
 {
-	pAction = _player->GetAction();
-	pAction->SetDelegate(this);
-}
-
-void cMoveState::ChangeState(cGameObject * _player)
-{
+	const size_t& id = _player->GetID();
+	g_pMessageDispatcher->Dispatch(id, id, 0.0f, Msg_MoveAni, NULL);
 }
 
 void cMoveState::ExitState(cGameObject * _player)
@@ -39,11 +37,17 @@ bool cMoveState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
 	{
 	case Msg_Move:
 		packet_move = (Packet_Move*)_packet.info;
-		cAction* action = _player->GetAction();
-		action->ReadyMoveTo(_player->GetVPos(), packet_move->vDes);
-		action->Start();
+		pAction = _player->GetAction();
+		pAction->ReadyMoveTo(packet_move->vDes);
+		pAction->SetDelegate(this);
+		pAction->Start();
+		pAction = nullptr;
 		SAFE_DELETE(packet_move);
 		return true;
+	case Msg_Approach:
+	case Msg_Attack:
+	case Msg_Idle:
+		return MessageCatch(_player, _packet);
 	}
 
 	return false;
@@ -52,5 +56,5 @@ bool cMoveState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
 void cMoveState::OnActionDelegate(cAction * _pSender)
 {
 	_pSender->Stop();
-	g_pMessageDispatcher->Dispatch(0, _pSender->GetOwner()->GetID(), 0.0f, Msg_IdleAni, NULL);
+	_pSender->GetOwner()->GetStateMachine()->ChangeState(cIdleState::GetInstance());
 }

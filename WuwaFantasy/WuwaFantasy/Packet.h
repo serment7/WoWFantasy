@@ -1,13 +1,17 @@
 #pragma once
 enum Msg_Type {
 	Msg_Move = 0x101
+	, Msg_Idle
+	, Msg_Attack
+	, Msg_Approach
+	, Msg_GetCondition
+	, Msg_UseItem
 	, Msg_IdleAni
 	, Msg_AttackAni
 	, Msg_MoveAni
 	, Msg_CastingAni
-	, Msg_Attack
-	, Msg_GetCondition
-	, Msg_UseItem
+	
+	
 
 };
 
@@ -31,13 +35,31 @@ struct Packet_MessageHandle
 	{}
 };
 
-struct Packet_Attack
+struct Packet_Hit
 {
 	size_t damage = -1;
-	Packet_Attack(const size_t& _damage)
+	Packet_Hit(const size_t& _damage)
 		:damage(_damage)
 	{}
 };
+
+//struct Packet_Move
+//{
+//	D3DXVECTOR3	vDes = D3DXVECTOR3(0, 0, 0);
+//	Packet_Move(D3DXVECTOR3 _des)
+//		:vDes(_des)
+//	{}
+//};
+
+class cGameObject;
+struct Packet_Target
+{
+	cGameObject* pTarget = nullptr;
+	Packet_Target(cGameObject* _pTarget)
+		:pTarget(_pTarget)
+	{}
+};
+
 
 class cCondition;
 struct Packet_GetCondition

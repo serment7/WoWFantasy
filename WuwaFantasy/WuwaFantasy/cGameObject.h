@@ -18,8 +18,8 @@ public:
 
 	cSkinnedMesh*				m_chrSkinnedMesh = nullptr;
 	cWeaponSkinnedMesh*			m_objSkinnedMesh = nullptr;
-	LPD3DXMESH					m_sphere = nullptr;
-
+	BoundingSphere				m_sphere;
+	BoundingBox					m_box;
 
 	cStateMachine*				m_pStateMachine=nullptr;
 	std::list<cCondition*>		m_listCondition;
@@ -28,6 +28,7 @@ public:
 	size_t						m_unTag = -1;
 
 	cAction*					m_pAction;
+	bool						m_bAniUpdate = true;
 
 public:
 	cGameObject();
@@ -41,14 +42,22 @@ public:
 	const size_t& GetID();
 	const size_t& GetTag();
 
-	cStatus&			GetStatus();
-	cSkinnedMesh*		GetSkinnedMesh() { return m_chrSkinnedMesh; };
-	void				SetStateMachine(cStateMachine* _pStateMachine);
-	cStateMachine*		GetStateMachine();
-	LPD3DXMESH			GetBound();
+	cStatus&					GetStatus();
+	cSkinnedMesh*				GetChrSkinnedMesh() { return m_chrSkinnedMesh; };
+	cWeaponSkinnedMesh*			GetObjSkinnedMesh() { return m_objSkinnedMesh; };
+	void						SetStateMachine(cStateMachine* _pStateMachine);
+	cStateMachine*				GetStateMachine();
+	const BoundingSphere&		GetBoundSphere();
+	const BoundingBox&			GetBoundBox();
 
 	void				AddCondition(cCondition* _pCondition);
 	void				OnMessage(const ST_PACKET& _packet);
 
+	virtual void		Setup() {};
+
 	cAction*			GetAction();
+	void				SetAniUpdate(bool d) { m_bAniUpdate = d; };
+
+	void				SetBoundSphere(const BoundingSphere& _sphere);
+	void				SetBoundBox(const BoundingBox& _box);
 };

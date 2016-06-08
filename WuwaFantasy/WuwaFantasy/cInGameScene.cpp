@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "cInGameScene.h"
 #include "cObject.h"
+#include "cHydra.h"
 
 cInGameScene::cInGameScene()
 	: m_bPaused(FALSE)
@@ -28,13 +29,9 @@ void cInGameScene::Update()
 	if (m_bPaused)
 		return;
 	
-	for (auto iter = m_mapObject.begin(); iter != m_mapObject.end(); ++iter)
+	for (size_t i = 0; i < m_vecObject.size(); ++i)
 	{
-		std::vector<cObject*>& vecObject = iter->second;
-		for (size_t i = 0; i < vecObject.size(); ++i)
-		{
-			vecObject[i]->Update();
-		}
+		m_vecObject[i]->Update();
 	}
 
 }
@@ -51,16 +48,10 @@ void cInGameScene::Render()
 	g_pD3DDevice->LightEnable(0, true);
 	g_pD3DDevice->LightEnable(1, true);
 
-	for (auto iter = m_mapObject.begin(); iter != m_mapObject.end(); ++iter)
+	g_pD3DDevice->SetFVF(ST_PNT_VERTEX::FVF);
+	for (size_t i = 0; i < m_vecObject.size(); ++i)
 	{
-		if (iter->first == 0)
-			return;
-		g_pD3DDevice->SetFVF(iter->first);
-		std::vector<cObject*>& vecObject = iter->second;
-		for (size_t i = 0; i < vecObject.size(); ++i)
-		{
-			vecObject[i]->Render();
-		}
+		m_vecObject[i]->Render();
 	}
 	if (m_pGrid) m_pGrid->Render();
 	if (m_pPlayer) m_pPlayer->Render();
@@ -83,8 +74,15 @@ void cInGameScene::EnterScene()
 	m_pCamera->SetAspect(rc.right / (float)rc.bottom);
 
 	m_pPlayer = new cPlayer;
-	m_pPlayer->Setup();
 	m_pPlayer->SetTag(33);
+	m_pPlayer->Setup();
+
+	m_vecObject.push_back(new cHydra);
+
+	for (size_t i = 0; i < m_vecObject.size(); ++i)
+	{
+		m_vecObject[i]->Setup();
+	}
 	g_pGameManager->SetPlayerID(m_pPlayer->GetID());
 
 	ZeroMemory(&m_light, sizeof(m_light));
@@ -100,13 +98,9 @@ void cInGameScene::EnterScene()
 
 void cInGameScene::ExitScene()
 {
-	for (auto iter = m_mapObject.begin(); iter != m_mapObject.end(); ++iter)
+	for (size_t i = 0; i < m_vecObject.size(); ++i)
 	{
-		std::vector<cObject*>& vecObject = iter->second;
-		for (size_t i = 0; i < vecObject.size(); ++i)
-		{
-			SAFE_RELEASE(vecObject[i]);
-		}
+		SAFE_RELEASE(m_vecObject[i]);
 	}
 	SAFE_RELEASE(m_pPlayer);
 	SAFE_RELEASE(m_pGrid);

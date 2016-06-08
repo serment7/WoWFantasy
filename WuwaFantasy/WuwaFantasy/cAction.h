@@ -21,7 +21,6 @@ private:
 
 	D3DXVECTOR3				m_vFrom = D3DXVECTOR3(0, 0, 0);
 	D3DXVECTOR3				m_vTo = D3DXVECTOR3(0, 0, 0);
-	cGameObject*			pTarget = nullptr;
 
 public:
 	cAction(cGameObject* _pOwner);
@@ -32,9 +31,13 @@ public:
 	void					Stop();
 	void					SetDelegate(cActionDelegate* _pDelegate);
 
-	void					ReadyMoveTo(const D3DXVECTOR3& _vFrom, const D3DXVECTOR3& _vTo);
+	void					ReadyMoveTo(const D3DXVECTOR3& _vTo);
 	void					MoveTo();
-	void					ReadyHeadTo(const D3DXVECTOR3& _vFrom, const D3DXVECTOR3& _vTo);
+	void					ReadyHeadTo(const D3DXVECTOR3& _vTo);
 	void					HeadTo();
+	void					ReadyApproach(const D3DXVECTOR3& _vTo, const float& _fTargetRange);
+	void					Approach();
+	void					ReadyAttack(cGameObject* _pTarget, const float& _attackRange);
+	void					Attack();
 };
 

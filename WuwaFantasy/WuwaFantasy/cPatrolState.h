@@ -2,23 +2,19 @@
 #include "cIState.h"
 
 class cMoveState;
-class cAttackState;
-class cApproachState;
 
-class cIdleState :
+class cPatrolState :
 	public cIState
 {
 private:
-	cMoveState*				m_pMoveState = nullptr;
-	cAttackState*			m_pAttackState = nullptr;
-	cApproachState*			m_pApproachState = nullptr;
+	cMoveState*			m_pMoveState;
 public:
-	cIdleState();
-	~cIdleState();
+	cPatrolState();
+	~cPatrolState();
 
-	static cIdleState* GetInstance()
+	static cPatrolState* GetInstance()
 	{
-		static cIdleState instance;
+		static cPatrolState instance;
 		return &instance;
 	}
 
@@ -27,3 +23,4 @@ public:
 	virtual void Execute(cGameObject* _player);
 	virtual bool OnMessage(cGameObject* _player, const ST_PACKET& _packet);
 };
+

@@ -11,15 +11,16 @@ cAction::cAction(cGameObject * _pOwner)
 cAction::~cAction()
 {
 }
+
 cGameObject * cAction::GetOwner()
 {
 	return m_pOwner;
 }
 
-void cAction::ReadyMoveTo(const D3DXVECTOR3 & _vFrom, const D3DXVECTOR3 & _vTo)
+void cAction::ReadyMoveTo(const D3DXVECTOR3 & _vTo)
 {
 	const cStatus& status = m_pOwner->GetStatus();
-	m_vFrom = _vFrom;
+	m_vFrom = m_pOwner->GetVPos();
 	m_vTo = _vTo;
 	m_fActionTime = (D3DXVec3Length(&(m_vTo - m_vFrom)) + 0.001f) / (status.GetSpeed());
 
@@ -47,9 +48,9 @@ void cAction::MoveTo()
 	}
 }
 
-void cAction::ReadyHeadTo(const D3DXVECTOR3 & _vFrom, const D3DXVECTOR3 & _vTo)
+void cAction::ReadyHeadTo(const D3DXVECTOR3 & _vTo)
 {
-	m_vFrom = _vFrom;
+	m_vFrom = m_pOwner->GetVPos();
 	m_vTo = _vTo;
 }
 
@@ -57,6 +58,29 @@ void cAction::HeadTo()
 {
 	D3DXVECTOR3 vTargetDir = m_vTo - m_vFrom;
 	m_pOwner->SetVDir(vTargetDir);
+}
+
+void cAction::ReadyApproach(const D3DXVECTOR3 & _vTo, const float & _fTargetRange)
+{
+	m_vFrom = m_pOwner->GetVPos();
+	D3DXVECTOR3 vApproachTo = m_vFrom - _vTo;
+	D3DXVec3Normalize(&vApproachTo, &vApproachTo);
+	vApproachTo = _vTo - (vApproachTo * _fTargetRange);
+	ReadyMoveTo(vApproachTo);
+}
+
+void cAction::Approach()
+{
+	MoveTo();
+}
+
+void cAction::ReadyAttack(cGameObject * _pTarget, const float & _attackRange)
+{
+
+}
+
+void cAction::Attack()
+{
 }
 
 void cAction::Start()

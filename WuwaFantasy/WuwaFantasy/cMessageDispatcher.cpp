@@ -15,12 +15,15 @@ void cMessageDispatcher::Update()
 {	
 	if (m_message.empty())
 		return;
-
-	ST_PACKET packet = *m_message.begin();
-	if (packet.delayTime < g_pTimeManager->GetCurTime())
+	ST_PACKET packet= *m_message.begin();
+	while(packet.delayTime < g_pTimeManager->GetCurTime())
 	{
 		cGameObject* pReceiver = g_pObjectManager->FindObjectByID(packet.receiver);
 		pReceiver->OnMessage(packet);
+		m_message.erase(m_message.begin());
+		if (m_message.empty())
+			break;
+		packet = *m_message.begin();
 	}
 }
 

@@ -70,6 +70,10 @@ struct BoundingSphere
 	D3DXVECTOR3 vCenter;
 	float		fRadius;
 
+	BoundingSphere()
+		:vCenter(D3DXVECTOR3(0, 0, 0))
+		, fRadius(fRadius)
+	{}
 	BoundingSphere( const D3DXVECTOR3& _vCenter, const float& fRadius)
 		: vCenter(_vCenter)
 		, fRadius(fRadius)

@@ -4,7 +4,7 @@
 #include "cPlayer.h"
 #include "cCamera.h"
 
-class cObject;
+class cGameObject;
 
 class cInGameScene : 
 	public cIScene
@@ -16,7 +16,7 @@ private:
 	cCamera*		m_pCamera;
 	cPlayer*		m_pPlayer;
 
-	std::map < DWORD, std::vector<cObject*> > m_mapObject;
+	std::vector<cGameObject*> m_vecObject;
 
 	D3DLIGHT9		m_light;
 
