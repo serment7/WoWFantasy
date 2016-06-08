@@ -1,6 +1,7 @@
 
 #pragma once
 #include "cInGameScene.h"
+#include "cLoadingGameScene.h"
 #include "cSceneManager.h"
 
 class cGrid;
@@ -14,7 +15,7 @@ private:
 
 	cSceneManager*	SceneManager;
 	cInGameScene*	mainScene;
-	cInGameScene*	mainScene2;
+	cLoadingGameScene*	loadingScene;
 
 public:
 	cMainGame();
@@ -23,6 +24,7 @@ public:
 	void Setup();
 	void Update();
 	void Render();
+	void Release();
 
 	void CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 };

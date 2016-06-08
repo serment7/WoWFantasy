@@ -13,9 +13,9 @@ struct ST_STATUS
 	float fSpeed = 0.0f;
 
 	//½ºÅ×ÀÌÅÍ½º Á¤º¸
-	int nStr = 0;					//Èû
+	int nStr = 0;					//ÈE
 	int nDex = 0;					//¹ÎÃ¸¼º		
-	int nDef = 0;					//¹æ¾î·Â
+	int nDef = 0;					//¹æ¾ûÓÂ
 	int nInt = 0;					//¸¶·Â
 	float fCrt = 0.0f;					//Å©¸®Æ¼ÄÃ
 
@@ -35,7 +35,7 @@ public:
 	//½ºÅ×ÀÌÅÍ½º ¼ÂÆÃºÎºĞ
 	void Setup(const ST_STATUS& stChInfo);
 
-	//½ºÅ×ÀÌÅÍ½º °ÙÅÍ ¼ÂÅÍ(ÇÊ¿äÇÑ ´É·ÂÄ¡ Ãß°¡ÇØ ÁÖ¼¼¿ä)
+	//½ºÅ×ÀÌÅÍ½º °ÙÅÍ ¼ÂÅÍ(ÇÊ¿äÇÑ ´É·ÂÄ¡ Ãß°¡ÇØ ÁÖ¼¼¿E
 	ST_STATUS GetStatus() { return m_stStatus; }
 
 	int		GetCurrentHP() { return m_stStatus.nCurrentHP; }
@@ -45,9 +45,9 @@ public:
 	int		GetCurrentSP() { return m_stStatus.nCurrentSP; }
 	int		GetMaxSP() { return m_stStatus.nMaxSP; }
 	float	GetSpeed() const { return m_stStatus.fSpeed; }
-	int		GetStr() { return m_stStatus.nStr; }					//Èû
+	int		GetStr() { return m_stStatus.nStr; }					//ÈE
 	int		GetDex() { return m_stStatus.nDex; }					//¹ÎÃ¸¼º		
-	int		GetDef() { return m_stStatus.nDef; }					//¹æ¾î·Â
+	int		GetDef() { return m_stStatus.nDef; }					//¹æ¾ûÓÂ
 	int		GetInt() { return m_stStatus.nInt; }					//¸¶·Â
 	float	GetCrt() { return m_stStatus.fCrt; }					//Å©¸®Æ¼ÄÃ
 	int		GetLevel() { return m_stStatus.nLevel; }
@@ -60,9 +60,9 @@ public:
 	void	SetCurrentSP(const int& nCurrentSP) { m_stStatus.nCurrentSP = nCurrentSP; }
 	void	SetMaxSP(const int& nMaxSP) { m_stStatus.nMaxSP = nMaxSP; }
 	void	SetSpeed(const float& fSpeed) { m_stStatus.fSpeed = fSpeed; }
-	void	SetStr(const int& nStr) { m_stStatus.nStr = nStr; }					//Èû
+	void	SetStr(const int& nStr) { m_stStatus.nStr = nStr; }					//ÈE
 	void	SetDex(const int& nDex) { m_stStatus.nDex = nDex; }					//¹ÎÃ¸¼º		
-	void	SetDef(const int& nDef) { m_stStatus.nDef = nDef; }					//¹æ¾î·Â
+	void	SetDef(const int& nDef) { m_stStatus.nDef = nDef; }					//¹æ¾ûÓÂ
 	void	SetInt(const int& nInt) { m_stStatus.nInt = nInt; }					//¸¶·Â
 	void	SetCrt(const float& fCrt) { m_stStatus.fCrt = fCrt; }					//Å©¸®Æ¼ÄÃ
 	void	SetLevel(const int& nLevel) { m_stStatus.nLevel = nLevel; }
@@ -75,9 +75,9 @@ public:
 	void	IncCurrentSP(const int& nCurrentSP) { m_stStatus.nCurrentSP += nCurrentSP; }
 	void	IncMaxSP(const int& nMaxSP) { m_stStatus.nMaxSP += nMaxSP; }
 	void	IncSpeed(const float& fSpeed) { m_stStatus.fSpeed += fSpeed; }
-	void	IncStr(const int& nStr) { m_stStatus.nStr += nStr; }					//Èû
+	void	IncStr(const int& nStr) { m_stStatus.nStr += nStr; }					//ÈE
 	void	IncDex(const int& nDex) { m_stStatus.nDex += nDex; }					//¹ÎÃ¸¼º		
-	void	IncDef(const int& nDef) { m_stStatus.nDef += nDef; }					//¹æ¾î·Â
+	void	IncDef(const int& nDef) { m_stStatus.nDef += nDef; }					//¹æ¾ûÓÂ
 	void	IncInt(const int& nInt) { m_stStatus.nInt += nInt; }					//¸¶·Â
 	void	IncCrt(const float& fCrt) { m_stStatus.fCrt += fCrt; }					//Å©¸®Æ¼ÄÃ
 	void	IncLevel(const int& nLevel) { m_stStatus.nLevel += nLevel; }
@@ -90,9 +90,9 @@ public:
 	void	DecCurrentSP(const int& nCurrentSP) { m_stStatus.nCurrentSP -= nCurrentSP; }
 	void	DecMaxSP(const int& nMaxSP) { m_stStatus.nMaxSP -= nMaxSP; }
 	void	DecSpeed(const float& fSpeed) { m_stStatus.fSpeed -= fSpeed; }
-	void	DecStr(const int& nStr) { m_stStatus.nStr -= nStr; }					//Èû
+	void	DecStr(const int& nStr) { m_stStatus.nStr -= nStr; }					//ÈE
 	void	DecDex(const int& nDex) { m_stStatus.nDex -= nDex; }					//¹ÎÃ¸¼º		
-	void	DecDef(const int& nDef) { m_stStatus.nDef -= nDef; }					//¹æ¾î·Â
+	void	DecDef(const int& nDef) { m_stStatus.nDef -= nDef; }					//¹æ¾ûÓÂ
 	void	DecInt(const int& nInt) { m_stStatus.nInt -= nInt; }					//¸¶·Â
 	void	DecCrt(const float& fCrt) { m_stStatus.fCrt -= fCrt; }					//Å©¸®Æ¼ÄÃ
 	void	DecLevel(const int& nLevel) { m_stStatus.nLevel -= nLevel; }

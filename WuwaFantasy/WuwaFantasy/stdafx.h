@@ -137,3 +137,5 @@ struct BoundingBox
 #include "Packet.h"
 #include "cMessageDispatcher.h"
 #include "cPickManager.h"
+#include "cSceneManager.h"
+#include "cKeyManager.h"
