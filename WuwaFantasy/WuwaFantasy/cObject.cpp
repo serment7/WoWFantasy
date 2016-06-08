@@ -13,7 +13,7 @@ cObject::cObject()
 
 cObject::~cObject()
 {
-	assert(nRefCount>=0&&"ｰｴﾃｼ ｼﾒｸ・ﾌ ｿｩｷｯｹ・ﾀﾏｾ鋧ｪｰ暲ﾖｽﾀｴﾏｴﾙ");
+	assert(nRefCount>=0&&"ｰｴﾃｼ ｼﾒｸ・?ｿｩｷｯｹ・ﾀﾏｾ鋧ｪｰ暲ﾖｽﾀｴﾏｴﾙ");
 }
 
 void cObject::Update()
