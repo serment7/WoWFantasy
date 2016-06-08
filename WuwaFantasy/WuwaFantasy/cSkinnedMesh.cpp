@@ -182,7 +182,7 @@ void cSkinnedMesh::UpdateSkinnedMesh( LPD3DXFRAME pFrame )
 			DWORD dwNumBones = pSkinInfo->GetNumBones();
 			for (DWORD i = 0; i < dwNumBones; ++i)
 			{
-				pBoneMesh->pCurrentBoneMatrices[i] = 
+				pBoneMesh->pCurrentBoneMatrices[i] =
 					pBoneMesh->pBoneOffsetMatrices[i] *
 					*(pBoneMesh->ppBoneMatrixPtrs[i]);
 			}

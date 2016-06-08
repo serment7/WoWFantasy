@@ -9,11 +9,13 @@ cInGameScene::cInGameScene()
 	, m_pGrid(nullptr)
 	, m_pCamera(nullptr)
 {
+	g_pSoundManager->Start("1.wav");
 }
 
 cInGameScene::~cInGameScene()
 {
 	ExitScene();
+	g_pSoundManager->Release();
 	g_pObjectManager->Destroy();
 }
 
