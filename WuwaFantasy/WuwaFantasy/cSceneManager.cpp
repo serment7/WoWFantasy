@@ -38,27 +38,6 @@ void cSceneManager::Release()
 	}
 
 	m_mapSceneList.clear();
-
-	m_pGameScene->ExitScene();
-	if (m_pGameScene)
-	{
-		delete m_pGameScene;
-		m_pGameScene = nullptr;
-	}
-
-	m_pLoadingScene->ExitScene();
-	if (m_pLoadingScene)
-	{
-		delete m_pLoadingScene;
-		m_pLoadingScene = nullptr;
-	}
-
-	m_pReadyScene->EnterScene();
-	if (m_pReadyScene)
-	{
-		delete m_pReadyScene;
-		m_pReadyScene = nullptr;
-	}
 }
 
 void cSceneManager::Update()
@@ -73,7 +52,7 @@ void cSceneManager::Render()
 
 cIScene* cSceneManager::AddScene(std::string szSceneName, cIScene* nScene)
 {
-	if (nScene == nullptr) return nullptr;
+	//if (nScene == nullptr) return nullptr;
 
 	m_mapSceneList.insert(std::make_pair(szSceneName, nScene));
 

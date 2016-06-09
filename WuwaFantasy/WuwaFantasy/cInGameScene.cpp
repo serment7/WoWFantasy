@@ -9,13 +9,13 @@ cInGameScene::cInGameScene()
 	, m_pGrid(nullptr)
 	, m_pCamera(nullptr)
 {
-	g_pSoundManager->Start("1.wav");
+	//g_pSoundManager->Start("1.wav");
 }
 
 cInGameScene::~cInGameScene()
 {
 	ExitScene();
-	g_pSoundManager->Release();
+	//g_pSoundManager->Release();
 	g_pObjectManager->Destroy();
 }
 
@@ -106,7 +106,7 @@ void cInGameScene::ExitScene()
 	}
 	SAFE_RELEASE(m_pPlayer);
 	SAFE_RELEASE(m_pGrid);
-	//SAFE_DELETE(m_pCamera);
+	g_pObjectManager->Destroy();
 	g_pTextureManager->Destroy();
 }	
 

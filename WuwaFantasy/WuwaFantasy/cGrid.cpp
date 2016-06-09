@@ -10,7 +10,6 @@ cGrid::cGrid(void)
 
 cGrid::~cGrid(void)
 {
-	g_pDeviceManager->Destroy();
 }
 
 void cGrid::Setup( float nLine /*= 30*/, float fInterval /*= 1.0f*/ )

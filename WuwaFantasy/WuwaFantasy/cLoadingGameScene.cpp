@@ -12,7 +12,6 @@ cLoadingGameScene::cLoadingGameScene()
 
 cLoadingGameScene::~cLoadingGameScene()
 {
-	g_pD3DDevice->Release();
 	ExitScene();
 }
 
@@ -49,6 +48,7 @@ void cLoadingGameScene::EnterScene()
 
 void cLoadingGameScene::ExitScene()
 {
+	int n = 0;
 }
 
 void cLoadingGameScene::ChangeScene(cIScene * _pNextScene)
