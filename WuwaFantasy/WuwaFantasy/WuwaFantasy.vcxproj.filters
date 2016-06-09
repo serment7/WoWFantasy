@@ -255,6 +255,9 @@
     <ClInclude Include="cMonsterState.h">
       <Filter>소스 파일\State\MonsterState</Filter>
     </ClInclude>
+    <ClInclude Include="cSoundManager.h">
+      <Filter>소스 파일\GamaManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -427,6 +430,9 @@
     </ClCompile>
     <ClCompile Include="cMonsterState.cpp">
       <Filter>소스 파일\State\MonsterState</Filter>
+    </ClCompile>
+    <ClCompile Include="cSoundManager.cpp">
+      <Filter>소스 파일\GamaManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
