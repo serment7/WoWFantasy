@@ -19,7 +19,7 @@ void cLoadingGameScene::Update()
 {
 	g_pTimeManager->Update();
 	m_fPlayTime += g_pTimeManager->GetDeltaTime();
-	if (m_fPlayTime > 5.0f)
+	if (m_fPlayTime > 2.0f)
 	{
 		g_pSceneManager->GetGameScene()->ExitScene();
 		g_pSceneManager->GetReadyScene()->EnterScene();
@@ -48,7 +48,6 @@ void cLoadingGameScene::EnterScene()
 
 void cLoadingGameScene::ExitScene()
 {
-	int n = 0;
 }
 
 void cLoadingGameScene::ChangeScene(cIScene * _pNextScene)

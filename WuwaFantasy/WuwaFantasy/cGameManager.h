@@ -6,7 +6,6 @@
 
 class cIScript;
 class cGameObject;
-typedef cGameObject	ENTITY_TYPE;
 class cJob;
 class cSkill;
 
@@ -59,4 +58,8 @@ public:
 	void RegisterObjectType(const std::string& _typename, const size_t& _tagID);
 	void RegisterSkill(cSkill* _skill);
 	void RegisterJob(cJob* job);
+
+	const size_t FindObjectType(const std::string& _typename);
+	const cSkill* FindSkill(const std::string& _typename);
+	const cJob* FindJob(const std::string& _typename);
 };

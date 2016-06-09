@@ -70,6 +70,9 @@
     <Filter Include="소스 파일\State\BaseState">
       <UniqueIdentifier>{4c6abe67-35b0-4288-9d97-8a6237d0d3dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\State\NPCState">
+      <UniqueIdentifier>{e01c5be6-1f84-4cc6-b7d7-9e164cfcce8b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -207,17 +210,11 @@
     <ClInclude Include="cAction.h">
       <Filter>소스 파일\Action</Filter>
     </ClInclude>
-    <ClInclude Include="cDworfMageState.h">
-      <Filter>소스 파일\State\PlayerState</Filter>
-    </ClInclude>
     <ClInclude Include="cHydraState.h">
       <Filter>소스 파일\State\MonsterState\Hydra</Filter>
     </ClInclude>
     <ClInclude Include="cPlayer.h">
       <Filter>소스 파일\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="cDworfMageFSM.h">
-      <Filter>소스 파일\State\PlayerState</Filter>
     </ClInclude>
     <ClInclude Include="cHydra.h">
       <Filter>소스 파일\Object\Monster</Filter>
@@ -242,6 +239,21 @@
     </ClInclude>
     <ClInclude Include="cProgressBar.h">
       <Filter>소스 파일\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="cKeyManager.h">
+      <Filter>소스 파일\GamaManager</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerState.h">
+      <Filter>소스 파일\State\PlayerState</Filter>
+    </ClInclude>
+    <ClInclude Include="cDworfMageState.h">
+      <Filter>소스 파일\State\NPCState</Filter>
+    </ClInclude>
+    <ClInclude Include="cDworfMageFSM.h">
+      <Filter>소스 파일\State\NPCState</Filter>
+    </ClInclude>
+    <ClInclude Include="cMonsterState.h">
+      <Filter>소스 파일\State\MonsterState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -371,17 +383,11 @@
     <ClCompile Include="cAction.cpp">
       <Filter>소스 파일\Action</Filter>
     </ClCompile>
-    <ClCompile Include="cDworfMageState.cpp">
-      <Filter>소스 파일\State\PlayerState</Filter>
-    </ClCompile>
     <ClCompile Include="cHydraState.cpp">
       <Filter>소스 파일\State\MonsterState\Hydra</Filter>
     </ClCompile>
     <ClCompile Include="cPlayer.cpp">
       <Filter>소스 파일\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="cDworfMageFSM.cpp">
-      <Filter>소스 파일\State\PlayerState</Filter>
     </ClCompile>
     <ClCompile Include="cHydra.cpp">
       <Filter>소스 파일\Object\Monster</Filter>
@@ -406,6 +412,21 @@
     </ClCompile>
     <ClCompile Include="cProgressBar.cpp">
       <Filter>소스 파일\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="cKeyManager.cpp">
+      <Filter>소스 파일\GamaManager</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerState.cpp">
+      <Filter>소스 파일\State\PlayerState</Filter>
+    </ClCompile>
+    <ClCompile Include="cDworfMageFSM.cpp">
+      <Filter>소스 파일\State\NPCState</Filter>
+    </ClCompile>
+    <ClCompile Include="cDworfMageState.cpp">
+      <Filter>소스 파일\State\NPCState</Filter>
+    </ClCompile>
+    <ClCompile Include="cMonsterState.cpp">
+      <Filter>소스 파일\State\MonsterState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

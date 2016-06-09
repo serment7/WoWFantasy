@@ -8,7 +8,6 @@ cAttackState::cAttackState()
 {
 }
 
-
 cAttackState::~cAttackState()
 {
 }

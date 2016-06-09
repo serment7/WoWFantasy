@@ -14,7 +14,6 @@ cInGameScene::cInGameScene()
 
 cInGameScene::~cInGameScene()
 {
-	ExitScene();
 	//g_pSoundManager->Release();
 	g_pObjectManager->Destroy();
 }
@@ -26,6 +25,19 @@ void cInGameScene::Update()
 	g_pGameManager->Update();
 
 	m_pCamera->Update();
+
+	if (g_pKeyManager->isStayKeyDown(VK_RBUTTON))
+	{
+		g_pGameManager->UpdateCursorPointInGlobal();
+		const POINT& curPos = g_pGameManager->GetCursorPoint();
+		if (g_pPickManager->IsPickedTry(m_pGrid->GetTriVertex(), curPos.x, curPos.y))
+		{
+			Packet_Move* packet = new Packet_Move(g_pPickManager->GetRayPos());
+			packet->vDes.y = 0.0f;
+			g_pMessageDispatcher->Dispatch(0, g_pGameManager->GetPlayerID(), 0.0f, Msg_Move, packet);
+		}
+	}
+
 	if (m_pPlayer) m_pPlayer->Update();
 
 	if (m_bPaused)
@@ -64,11 +76,7 @@ void cInGameScene::Render()
 
 void cInGameScene::EnterScene()
 {
-	m_pGrid = new cGrid;
-	m_pGrid->Setup();
-	m_pGrid->SetTag(200);
-
-	//m_pCamera = new cCamera;
+	g_pKeyManager->Setup();
 	m_pCamera = g_pGameManager->GetCamera();
 
 	RECT rc;
@@ -76,16 +84,27 @@ void cInGameScene::EnterScene()
 	m_pCamera->SetAspect(rc.right / (float)rc.bottom);
 
 	m_pPlayer = new cPlayer;
-	m_pPlayer->SetTag(33);
+	m_pPlayer->SetTag(g_pGameManager->FindObjectType("player"));
 	m_pPlayer->Setup();
+	g_pGameManager->SetPlayerID(m_pPlayer->GetID());
+	g_pObjectManager->AddObject(m_pPlayer);
 
-	m_vecObject.push_back(new cHydra);
+	m_pGrid = new cGrid;
+	m_pGrid->Setup();
+	m_pGrid->SetTag(g_pGameManager->FindObjectType("collider"));
+	m_pGrid->SetTag(200);
+	g_pObjectManager->AddObject(m_pGrid);
+	
+	cGameObject* monster = new cHydra;
+	monster->SetTag(g_pGameManager->FindObjectType("monster"));
+	g_pObjectManager->AddObject(m_pGrid);
+	m_vecObject.push_back(monster);
 
 	for (size_t i = 0; i < m_vecObject.size(); ++i)
 	{
 		m_vecObject[i]->Setup();
 	}
-	g_pGameManager->SetPlayerID(m_pPlayer->GetID());
+	
 
 	ZeroMemory(&m_light, sizeof(m_light));
 	m_light.Type = D3DLIGHT_DIRECTIONAL;
@@ -108,6 +127,7 @@ void cInGameScene::ExitScene()
 	SAFE_RELEASE(m_pGrid);
 	g_pObjectManager->Destroy();
 	g_pTextureManager->Destroy();
+	g_pKeyManager->release();
 }	
 
 void cInGameScene::ChangeScene(cIScene * _pNextScene)
@@ -126,20 +146,13 @@ void cInGameScene::MessageHandling(HWND hWnd, UINT iMessage, WPARAM wParam, LPAR
 	case WM_MOUSEMOVE:
 		if (bRButtonDown)
 		{
-			g_pGameManager->UpdateCursorPointInGlobal();
-			curPos = g_pGameManager->GetCursorPoint();
-			if (g_pPickManager->IsPickedTry(m_pGrid->GetTriVertex(), curPos.x, curPos.y))
-			{
-				Packet_Move* packet = new Packet_Move(g_pPickManager->GetRayPos());
-				packet->vDes.y = 0.0f;
-				g_pMessageDispatcher->Dispatch(0, g_pGameManager->GetPlayerID(), 0.0f, Msg_Move, packet);
-			}
+			
 		}
 	case WM_MOUSEWHEEL:
 		g_pGameManager->GetCamera()->MessageHandle(hWnd, iMessage, wParam, lParam);
 		break;
 	case WM_RBUTTONDOWN:
-		bRButtonDown = true;
+		/*bRButtonDown = true;
 		g_pGameManager->UpdateCursorPointInGlobal();
 		curPos = g_pGameManager->GetCursorPoint();
 		if (g_pPickManager->IsPickedTry(m_pGrid->GetTriVertex(), curPos.x, curPos.y))
@@ -147,7 +160,7 @@ void cInGameScene::MessageHandling(HWND hWnd, UINT iMessage, WPARAM wParam, LPAR
 			Packet_Move* packet = new Packet_Move(g_pPickManager->GetRayPos());
 			packet->vDes.y = 0.0f;
 			g_pMessageDispatcher->Dispatch(0, g_pGameManager->GetPlayerID(), 0.0f, Msg_Move, packet);
-		}
+		}*/
 		break;
 	case WM_RBUTTONUP:
 		bRButtonDown = false;

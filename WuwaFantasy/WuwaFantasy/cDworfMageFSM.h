@@ -5,5 +5,5 @@ class cDworfMageFSM :
 {
 public:
 	cDworfMageFSM(cGameObject* _pOwner);
-	virtual ~cDworfMageFSM();
+	~cDworfMageFSM();
 };

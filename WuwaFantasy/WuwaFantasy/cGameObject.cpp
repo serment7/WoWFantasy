@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "cGameObject.h"
 #include "cCondition.h"
@@ -7,7 +6,6 @@
 cGameObject::cGameObject()
 	:m_pAction(new cAction(this))
 {
-	g_pObjectManager->AddObject(this);
 	ST_STATUS status;
 	ZeroMemory(&status, sizeof(status));
 	status.fSpeed = 1.0f;

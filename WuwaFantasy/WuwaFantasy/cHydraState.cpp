@@ -6,7 +6,6 @@ cHydraState::cHydraState()
 {
 }
 
-
 cHydraState::~cHydraState()
 {
 }
@@ -19,7 +18,6 @@ void cHydraState::EnterState(cGameObject * _entity)
 	m_chrmesh = _entity->GetChrSkinnedMesh();
 	m_nCurAni = 3;
 	SetupAnimation(3);
-
 }
 
 void cHydraState::ExitState(cGameObject * _entity)
@@ -36,7 +34,6 @@ void cHydraState::Execute(cGameObject * _entity)
 	{
 		if (0 < HP)
 		{
-
 		}
 		else
 		{

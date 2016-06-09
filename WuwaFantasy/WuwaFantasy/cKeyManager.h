@@ -16,8 +16,8 @@ public:
 
 	static cKeyManager* GetInstance()
 	{
-		static cKeyManager* inst;
-		return inst;
+		static cKeyManager inst;
+		return &inst;
 	}
 
 	HRESULT Setup(void);

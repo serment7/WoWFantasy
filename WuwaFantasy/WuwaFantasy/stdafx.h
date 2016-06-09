@@ -1,29 +1,30 @@
-// stdafx.h : ÀÚÁÖ »ç¿EÏÁö¸?ÀÚÁÖ º¯°æµÇÁö´Â ¾Ê´Â
-// Ç¥ÁØ ½Ã½ºÅÛ Æ÷ÇÔ ÆÄÀÏ ¶Ç´Â ÇÁ·ÎÁ§Æ® °E?Æ÷ÇÔ ÆÄÀÏÀÌ
-// µé¾EÀÖ´Â Æ÷ÇÔ ÆÄÀÏÀÔ´Ï´Ù.
+ï»¿// stdafx.h : ìì£¼ ì‚¬í“–EèˆŠå—¤?ìì£¼ ë³€ê²½ë˜ì§€ëŠ” ì•ŠëŠ”
+// í‘œì¤€ ì‹œìŠ¤í…œ í¬í•¨ íŒŒì¼ ë˜ëŠ” í”„ë¡œì íŠ¸ ì»–E?í¬í•¨ íŒŒì¼ì´
+// ë“¤í‘³EìˆëŠ” í¬í•¨ íŒŒì¼ì…ë‹ˆë‹¤.
 //
 
 #pragma once
 
 #include "targetver.h"
 
-#define WIN32_LEAN_AND_MEAN             // °ÅÀÇ »ç¿EÇÁE¾Ê´Â ³»¿E?Windows ?Eõ¿¡¼?Á¦¿ÜÇÕ´Ï´Ù.
-// Windows ?EEÆÄÀÏ:
+#define WIN32_LEAN_AND_MEAN             // ê±°ì˜ ì‚¬í“–Eí”„ê°‹ì•ŠëŠ” ë‚´í“–E?Windows ?Eå¢ã€?ì œì™¸í•©ë‹ˆë‹¤.
+// Windows ?Eê°‹íŒŒì¼:
 #include <windows.h>
 
-// C ·±Å¸ÀÓ ?EEÆÄÀÏÀÔ´Ï´Ù.
+// C ëŸ°íƒ€ì„ ?Eê°‹íŒŒì¼ì…ë‹ˆë‹¤.
 #include <stdlib.h>
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
 #include <cstring>
 
-// TODO: ÇÁ·Î±×·¥¿¡ ÇÊ¿äÇÑ Ãß°¡ ?Eõ´?¿©±â¿¡¼­ ÂE¶ÇÕ´Ï´?
+// TODO: í”„ë¡œê·¸ë¨ì— í•„ìš”í•œ ì¶”ê°€ ?Eé†®?ì—¬ê¸°ì—ì„œ í˜–Eë˜çˆ›æ±‚?
 #include<d3d9.h>
 #include<d3dx9.h>
 
 #pragma comment(lib,"d3d9.lib")
 #pragma comment(lib,"d3dx9.lib")
+
 
 extern HWND g_hWnd;
 
@@ -35,6 +36,9 @@ extern HWND g_hWnd;
 #define IN
 
 #define EPSILON 0.0001f
+
+const size_t SKILL_MAXNUM = 10;
+const size_t MONSTER_RANGE = 5;
 
 //This Struct is Used by cGrid Class, Until Develop Days
 struct ST_PC_VERTEX
@@ -138,3 +142,5 @@ struct BoundingBox
 #include "cMessageDispatcher.h"
 #include "cPickManager.h"
 #include "cSceneManager.h"
+#include "cKeyManager.h"
+//#include "cSoundManager.h"

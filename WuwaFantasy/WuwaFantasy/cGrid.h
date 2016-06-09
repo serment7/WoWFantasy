@@ -21,5 +21,6 @@ public:
 
 	void Setup( float nLine = 30, float fInterval = 1.0f);
 	void Render();
+	virtual void			Release();
 	std::vector<ST_PNT_VERTEX>&		GetTriVertex();
 };

@@ -153,6 +153,12 @@ void cGrid::Render()
 	*/
 }
 
+void cGrid::Release()
+{
+	m_VB->Release();
+	cGameObject::Release();
+}
+
 std::vector<ST_PNT_VERTEX>& cGrid::GetTriVertex()
 {
 	return m_TriVertex;

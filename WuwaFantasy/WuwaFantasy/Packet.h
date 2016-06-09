@@ -10,7 +10,7 @@ enum Msg_Type {
 	, Msg_AttackAni
 	, Msg_MoveAni
 	, Msg_CastingAni
-	
+	, Msg_Skill
 	
 
 };
@@ -43,14 +43,6 @@ struct Packet_Hit
 	{}
 };
 
-//struct Packet_Move
-//{
-//	D3DXVECTOR3	vDes = D3DXVECTOR3(0, 0, 0);
-//	Packet_Move(D3DXVECTOR3 _des)
-//		:vDes(_des)
-//	{}
-//};
-
 class cGameObject;
 struct Packet_Target
 {
@@ -67,6 +59,15 @@ struct Packet_GetCondition
 	cCondition* pCondition = nullptr;
 	Packet_GetCondition(cCondition*	_pCondition)
 		:pCondition(_pCondition)
+	{}
+};
+
+struct Packet_Skill
+{
+	size_t		skill;
+	cGameObject* pTarget;
+	Packet_Skill(const size_t&	_Skill,cGameObject* _pTarget)
+		:skill(_Skill), pTarget(_pTarget)
 	{}
 };
 

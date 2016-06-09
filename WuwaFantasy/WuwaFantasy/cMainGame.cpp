@@ -53,7 +53,6 @@ void cMainGame::Release()
 	g_pTextureManager->Destroy();
 	g_pSpriteManager->Destroy();
 	g_pObjectManager->Destroy();
-	
 	g_pDeviceManager->Destroy();
 }
 

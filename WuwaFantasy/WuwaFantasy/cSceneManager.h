@@ -27,8 +27,8 @@ public:
 
 	static cSceneManager* GetInstance()
 	{
-		static cSceneManager mag;
-		return &mag;
+		static cSceneManager* mag;
+		return mag;
 	}
 
 	void Release();

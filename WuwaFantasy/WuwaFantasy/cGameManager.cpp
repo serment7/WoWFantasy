@@ -63,15 +63,57 @@ void cGameManager::RegisterObjectType(const std::string & _typename, const size_
 	m_mapObjectType.insert(std::pair<std::string, size_t>(_typename, _tagID));
 }
 
+
 void cGameManager::RegisterSkill(cSkill* _skill)
 {
 	m_mapSkill.insert(std::pair<std::string, cSkill*>(_skill->GetSkillName(), _skill));
+	//m_mapSkill.insert(_skill.GetSkillName(), _skill);
 }
 
 void cGameManager::RegisterJob(cJob* _job)
 {
-	m_mapJob.insert(std::pair<std::string, cJob*>(std::string(_job->GetName()), _job));
+	m_mapJob.insert(std::pair<std::string, cJob*>(_job->GetName(), _job));
 }
+
+const size_t cGameManager::FindObjectType(const std::string & _typename)
+{
+	auto iter = m_mapObjectType.find(_typename);
+	if (iter != m_mapObjectType.end())
+	{
+		return iter->second;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+const cSkill* cGameManager::FindSkill(const std::string & _typename)
+{
+	auto iter = m_mapSkill.find(_typename);
+	if (iter != m_mapSkill.end())
+	{
+		return iter->second;
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
+const cJob* cGameManager::FindJob(const std::string & _typename)
+{
+	auto iter = m_mapJob.find(_typename);
+	if (iter != m_mapJob.end())
+	{
+		return iter->second;
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
 
 void cGameManager::Update()
 {
@@ -80,7 +122,7 @@ void cGameManager::Update()
 	
 	if (m_fCalFPSTime > 1.0f)
 	{
-		m_nFPS = (float)m_nFPSCount / m_fCalFPSTime;
+		m_nFPS = m_nFPSCount / (int)m_fCalFPSTime;
 		m_nFPSCount = 0;
 		m_fCalFPSTime = 0.0f;
 	}
