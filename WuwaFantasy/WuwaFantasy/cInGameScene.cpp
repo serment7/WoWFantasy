@@ -26,17 +26,7 @@ void cInGameScene::Update()
 
 	m_pCamera->Update();
 
-	if (g_pKeyManager->isStayKeyDown(VK_RBUTTON))
-	{
-		g_pGameManager->UpdateCursorPointInGlobal();
-		const POINT& curPos = g_pGameManager->GetCursorPoint();
-		if (g_pPickManager->IsPickedTry(m_pGrid->GetTriVertex(), curPos.x, curPos.y))
-		{
-			Packet_Move* packet = new Packet_Move(g_pPickManager->GetRayPos());
-			packet->vDes.y = 0.0f;
-			g_pMessageDispatcher->Dispatch(0, g_pGameManager->GetPlayerID(), 0.0f, Msg_Move, packet);
-		}
-	}
+	KeyInput();
 
 	if (m_pPlayer) m_pPlayer->Update();
 
@@ -85,19 +75,19 @@ void cInGameScene::EnterScene()
 
 	m_pPlayer = new cPlayer;
 	m_pPlayer->SetTag(g_pGameManager->FindObjectType("player"));
-	m_pPlayer->Setup();
-	g_pGameManager->SetPlayerID(m_pPlayer->GetID());
 	g_pObjectManager->AddObject(m_pPlayer);
+	g_pGameManager->SetPlayerID(m_pPlayer->GetID());
+	m_pPlayer->Setup();
 
 	m_pGrid = new cGrid;
-	m_pGrid->Setup();
+	
 	m_pGrid->SetTag(g_pGameManager->FindObjectType("collider"));
-	m_pGrid->SetTag(200);
 	g_pObjectManager->AddObject(m_pGrid);
+	m_pGrid->Setup();
 	
 	cGameObject* monster = new cHydra;
 	monster->SetTag(g_pGameManager->FindObjectType("monster"));
-	g_pObjectManager->AddObject(m_pGrid);
+	g_pObjectManager->AddObject(monster);
 	m_vecObject.push_back(monster);
 
 	for (size_t i = 0; i < m_vecObject.size(); ++i)
@@ -166,3 +156,41 @@ void cInGameScene::MessageHandling(HWND hWnd, UINT iMessage, WPARAM wParam, LPAR
 		bRButtonDown = false;
 	}
 }
+
+enum KeyEnum
+{
+	SKILL0 = '0'
+	, SKILL1
+	, SKILL2
+	, SKILL3
+	, SKILL4
+	, SKILL5
+	, SKILL6
+	, SKILL7
+	, SKILL8
+	, END
+};
+
+void cInGameScene::KeyInput()
+{
+	const int& playerID = g_pGameManager->GetPlayerID();
+	Packet_Skill* packet_skill=nullptr;
+	if (g_pKeyManager->isStayKeyDown(VK_RBUTTON))
+	{
+		g_pGameManager->UpdateCursorPointInGlobal();
+		const POINT& curPos = g_pGameManager->GetCursorPoint();
+		if (g_pPickManager->IsPickedTry(m_pGrid->GetTriVertex(), curPos.x, curPos.y))
+		{
+			Packet_Move* packet = new Packet_Move(g_pPickManager->GetRayPos());
+			packet->vDes.y = 0.0f;
+			g_pMessageDispatcher->Dispatch(playerID, playerID, 0.0f, Msg_Move, packet);
+		}
+	}
+
+	for (int i = SKILL0; i < KeyEnum::END; ++i)
+	{
+		if (g_pKeyManager->isOnceKeyDown(i))
+			g_pMessageDispatcher->Dispatch(playerID, playerID, 0.0f, Msg_MoveAni, NULL);
+	}
+}
+

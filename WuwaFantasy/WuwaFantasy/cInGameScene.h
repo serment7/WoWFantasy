@@ -24,10 +24,11 @@ public:
 	cInGameScene();
 	virtual ~cInGameScene();
 
-	virtual void Update();
-	virtual void Render();
-	virtual void EnterScene();
-	virtual void ExitScene();
-	virtual void ChangeScene(cIScene* _pNextScene);
-	virtual void MessageHandling(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam);
+	virtual void	Update();
+	virtual void	Render();
+	virtual void	EnterScene();
+	virtual void	ExitScene();
+	virtual void	ChangeScene(cIScene* _pNextScene);
+	virtual void	MessageHandling(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam);
+	void			KeyInput();
 };

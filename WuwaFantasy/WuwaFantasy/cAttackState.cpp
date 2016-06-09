@@ -14,14 +14,18 @@ cAttackState::~cAttackState()
 
 void cAttackState::EnterState(cGameObject * _player)
 {
+	const size_t& id = _player->GetID();
+	g_pMessageDispatcher->Dispatch(id, id, 0.0f, Msg_MoveAni, NULL);
 }
 
 void cAttackState::ExitState(cGameObject * _player)
 {
+	
 }
 
 void cAttackState::Execute(cGameObject * _player)
 {
+	_player->GetAction()->Attack();
 }
 
 bool cAttackState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
@@ -32,14 +36,15 @@ bool cAttackState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
 	switch (_packet.msg_type)
 	{
 	case Msg_Attack:
-		
+		packet_target = (Packet_Attack*)_packet.info;
+		m_pAction = _player->GetAction();
+		m_pAction->SetDelegate(this);
+		m_pAction->ReadyAttack(packet_target->pTarget,packet_target->range);
+		m_pAction->Start();
+		m_pAction = nullptr;
 		return true;
 	case Msg_Move:
-		m_pMoveState = cMoveState::GetInstance();
-		m_pMoveState->OnMessage(_player, _packet);
-		_player->GetStateMachine()->ChangeState(m_pMoveState);
-		m_pMoveState = nullptr;
-		return true;
+		return MessageCatch(_player,_packet);
 	}
 
 	return false;
@@ -47,4 +52,5 @@ bool cAttackState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
 
 void cAttackState::OnActionDelegate(cAction * _pSender)
 {
+	_pSender->Stop();
 }

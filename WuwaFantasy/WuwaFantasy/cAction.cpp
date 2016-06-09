@@ -81,6 +81,10 @@ void cAction::ReadyAttack(cGameObject * _pTarget, const float & _attackRange)
 
 void cAction::Attack()
 {
+	if (m_bAction)
+	{
+
+	}
 }
 
 void cAction::Start()

@@ -1,14 +1,16 @@
 #pragma once
 #include "cIState.h"
+#include "cAction.h"
 
-class cAction;
 class cMoveState;
 
 class cAttackState :
-	public cIState
+	public cIState,public cActionDelegate
 {
 private:
 	cMoveState*			m_pMoveState=nullptr;
+	cAction*			m_pAction = nullptr;
+	Packet_Attack*		packet_target=nullptr;
 public:
 	cAttackState();
 	~cAttackState();

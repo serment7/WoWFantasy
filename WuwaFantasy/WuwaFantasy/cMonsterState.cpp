@@ -30,10 +30,10 @@ void cMonsterState::Execute(cGameObject * _entity)
 	m_vPos = _entity->GetVPos();
 	if (!m_bAttack)
 	{
-		for (int i = 0; i < m_vecTargetTag.size(); ++i)
+		for (size_t i = 0; i < m_vecTargetTag.size(); ++i)
 		{
 			std::vector<cGameObject*>& target = g_pObjectManager->FindObjectByTag(m_vecTargetTag[i]);
-			for (int i = 0; i < target.size(); ++i)
+			for (size_t i = 0; i < target.size(); ++i)
 			{
 				m_pTarget = target[i];
 				m_vTarget = m_pTarget->GetVPos();

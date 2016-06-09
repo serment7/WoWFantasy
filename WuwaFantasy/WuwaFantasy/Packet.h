@@ -44,9 +44,19 @@ struct Packet_Hit
 };
 
 class cGameObject;
+struct Packet_Attack
+{
+	cGameObject*	pTarget = nullptr;
+	float			range = 0;
+	Packet_Attack(cGameObject* _pTarget,const float& _range)
+		:pTarget(_pTarget),range(_range)
+	{}
+};
+
+class cGameObject;
 struct Packet_Target
 {
-	cGameObject* pTarget = nullptr;
+	cGameObject*	pTarget = nullptr;
 	Packet_Target(cGameObject* _pTarget)
 		:pTarget(_pTarget)
 	{}
@@ -65,9 +75,8 @@ struct Packet_GetCondition
 struct Packet_Skill
 {
 	size_t		skill;
-	cGameObject* pTarget;
-	Packet_Skill(const size_t&	_Skill,cGameObject* _pTarget)
-		:skill(_Skill), pTarget(_pTarget)
+	Packet_Skill(const size_t&	_Skill)
+		:skill(_Skill)
 	{}
 };
 
