@@ -51,6 +51,7 @@ void cMainGame::Release()
 	g_pSpriteManager->Destroy();
 	g_pObjectManager->Destroy();
 	g_pDeviceManager->Destroy();
+	g_pSoundManager->Release();
 }
 
 void CALLBACK cMainGame::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

@@ -14,7 +14,7 @@ cSoundManager::cSoundManager()
 	DSBUFFERDESC dsdesc;
 	ZeroMemory(&dsdesc, sizeof(DSBUFFERDESC));
 	dsdesc.dwSize = sizeof(DSBUFFERDESC);
-	dsdesc.dwFlags = DSBCAPS_PRIMARYBUFFER;
+	dsdesc.dwFlags = DSBCAPS_PRIMARYBUFFER | DSBCAPS_CTRLVOLUME | DSBCAPS_CTRLPAN;
 	dsdesc.dwBufferBytes = 0;
 	dsdesc.lpwfxFormat = NULL;
 
@@ -42,10 +42,17 @@ cSoundManager::~cSoundManager()
 typedef std::map<std::string, LPDIRECTSOUNDBUFFER> mapSoundBuffer;
 typedef std::map<std::string, LPDIRECTSOUNDBUFFER>::iterator miSoundBuffer;
 
+typedef std::map<std::string, LPDIRECTSOUND3DBUFFER8> mapSound3DBuffer;
+typedef std::map<std::string, LPDIRECTSOUND3DBUFFER8>::iterator miSound3DBuffer;
+
 static mapSoundBuffer m_mapSoundBuffer;
+static mapSound3DBuffer m_mapSound3DBuffer;
 
-
-BOOL cSoundManager::CreateSoundBuffer(LPDIRECTSOUNDBUFFER* secondSoundBuffer, const char * szFileName)
+BOOL cSoundManager::CreateDxSoundBuffer(
+	LPDIRECTSOUNDBUFFER* secondSoundBuffer,
+	DWORD dxSoundFlags,
+	GUID guidAlgorithm,
+	const char * szFileName)
 {
 	HRESULT hr;
 	MMCKINFO mSrcWaveFile;
@@ -118,16 +125,13 @@ BOOL cSoundManager::CreateSoundBuffer(LPDIRECTSOUNDBUFFER* secondSoundBuffer, co
 	DSBUFFERDESC dsdesc;
 	ZeroMemory(&dsdesc, sizeof(DSBUFFERDESC));
 	dsdesc.dwSize = sizeof(DSBUFFERDESC);
-	dsdesc.dwFlags = DSBCAPS_GETCURRENTPOSITION2 | DSBCAPS_STATIC | DSBCAPS_LOCDEFER;
+	dsdesc.dwFlags = dxSoundFlags;
 	dsdesc.dwBufferBytes = mSrcWaveData.cksize;
 	dsdesc.lpwfxFormat = hFormat;
-	dsdesc.guid3DAlgorithm = DS3DALG_DEFAULT;
-
+	dsdesc.guid3DAlgorithm = guidAlgorithm;
+	
 	hr = m_pSound->CreateSoundBuffer(&dsdesc, secondSoundBuffer, NULL);
-	if (FAILED(hr)) {
-#ifdef DEBUG
-		assert(FAILED(hr) && "Create Buffer FAILED");
-#endif		
+	if (FAILED(hr)) {	
 		SAFE_DELETE(hFormat);
 		mmioClose(hSrc, 0);
 		return FALSE;
@@ -149,12 +153,30 @@ BOOL cSoundManager::CreateSoundBuffer(LPDIRECTSOUNDBUFFER* secondSoundBuffer, co
 
 	// Release Buffer
 	(*secondSoundBuffer)->Unlock(pMem1, dwSize1, pMem2, dwSize2);
-
 	// Delete Format
 	SAFE_DELETE(hFormat);
 
 	// Close WAV File
 	mmioClose(hSrc, 0);
+
+	return TRUE;
+}
+
+BOOL cSoundManager::CreateDxSound3DBuffer(LPDIRECTSOUND3DBUFFER * secondSoundBuffer, const char * szFileName)
+{
+	HRESULT hr;
+	LPDIRECTSOUNDBUFFER secondBuffer;
+
+	CreateDxSoundBuffer(&secondBuffer,
+		DSBCAPS_CTRL3D,
+		DS3DALG_HRTF_FULL,
+		szFileName);
+
+	hr = secondBuffer->QueryInterface(IID_IDirectSound3DBuffer8, (LPVOID*)secondSoundBuffer);
+	if (FAILED(hr))
+	{
+		return FALSE;
+	}
 
 	return TRUE;
 }
@@ -165,9 +187,23 @@ void cSoundManager::AddSound(const char* szName, const char * szFileName)
 	std::string szFullPath = SOUND_PATH + szFilePath.substr();
 
 	LPDIRECTSOUNDBUFFER secondBuffer;
-	CreateSoundBuffer(&secondBuffer, szFullPath.c_str());
+	CreateDxSoundBuffer(
+		&secondBuffer, 
+		DSBCAPS_GETCURRENTPOSITION2 | DSBCAPS_STATIC | 
+		DSBCAPS_CTRLVOLUME | DSBCAPS_CTRLPAN, 
+		DS3DALG_DEFAULT, 
+		szFullPath.c_str()
+	);
 
 	m_mapSoundBuffer.insert(std::make_pair(szName, secondBuffer));
+}
+
+void cSoundManager::Add3DSound(const char * szName, const char * szFileName)
+{
+	LPDIRECTSOUND3DBUFFER second3DBuffer;
+	if (!CreateDxSound3DBuffer(&second3DBuffer, szFileName)) return;
+	
+	m_mapSound3DBuffer.insert(std::make_pair(szName, second3DBuffer));
 }
 
 void cSoundManager::Release()
@@ -186,6 +222,19 @@ void cSoundManager::Release()
 		}
 	}
 
+	miSound3DBuffer iter3D;
+	for (iter3D = m_mapSound3DBuffer.begin(); iter3D != m_mapSound3DBuffer.end();)
+	{
+		if (iter3D->second != NULL)
+		{
+			SAFE_RELEASE(iter3D->second);
+			iter3D = m_mapSound3DBuffer.erase(iter3D);
+		}
+		else
+		{
+			++iter;
+		}
+	}
 	CoUninitialize();
 }
 
@@ -199,5 +248,51 @@ void cSoundManager::Start(const char * szName)
 void cSoundManager::Stop(const char * szName)
 {
 	miSoundBuffer iter = m_mapSoundBuffer.find(szName);
-	if(iter->second) iter->second->Stop();
+	if (iter != m_mapSoundBuffer.end())
+	{
+		iter->second->Stop();
+		return;
+	}
+}
+
+void cSoundManager::SetVolume(const char* szName, int vol)
+{
+	//volume is -10000 MIN, 0 MAX
+	miSoundBuffer iter = m_mapSoundBuffer.find(szName);
+	if (vol > DSBVOLUME_MAX) vol = DSBVOLUME_MAX;
+	else if (vol < DSBVOLUME_MIN) vol = DSBVOLUME_MIN;
+
+	iter->second->SetVolume(vol);
+}
+
+void cSoundManager::SetVolumeTenCount(const char * szName, int vol)
+{
+	//volume is 0 MIN, 10 MAX
+	miSoundBuffer iter = m_mapSoundBuffer.find(szName);
+	if (vol < 0) vol = 0;
+	else if (vol > 10) vol = 10;
+
+	vol = (10 - vol) * (DSBVOLUME_MIN / 10);
+
+	iter->second->SetVolume(vol);
+}
+
+void cSoundManager::SetPrimeryVolume(int vol)
+{
+	//volume is -10000 MIN, 0 MAX
+	if (vol > DSBVOLUME_MAX) vol = DSBVOLUME_MAX;
+	else if (vol < DSBVOLUME_MIN) vol = DSBVOLUME_MIN;
+
+	m_pPrimeryBuffer->SetVolume(vol);
+}
+
+void cSoundManager::SetPrimeryVolumeTenCount(int vol)
+{
+	//volume is 0 MIN, 10 MAX
+	if (vol < 0) vol = 0;
+	else if (vol > 10) vol = 10;
+
+	vol = (10 - vol) * (DSBVOLUME_MIN / 10);
+
+	m_pPrimeryBuffer->SetVolume(vol);
 }

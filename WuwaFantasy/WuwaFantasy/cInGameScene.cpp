@@ -8,13 +8,13 @@ cInGameScene::cInGameScene()
 	, m_fPlayTime(0.0f)
 	, m_pGrid(nullptr)
 	, m_pCamera(nullptr)
+	, m_nSoundVolume(0)
 {
-	//g_pSoundManager->Start("1.wav");
+
 }
 
 cInGameScene::~cInGameScene()
 {
-	//g_pSoundManager->Release();
 	g_pObjectManager->Destroy();
 }
 
@@ -69,7 +69,7 @@ void cInGameScene::EnterScene()
 	g_pKeyManager->Setup();
 	m_pCamera = g_pGameManager->GetCamera();
 
-	g_pSoundManager->AddSound("1", "nayu_dra.wav");
+	g_pSoundManager->AddSound("1", "1.wav");
 	RECT rc;
 	GetClientRect(g_hWnd, &rc);
 	m_pCamera->SetAspect(rc.right / (float)rc.bottom);
@@ -106,6 +106,7 @@ void cInGameScene::EnterScene()
 	g_pD3DDevice->SetLight(0, &m_light);
 	m_light.Direction = D3DXVECTOR3(0, 0, -1);
 	g_pD3DDevice->SetLight(1, &m_light);
+
 	g_pSoundManager->Start("1");
 }
 

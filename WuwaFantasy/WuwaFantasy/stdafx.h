@@ -22,12 +22,13 @@
 #include<d3d9.h>
 #include<d3dx9.h>
 #include<mmsystem.h>
-#include<dsound.h>
+#include<dmusicc.h>
 
 #pragma comment(lib,"d3d9.lib")
 #pragma comment(lib,"d3dx9.lib")
 #pragma comment(lib,"dsound.lib")
 #pragma comment(lib,"winmm.lib")
+#pragma comment(lib,"dxguid.lib")
 
 
 extern HWND g_hWnd;

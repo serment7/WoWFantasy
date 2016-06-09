@@ -8,7 +8,7 @@ class cSoundManager
 {
 private:
 	LPDIRECTSOUND8			m_pSound;
-	LPDIRECTSOUNDBUFFER		m_pPrimeryBuffer;
+	LPDIRECTSOUNDBUFFER	m_pPrimeryBuffer;
 
 	int						m_nChannelCount;
 	int						m_nSamplingRate;
@@ -16,7 +16,8 @@ private:
 	int						m_nDataSize;
 
 private:
-	BOOL CreateSoundBuffer(LPDIRECTSOUNDBUFFER* secondSoundBuffer, const char* szFileName);
+	BOOL CreateDxSoundBuffer(LPDIRECTSOUNDBUFFER* secondSoundBuffer, DWORD dxSoundFlags, GUID guidAlgorithm, const char* szFileName);
+	BOOL CreateDxSound3DBuffer(LPDIRECTSOUND3DBUFFER* secondSoundBuffer, const char* szFileName);
 
 public:
 
@@ -30,10 +31,20 @@ public:
 	~cSoundManager();
 	
 	void AddSound(const char* szName, const char* szFileName);
+	void Add3DSound(const char* szName, const char* szFileName);
 	void Release();
 	void Start(const char* szName);
 	void Stop(const char* szName);
-	//void SetVolume(int vol);
+
+	//individual
+	void SetVolume(const char* szName, int vol);
+	void SetVolumeTenCount(const char* szName, int vol);
+
+	//several
+	void SetPrimeryVolume(int vol);
+	void SetPrimeryVolumeTenCount(int vol);
+
+
 
 };
 

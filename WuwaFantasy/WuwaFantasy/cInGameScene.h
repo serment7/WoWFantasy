@@ -16,6 +16,8 @@ private:
 	cCamera*		m_pCamera;
 	cPlayer*		m_pPlayer;
 
+	int				m_nSoundVolume;
+
 	std::vector<cGameObject*> m_vecObject;
 
 	D3DLIGHT9		m_light;
