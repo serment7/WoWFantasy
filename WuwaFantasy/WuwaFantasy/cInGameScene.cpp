@@ -69,6 +69,7 @@ void cInGameScene::EnterScene()
 	g_pKeyManager->Setup();
 	m_pCamera = g_pGameManager->GetCamera();
 
+	g_pSoundManager->AddSound("1", "nayu_dra.wav");
 	RECT rc;
 	GetClientRect(g_hWnd, &rc);
 	m_pCamera->SetAspect(rc.right / (float)rc.bottom);
@@ -105,6 +106,7 @@ void cInGameScene::EnterScene()
 	g_pD3DDevice->SetLight(0, &m_light);
 	m_light.Direction = D3DXVECTOR3(0, 0, -1);
 	g_pD3DDevice->SetLight(1, &m_light);
+	g_pSoundManager->Start("1");
 }
 
 void cInGameScene::ExitScene()

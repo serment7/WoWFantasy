@@ -1,30 +1,27 @@
 #include "stdafx.h"
 #include "cSoundManager.h"
 
-
 cSoundManager::cSoundManager()
-	: m_pSound(nullptr)
-	, m_pSoundBuffer(nullptr)
-	, m_nChannelCount(0)
-	, m_nSamplingRate(0)
-	, m_nBitRate(0)
-	, m_nDataSize(0)
 {
 	HRESULT hr;
-	//Create Primary Buffer
-	WAVEFORMATEX wformat;
+
+	CoInitialize(NULL);
+
+	DirectSoundCreate8(NULL, &m_pSound, NULL);
+	m_pSound->SetCooperativeLevel(g_hWnd, DSSCL_EXCLUSIVE | DSSCL_PRIORITY);
 
 	//NEW DSBUFFERDESC Struct
 	DSBUFFERDESC dsdesc;
+	ZeroMemory(&dsdesc, sizeof(DSBUFFERDESC));
 	dsdesc.dwSize = sizeof(DSBUFFERDESC);
 	dsdesc.dwFlags = DSBCAPS_PRIMARYBUFFER;
 	dsdesc.dwBufferBytes = 0;
 	dsdesc.lpwfxFormat = NULL;
 
-	hr = m_pSound->CreateSoundBuffer(&dsdesc, &m_pSoundBuffer, NULL);
-#ifdef DEBUG
-	assert(hr == D3D_OK && "Error DSBUFFERDESC Create Struct");
-#endif // DEBUG
+	hr = m_pSound->CreateSoundBuffer(&dsdesc, &m_pPrimeryBuffer, NULL);
+
+	//Create Primary Buffer
+	WAVEFORMATEX wformat;
 	wformat.cbSize = sizeof(WAVEFORMATEX);
 	wformat.wFormatTag = WAVE_FORMAT_PCM;
 	wformat.nChannels = 2;
@@ -32,11 +29,9 @@ cSoundManager::cSoundManager()
 	wformat.wBitsPerSample = 16;
 	wformat.nBlockAlign = wformat.nChannels * (wformat.wBitsPerSample / 8);
 	wformat.nAvgBytesPerSec = wformat.nSamplesPerSec * wformat.nBlockAlign;
-		
-	hr = m_pSoundBuffer->SetFormat(&wformat);
-#ifdef DEBUG
-	assert(hr == S_OK && "Error WAVEFORMATEX Create Struct");
-#endif // DEBUG
+
+	hr = m_pPrimeryBuffer->SetFormat(&wformat);
+
 }
 
 cSoundManager::~cSoundManager()
@@ -50,7 +45,7 @@ typedef std::map<std::string, LPDIRECTSOUNDBUFFER>::iterator miSoundBuffer;
 static mapSoundBuffer m_mapSoundBuffer;
 
 
-BOOL cSoundManager::CreateSoundBuffer(LPDIRECTSOUNDBUFFER * secondSoundBuffer, const char * szFileName)
+BOOL cSoundManager::CreateSoundBuffer(LPDIRECTSOUNDBUFFER* secondSoundBuffer, const char * szFileName)
 {
 	HRESULT hr;
 	MMCKINFO mSrcWaveFile;
@@ -62,9 +57,6 @@ BOOL cSoundManager::CreateSoundBuffer(LPDIRECTSOUNDBUFFER * secondSoundBuffer, c
 	hSrc = mmioOpenA((LPSTR)szFileName, NULL, MMIO_ALLOCBUF | MMIO_READ | MMIO_COMPAT);
 	if (!hSrc)
 	{
-#ifdef DEBUG
-		assert(hSrc && "WAV load FAILED");
-#endif // DEBUG
 		return FALSE;
 	}
 
@@ -72,9 +64,6 @@ BOOL cSoundManager::CreateSoundBuffer(LPDIRECTSOUNDBUFFER * secondSoundBuffer, c
 	ZeroMemory(&mSrcWaveFile, sizeof(MMCKINFO));
 	hr = mmioDescend(hSrc, &mSrcWaveFile, NULL, MMIO_FINDRIFF);
 	if (mSrcWaveFile.fccType != mmioFOURCC('W', 'A', 'V', 'E')) {
-#ifdef DEBUG
-		assert(mSrcWaveFile.fccType != mmioFOURCC('W', 'A', 'V', 'E') && "THIS FILE is NOT WAV");
-#endif
 		mmioClose(hSrc, 0);
 		return FALSE;
 	}
@@ -83,9 +72,6 @@ BOOL cSoundManager::CreateSoundBuffer(LPDIRECTSOUNDBUFFER * secondSoundBuffer, c
 	ZeroMemory(&mSrcWaveFmt, sizeof(mSrcWaveFmt));
 	hr = mmioDescend(hSrc, &mSrcWaveFmt, &mSrcWaveFile, MMIO_FINDCHUNK);
 	if (mSrcWaveFmt.ckid != mmioFOURCC('f', 'm', 't', ' ')) {
-#ifdef DEBUG
-		assert((mSrcWaveFmt.ckid != mmioFOURCC('f', 'm', 't', ' ') && "THIS FILE is NOT FMT");
-#endif
 		return FALSE;
 	}
 
@@ -101,16 +87,13 @@ BOOL cSoundManager::CreateSoundBuffer(LPDIRECTSOUNDBUFFER * secondSoundBuffer, c
 	//Load of WAVE Files
 	hr = mmioRead(hSrc, (char*)hFormat, mSrcWaveFmt.cksize);
 	if (FAILED(hr)) {
-#ifdef DEBUG
-		assert(FAILED(hr) && "WAV LODE FAILED");
-#endif
 		SAFE_DELETE(hFormat);
 		mmioClose(hSrc, 0);
 		return FALSE;
 	}
-	//m_nChannelCount = hFormat->nChannels;
-	//m_nSamplingRate = hFormat->nSamplesPerSec;
-	//m_nBitRate = hFormat->wBitsPerSample;
+	m_nChannelCount = hFormat->nChannels;
+	m_nSamplingRate = hFormat->nSamplesPerSec;
+	m_nBitRate = hFormat->wBitsPerSample;
 
 	mmioAscend(hSrc, &mSrcWaveFmt, 0);
 
@@ -129,7 +112,7 @@ BOOL cSoundManager::CreateSoundBuffer(LPDIRECTSOUNDBUFFER * secondSoundBuffer, c
 		hr = mmioAscend(hSrc, &mSrcWaveData, 0);
 	}
 
-	//m_nDataSize = mSrcWaveData.cksize;
+	m_nDataSize = mSrcWaveData.cksize;
 
 	//Create Second Sound Buffer
 	DSBUFFERDESC dsdesc;
@@ -139,6 +122,7 @@ BOOL cSoundManager::CreateSoundBuffer(LPDIRECTSOUNDBUFFER * secondSoundBuffer, c
 	dsdesc.dwBufferBytes = mSrcWaveData.cksize;
 	dsdesc.lpwfxFormat = hFormat;
 	dsdesc.guid3DAlgorithm = DS3DALG_DEFAULT;
+
 	hr = m_pSound->CreateSoundBuffer(&dsdesc, secondSoundBuffer, NULL);
 	if (FAILED(hr)) {
 #ifdef DEBUG
@@ -154,9 +138,6 @@ BOOL cSoundManager::CreateSoundBuffer(LPDIRECTSOUNDBUFFER * secondSoundBuffer, c
 	DWORD dwSize1, dwSize2;
 	hr = (*secondSoundBuffer)->Lock(0, mSrcWaveData.cksize, &pMem1, &dwSize1, &pMem2, &dwSize2, 0);
 	if (FAILED(hr)) {
-#ifdef DEBUG
-		assert(FAILED(hr) && "LOCK FAILED");
-#endif	
 		SAFE_DELETE(hFormat);
 		mmioClose(hSrc, 0);
 		return FALSE;
@@ -178,12 +159,15 @@ BOOL cSoundManager::CreateSoundBuffer(LPDIRECTSOUNDBUFFER * secondSoundBuffer, c
 	return TRUE;
 }
 
-void cSoundManager::AddSound(const char * szFileName)
+void cSoundManager::AddSound(const char* szName, const char * szFileName)
 {
-	LPDIRECTSOUNDBUFFER pSoundBuffer = NULL;
-	CreateSoundBuffer(&pSoundBuffer, szFileName);
+	std::string szFilePath(szFileName);
+	std::string szFullPath = SOUND_PATH + szFilePath.substr();
 
-	m_mapSoundBuffer.insert(std::make_pair(szFileName, pSoundBuffer));
+	LPDIRECTSOUNDBUFFER secondBuffer;
+	CreateSoundBuffer(&secondBuffer, szFullPath.c_str());
+
+	m_mapSoundBuffer.insert(std::make_pair(szName, secondBuffer));
 }
 
 void cSoundManager::Release()
@@ -193,7 +177,7 @@ void cSoundManager::Release()
 	{
 		if (iter->second != NULL)
 		{
-			SAFE_DELETE(iter->second);
+			SAFE_RELEASE(iter->second);
 			iter = m_mapSoundBuffer.erase(iter);
 		}
 		else
@@ -202,20 +186,18 @@ void cSoundManager::Release()
 		}
 	}
 
-	SAFE_DELETE(m_pSound);
-	SAFE_DELETE(m_pSoundBuffer);
-
+	CoUninitialize();
 }
 
-void cSoundManager::Start(const char * szFileName)
+void cSoundManager::Start(const char * szName)
 {
-	miSoundBuffer iter = m_mapSoundBuffer.find(szFileName);
+	miSoundBuffer iter = m_mapSoundBuffer.find(szName);
 
 	if(iter->second) iter->second->Play(0, 0, 0);
 }
 
-void cSoundManager::Stop(const char * szFileName)
+void cSoundManager::Stop(const char * szName)
 {
-	miSoundBuffer iter = m_mapSoundBuffer.find(szFileName);
+	miSoundBuffer iter = m_mapSoundBuffer.find(szName);
 	if(iter->second) iter->second->Stop();
 }
