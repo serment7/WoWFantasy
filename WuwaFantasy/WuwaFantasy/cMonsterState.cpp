@@ -74,7 +74,7 @@ void cMonsterState::Execute(cGameObject * _entity)
 				m_fTargetRange = D3DXVec3LengthSq(&(m_vTargetPos - m_vPos));
 				if (m_fTargetRange < m_pStatus->GetSenseRange()*m_pStatus->GetSenseRange())
 				{
-					packet_target = new Packet_Target(m_pTarget);
+					packet_target = new Packet_Approach(m_pTarget,m_pTarget->GetBoundSphere().fRadius+m_pStatus->GetAttackRange());
 					g_pMessageDispatcher->Dispatch(_entity->GetID(), _entity->GetID(),
 						0.0f, Msg_Approach, packet_target);
 					m_bAttack = true;
@@ -83,15 +83,12 @@ void cMonsterState::Execute(cGameObject * _entity)
 		}
 	}
 	else {
-		if (!m_vTargetPos)
+		if (!m_pTarget)
 			return;
 		m_vTargetPos = m_pTarget->GetVPos();
 		m_fTargetRange = D3DXVec3LengthSq(&(m_vTargetPos - m_vPos));
 		if (m_fTargetRange > m_pStatus->GetChaseRange()*m_pStatus->GetChaseRange())
 		{
-			/*packet_target = new Packet_Target(m_pTarget);
-			g_pMessageDispatcher->Dispatch(_entity->GetID(), _entity->GetID(),
-				0.0f, Msg_Attack, packet_target);*/
 			m_bAttack = false;
 			m_pTarget = nullptr;
 			packet_move = new Packet_Move(m_vRespawnPos);

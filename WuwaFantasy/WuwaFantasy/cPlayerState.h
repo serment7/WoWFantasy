@@ -13,6 +13,7 @@ private:
 	Packet_Move* packet_move = nullptr;
 	Packet_Target* packet_target = nullptr;
 	Packet_Hit*				packet_hit=nullptr;
+	Packet_Attack*			attack_packet = nullptr;
 	ST_PACKET				m_packet;
 	std::vector<cSkill*>	m_vecSkill;
 	std::vector<size_t>		m_vecTargetTag;

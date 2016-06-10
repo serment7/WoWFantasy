@@ -14,7 +14,7 @@ private:
 	cIState*			m_pState = nullptr;
 	cGameObject*		m_pTarget = nullptr;
 	std::vector<size_t>	m_vecTargetTag;
-	Packet_Target*		packet_target=nullptr;
+	Packet_Approach*		packet_target=nullptr;
 	Packet_Move*		packet_move = nullptr;
 	ST_PACKET			m_packet;
 	

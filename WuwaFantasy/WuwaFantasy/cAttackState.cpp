@@ -39,11 +39,12 @@ bool cAttackState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
 		packet_target = (Packet_Attack*)_packet.info;
 		m_pAction = _player->GetAction();
 		m_pAction->SetDelegate(this);
-		m_pAction->ReadyAttack(packet_target->pTarget,packet_target->range);
+		m_pAction->ReadyAttack(packet_target->pTarget,packet_target->fAttackTime);
 		m_pAction->Start();
 		m_pAction = nullptr;
 		return true;
 	case Msg_Move:
+	case Msg_Approach:
 		return MessageCatch(_player,_packet);
 	}
 

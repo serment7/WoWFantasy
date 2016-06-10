@@ -38,9 +38,9 @@ public:
 	void					MoveTo();
 	void					ReadyHeadTo(const D3DXVECTOR3& _vTo);
 	void					HeadTo();
-	void					ReadyApproach(cGameObject* _pTarget, const float& _fSpeed, const float& _fTargetRange);
+	void					ReadyApproach(cGameObject* _pTarget,  const float& _fTargetRange);
 	void					Approach();
-	void					ReadyAttack(cGameObject* _pTarget, const float& _attackRange);
+	void					ReadyAttack(cGameObject* _pTarget, const float& attackAniTime);
 	void					Attack();
 };
 

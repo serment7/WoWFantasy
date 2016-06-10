@@ -9,7 +9,7 @@ class cApproachState :
 	public cIState, public cActionDelegate
 {
 private:
-	Packet_Target*			packet_target=nullptr;
+	Packet_Approach*			packet_target=nullptr;
 	cAction*				m_pAction = nullptr;
 	cGameObject*			m_pTarget = nullptr;
 public:

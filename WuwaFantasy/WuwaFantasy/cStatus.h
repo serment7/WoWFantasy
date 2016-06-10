@@ -26,6 +26,8 @@ struct ST_STATUS
 	float fchaseRange = 0.0f;
 
 	float fRespawnTime = 0.0f;
+
+	float fAttackRange = 0.0f;
 };
 
 class cStatus
@@ -60,6 +62,7 @@ public:
 	float	GetSenseRange() { return m_stStatus.fSenseRange; }
 	float	GetChaseRange() { return m_stStatus.fchaseRange; }
 	float	GetRespawnTime() { return m_stStatus.fRespawnTime; }
+	float	GetAttackRange() { return m_stStatus.fAttackRange; }
 
 	void	SetCurrentHP(const int& nCurrentHP) { m_stStatus.nCurrentHP = nCurrentHP; }
 	void	SetMaxHP(const int& nMaxHP) { m_stStatus.nMaxHP = nMaxHP; }
@@ -78,6 +81,7 @@ public:
 	void	SetSenseRange(const float& _fSenseRange) { m_stStatus.fSenseRange = _fSenseRange; }
 	void	SetChaseRange(const float& _fChaseRange) { m_stStatus.fchaseRange = _fChaseRange; }
 	void	SetRespawnTime(const float& _fRespawnTime) { m_stStatus.fRespawnTime = _fRespawnTime; }
+	void	SetAttackRange(const float& _fAttackRange) { m_stStatus.fAttackRange = _fAttackRange; }
 
 	void	IncCurrentHP(const int& nCurrentHP) { m_stStatus.nCurrentHP += nCurrentHP; }
 	void	IncMaxHP(const int& nMaxHP) { m_stStatus.nMaxHP += nMaxHP; }
@@ -96,6 +100,7 @@ public:
 	void	IncSenseRange(const float& _fSenseRange) { m_stStatus.fSenseRange += _fSenseRange; }
 	void	IncChaseRange(const float& _fChaseRange) { m_stStatus.fchaseRange += _fChaseRange; }
 	void	IncRespawnTime(const float& _fRespawnTime) { m_stStatus.fRespawnTime += _fRespawnTime; }
+	void	IncAttackRange(const float& _fAttackRange) { m_stStatus.fAttackRange += _fAttackRange; }
 
 	void	DecCurrentHP(const int& nCurrentHP) { m_stStatus.nCurrentHP -= nCurrentHP; }
 	void	DecMaxHP(const int& nMaxHP) { m_stStatus.nMaxHP -= nMaxHP; }
@@ -114,4 +119,5 @@ public:
 	void	DecSenseRange(const float& _fSenseRange) { m_stStatus.fSenseRange -= _fSenseRange; }
 	void	DecChaseRange(const float& _fChaseRange) { m_stStatus.fchaseRange -= _fChaseRange; }
 	void	DecRespawnTime(const float& _fRespawnTime) { m_stStatus.fRespawnTime -= _fRespawnTime; }
+	void	DecAttackRange(const float& _fAttackRange) { m_stStatus.fAttackRange -= _fAttackRange; }
 };

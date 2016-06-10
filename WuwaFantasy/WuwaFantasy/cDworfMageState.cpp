@@ -35,10 +35,11 @@ void cDworfMageState::Execute(cGameObject * _entity)
 
 bool cDworfMageState::OnMessage(cGameObject * _entity, const ST_PACKET & _packet)
 {
+	//idle20,move34,attack13
 	switch (_packet.msg_type)
 	{
 	case Msg_IdleAni:
-		_entity->GetChrSkinnedMesh()->SetAnimationIndexBlend(20);
+		_entity->GetChrSkinnedMesh()->SetAnimationIndexBlend(16);
 		return true;
 	case Msg_MoveAni:
 		_entity->GetChrSkinnedMesh()->SetAnimationIndexBlend(34);
@@ -46,6 +47,13 @@ bool cDworfMageState::OnMessage(cGameObject * _entity, const ST_PACKET & _packet
 	case Msg_AttackAni:
 		_entity->GetChrSkinnedMesh()->SetAnimationIndexBlend(13);
 		return true;
+	case Msg_CastingAni:
+		_entity->GetChrSkinnedMesh()->SetAnimationIndexBlend(13);
+		return true;
+	case Msg_StunAni:
+		_entity->GetChrSkinnedMesh()->SetAnimationIndexBlend(13);
+		return true;
+	
 	}
 	return false;
 }

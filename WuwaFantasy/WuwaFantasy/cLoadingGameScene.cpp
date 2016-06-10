@@ -56,4 +56,5 @@ void cLoadingGameScene::ChangeScene(cIScene * _pNextScene)
 
 void cLoadingGameScene::MessageHandling(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
+	DefWindowProc(hWnd, iMessage, wParam, lParam);
 }

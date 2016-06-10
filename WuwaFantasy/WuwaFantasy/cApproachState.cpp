@@ -38,11 +38,11 @@ bool cApproachState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
 	switch (_packet.msg_type)
 	{
 	case Msg_Approach:
-		packet_target = (Packet_Target*)_packet.info;
+		packet_target = (Packet_Approach*)_packet.info;
 		m_pAction = _player->GetAction();
 		m_pTarget = packet_target->pTarget;
 		m_pAction->Start();
-		m_pAction->ReadyApproach(m_pTarget, _player->GetStatus().GetSpeed(),1);
+		m_pAction->ReadyApproach(m_pTarget,  packet_target->fRange);
 		m_pTarget = nullptr;
 		m_pAction = nullptr;
 		SAFE_DELETE(packet_target);

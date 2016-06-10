@@ -127,8 +127,22 @@ void cPlayerState::Execute(cGameObject * _entity)
 	{
 		if (m_pTarget)
 		{
-			m_bCombat = true;
-			
+			for (size_t i = 0; i < m_vecTargetTag.size(); ++i)
+			{
+				std::vector<cGameObject*>& vecObject = g_pObjectManager->FindObjectByTag(m_vecTargetTag[i]);
+				for (size_t j = 0; j < vecObject.size(); ++j)
+				{
+					if (g_pPickManager->IsPickedSphere(vecObject[j]->GetBoundSphere(), curPos.x, curPos.y))
+					{
+						if (m_pTarget == vecObject[j])
+						{
+							g_pMessageDispatcher->Dispatch(playerID, playerID, 0.0f, Msg_Move, new Packet_Move(m_pTarget->GetVPos()));
+							m_bCombat = true;
+							break;
+						}
+					}
+				}
+			}	
 		}
 	}
 
@@ -179,6 +193,17 @@ bool cPlayerState::OnMessage(cGameObject * _entity, const ST_PACKET & _packet)
 {
 	switch (_packet.msg_type)
 	{
+	case Msg_AttackTarget:
+		if (m_pTarget)
+		{
+			
+			m_packet.info = attack_packet;
+			if (0 < m_pTarget->GetStatus().GetCurrentHP())
+			{
+				
+			}
+		}
+		break;
 	case Msg_Hit:
 		packet_hit = (Packet_Hit*)_packet.info;
 		m_pStatus->DecCurrentHP(packet_hit->damage);

@@ -18,8 +18,8 @@ public:
 
 	cSkinnedMesh*				m_chrSkinnedMesh = nullptr;
 	cWeaponSkinnedMesh*			m_objSkinnedMesh = nullptr;
-	std::vector<BoundingSphere>				m_sphere;
-	std::vector<BoundingBox>					m_box;
+	BoundingSphere				m_sphere;
+	BoundingBox					m_box;
 
 	cStateMachine*				m_pStateMachine=nullptr;
 	std::list<cCondition*>		m_listCondition;
@@ -47,8 +47,8 @@ public:
 	cWeaponSkinnedMesh*			GetObjSkinnedMesh() { return m_objSkinnedMesh; };
 	void						SetStateMachine(cStateMachine* _pStateMachine);
 	cStateMachine*				GetStateMachine();
-	std::vector<BoundingSphere>&		GetBoundSphere();
-	std::vector<BoundingBox>&			GetBoundBox();
+	BoundingSphere&		GetBoundSphere();
+	BoundingBox&			GetBoundBox();
 
 	void				AddCondition(cCondition* _pCondition);
 	void				OnMessage(const ST_PACKET& _packet);
@@ -58,6 +58,6 @@ public:
 	cAction*			GetAction();
 	void				SetAniUpdate(bool d) { m_bAniUpdate = d; };
 
-	void				AddBoundSphere(const float& _fRadius, const D3DXVECTOR3& _vCenter);
-	void				AddBoundBox(const D3DXVECTOR3& _max, const D3DXVECTOR3& _min);
+	void				SetBoundSphere(const float& _fRadius, const D3DXVECTOR3& _vCenter);
+	void				SetBoundBox(const D3DXVECTOR3& _max, const D3DXVECTOR3& _min);
 };

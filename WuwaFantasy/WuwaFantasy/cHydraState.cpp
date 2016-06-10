@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "cHydraState.h"
 #include "cGameObject.h"
+#include "cRandom.h"
 
 cHydraState::cHydraState()
 {
@@ -25,6 +26,9 @@ void cHydraState::EnterState(cGameObject * _entity)
 	m_chrmesh = _entity->GetChrSkinnedMesh();
 	m_nCurAni = 3;
 	SetupAnimation(m_nCurAni);
+	
+	_entity->SetBoundSphere(3, D3DXVECTOR3(0, 0, 0));
+	m_pAniController->SetTrackPosition(0, cRandom::GetFloat(1.0f,0.0f));
 }
 
 void cHydraState::ExitState(cGameObject * _entity)
@@ -37,7 +41,7 @@ void cHydraState::Execute(cGameObject * _entity)
 	{
 		m_pAniController->GetTrackDesc(0, &m_desc);
 		m_fCurPeriod = m_pAniSet->GetPeriodicPosition(m_desc.Position) / m_fPeriod;
-
+		
 		if (m_desc.Position > m_fPeriod - 0.1f)
 		{
 			m_pAniController->SetTrackPosition(0, m_fPeriod - 0.1f);
@@ -76,4 +80,5 @@ void cHydraState::SetupAnimation(const int & index)
 	m_pOwner->GetChrSkinnedMesh()->SetAnimationIndexBlend(m_nCurAni);
 	m_pAniController->GetAnimationSet(m_nCurAni, &m_pAniSet);
 	m_fPeriod = (float)m_pAniSet->GetPeriod();
+	m_pAniController->SetTrackPosition(0, 0.0f);
 }

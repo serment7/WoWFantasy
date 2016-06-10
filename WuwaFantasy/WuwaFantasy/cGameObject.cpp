@@ -106,12 +106,13 @@ cStateMachine* cGameObject::GetStateMachine()
 	return m_pStateMachine;
 }
 
-std::vector<BoundingSphere>& cGameObject::GetBoundSphere()
+BoundingSphere& cGameObject::GetBoundSphere()
 {
+	m_sphere.vCenter = GetVPos();
 	return m_sphere;
 }
 
-std::vector<BoundingBox>& cGameObject::GetBoundBox()
+BoundingBox& cGameObject::GetBoundBox()
 {
 	return m_box;
 }
@@ -129,14 +130,14 @@ cAction * cGameObject::GetAction()
 	return m_pAction;
 }
 
-void cGameObject::AddBoundSphere(const float& _fRadius, const D3DXVECTOR3& _vCenters)
+void cGameObject::SetBoundSphere(const float& _fRadius, const D3DXVECTOR3& _vCenters)
 {
 	BoundingSphere sphere(_vCenters,_fRadius);
-	m_sphere.push_back(sphere);
+	m_sphere=sphere;
 }
 
-void cGameObject::AddBoundBox(const D3DXVECTOR3& _max, const D3DXVECTOR3& _min)
+void cGameObject::SetBoundBox(const D3DXVECTOR3& _max, const D3DXVECTOR3& _min)
 {
 	BoundingBox box(_min, _max);
-	m_box.push_back(box);
+	m_box=box;
 }

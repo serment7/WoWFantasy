@@ -30,7 +30,7 @@ void cPlayer::Setup()
 	GetStatus().SetSpeed(5.0f);
 	
 	SetStateMachine(new cPlayerFSM(this, new cDworfMageState));
-	AddBoundSphere(3, D3DXVECTOR3(0, 0, 0));
+	SetBoundSphere(3, D3DXVECTOR3(0, 0, 0));
 	//SetStateMachine(new cHydraFSM(this));
 }
 

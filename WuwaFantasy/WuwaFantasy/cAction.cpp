@@ -60,7 +60,7 @@ void cAction::HeadTo()
 	m_pOwner->SetVDir(vTargetDir);
 }
 
-void cAction::ReadyApproach(cGameObject * _pTarget, const float& _fSpeed,const float & _fTargetRange)
+void cAction::ReadyApproach(cGameObject * _pTarget,const float & _fTargetRange)
 {
 	m_pTarget = _pTarget;
 	m_fTargetRange = _fTargetRange;
@@ -122,16 +122,21 @@ void cAction::Approach()
 	vPrevTo = vCurTo;
 }
 
-void cAction::ReadyAttack(cGameObject * _pTarget, const float & _attackRange)
+void cAction::ReadyAttack(cGameObject * _pTarget, const float& attackAniTime)
 {
-
+	m_fActionTime = attackAniTime;
 }
 
 void cAction::Attack()
 {
-	if (m_bAction)
+	if (!m_bAction)
+		return;
+	m_fPassedTime += g_pTimeManager->GetDeltaTime();
+	if (m_fPassedTime>m_fActionTime)
 	{
-
+		g_pMessageDispatcher->Dispatch(m_pOwner->GetID(), m_pTarget->GetID(), 0.0f, Msg_Hit, NULL);
+		g_pMessageDispatcher->Dispatch(m_pTarget->GetID(), m_pOwner->GetID(), 0.0f, Msg_AttackTarget,NULL);
+		m_pDelegate->OnActionDelegate(this);
 	}
 }
 

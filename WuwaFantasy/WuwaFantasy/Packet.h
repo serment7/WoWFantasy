@@ -14,6 +14,8 @@ enum Msg_Type {
 	, Msg_Target
 	, Msg_Death
 	, Msg_Hit
+	, Msg_AttackTarget
+	, Msg_StunAni
 };
 
 struct Packet_Move
@@ -48,9 +50,9 @@ class cGameObject;
 struct Packet_Attack
 {
 	cGameObject*	pTarget = nullptr;
-	float			range = 0;
-	Packet_Attack(cGameObject* _pTarget,const float& _range)
-		:pTarget(_pTarget),range(_range)
+	float			fAttackTime = 0;
+	Packet_Attack(cGameObject* _pTarget,const float& _fAttackTime)
+		:pTarget(_pTarget), fAttackTime(_fAttackTime)
 	{}
 };
 
@@ -60,6 +62,15 @@ struct Packet_Target
 	cGameObject*	pTarget = nullptr;
 	Packet_Target(cGameObject* _pTarget)
 		:pTarget(_pTarget)
+	{}
+};
+
+struct Packet_Approach
+{
+	cGameObject*	pTarget = nullptr;
+	size_t			fRange = 0;
+	Packet_Approach(cGameObject* _pTarget,const size_t& _fRange)
+		:pTarget(_pTarget),fRange(_fRange)
 	{}
 };
 
