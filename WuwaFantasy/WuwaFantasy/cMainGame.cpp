@@ -5,8 +5,6 @@
 
 
 cMainGame::cMainGame()
-:	camera(NULL),
-	grid(NULL)
 {
 }
 
@@ -18,7 +16,6 @@ cMainGame::~cMainGame(void)
 void cMainGame::Setup()
 {
 	float f = D3DXToRadian(180);
-	//g_pSoundManager->AddSound("1.wav");
 
 	mainScene = new cInGameScene;
 	g_pSceneManager->AddScene("1", mainScene);
@@ -38,13 +35,13 @@ void cMainGame::Setup()
 
 void cMainGame::Update()
 {
-	SceneManager->Update();
+	g_pSceneManager->Update();
 
 }
 
 void cMainGame::Render()
 {
-	SceneManager->Render();
+	g_pSceneManager->Render();
 }
 
 void cMainGame::Release()
@@ -54,9 +51,10 @@ void cMainGame::Release()
 	g_pSpriteManager->Destroy();
 	g_pObjectManager->Destroy();
 	g_pDeviceManager->Destroy();
+	g_pSoundManager->Release();
 }
 
 void CALLBACK cMainGame::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	SceneManager->GetGameScene()->MessageHandling(hWnd, message, wParam, lParam);
+	g_pSceneManager->GetGameScene()->MessageHandling(hWnd, message, wParam, lParam);
 }

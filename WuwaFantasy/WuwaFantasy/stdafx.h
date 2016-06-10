@@ -21,10 +21,14 @@
 // TODO: 프로그램에 필요한 추가 ?E醮?여기에서 혖E또爛求?
 #include<d3d9.h>
 #include<d3dx9.h>
+#include<mmsystem.h>
+#include<dmusicc.h>
 
 #pragma comment(lib,"d3d9.lib")
 #pragma comment(lib,"d3dx9.lib")
-
+#pragma comment(lib,"dsound.lib")
+#pragma comment(lib,"winmm.lib")
+#pragma comment(lib,"dxguid.lib")
 
 extern HWND g_hWnd;
 
@@ -143,4 +147,4 @@ struct BoundingBox
 #include "cPickManager.h"
 #include "cSceneManager.h"
 #include "cKeyManager.h"
-//#include "cSoundManager.h"
+#include "cSoundManager.h"

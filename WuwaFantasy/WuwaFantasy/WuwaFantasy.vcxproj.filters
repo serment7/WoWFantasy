@@ -255,14 +255,8 @@
     <ClInclude Include="cMonsterState.h">
       <Filter>소스 파일\State\MonsterState</Filter>
     </ClInclude>
-    <ClInclude Include="cPlayerFSM.h">
-      <Filter>소스 파일\State\PlayerState</Filter>
-    </ClInclude>
-    <ClInclude Include="cMonsterFSM.h">
-      <Filter>소스 파일\State\MonsterState</Filter>
-    </ClInclude>
-    <ClInclude Include="cMap.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="cSoundManager.h">
+      <Filter>소스 파일\GamaManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -437,14 +431,8 @@
     <ClCompile Include="cMonsterState.cpp">
       <Filter>소스 파일\State\MonsterState</Filter>
     </ClCompile>
-    <ClCompile Include="cPlayerFSM.cpp">
-      <Filter>소스 파일\State\PlayerState</Filter>
-    </ClCompile>
-    <ClCompile Include="cMonsterFSM.cpp">
-      <Filter>소스 파일\State\MonsterState</Filter>
-    </ClCompile>
-    <ClCompile Include="cMap.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="cSoundManager.cpp">
+      <Filter>소스 파일\GamaManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
