@@ -26,7 +26,6 @@ void cInGameScene::Update()
 
 	m_pCamera->Update();
 
-	KeyInput();
 
 	if (m_pPlayer) m_pPlayer->Update();
 
@@ -173,27 +172,3 @@ enum KeyEnum
 	, SKILL8
 	, END
 };
-
-void cInGameScene::KeyInput()
-{
-	const int& playerID = g_pGameManager->GetPlayerID();
-	Packet_Skill* packet_skill=nullptr;
-	if (g_pKeyManager->isStayKeyDown(VK_RBUTTON))
-	{
-		g_pGameManager->UpdateCursorPointInGlobal();
-		const POINT& curPos = g_pGameManager->GetCursorPoint();
-		if (g_pPickManager->IsPickedTry(m_pGrid->GetTriVertex(), curPos.x, curPos.y))
-		{
-			Packet_Move* packet = new Packet_Move(g_pPickManager->GetRayPos());
-			packet->vDes.y = 0.0f;
-			g_pMessageDispatcher->Dispatch(playerID, playerID, 0.0f, Msg_Move, packet);
-		}
-	}
-
-	for (int i = SKILL0; i < KeyEnum::END; ++i)
-	{
-		if (g_pKeyManager->isOnceKeyDown(i))
-			g_pMessageDispatcher->Dispatch(playerID, playerID, 0.0f, Msg_MoveAni, NULL);
-	}
-}
-
