@@ -1,19 +1,18 @@
 #include "stdafx.h"
-#include "cHydraFSM.h"
-#include "cGameObject.h"
-#include "cHydraState.h"
+#include "cMonsterFSM.h"
+#include "cMonsterState.h"
 #include "cIdleState.h"
 
-cHydraFSM::cHydraFSM(cGameObject* _pOwner)
+cMonsterFSM::cMonsterFSM(cGameObject * _pOwner, cIState * _pState)
 {
 	m_pOwner = _pOwner;
-	SetGlobalState(new cHydraState);
+	SetGlobalState(new cMonsterState(_pState));
 	GlobalState()->EnterState(_pOwner);
 
 	SetCurrentState(cIdleState::GetInstance());
 	CurrentState()->EnterState(_pOwner);
 }
 
-cHydraFSM::~cHydraFSM()
+cMonsterFSM::~cMonsterFSM()
 {
 }

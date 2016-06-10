@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "cPlayer.h"
 #include"cGameObject.h"
-#include"cDworfMageFSM.h"
-#include "cHydraFSM.h"
+#include "cPlayerFSM.h"
+#include "cDworfMageState.h"
 
 cPlayer::cPlayer()
 	:cGameObject()
@@ -29,7 +29,9 @@ void cPlayer::Setup()
 	SetVDir(D3DXVECTOR3(0, 0, -1));
 	GetStatus().SetSpeed(5.0f);
 	
-	SetStateMachine(new cDworfMageFSM(this));
+	SetStateMachine(new cPlayerFSM(this, new cDworfMageState));
+	m_sphere.fRadius = 3;
+	m_sphere.vCenter = D3DXVECTOR3(0, 0, 0);
 	//SetStateMachine(new cHydraFSM(this));
 }
 

@@ -21,6 +21,9 @@ struct ST_STATUS
 
 	int nLevel = 0;
 	float fExp = 0.0f;
+
+	float fSenseRange = 0.0f;
+	float fchaseRange = 0.0f;
 };
 
 class cStatus
@@ -52,6 +55,8 @@ public:
 	float	GetCrt() { return m_stStatus.fCrt; }					//农府萍拿
 	int		GetLevel() { return m_stStatus.nLevel; }
 	float	GetExp() { return m_stStatus.fExp; }
+	float	GetSenseRange() { return m_stStatus.fSenseRange; }
+	float	GetChaseRange() { return m_stStatus.fchaseRange; }
 
 	void	SetCurrentHP(const int& nCurrentHP) { m_stStatus.nCurrentHP = nCurrentHP; }
 	void	SetMaxHP(const int& nMaxHP) { m_stStatus.nMaxHP = nMaxHP; }
@@ -67,6 +72,8 @@ public:
 	void	SetCrt(const float& fCrt) { m_stStatus.fCrt = fCrt; }					//农府萍拿
 	void	SetLevel(const int& nLevel) { m_stStatus.nLevel = nLevel; }
 	void	SetExp(const float& fExp) { m_stStatus.fExp = fExp; }
+	void	SetSenseRange(const float& _fSenseRange) { m_stStatus.fSenseRange = _fSenseRange; }
+	void	SetChaseRange(const float& _fChaseRange) { m_stStatus.fchaseRange = _fChaseRange; }
 
 	void	IncCurrentHP(const int& nCurrentHP) { m_stStatus.nCurrentHP += nCurrentHP; }
 	void	IncMaxHP(const int& nMaxHP) { m_stStatus.nMaxHP += nMaxHP; }
@@ -82,6 +89,8 @@ public:
 	void	IncCrt(const float& fCrt) { m_stStatus.fCrt += fCrt; }					//农府萍拿
 	void	IncLevel(const int& nLevel) { m_stStatus.nLevel += nLevel; }
 	void	IncExp(const float& fExp) { m_stStatus.fExp += fExp; }
+	void	IncSenseRange(const float& _fSenseRange) { m_stStatus.fSenseRange += _fSenseRange; }
+	void	IncChaseRange(const float& _fChaseRange) { m_stStatus.fchaseRange += _fChaseRange; }
 
 	void	DecCurrentHP(const int& nCurrentHP) { m_stStatus.nCurrentHP -= nCurrentHP; }
 	void	DecMaxHP(const int& nMaxHP) { m_stStatus.nMaxHP -= nMaxHP; }
@@ -97,4 +106,6 @@ public:
 	void	DecCrt(const float& fCrt) { m_stStatus.fCrt -= fCrt; }					//农府萍拿
 	void	DecLevel(const int& nLevel) { m_stStatus.nLevel -= nLevel; }
 	void	DecExp(const float& fExp) { m_stStatus.fExp -= fExp; }
+	void	DecSenseRange(const float& _fSenseRange) { m_stStatus.fSenseRange -= _fSenseRange; }
+	void	DecChaseRange(const float& _fChaseRange) { m_stStatus.fchaseRange -= _fChaseRange; }
 };

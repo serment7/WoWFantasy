@@ -8,6 +8,7 @@ class cIScript;
 class cGameObject;
 class cJob;
 class cSkill;
+class cMap;
 
 class cGameManager
 {
@@ -30,6 +31,8 @@ private:
 	std::map<std::string, cSkill*>		m_mapSkill;
 	std::map<std::string, cJob*>		m_mapJob;
 
+	std::vector<cMap*>			m_vecMap;
+
 public:
 	cGameManager();
 	~cGameManager();
@@ -44,6 +47,8 @@ public:
 	void UpdateClientSize();
 	void UpdateCursorPointInGlobal();
 	void UpdateCursorPointByWindow(const HWND& _targetWindow);
+
+	void			Destroy();
 
 	const int&		GetFPS();
 	const POINT&	GetCursorPoint();
@@ -62,4 +67,7 @@ public:
 	const size_t FindObjectType(const std::string& _typename);
 	const cSkill* FindSkill(const std::string& _typename);
 	const cJob* FindJob(const std::string& _typename);
+
+	void				AddMap(cMap* _map);
+	std::vector<cMap*>&	GetMap();
 };

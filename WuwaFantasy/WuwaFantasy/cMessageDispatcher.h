@@ -12,7 +12,7 @@ inline bool operator==(const ST_PACKET& _packet1, const ST_PACKET& _packet2)
 
 inline bool operator<(const ST_PACKET& _packet1, const ST_PACKET& _pakcet2)
 {
-	return  (_packet1.delayTime <= _pakcet2.delayTime);
+	return  (_packet1.delayTime < _pakcet2.delayTime);
 }
 
 class cMessageDispatcher

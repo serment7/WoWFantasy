@@ -95,8 +95,14 @@ STDMETHODIMP cAllocateHierarchy::CreateMeshContainer( THIS_ LPCSTR Name,
 	pBoneMesh->MeshData = *pMeshData;
 	if (Name)
 	{
-		pBoneMesh->Name = new CHAR[strlen(Name) + 1];
-		strcpy_s(pBoneMesh->Name, strlen(pBoneMesh->Name), Name);
+		int n = strlen(Name);
+		pBoneMesh->Name = new CHAR[n + 1];
+
+		for (int i = 0; i < n; ++i)
+		{
+			pBoneMesh->Name[i] = Name[i];
+		}
+		pBoneMesh->Name[n] = '\0';
 	}
 	else
 	{

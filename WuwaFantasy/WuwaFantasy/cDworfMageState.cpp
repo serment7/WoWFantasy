@@ -12,7 +12,8 @@ cDworfMageState::~cDworfMageState()
 
 void cDworfMageState::EnterState(cGameObject * _entity)
 {
-	_entity->GetChrSkinnedMesh()->SetAnimationIndexBlend(20);
+	_entity->GetChrSkinnedMesh()->SetFolderName(MODEL_PATH + "DworfBattleMage");
+	_entity->GetChrSkinnedMesh()->Load("DworfBattleMage.X");
 }
 
 void cDworfMageState::ExitState(cGameObject * _entity)

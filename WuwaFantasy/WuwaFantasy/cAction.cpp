@@ -60,18 +60,39 @@ void cAction::HeadTo()
 	m_pOwner->SetVDir(vTargetDir);
 }
 
-void cAction::ReadyApproach(const D3DXVECTOR3 & _vTo, const float & _fTargetRange)
+void cAction::ReadyApproach(cGameObject * _pTarget, const float& _fSpeed,const float & _fTargetRange)
 {
-	m_vFrom = m_pOwner->GetVPos();
-	D3DXVECTOR3 vApproachTo = m_vFrom - _vTo;
-	D3DXVec3Normalize(&vApproachTo, &vApproachTo);
-	vApproachTo = _vTo - (vApproachTo * _fTargetRange);
-	ReadyMoveTo(vApproachTo);
+	m_fSpeed = _fSpeed;
+	m_pTarget = _pTarget;
+	m_fTargetRange = _fTargetRange;
 }
 
 void cAction::Approach()
 {
-	MoveTo();
+	if (!m_bAction)
+		return;
+
+	m_vFrom = m_pOwner->GetVPos();
+	m_vTo = m_pTarget->GetVPos();
+
+	D3DXVECTOR3 velocity = m_vTo - m_vFrom;
+	float		fDistance = D3DXVec3LengthSq(&velocity);
+
+	D3DXVec3Normalize(&velocity, &velocity);
+	velocity *= m_fSpeed;
+	float		fMoveAmount = D3DXVec3LengthSq(&velocity);
+	
+	if (fDistance-(m_fTargetRange*m_fTargetRange) > fMoveAmount)
+	{
+		m_pOwner->SetVPos(m_vFrom + velocity);
+		HeadTo();
+	}
+	else
+	{
+		if (m_pDelegate)
+			m_pDelegate->OnActionDelegate(this);
+		m_pOwner->SetVPos(m_vTo);
+	}
 }
 
 void cAction::ReadyAttack(cGameObject * _pTarget, const float & _attackRange)

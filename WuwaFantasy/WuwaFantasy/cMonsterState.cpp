@@ -7,7 +7,6 @@ cMonsterState::cMonsterState(cIState* _pState)
 	m_pState = _pState;
 }
 
-
 cMonsterState::~cMonsterState()
 {
 }
@@ -16,7 +15,7 @@ void cMonsterState::EnterState(cGameObject * _entity)
 {
 	m_pState->EnterState(_entity);
 	m_vecTargetTag.push_back(g_pGameManager->FindObjectType("player"));
-	m_vecTargetTag.push_back(g_pGameManager->FindObjectType("combatnpc"));
+	//m_vecTargetTag.push_back(g_pGameManager->FindObjectType("combatnpc"));
 }
 
 void cMonsterState::ExitState(cGameObject * _entity)
@@ -38,11 +37,11 @@ void cMonsterState::Execute(cGameObject * _entity)
 				m_pTarget = target[i];
 				m_vTarget = m_pTarget->GetVPos();
 				m_fRange = D3DXVec3LengthSq(&(m_vTarget - m_vPos));
-				if (m_fRange < m_fRecognitionRange)
+				if (m_fRange > m_fRecognitionRange)
 				{
 					packet_target = new Packet_Target(m_pTarget);
 					g_pMessageDispatcher->Dispatch(_entity->GetID(), _entity->GetID(),
-						0.0f, Msg_Attack, packet_target);
+						0.0f, Msg_Approach, packet_target);
 					m_bAttack = true;
 				}
 			}
@@ -55,9 +54,9 @@ void cMonsterState::Execute(cGameObject * _entity)
 		m_fRange = D3DXVec3LengthSq(&(m_vTarget - m_vPos));
 		if (m_fRange > m_fRecognitionRange)
 		{
-			packet_target = new Packet_Target(m_pTarget);
+			/*packet_target = new Packet_Target(m_pTarget);
 			g_pMessageDispatcher->Dispatch(_entity->GetID(), _entity->GetID(),
-				0.0f, Msg_Attack, packet_target);
+				0.0f, Msg_Attack, packet_target);*/
 			m_bAttack = false;
 		}
 	}

@@ -14,10 +14,12 @@ cApproachState::~cApproachState()
 
 void cApproachState::EnterState(cGameObject * _player)
 {
+	const size_t id = _player->GetID();
 	m_pAction = _player->GetAction();
 	m_pAction->SetDelegate(this);
 	m_pAction->Start();
 	m_pAction = nullptr;
+	g_pMessageDispatcher->Dispatch(id, id, 0.0f, Msg_MoveAni, NULL);
 }
 
 void cApproachState::ExitState(cGameObject * _player)
@@ -29,8 +31,8 @@ void cApproachState::ExitState(cGameObject * _player)
 }
 
 void cApproachState::Execute(cGameObject * _player)
-{
-	m_pAction->Approach();
+{	
+	_player->GetAction()->Approach();
 }
 
 bool cApproachState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
@@ -41,7 +43,7 @@ bool cApproachState::OnMessage(cGameObject * _player, const ST_PACKET & _packet)
 		packet_target = (Packet_Target*)_packet.info;
 		m_pAction = _player->GetAction();
 		m_pTarget = packet_target->pTarget;
-		m_pAction->ReadyApproach(m_pTarget->GetVPos(), m_pTarget->GetBoundSphere().fRadius);
+		m_pAction->ReadyApproach(m_pTarget, _player->GetStatus().GetSpeed(),m_pTarget->GetBoundSphere().fRadius);
 		m_pTarget = nullptr;
 		m_pAction = nullptr;
 		SAFE_DELETE(packet_target);

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "cHydra.h"
-#include "cHydraFSM.h"
+#include "cHydraState.h"
+#include "cMonsterFSM.h"
 
 cHydra::cHydra()
 {
@@ -23,9 +24,9 @@ void cHydra::Setup()
 	m_chrSkinnedMesh = new cSkinnedMesh;
 	SetVBaseDir(D3DXVECTOR3(0, 0, -1));
 	SetVDir(D3DXVECTOR3(0, 0, -1));
-	GetStatus().SetSpeed(5.0f);
-
-	SetStateMachine(new cHydraFSM(this));
+	GetStatus().SetSpeed(0.02f);
+	
+	SetStateMachine(new cMonsterFSM(this,new cHydraState));
 }
 
 void cHydra::Update()

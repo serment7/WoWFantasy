@@ -38,7 +38,7 @@ extern HWND g_hWnd;
 #define EPSILON 0.0001f
 
 const size_t SKILL_MAXNUM = 10;
-const size_t MONSTER_RANGE = 5;
+const size_t MONSTER_RANGE = 6;
 
 //This Struct is Used by cGrid Class, Until Develop Days
 struct ST_PC_VERTEX

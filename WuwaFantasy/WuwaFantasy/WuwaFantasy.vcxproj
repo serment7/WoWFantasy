@@ -180,8 +180,10 @@
     <ClInclude Include="cKeyManager.h" />
     <ClInclude Include="cLoadingGameScene.h" />
     <ClInclude Include="cMainGame.h" />
+    <ClInclude Include="cMap.h" />
     <ClInclude Include="cMessageDispatcher.h" />
     <ClInclude Include="cMonster.h" />
+    <ClInclude Include="cMonsterFSM.h" />
     <ClInclude Include="cMonsterState.h" />
     <ClInclude Include="cMovingObject.h" />
     <ClInclude Include="cMtlTex.h" />
@@ -195,6 +197,7 @@
     <ClInclude Include="cMoveState.h" />
     <ClInclude Include="cDworfMageFSM.h" />
     <ClInclude Include="cDworfMageState.h" />
+    <ClInclude Include="cPlayerFSM.h" />
     <ClInclude Include="cPlayerState.h" />
     <ClInclude Include="cPoison.h" />
     <ClInclude Include="cProgressBar.h" />
@@ -241,8 +244,10 @@
     <ClCompile Include="cKeyManager.cpp" />
     <ClCompile Include="cLoadingGameScene.cpp" />
     <ClCompile Include="cMainGame.cpp" />
+    <ClCompile Include="cMap.cpp" />
     <ClCompile Include="cMessageDispatcher.cpp" />
     <ClCompile Include="cMonster.cpp" />
+    <ClCompile Include="cMonsterFSM.cpp" />
     <ClCompile Include="cMonsterState.cpp" />
     <ClCompile Include="cMovingObject.cpp" />
     <ClCompile Include="cMtlTex.cpp" />
@@ -256,6 +261,7 @@
     <ClCompile Include="cMoveState.cpp" />
     <ClCompile Include="cDworfMageFSM.cpp" />
     <ClCompile Include="cDworfMageState.cpp" />
+    <ClCompile Include="cPlayerFSM.cpp" />
     <ClCompile Include="cPlayerState.cpp" />
     <ClCompile Include="cPoison.cpp" />
     <ClCompile Include="cProgressBar.cpp" />

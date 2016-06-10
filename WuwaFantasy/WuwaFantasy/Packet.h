@@ -11,6 +11,7 @@ enum Msg_Type {
 	, Msg_MoveAni
 	, Msg_CastingAni
 	, Msg_Skill
+	,Msg_Target
 	
 
 };
@@ -72,10 +73,10 @@ struct Packet_GetCondition
 	{}
 };
 
-struct Packet_Skill
+struct Packet_SkillKey
 {
 	size_t		skill;
-	Packet_Skill(const size_t&	_Skill)
+	Packet_SkillKey(const size_t&	_Skill)
 		:skill(_Skill)
 	{}
 };

@@ -4,6 +4,7 @@
 #include "cGameObject.h"
 #include"cJob.h"
 #include"cSkill.h"
+#include "cMap.h"
 
 cGameManager::cGameManager()
 	: m_nFPS(0)
@@ -114,6 +115,16 @@ const cJob* cGameManager::FindJob(const std::string & _typename)
 	}
 }
 
+void cGameManager::AddMap(cMap * _map)
+{
+	m_vecMap.push_back(_map);
+}
+
+std::vector<cMap*>& cGameManager::GetMap()
+{
+	return m_vecMap;
+}
+
 
 void cGameManager::Update()
 {
@@ -139,7 +150,7 @@ void cGameManager::Update()
 		m_camera.SetEye(playerPos);
 		m_camera.SetLookAt(playerPos);
 	}
-		
+	
 }
 
 void cGameManager::UpdateClientSize()
@@ -157,4 +168,12 @@ void cGameManager::UpdateCursorPointByWindow(const HWND & _targetWindow)
 {
 	GetCursorPos(&m_ptCursor);
 	ScreenToClient(_targetWindow, &m_ptCursor);
+}
+
+void cGameManager::Destroy()
+{
+	for (int i = 0; i < m_vecMap.size(); ++i)
+	{
+		SAFE_DELETE(m_vecMap[i]);
+	}
 }

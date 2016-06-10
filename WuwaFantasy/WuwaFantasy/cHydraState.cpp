@@ -13,11 +13,14 @@ cHydraState::~cHydraState()
 void cHydraState::EnterState(cGameObject * _entity)
 {
 	m_pOwner = _entity;
+	m_pOwner->GetChrSkinnedMesh()->SetFolderName(MODEL_PATH + "Hydra");
+	m_pOwner->GetChrSkinnedMesh()->Load("Hydra.X");
+
 	m_pAniController = _entity->GetChrSkinnedMesh()->GetAnimationController();
 	m_pStatus = &_entity->GetStatus();
 	m_chrmesh = _entity->GetChrSkinnedMesh();
 	m_nCurAni = 3;
-	SetupAnimation(3);
+	SetupAnimation(m_nCurAni);
 }
 
 void cHydraState::ExitState(cGameObject * _entity)
@@ -37,9 +40,9 @@ void cHydraState::Execute(cGameObject * _entity)
 		}
 		else
 		{
-			/*m_nCurAni = 4;
+			m_nCurAni = 4;
 			SetupAnimation(m_nCurAni);
-			m_bLive = false;*/
+			m_bLive = false;
 		}
 	}
 	else
@@ -54,7 +57,6 @@ void cHydraState::Execute(cGameObject * _entity)
 
 bool cHydraState::OnMessage(cGameObject * _entity, const ST_PACKET & _packet)
 {
-
 	switch (_packet.msg_type)
 	{
 	case Msg_IdleAni:

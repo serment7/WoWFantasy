@@ -30,5 +30,4 @@ public:
 	virtual void	ExitScene();
 	virtual void	ChangeScene(cIScene* _pNextScene);
 	virtual void	MessageHandling(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam);
-	void			KeyInput();
 };
