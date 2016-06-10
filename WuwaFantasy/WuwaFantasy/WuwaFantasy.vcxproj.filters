@@ -219,9 +219,6 @@
     <ClInclude Include="cHydra.h">
       <Filter>소스 파일\Object\Monster</Filter>
     </ClInclude>
-    <ClInclude Include="cHydraFSM.h">
-      <Filter>소스 파일\State\MonsterState\Hydra</Filter>
-    </ClInclude>
     <ClInclude Include="cIdleState.h">
       <Filter>소스 파일\State\BaseState</Filter>
     </ClInclude>
@@ -265,6 +262,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="cPlayerFSM.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="cWorldCamera.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -404,9 +404,6 @@
     <ClCompile Include="cHydra.cpp">
       <Filter>소스 파일\Object\Monster</Filter>
     </ClCompile>
-    <ClCompile Include="cHydraFSM.cpp">
-      <Filter>소스 파일\State\MonsterState\Hydra</Filter>
-    </ClCompile>
     <ClCompile Include="cIdleState.cpp">
       <Filter>소스 파일\State\BaseState</Filter>
     </ClCompile>
@@ -450,6 +447,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="cPlayerFSM.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="cWorldCamera.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

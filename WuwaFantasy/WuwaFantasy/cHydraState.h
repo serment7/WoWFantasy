@@ -10,7 +10,6 @@ class cHydraState :
 {
 private:
 	cGameObject*				m_pOwner;
-	cStatus*					m_pStatus;
 	LPD3DXANIMATIONCONTROLLER	m_pAniController;
 	D3DXTRACK_DESC				m_desc;
 	LPD3DXANIMATIONSET			m_pAniSet;

@@ -10,6 +10,7 @@ cGrid::cGrid(void)
 
 cGrid::~cGrid(void)
 {
+	SAFE_RELEASE(m_VB);
 }
 
 void cGrid::Setup( float nLine /*= 30*/, float fInterval /*= 1.0f*/ )

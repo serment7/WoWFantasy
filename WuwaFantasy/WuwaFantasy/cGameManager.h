@@ -21,6 +21,7 @@ private:
 
 	cCamera				m_camera;
 	cCamera				m_dramaCamera;
+	cCamera*			m_pWorldCamera;
 
 	bool				m_bRunScript;
 	cIScript*			m_pDramaScript;
@@ -32,6 +33,8 @@ private:
 	std::map<std::string, cJob*>		m_mapJob;
 
 	std::vector<cMap*>			m_vecMap;
+
+	bool				m_bUseWorldCamera=false;
 
 public:
 	cGameManager();
@@ -70,4 +73,6 @@ public:
 
 	void				AddMap(cMap* _map);
 	std::vector<cMap*>&	GetMap();
+
+	void MessageHandle(const HWND& hWnd, const UINT& iMessage,const WPARAM& wParam,const LPARAM& lParam);
 };

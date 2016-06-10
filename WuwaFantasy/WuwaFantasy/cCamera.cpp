@@ -41,6 +41,11 @@ void cCamera::SetEye(const D3DXVECTOR3 & _vPos)
 	m_vPos = _vPos;
 }
 
+void cCamera::MoveEye(const D3DXVECTOR3 & _vPos)
+{
+	m_vPos += _vPos;
+}
+
 void cCamera::SetEye(const float & _x, const float & _y, const float & _z)
 {
 	SetEye(D3DXVECTOR3(_x, _y, _z));
@@ -54,6 +59,21 @@ void cCamera::SetLookAt(const D3DXVECTOR3 & _vLookAt)
 void cCamera::SetLookAt(const float & _x, const float & _y, const float & _z)
 {
 	SetLookAt(D3DXVECTOR3(_x, _y, _z));
+}
+
+void cCamera::MoveLookAt(const D3DXVECTOR3 & _vPos)
+{
+	m_vLookAt += _vPos;
+}
+
+const D3DXVECTOR3 & cCamera::GetEye()
+{
+	return m_vPos;
+}
+
+const D3DXVECTOR3 & cCamera::GetLookAt()
+{
+	return m_vLookAt;
 }
 
 void cCamera::SetAngleX(const float & _angleX)
@@ -106,6 +126,16 @@ void cCamera::SetMaxFov(const float & _maxFov)
 	m_fMaxFov = _maxFov;
 }
 
+void cCamera::SetDistance(const float & _distance)
+{
+	m_fDistance = _distance;
+}
+
+const float&  cCamera::GetDistance()
+{
+	return m_fDistance;
+}
+
 bool cCamera::MessageHandle(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
 	switch (iMessage)
@@ -148,7 +178,7 @@ bool cCamera::MessageHandle(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPar
 	}
 	return true;
 	case WM_MOUSEWHEEL:
-		m_fDistance -= GET_WHEEL_DELTA_WPARAM(wParam) / 100.0f;
+		m_fDistance -= GET_WHEEL_DELTA_WPARAM(wParam) / 10.0f;
 		if (m_fDistance < m_fMinDistance)
 			m_fDistance = m_fMinDistance;
 		return true;

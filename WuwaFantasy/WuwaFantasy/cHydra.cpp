@@ -24,7 +24,6 @@ void cHydra::Setup()
 	m_chrSkinnedMesh = new cSkinnedMesh;
 	SetVBaseDir(D3DXVECTOR3(0, 0, -1));
 	SetVDir(D3DXVECTOR3(0, 0, -1));
-	GetStatus().SetSpeed(0.02f);
 	
 	SetStateMachine(new cMonsterFSM(this,new cHydraState));
 }

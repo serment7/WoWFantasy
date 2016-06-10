@@ -24,6 +24,8 @@ struct ST_STATUS
 
 	float fSenseRange = 0.0f;
 	float fchaseRange = 0.0f;
+
+	float fRespawnTime = 0.0f;
 };
 
 class cStatus
@@ -57,6 +59,7 @@ public:
 	float	GetExp() { return m_stStatus.fExp; }
 	float	GetSenseRange() { return m_stStatus.fSenseRange; }
 	float	GetChaseRange() { return m_stStatus.fchaseRange; }
+	float	GetRespawnTime() { return m_stStatus.fRespawnTime; }
 
 	void	SetCurrentHP(const int& nCurrentHP) { m_stStatus.nCurrentHP = nCurrentHP; }
 	void	SetMaxHP(const int& nMaxHP) { m_stStatus.nMaxHP = nMaxHP; }
@@ -74,6 +77,7 @@ public:
 	void	SetExp(const float& fExp) { m_stStatus.fExp = fExp; }
 	void	SetSenseRange(const float& _fSenseRange) { m_stStatus.fSenseRange = _fSenseRange; }
 	void	SetChaseRange(const float& _fChaseRange) { m_stStatus.fchaseRange = _fChaseRange; }
+	void	SetRespawnTime(const float& _fRespawnTime) { m_stStatus.fRespawnTime = _fRespawnTime; }
 
 	void	IncCurrentHP(const int& nCurrentHP) { m_stStatus.nCurrentHP += nCurrentHP; }
 	void	IncMaxHP(const int& nMaxHP) { m_stStatus.nMaxHP += nMaxHP; }
@@ -91,6 +95,7 @@ public:
 	void	IncExp(const float& fExp) { m_stStatus.fExp += fExp; }
 	void	IncSenseRange(const float& _fSenseRange) { m_stStatus.fSenseRange += _fSenseRange; }
 	void	IncChaseRange(const float& _fChaseRange) { m_stStatus.fchaseRange += _fChaseRange; }
+	void	IncRespawnTime(const float& _fRespawnTime) { m_stStatus.fRespawnTime += _fRespawnTime; }
 
 	void	DecCurrentHP(const int& nCurrentHP) { m_stStatus.nCurrentHP -= nCurrentHP; }
 	void	DecMaxHP(const int& nMaxHP) { m_stStatus.nMaxHP -= nMaxHP; }
@@ -108,4 +113,5 @@ public:
 	void	DecExp(const float& fExp) { m_stStatus.fExp -= fExp; }
 	void	DecSenseRange(const float& _fSenseRange) { m_stStatus.fSenseRange -= _fSenseRange; }
 	void	DecChaseRange(const float& _fChaseRange) { m_stStatus.fchaseRange -= _fChaseRange; }
+	void	DecRespawnTime(const float& _fRespawnTime) { m_stStatus.fRespawnTime -= _fRespawnTime; }
 };

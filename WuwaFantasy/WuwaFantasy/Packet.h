@@ -12,7 +12,7 @@ enum Msg_Type {
 	, Msg_CastingAni
 	, Msg_Skill
 	,Msg_Target
-	
+	, Msg_Death
 
 };
 

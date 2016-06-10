@@ -2,6 +2,9 @@
 #include "cInGameScene.h"
 #include "cObject.h"
 #include "cHydra.h"
+#include "cHydraState.h"
+#include "cMonster.h"
+#include "cMap.h"
 
 cInGameScene::cInGameScene()
 	: m_bPaused(FALSE)
@@ -23,8 +26,6 @@ void cInGameScene::Update()
 	g_pTimeManager->Update();
 	g_pMessageDispatcher->Update();
 	g_pGameManager->Update();
-
-	m_pCamera->Update();
 
 
 	if (m_pPlayer) m_pPlayer->Update();
@@ -52,6 +53,13 @@ void cInGameScene::Render()
 	g_pD3DDevice->LightEnable(1, true);
 
 	g_pD3DDevice->SetFVF(ST_PNT_VERTEX::FVF);
+
+	std::vector<cMap*>& maps = g_pGameManager->GetMap();
+	for (size_t i = 0; i < maps.size(); ++i)
+	{
+		maps[i]->Render();
+	}
+
 	for (size_t i = 0; i < m_vecObject.size(); ++i)
 	{
 		m_vecObject[i]->Render();
@@ -85,9 +93,18 @@ void cInGameScene::EnterScene()
 	g_pObjectManager->AddObject(m_pGrid);
 	m_pGrid->Setup();
 	
-	cGameObject* monster = new cHydra;
-	monster->SetTag(g_pGameManager->FindObjectType("monster"));
-	g_pObjectManager->AddObject(monster);
+	//cGameObject* monster = new cHydra;
+	cGameObject* monster = new cMonster("",new cHydraState);
+	monster->SetVPos(D3DXVECTOR3(-15, 0, -15));
+	m_vecObject.push_back(monster);
+	monster = new cMonster("", new cHydraState);
+	monster->SetVPos(D3DXVECTOR3(-15,0,15));
+	m_vecObject.push_back(monster);
+	monster = new cMonster("", new cHydraState);
+	monster->SetVPos(D3DXVECTOR3(15, 0, -15));
+	m_vecObject.push_back(monster);
+	monster = new cMonster("", new cHydraState);
+	monster->SetVPos(D3DXVECTOR3(15, 0, 15));
 	m_vecObject.push_back(monster);
 
 	for (size_t i = 0; i < m_vecObject.size(); ++i)
@@ -107,6 +124,8 @@ void cInGameScene::EnterScene()
 	g_pD3DDevice->SetLight(1, &m_light);
 
 	g_pSoundManager->Start("1");
+
+	g_pGameManager->AddMap(new cMap("HeightMap.raw","terrain.png"));
 }
 
 void cInGameScene::ExitScene()
@@ -117,6 +136,7 @@ void cInGameScene::ExitScene()
 	}
 	SAFE_RELEASE(m_pPlayer);
 	SAFE_RELEASE(m_pGrid);
+	g_pGameManager->Destroy();
 	g_pObjectManager->Destroy();
 	g_pTextureManager->Destroy();
 	g_pKeyManager->release();
@@ -141,7 +161,7 @@ void cInGameScene::MessageHandling(HWND hWnd, UINT iMessage, WPARAM wParam, LPAR
 			
 		}
 	case WM_MOUSEWHEEL:
-		g_pGameManager->GetCamera()->MessageHandle(hWnd, iMessage, wParam, lParam);
+		g_pGameManager->MessageHandle(hWnd, iMessage, wParam, lParam);
 		break;
 	case WM_RBUTTONDOWN:
 		/*bRButtonDown = true;

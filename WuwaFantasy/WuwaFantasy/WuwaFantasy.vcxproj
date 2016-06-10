@@ -167,7 +167,6 @@
     <ClInclude Include="cGrid.h" />
     <ClInclude Include="cHeal.h" />
     <ClInclude Include="cHydra.h" />
-    <ClInclude Include="cHydraFSM.h" />
     <ClInclude Include="cHydraState.h" />
     <ClInclude Include="cIdleState.h" />
     <ClInclude Include="cIScene.h" />
@@ -215,6 +214,7 @@
     <ClInclude Include="cTextureManager.h" />
     <ClInclude Include="cTimeManager.h" />
     <ClInclude Include="cWeaponSkinnedMesh.h" />
+    <ClInclude Include="cWorldCamera.h" />
     <ClInclude Include="Packet.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -232,7 +232,6 @@
     <ClCompile Include="cGrid.cpp" />
     <ClCompile Include="cHeal.cpp" />
     <ClCompile Include="cHydra.cpp" />
-    <ClCompile Include="cHydraFSM.cpp" />
     <ClCompile Include="cHydraState.cpp" />
     <ClCompile Include="cIdleState.cpp" />
     <ClCompile Include="cIScene.cpp" />
@@ -280,6 +279,7 @@
     <ClCompile Include="cTextureManager.cpp" />
     <ClCompile Include="cTimeManager.cpp" />
     <ClCompile Include="cWeaponSkinnedMesh.cpp" />
+    <ClCompile Include="cWorldCamera.cpp" />
     <ClCompile Include="Packet.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

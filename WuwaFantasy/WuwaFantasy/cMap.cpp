@@ -14,9 +14,10 @@ cMap::cMap(const std::string& _rawpath, const std::string& _texturepath)
 
 	FILE* fp = NULL;
 	std::string fullpath = MAP_PATH.substr() + _rawpath.substr();
+	std::string texturepath= MAP_PATH.substr() + _texturepath.substr();
 	fopen_s(&fp, fullpath.c_str(), "rb");
 
-	m_pTexture = g_pTextureManager->GetTexture(_texturepath);
+	m_pTexture = g_pTextureManager->GetTexture(texturepath);
 
 	fseek(fp, 0, SEEK_END);
 	int nFileSize = ftell(fp);
@@ -134,7 +135,7 @@ cMap::cMap(const std::string& _rawpath, const std::string& _texturepath)
 
 cMap::~cMap()
 {
-	m_pMesh->Release();
+	int n=m_pMesh->Release();
 }
 
 

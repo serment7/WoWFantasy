@@ -46,6 +46,7 @@ void cTextureManager::Destroy()
 {
 	for each(auto it in m_mapTexture)
 	{
-		SAFE_RELEASE(it.second);
+		it.second->Release();
 	}
+	m_mapTexture.clear();
 }

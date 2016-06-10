@@ -1,15 +1,15 @@
 #pragma once
 #include "cMovingObject.h"
 
+class cIState;
+
 class cMonster :
 	public cMovingObject
 {
 private:
-	std::string			m_resource;
-	std::string			m_name;
 
 public:
-	cMonster();
+	cMonster(const std::string& _name,cIState* _pState);
 	virtual ~cMonster();
 
 	virtual void Setup();
