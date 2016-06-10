@@ -30,7 +30,6 @@
 #pragma comment(lib,"winmm.lib")
 #pragma comment(lib,"dxguid.lib")
 
-
 extern HWND g_hWnd;
 
 #define SAFE_RELEASE(p) {if(p) {(p)->Release(); p=nullptr;}}

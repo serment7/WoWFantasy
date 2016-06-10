@@ -277,6 +277,12 @@ void cSoundManager::SetVolumeTenCount(const char * szName, int vol)
 	iter->second->SetVolume(vol);
 }
 
+void cSoundManager::SetPens(const char * szName, int pan)
+{
+	miSoundBuffer iter = m_mapSoundBuffer.find(szName);
+	iter->second->SetVolume(pan);
+}
+
 void cSoundManager::SetPrimeryVolume(int vol)
 {
 	//volume is -10000 MIN, 0 MAX
@@ -295,4 +301,84 @@ void cSoundManager::SetPrimeryVolumeTenCount(int vol)
 	vol = (10 - vol) * (DSBVOLUME_MIN / 10);
 
 	m_pPrimeryBuffer->SetVolume(vol);
+}
+
+void cSoundManager::SetPrimeryPens(int pan)
+{
+	m_pPrimeryBuffer->SetPan(pan);
+}
+
+BOOL cSoundManager::Get3DSoundListener(LPDIRECTSOUND3DLISTENER * pp3DSoundListener)
+{
+	return 0;
+}
+
+void cSoundManager::Set3DOptions(const char * szName, LPDS3DBUFFER pDs3DBuffer)
+{
+}
+
+LPDS3DBUFFER cSoundManager::Get3DOptions(const char * szName)
+{
+	return LPDS3DBUFFER();
+}
+
+void cSoundManager::Set3DMaxDistance(const char * szName, const float & nMaxDistance)
+{
+}
+
+float cSoundManager::Get3DMaxDistance(const char * szName) const
+{
+	return 0.0f;
+}
+
+void cSoundManager::Set3DMinDistance(const char * szName, const float & nMinDistance)
+{
+}
+
+float cSoundManager::Get3DMinDistance(const char * szName) const
+{
+	return 0.0f;
+}
+
+void cSoundManager::Set3DPosition(const char * szName, const D3DXVECTOR3 & pos)
+{
+}
+
+D3DXVECTOR3 cSoundManager::Get3DPosition(const char * szName) const
+{
+	return D3DXVECTOR3();
+}
+
+void cSoundManager::Set3DConsAngle(const char * szName, const DWORD & insideAngle, const DWORD & outsideAngle)
+{
+}
+
+void cSoundManager::Get3DConsAngle(const char * szName, LPDWORD insideAngle, LPDWORD outsideAngle) const
+{
+}
+
+void cSoundManager::Set3DConsOrientation(const char * szName, const D3DXVECTOR3 & ori)
+{
+}
+
+D3DXVECTOR3 cSoundManager::Get3DConsOrientaiton(const char * szName) const
+{
+	return D3DXVECTOR3();
+}
+
+void cSoundManager::Set3DConsOutsideVolume(const char * szName, const LONG & outsideVolume)
+{
+}
+
+LONG cSoundManager::Get3DConsOutsideVolume(const char * szName) const
+{
+	return 0;
+}
+
+void cSoundManager::Set3DVelocity(const char * szName, const D3DXVECTOR3 & vel)
+{
+}
+
+void cSoundManager::Get3DVelocity(const char * szName, float * x, float * y, float * z)
+{
 }
