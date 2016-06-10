@@ -44,12 +44,12 @@ void cObject::Update()
 
 	D3DXMatrixRotationY(&m_matR, m_fAngleY);
 
-	std::vector<cMap*>& maps = g_pGameManager->GetMap();
+	/*std::vector<cMap*>& maps = g_pGameManager->GetMap();
 	for (int i = 0; i < maps.size(); ++i)
 	{
 		if (maps[i]->CalcHeight(m_vPos.x, m_vPos.y, m_vPos.z))
 			break;
-	}
+	}*/
 
 	D3DXMatrixTranslation(&m_matT, m_vPos.x, m_vPos.y, m_vPos.z);
 	m_matWorld = m_matS * m_matR * m_matT;

@@ -45,6 +45,9 @@ void cPlayerState::Execute(cGameObject * _entity)
 {
 	m_pState->Execute(_entity);
 
+	int gridId = g_pGameManager->FindObjectType("collider");
+	
+
 	const int& playerID = _entity->GetID();
 
 	if (g_pKeyManager->isStayKeyDown(VK_RBUTTON))
@@ -52,9 +55,12 @@ void cPlayerState::Execute(cGameObject * _entity)
 		g_pGameManager->UpdateCursorPointInGlobal();
 		const POINT& curPos = g_pGameManager->GetCursorPoint();
 		std::vector<cMap*>& map = g_pGameManager->GetMap();
-		for (int i = 0; i < map.size(); ++i)
+		std::vector<cGameObject*> grid = g_pObjectManager->FindObjectByTag(gridId);
+
+		cGrid* gridtarget = (cGrid*)grid[0];
+		for (int i = 0; i < 1; ++i)
 		{
-			if (g_pPickManager->IsPickedTry(map[i]->GetTriVertex(), curPos.x, curPos.y))
+			if (g_pPickManager->IsPickedTry(gridtarget->GetTriVertex(), curPos.x, curPos.y))
 			{
 				packet_move = new Packet_Move(g_pPickManager->GetRayPos());
 				packet_move->vDes.y = 0.0f;

@@ -6,5 +6,5 @@ type    interactionnpc
 type 	monster
 type	collider
 type	item
-tpye	map
+type	map
 end
