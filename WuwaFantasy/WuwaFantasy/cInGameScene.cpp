@@ -50,7 +50,7 @@ void cInGameScene::Render()
 		1.0f, 0);
 	g_pD3DDevice->BeginScene();
 	g_pD3DDevice->LightEnable(0, true);
-	g_pD3DDevice->LightEnable(1, true);
+	g_pD3DDevice->LightEnable(1, false);
 
 	g_pD3DDevice->SetFVF(ST_PNT_VERTEX::FVF);
 
@@ -86,6 +86,7 @@ void cInGameScene::EnterScene()
 	g_pObjectManager->AddObject(m_pPlayer);
 	g_pGameManager->SetPlayerID(m_pPlayer->GetID());
 	m_pPlayer->Setup();
+	//m_pPlayer->SetVPos(D3DXVECTOR3(256, 0, 80));
 
 	m_pGrid = new cGrid;
 	
@@ -94,17 +95,13 @@ void cInGameScene::EnterScene()
 	m_pGrid->Setup();
 	
 	//cGameObject* monster = new cHydra;
-	cGameObject* monster = new cMonster("",new cHydraState);
-	monster->SetVPos(D3DXVECTOR3(-15, 0, -15));
+	cGameObject* monster = new cMonster("", D3DXVECTOR3(-15, 0, -15),new cHydraState);
 	m_vecObject.push_back(monster);
-	monster = new cMonster("", new cHydraState);
-	monster->SetVPos(D3DXVECTOR3(-15,0,15));
+	monster = new cMonster("", D3DXVECTOR3(-15, 0, 15),new cHydraState);
 	m_vecObject.push_back(monster);
-	monster = new cMonster("", new cHydraState);
-	monster->SetVPos(D3DXVECTOR3(15, 0, -15));
+	monster = new cMonster("", D3DXVECTOR3(15, 0, -15), new cHydraState);
 	m_vecObject.push_back(monster);
-	monster = new cMonster("", new cHydraState);
-	monster->SetVPos(D3DXVECTOR3(15, 0, 15));
+	monster = new cMonster("", D3DXVECTOR3(15, 0, 15),new cHydraState);
 	m_vecObject.push_back(monster);
 
 	for (size_t i = 0; i < m_vecObject.size(); ++i)
@@ -125,7 +122,7 @@ void cInGameScene::EnterScene()
 
 	g_pSoundManager->Start("1");
 
-	g_pGameManager->AddMap(new cMap("HeightMap.raw","terrain.png"));
+	//g_pGameManager->AddMap(new cMap("output.raw","terrain.png"));
 }
 
 void cInGameScene::ExitScene()

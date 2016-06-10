@@ -163,8 +163,8 @@ bool cMap::CalcHeight(float x, float& y, float z)
 	// |\ |
 	// | \|
 	// 0--2
-	int nx = x;
-	int nz = z;
+	int nx = (int)x;
+	int nz = (int)z;
 	int _0 = (nz + 0) * m_nHPixel + nx;
 	int _1 = (nz + 1) * m_nHPixel + nx;
 	int _2 = (nz + 0) * m_nHPixel + nx + 1;

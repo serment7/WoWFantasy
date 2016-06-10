@@ -62,18 +62,26 @@ void cAction::HeadTo()
 
 void cAction::ReadyApproach(cGameObject * _pTarget, const float& _fSpeed,const float & _fTargetRange)
 {
-	/*m_fSpeed = _fSpeed;
 	m_pTarget = _pTarget;
-	m_fTargetRange = _fTargetRange;*/
-	m_pTarget = _pTarget;
-	ReadyMoveTo(m_pTarget->GetVPos());
+	m_fTargetRange = _fTargetRange;
+
+	static D3DXVECTOR3 vCurTo;
+	vCurTo = m_pTarget->GetVPos();
+
+	D3DXVECTOR3 vVolume = m_vFrom - vCurTo;
+	D3DXVec3Normalize(&vVolume, &vVolume);
+	vVolume *= m_fTargetRange;
+	vVolume += vCurTo;
+	m_vTo = vVolume;
+
+	ReadyMoveTo(m_vTo);
 }
 
 void cAction::Approach()
 {
-	/*if (!m_bAction)
+	if (!m_bAction)
 		return;
-
+	/*
 	m_vFrom = m_pOwner->GetVPos();
 	m_vTo = m_pTarget->GetVPos();
 
@@ -95,19 +103,23 @@ void cAction::Approach()
 			m_pDelegate->OnActionDelegate(this);
 		m_pOwner->SetVPos(m_vTo);
 	}*/
-	static D3DXVECTOR3 vPrevTo=m_vTo;
-	m_vTo = m_pTarget->GetVPos();
-	if (vPrevTo != m_vTo)
+	static D3DXVECTOR3 vPrevTo;
+	static D3DXVECTOR3 vCurTo;
+	vCurTo = m_pTarget->GetVPos();
+
+	
+	if (vPrevTo != vCurTo)
 	{
+		D3DXVECTOR3 vVolume = m_vFrom - vCurTo;
+		D3DXVec3Normalize(&vVolume, &vVolume);
+		vVolume *= m_fTargetRange;
+		vVolume += vCurTo;
+		m_vTo = vVolume;
 		ReadyMoveTo(m_vTo);
 		Start();
 	}
-	else
-	{
-		
-	}
 	MoveTo();
-	vPrevTo = m_vTo;
+	vPrevTo = vCurTo;
 }
 
 void cAction::ReadyAttack(cGameObject * _pTarget, const float & _attackRange)

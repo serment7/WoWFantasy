@@ -30,8 +30,7 @@ void cPlayer::Setup()
 	GetStatus().SetSpeed(5.0f);
 	
 	SetStateMachine(new cPlayerFSM(this, new cDworfMageState));
-	m_sphere.fRadius = 3;
-	m_sphere.vCenter = D3DXVECTOR3(0, 0, 0);
+	AddBoundSphere(3, D3DXVECTOR3(0, 0, 0));
 	//SetStateMachine(new cHydraFSM(this));
 }
 

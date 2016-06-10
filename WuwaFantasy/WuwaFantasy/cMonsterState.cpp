@@ -105,7 +105,8 @@ bool cMonsterState::OnMessage(cGameObject * _entity, const ST_PACKET & _packet)
 {
 	switch (_packet.msg_type) 
 	{
-		
+	case Msg_Hit:
+		return true;
 	default:
 		return m_pState->OnMessage(_entity,_packet);
 	}

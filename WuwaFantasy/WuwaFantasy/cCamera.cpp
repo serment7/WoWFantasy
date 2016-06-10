@@ -178,7 +178,7 @@ bool cCamera::MessageHandle(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPar
 	}
 	return true;
 	case WM_MOUSEWHEEL:
-		m_fDistance -= GET_WHEEL_DELTA_WPARAM(wParam) / 10.0f;
+		m_fDistance -= GET_WHEEL_DELTA_WPARAM(wParam) / 100.0f;
 		if (m_fDistance < m_fMinDistance)
 			m_fDistance = m_fMinDistance;
 		return true;

@@ -9,7 +9,7 @@ class cMonster :
 private:
 
 public:
-	cMonster(const std::string& _name,cIState* _pState);
+	cMonster(const std::string& _name, const D3DXVECTOR3& _pos,cIState* _pState);
 	virtual ~cMonster();
 
 	virtual void Setup();

@@ -218,7 +218,7 @@ void cGameManager::UpdateCursorPointByWindow(const HWND & _targetWindow)
 
 void cGameManager::Destroy()
 {
-	for (int i = 0; i < m_vecMap.size(); ++i)
+	for (size_t i = 0; i < m_vecMap.size(); ++i)
 	{
 		SAFE_DELETE(m_vecMap[i]);
 	}

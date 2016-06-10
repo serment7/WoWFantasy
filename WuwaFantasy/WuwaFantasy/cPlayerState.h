@@ -1,6 +1,9 @@
 #pragma once
 #include "cIState.h"
 
+class cCondition;
+class cStatus;
+
 class cPlayerState :
 	public cIState
 {
@@ -9,12 +12,18 @@ private:
 	Packet_SkillKey* packet_skill = nullptr;
 	Packet_Move* packet_move = nullptr;
 	Packet_Target* packet_target = nullptr;
+	Packet_Hit*				packet_hit=nullptr;
 	ST_PACKET				m_packet;
 	std::vector<cSkill*>	m_vecSkill;
+	std::vector<size_t>		m_vecTargetTag;
+	std::vector<cGameObject*> m_vecPartyNPC;
+
 	size_t					m_mapTag=0;
 	cGameObject*			m_pTarget=nullptr;
 	
 	POINT					m_ptCursor;
+	cStatus*				m_pStatus=nullptr;
+	bool					m_bCombat = false;
 
 public:
 	cPlayerState(cIState* _state);

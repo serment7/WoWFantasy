@@ -11,9 +11,9 @@ enum Msg_Type {
 	, Msg_MoveAni
 	, Msg_CastingAni
 	, Msg_Skill
-	,Msg_Target
+	, Msg_Target
 	, Msg_Death
-
+	, Msg_Hit
 };
 
 struct Packet_Move
