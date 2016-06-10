@@ -31,9 +31,6 @@
     <Filter Include="소스 파일\Picking">
       <UniqueIdentifier>{e97a331d-e84b-4b4c-b79a-f5347bb1ce6a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Action">
-      <UniqueIdentifier>{c375f64c-f25e-4015-baca-6a57d42322b0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\GameData">
       <UniqueIdentifier>{bb694005-54f3-41e1-b200-3056463ce1a9}</UniqueIdentifier>
     </Filter>
@@ -72,6 +69,9 @@
     </Filter>
     <Filter Include="소스 파일\State\NPCState">
       <UniqueIdentifier>{e01c5be6-1f84-4cc6-b7d7-9e164cfcce8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Util\Action">
+      <UniqueIdentifier>{c375f64c-f25e-4015-baca-6a57d42322b0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -208,7 +208,7 @@
       <Filter>소스 파일\Object</Filter>
     </ClInclude>
     <ClInclude Include="cAction.h">
-      <Filter>소스 파일\Action</Filter>
+      <Filter>소스 파일\Util\Action</Filter>
     </ClInclude>
     <ClInclude Include="cHydraState.h">
       <Filter>소스 파일\State\MonsterState\Hydra</Filter>
@@ -266,6 +266,9 @@
     </ClInclude>
     <ClInclude Include="cWorldCamera.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="cFrustumCalling.h">
+      <Filter>소스 파일\Util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -393,7 +396,7 @@
       <Filter>소스 파일\Object</Filter>
     </ClCompile>
     <ClCompile Include="cAction.cpp">
-      <Filter>소스 파일\Action</Filter>
+      <Filter>소스 파일\Util\Action</Filter>
     </ClCompile>
     <ClCompile Include="cHydraState.cpp">
       <Filter>소스 파일\State\MonsterState\Hydra</Filter>
@@ -451,6 +454,9 @@
     </ClCompile>
     <ClCompile Include="cWorldCamera.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="cFrustumCalling.cpp">
+      <Filter>소스 파일\Util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

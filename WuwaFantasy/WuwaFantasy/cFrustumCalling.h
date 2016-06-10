@@ -11,7 +11,7 @@ public:
 	~cFrustumCalling();
 
 	void Setup();
-	void Update(D3DXVECTOR3 vPos);
+	void Update();
 	void Render();
 
 	BOOL IsitCulling(BoundingSphere* bs);
