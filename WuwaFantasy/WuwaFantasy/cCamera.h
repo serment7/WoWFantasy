@@ -1,4 +1,6 @@
 #pragma once
+#include "cFrustumCalling.h"
+
 class cCamera
 {
 private:
@@ -24,24 +26,21 @@ private:
 	float					m_fMinFov=1;
 	float					m_fMaxFov=1000;
 
-	bool					m_isLButtonDown=false;
+	bool					m_isLButtonDown;
 	POINT					m_ptPrevMouse;
+
+	cFrustumCalling			m_pFrustum;
 
 public:
 	cCamera();
 	~cCamera();
 
-	virtual void Update();
+	void Update();
 
 	void SetEye(const D3DXVECTOR3& _vPos);
-	void MoveEye(const D3DXVECTOR3& _vPos);
 	void SetEye(const float& _x, const float& _y, const float& _z);
 	void SetLookAt(const D3DXVECTOR3& _vLookAt);
 	void SetLookAt(const float& _x, const float& _y, const float& _z);
-	void MoveLookAt(const D3DXVECTOR3& _vPos);
-
-	const D3DXVECTOR3& GetEye();
-	const D3DXVECTOR3& GetLookAt();
 
 	void SetAngleX(const float& _angleX);
 	void SetAngleY(const float& _angleY);
@@ -55,8 +54,7 @@ public:
 	void SetMinFov(const float& _minFov);
 	void SetMaxFov(const float& _maxFov);
 
-	void SetDistance(const float& _distance);
-	const float& GetDistance();
-
 	bool			MessageHandle(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam);
+
+	BOOL IsItCulling(BoundingSphere* bs);
 };

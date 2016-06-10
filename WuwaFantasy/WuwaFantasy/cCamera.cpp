@@ -14,6 +14,8 @@ cCamera::cCamera()
 	D3DXMatrixIdentity(&m_matRotX);
 	D3DXMatrixIdentity(&m_matRotY);
 	D3DXMatrixIdentity(&m_matWorld);
+	
+	m_pFrustum.Setup();
 }
 
 cCamera::~cCamera()
@@ -34,16 +36,13 @@ void cCamera::Update()
 
 	D3DXMatrixPerspectiveFovLH(&m_matProj, m_fFovy, m_fAspect, m_fMinFov, m_fMaxFov);
 	g_pD3DDevice->SetTransform(D3DTS_PROJECTION, &m_matProj);
+
+	m_pFrustum.Update(m_vPos);
 }
 
 void cCamera::SetEye(const D3DXVECTOR3 & _vPos)
 {
 	m_vPos = _vPos;
-}
-
-void cCamera::MoveEye(const D3DXVECTOR3 & _vPos)
-{
-	m_vPos += _vPos;
 }
 
 void cCamera::SetEye(const float & _x, const float & _y, const float & _z)
@@ -59,21 +58,6 @@ void cCamera::SetLookAt(const D3DXVECTOR3 & _vLookAt)
 void cCamera::SetLookAt(const float & _x, const float & _y, const float & _z)
 {
 	SetLookAt(D3DXVECTOR3(_x, _y, _z));
-}
-
-void cCamera::MoveLookAt(const D3DXVECTOR3 & _vPos)
-{
-	m_vLookAt += _vPos;
-}
-
-const D3DXVECTOR3 & cCamera::GetEye()
-{
-	return m_vPos;
-}
-
-const D3DXVECTOR3 & cCamera::GetLookAt()
-{
-	return m_vLookAt;
 }
 
 void cCamera::SetAngleX(const float & _angleX)
@@ -126,16 +110,6 @@ void cCamera::SetMaxFov(const float & _maxFov)
 	m_fMaxFov = _maxFov;
 }
 
-void cCamera::SetDistance(const float & _distance)
-{
-	m_fDistance = _distance;
-}
-
-const float&  cCamera::GetDistance()
-{
-	return m_fDistance;
-}
-
 bool cCamera::MessageHandle(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
 	switch (iMessage)
@@ -184,4 +158,9 @@ bool cCamera::MessageHandle(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPar
 		return true;
 	}
 	return false;
+}
+
+BOOL cCamera::IsItCulling(BoundingSphere * bs)
+{
+	return m_pFrustum.IsitCulling(bs);
 }
