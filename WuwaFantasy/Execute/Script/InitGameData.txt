@@ -1,0 +1,284 @@
+#Init GameData ST_STATUS √ ±‚»≠
+start
+
+register status
+{
+	type	player
+	job	magician
+	name	Magician
+	skill	{}
+	status
+	{
+		curhp	200
+		maxhp	200
+		curmp	200
+		maxmp	200
+		cursp	100
+		maxsp	100
+		speed	10.0
+		
+		str	100
+		dex	100
+		def	100
+		int	100
+		crt	15.0
+		
+		level 	1
+		exp	0.0
+
+		attackdamage 20
+
+		boundsphere
+		{
+			radius 1.0f
+			center 0 0 0
+		}
+	}
+	set PerLevelUpPoints
+	{
+		str	2
+		dex	2
+		def	4
+		int	7
+	}
+}
+
+register status
+{
+	type	combatnpc
+	job	warrior
+	name	Warrior
+	status
+	{
+		curhp	300
+		maxhp	300
+		curmp	200
+		maxmp	200
+		cursp	100
+		maxsp	100
+		speed	10.0
+		
+		str	100
+		dex	100
+		def	100
+		int	100
+		crt	15.0
+		
+		level 	1
+		exp	0.0
+
+		attackdamage 15
+
+		boundsphere
+		{
+			radius 1.0f
+			center 0 0 0
+		}
+	}
+	set PerLevelUpPoints
+	{
+		str	5
+		dex	2
+		def	6
+		int	2
+	}
+}
+
+register status
+{
+	type	combatnpc
+	job	rogue
+	name	Rogue
+	status
+	{
+		curhp	180
+		maxhp	180
+		curmp	200
+		maxmp	200
+		cursp	100
+		maxsp	100
+		speed	10.0
+		
+		str	100
+		dex	100
+		def	100
+		int	100
+		crt	15.0
+		
+		level 	1
+		exp	0.0
+
+		attackdamage 22
+
+		boundsphere
+		{
+			radius 1.0f
+			center 0 0 0
+		}
+	}
+	set PerLevelUpPoints
+	{
+		str	3
+		dex	6
+		def	4
+		int	2
+	}
+}
+
+register status
+{
+	type	combatnpc
+	job	healer
+	name	Healer
+	status
+	{
+		curhp	200
+		maxhp	200
+		curmp	250
+		maxmp	250
+		cursp	100
+		maxsp	100
+		speed	10.0
+		
+		str	100
+		dex	100
+		def	100
+		int	100
+		crt	15.0
+		
+		level 	1
+		exp	0.0
+		attackdamage 11
+
+		boundsphere
+		{
+			radius 1.0f
+			center 0 0 0
+		}
+	}
+	set PerLevelUpPoints
+	{
+		str	4
+		dex	1
+		def	5
+		int	5
+	}
+}
+
+register status
+{
+	type	monster
+	job	monster
+	name 	Hydra
+	status
+	{
+		curhp	600
+		maxhp	600
+		curmp	100
+		maxmp	100
+		cursp	100
+		maxsp	100
+		speed	5.0
+		
+		str	100
+		dex	100
+		def	100
+		int	100
+		crt	15.0
+		
+		level 	1
+		exp	0.0
+
+		chase 10.0f
+		sense 7.0f
+
+		attackdamage 15
+	}
+	set PerLevelUpPoints
+	{
+		str	4
+		dex	1
+		def	5
+		int	5
+	}
+}
+
+
+register status
+{
+	type	monster
+	job	monster
+	name 	Scolpion
+	status
+	{
+		curhp	300
+		maxhp	300
+		curmp	100
+		maxmp	100
+		cursp	100
+		maxsp	100
+		speed	5.0
+		
+		str	100
+		dex	100
+		def	100
+		int	100
+		crt	15.0
+		
+		level 	1
+		exp	0.0
+
+		chase 10.0f
+		sense 7.0f
+
+		attackdamage 10
+	}
+	set PerLevelUpPoints
+	{
+		str	4
+		dex	1
+		def	5
+		int	5
+	}
+}
+
+
+register status
+{
+	type	monster
+	job	monster
+	name 	KingOfLich
+	status
+	{
+		curhp	1200
+		maxhp	1200
+		curmp	500
+		maxmp	500
+		cursp	100
+		maxsp	100
+		speed	5.0
+		
+		str	100
+		dex	100
+		def	100
+		int	100
+		crt	15.0
+		
+		level 	1
+		exp	0.0
+
+		chase 10.0f
+		sense 7.0f
+
+		attackdamage 45
+	}
+	set PerLevelUpPoints
+	{
+		str	4
+		dex	1
+		def	5
+		int	5
+	}
+}
+
+end

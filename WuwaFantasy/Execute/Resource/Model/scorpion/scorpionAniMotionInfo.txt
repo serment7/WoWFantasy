@@ -1,0 +1,8 @@
+0: SpecialUnarmed
+1: Stand_01
+2: Death
+3: AttackUnarmed_01
+4: AttackUnarmed
+5: Stand
+6: Walk
+7: Run

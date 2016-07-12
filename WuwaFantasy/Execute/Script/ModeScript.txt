@@ -1,0 +1,84 @@
+#맵 스크립트
+
+start
+
+add GameObject
+{
+	#플레이어 시작지점
+	name	""
+	type	player
+	position 320 110
+}
+
+add	GameObject
+{
+	name Hydra	
+	type	monster
+	scale	1 1 1
+	
+	boundsphere
+	{
+		center 0 0.5f 0
+		radius 1.5f
+	}
+
+	num 8
+	{
+		position 265 417
+		position 295 402
+		position 275 376
+		position 248 350
+		position 242 331
+		position 255 303
+		position 297 289
+		position 274 272
+	}
+}
+
+add	GameObject
+{
+	name Scolpion	
+	type	monster
+	scale	1 1 1
+	
+	boundsphere
+	{
+		center 0 0 0
+		radius 1.5f
+	}
+
+	num 11
+	{
+		position 282 246
+		position 303 234
+		position 295 210
+		position 282 190
+		position 303 178
+		position 295 154
+		position 282 162
+		position 303 132
+		position 325 160
+		position 332 168
+		position 313 140
+	}
+}
+
+add	GameObject
+{
+	name KingOfLich
+	type	monster
+	scale	3 3 3
+	
+	boundsphere
+	{
+		center 0 0.5f 0
+		radius 3.0f
+	}
+
+	num 1
+	{
+		position 293 431
+	}
+}
+
+end

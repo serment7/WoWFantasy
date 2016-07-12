@@ -1,0 +1,11 @@
+0: Sleep			//자는 모션(이상함)
+1: Drowned			//스턴 모션(이상함)
+2: Drown			//스턴 모션 시작
+3: Stand_01			//대기 모션 2
+4: Death			//죽음
+5: CreatureSpeacial		//강한공격
+6: CombatCritical		//피격모션
+7: AttackUnarmed		//일반공격
+8: Stand			//대기모션 1
+9: Run				//달리기 모션
+10: Walk			//걷기 모션

@@ -1,0 +1,57 @@
+0: StealthRun				//살살 달려감
+
+1: Stand_04				//대기 모션
+
+2: EmoteSalute				//경례 모션
+
+3: Sprint				//달리기 모션(중복)
+
+4: Knockdown				//넉다운
+
+5: StealthStend				//0번 대기 모션
+
+6: StealthWalk				//0번 걷기 모션
+
+7: Stand_03				//대기 모션
+
+8: HoldRifle				//라이플 겨냥 모션
+
+9: LoadRifle				//라이플 로드 모션(장전)
+
+10: Attack1HPierce			//단검 던지기 모션
+
+11: Attack1H_01				//한손검 중공
+
+12: Special1H				//한손검 강공
+
+13: Stand_02				//대기 모션
+
+14: Stand_01				//대기 모션
+
+15: EmoteTalk				//대화 모션(퀘스트 등에서 쓰라고)
+
+16: Death				//죽음
+
+17: AttackRifle				//라이플 발사
+
+18: Attack1H				//한손검 약공
+
+19: CombatCritical			//맞는 모션
+
+20: CombatWound				//맞는 모션
+
+21: ReadyRifle				//라이플 준비
+
+22: Stun				//스턴
+
+23: StandWound				//대기 피격 모션
+
+24: Ready1H				//한손검 준비
+
+25: Walkbackwards			//뒤로 걷기
+
+26: Run					//달리기
+
+27: Walk				//걷기
+
+28: Stand				//대기 모션

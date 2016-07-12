@@ -1,0 +1,16 @@
+﻿0: Stun
+1: Death
+2: Stand_03
+3: Stand_02
+4: Stand_01
+5: Walk
+6: Stand
+7: Ready2H
+8: KneelStart
+9: KneelLoop
+10: KneelEnd
+11: EmoteLaugh
+12: DragonStomp
+13: BattleRoar
+14: Attack2H_01
+15: Attack2H
