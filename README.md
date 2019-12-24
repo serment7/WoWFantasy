@@ -3,6 +3,10 @@ SGA Project - WoWFantasy, Member - Yohan Kim, Jinseok Lee, Yuhyeon Kim
 
 https://www.youtube.com/watch?v=W3QnVNkukVw
 
+##### Concept
+
+Hunt monsters with NPC party members
+
 # RoadMap
 
 - 1 Week
